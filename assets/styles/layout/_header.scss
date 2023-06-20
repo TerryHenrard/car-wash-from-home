@@ -1,58 +1,141 @@
+body {
+  height: 200vh;
+}
+
 header {
-  background: url(../images/lavage-porsche.jpg) center/cover;
-  height: 100vh;
+  background: url(../images/pexels-jay-pizzle-3772857.jpg) center/cover;
+  background-position-y: -130px;
 
   nav {
-    padding: 20px 0 0 0;
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 80vw;
-    margin: auto;
+    max-width: 1920px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    ul {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      list-style: none;
-
-      &:hover li:not(:hover) {
-        filter: blur(0.75px) brightness(0.8);
-        transform: scale(0.97);
-      }
-
-      li {
-        transition: 0.3s;
-        color: #f8edeb;
-        font-size: 0.9rem;
-        font-family: "montserrat", serif;
-        font-weight: 400;
+    .logo {
+      a {
+        color: #343a40;
+        text-decoration: none;
+        font-family: "mrdafoe";
+        font-size: 2.5rem;
+        letter-spacing: 10px;
         text-transform: uppercase;
         cursor: pointer;
-        position: relative;
 
-        &:hover {
-          transform: scale(1.03);
-          filter: brightness(1.2);
-          &::after {
-            content: "";
-            position: absolute;
-            top: 150%;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 1px;
-            width: 100%;
-            background: #f8edeb;
-            animation: botToTop 0.3s ease-in-out forwards;
+        &:visited {
+          color: #343a40;
+        }
+      }
+    }
 
-            @keyframes botToTop {
-              0% {
-                opacity: 0;
-              }
-              100% {
-                opacity: 1;
-                top: 100%;
+    .menu {
+      width: 66%;
+
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        list-style: none;
+        height: 100%;
+
+        &:hover li:not(:hover) {
+          filter: blur(0.8px);
+          transform: scale(0.96);
+        }
+
+        li {
+          transition: 0.3s;
+          color: #343a40;
+          font-size: 0.9rem;
+          font-family: "montserrat", serif;
+          font-weight: 700;
+          text-transform: uppercase;
+          cursor: pointer;
+          position: relative;
+
+          &:hover {
+            transform: scale(1.04);
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 150%;
+              left: 50%;
+              transform: translateX(-50%);
+              height: 1px;
+              width: 100%;
+              background: #343a40;
+              animation: botToTop 0.3s ease-in-out forwards;
+
+              @keyframes botToTop {
+                0% {
+                  opacity: 0;
+                }
+                100% {
+                  opacity: 1;
+                  top: 100%;
+                }
               }
             }
           }
         }
+      }
+    }
+
+    .social-network {
+      width: 10%;
+
+      ul {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        list-style: none;
+        color: #343a40;
+
+        li {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .header-text {
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      margin-top: -250px;
+      color: #22223b;
+      h1 {
+        color: #22223b;
+        font-size: 5rem;
+        font-family: "parisienne";
+        font-weight: 500;
+      }
+
+      h2 {
+        font-family: "poppins", sans-serif;
+        margin-top: -40px;
+        font-size: 4rem;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
+
+      p {
+        font-size: 1.3rem;
+        font-family: "poppins", serif;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-weight: 100;
+        color: #e60113;
       }
     }
   }

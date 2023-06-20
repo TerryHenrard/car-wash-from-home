@@ -8,6 +8,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: "montserra", serif;
+}
+
 @font-face {
   font-family: "poppins";
   src: url(../fonts/Poppins-Medium.ttf);
@@ -16,40 +20,77 @@ html {
   font-family: "montserrat";
   src: url(../fonts/Montserrat-VariableFont_wght.ttf);
 }
+@font-face {
+  font-family: "mrdafoe";
+  src: url(../fonts/MrDafoe-Regular.ttf);
+}
+@font-face {
+  font-family: "parisienne";
+  src: url(../fonts/Parisienne-Regular.ttf);
+}
+@font-face {
+  font-family: "allura";
+  src: url(../fonts/Allura-Regular.ttf);
+}
+body {
+  height: 200vh;
+}
+
 header {
-  background: url(../images/lavage-porsche.jpg) center/cover;
-  height: 100vh;
+  background: url(../images/pexels-jay-pizzle-3772857.jpg) center/cover;
+  background-position-y: -130px;
 }
 header nav {
-  padding: 20px 0 0 0;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 80vw;
-  margin: auto;
+  max-width: 1920px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-header nav ul {
+header nav .logo a {
+  color: #343a40;
+  text-decoration: none;
+  font-family: "mrdafoe";
+  font-size: 2.5rem;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+header nav .logo a:visited {
+  color: #343a40;
+}
+header nav .menu {
+  width: 66%;
+}
+header nav .menu ul {
   display: flex;
   align-items: center;
   justify-content: space-around;
   list-style: none;
+  height: 100%;
 }
-header nav ul:hover li:not(:hover) {
-  filter: blur(0.75px) brightness(0.8);
-  transform: scale(0.97);
+header nav .menu ul:hover li:not(:hover) {
+  filter: blur(0.8px);
+  transform: scale(0.96);
 }
-header nav ul li {
+header nav .menu ul li {
   transition: 0.3s;
-  color: #f8edeb;
+  color: #343a40;
   font-size: 0.9rem;
   font-family: "montserrat", serif;
-  font-weight: 400;
+  font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
   position: relative;
 }
-header nav ul li:hover {
-  transform: scale(1.03);
-  filter: brightness(1.2);
+header nav .menu ul li:hover {
+  transform: scale(1.04);
 }
-header nav ul li:hover::after {
+header nav .menu ul li:hover::after {
   content: "";
   position: absolute;
   top: 150%;
@@ -57,7 +98,7 @@ header nav ul li:hover::after {
   transform: translateX(-50%);
   height: 1px;
   width: 100%;
-  background: #f8edeb;
+  background: #343a40;
   animation: botToTop 0.3s ease-in-out forwards;
 }
 @keyframes botToTop {
@@ -68,4 +109,49 @@ header nav ul li:hover::after {
     opacity: 1;
     top: 100%;
   }
+}
+header nav .social-network {
+  width: 10%;
+}
+header nav .social-network ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  color: #343a40;
+}
+header nav .social-network ul li {
+  cursor: pointer;
+}
+header .header-text {
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .header-text div {
+  margin-top: -250px;
+  color: #22223b;
+}
+header .header-text div h1 {
+  color: #22223b;
+  font-size: 5rem;
+  font-family: "parisienne";
+  font-weight: 500;
+}
+header .header-text div h2 {
+  font-family: "poppins", sans-serif;
+  margin-top: -40px;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+header .header-text div p {
+  font-size: 1.3rem;
+  font-family: "poppins", serif;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 100;
+  color: #e60113;
 }/*# sourceMappingURL=index.css.map */

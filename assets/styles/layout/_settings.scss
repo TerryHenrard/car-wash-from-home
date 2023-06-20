@@ -6,6 +6,9 @@
 html {
   scroll-behavior: smooth;
 }
+body {
+  font-family: "montserra", serif;
+}
 
 @font-face {
   font-family: "poppins";
@@ -15,4 +18,19 @@ html {
 @font-face {
   font-family: "montserrat";
   src: url(../fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "mrdafoe";
+  src: url(../fonts/MrDafoe-Regular.ttf);
+}
+
+@font-face {
+  font-family: "parisienne";
+  src: url(../fonts/Parisienne-Regular.ttf);
+}
+
+@font-face {
+  font-family: "allura";
+  src: url(../fonts/Allura-Regular.ttf);
 }
