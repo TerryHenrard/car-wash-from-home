@@ -1,0 +1,59 @@
+header {
+  background: url(../images/lavage-porsche.jpg) center/cover;
+  height: 100vh;
+
+  nav {
+    padding: 20px 0 0 0;
+    width: 80vw;
+    margin: auto;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      list-style: none;
+
+      &:hover li:not(:hover) {
+        filter: blur(0.75px) brightness(0.8);
+        transform: scale(0.97);
+      }
+
+      li {
+        transition: 0.3s;
+        color: #f8edeb;
+        font-size: 0.9rem;
+        font-family: "montserrat", serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        cursor: pointer;
+        position: relative;
+
+        &:hover {
+          transform: scale(1.03);
+          filter: brightness(1.2);
+          &::after {
+            content: "";
+            position: absolute;
+            top: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 1px;
+            width: 100%;
+            background: #f8edeb;
+            animation: botToTop 0.3s ease-in-out forwards;
+
+            @keyframes botToTop {
+              0% {
+                opacity: 0;
+              }
+              100% {
+                opacity: 1;
+                top: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
