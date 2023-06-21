@@ -1,10 +1,6 @@
-body {
-  height: 200vh;
-}
-
 header {
-  background: url(../images/pexels-jay-pizzle-3772857.jpg) center/cover;
-  background-position-y: -130px;
+  background: url(../images/pexels-jay-pizzle-3772857.jpg) no-repeat
+    center/cover;
 
   nav {
     position: fixed;
@@ -12,7 +8,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80vw;
-    max-width: 1920px;
+    max-width: 1500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,14 +45,22 @@ header {
         }
 
         li {
-          transition: 0.3s;
-          color: #343a40;
+          transition: 0.2s;
           font-size: 0.9rem;
           font-family: "montserrat", serif;
           font-weight: 700;
           text-transform: uppercase;
           cursor: pointer;
           position: relative;
+
+          a {
+            text-decoration: none;
+            color: #343a40;
+
+            &:visited {
+              color: #343a40;
+            }
+          }
 
           &:hover {
             transform: scale(1.04);
@@ -112,13 +116,14 @@ header {
     align-items: center;
 
     div {
-      margin-top: -250px;
-      color: #22223b;
+      margin-top: -150px;
+      color: #ffffff;
       h1 {
-        color: #22223b;
+        color: #ffffff;
         font-size: 5rem;
         font-family: "parisienne";
         font-weight: 500;
+        text-shadow: 3px 0 3px #d90429;
       }
 
       h2 {
@@ -127,6 +132,7 @@ header {
         font-size: 4rem;
         text-transform: uppercase;
         letter-spacing: 5px;
+        text-shadow: 5px -1px 0 #d90429;
       }
 
       p {
@@ -135,7 +141,13 @@ header {
         text-transform: uppercase;
         letter-spacing: 5px;
         font-weight: 100;
-        color: #e60113;
+        color: #d90429;
+      }
+
+      .fa-solid {
+        position: absolute;
+        bottom: 50px;
+        font-size: 2rem;
       }
     }
   }

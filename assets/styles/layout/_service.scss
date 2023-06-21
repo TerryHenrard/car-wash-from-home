@@ -1,0 +1,68 @@
+.service {
+  .interieur {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50vh;
+
+    .left-ext {
+    }
+    .right-ext {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 50% 50%;
+
+      div {
+        margin: 1px;
+      }
+
+      .carrosserie {
+        background: url(../images/grosplan-retro.jpg) center/cover;
+      }
+
+      .pneu {
+        background: url(../images/nettoyage-pneu.jpg) center/cover;
+      }
+
+      .vitre {
+        background: url(../images/grosplan-vitre.jpg) center/cover;
+      }
+
+      .detail {
+        background: url(../images/grosplan-porsche.jpg) center/cover;
+      }
+    }
+  }
+  .exterieur {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50vh;
+
+    .left-int {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 50% 50%;
+
+      div {
+        margin: 1px;
+      }
+
+      .tableauBord {
+        background: url(../images/lavage-interieur.jpg) center/cover;
+      }
+
+      .carpette {
+        background: url(../images/interieur-aspirateur.jpg) center/cover;
+      }
+
+      .siege {
+        background: url(../images/interieur-karcher.jpg) center/cover;
+      }
+
+      .porte {
+        background: url(../images/interieur-chiffon.jpg) center/cover;
+      }
+    }
+    .right-int {
+    }
+  }
+}

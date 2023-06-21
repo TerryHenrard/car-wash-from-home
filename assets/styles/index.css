@@ -32,13 +32,8 @@ body {
   font-family: "allura";
   src: url(../fonts/Allura-Regular.ttf);
 }
-body {
-  height: 200vh;
-}
-
 header {
-  background: url(../images/pexels-jay-pizzle-3772857.jpg) center/cover;
-  background-position-y: -130px;
+  background: url(../images/pexels-jay-pizzle-3772857.jpg) no-repeat center/cover;
 }
 header nav {
   position: fixed;
@@ -46,7 +41,7 @@ header nav {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80vw;
-  max-width: 1920px;
+  max-width: 1500px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,14 +73,20 @@ header nav .menu ul:hover li:not(:hover) {
   transform: scale(0.96);
 }
 header nav .menu ul li {
-  transition: 0.3s;
-  color: #343a40;
+  transition: 0.2s;
   font-size: 0.9rem;
   font-family: "montserrat", serif;
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
   position: relative;
+}
+header nav .menu ul li a {
+  text-decoration: none;
+  color: #343a40;
+}
+header nav .menu ul li a:visited {
+  color: #343a40;
 }
 header nav .menu ul li:hover {
   transform: scale(1.04);
@@ -131,14 +132,15 @@ header .header-text {
   align-items: center;
 }
 header .header-text div {
-  margin-top: -250px;
-  color: #22223b;
+  margin-top: -150px;
+  color: #ffffff;
 }
 header .header-text div h1 {
-  color: #22223b;
+  color: #ffffff;
   font-size: 5rem;
   font-family: "parisienne";
   font-weight: 500;
+  text-shadow: 3px 0 3px #d90429;
 }
 header .header-text div h2 {
   font-family: "poppins", sans-serif;
@@ -146,6 +148,7 @@ header .header-text div h2 {
   font-size: 4rem;
   text-transform: uppercase;
   letter-spacing: 5px;
+  text-shadow: 5px -1px 0 #d90429;
 }
 header .header-text div p {
   font-size: 1.3rem;
@@ -153,5 +156,61 @@ header .header-text div p {
   text-transform: uppercase;
   letter-spacing: 5px;
   font-weight: 100;
-  color: #e60113;
+  color: #d90429;
+}
+header .header-text div .fa-solid {
+  position: absolute;
+  bottom: 50px;
+  font-size: 2rem;
+}
+
+.service .interieur {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50vh;
+}
+.service .interieur .right-ext {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
+.service .interieur .right-ext div {
+  margin: 1px;
+}
+.service .interieur .right-ext .carrosserie {
+  background: url(../images/grosplan-retro.jpg) center/cover;
+}
+.service .interieur .right-ext .pneu {
+  background: url(../images/nettoyage-pneu.jpg) center/cover;
+}
+.service .interieur .right-ext .vitre {
+  background: url(../images/grosplan-vitre.jpg) center/cover;
+}
+.service .interieur .right-ext .detail {
+  background: url(../images/grosplan-porsche.jpg) center/cover;
+}
+.service .exterieur {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50vh;
+}
+.service .exterieur .left-int {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
+.service .exterieur .left-int div {
+  margin: 1px;
+}
+.service .exterieur .left-int .tableauBord {
+  background: url(../images/lavage-interieur.jpg) center/cover;
+}
+.service .exterieur .left-int .carpette {
+  background: url(../images/interieur-aspirateur.jpg) center/cover;
+}
+.service .exterieur .left-int .siege {
+  background: url(../images/interieur-karcher.jpg) center/cover;
+}
+.service .exterieur .left-int .porte {
+  background: url(../images/interieur-chiffon.jpg) center/cover;
 }/*# sourceMappingURL=index.css.map */
