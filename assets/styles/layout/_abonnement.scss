@@ -1,14 +1,110 @@
 .abonnement {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 5vh 45vh;
+  grid-template-rows: 8vh 45vh;
   grid-template-areas:
     "title title title"
     "premium vip diamant";
   text-align: center;
+  background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%),
+    radial-gradient(
+      91% 146%,
+      rgba(255, 255, 255, 0.5) 47%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  background-blend-mode: screen;
+  min-width: 1000px;
 
   h2 {
     grid-area: title;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-family: "montserrat";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0 0 0;
+  }
+
+  .premium,
+  .vip,
+  .diamant {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .abonnement-container {
+      width: 55%;
+      min-width: 250px;
+      // height: 85%;
+      border-radius: 20px;
+      box-shadow: 0px 0px 5px 0px rgb(189, 189, 189);
+      background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 1500%);
+
+      h3 {
+        font-family: "montserrat", serif;
+        margin: 20px 15px;
+        font-size: 1.2rem;
+      }
+
+      .description {
+        font-family: "poppins", serif;
+        margin: 20px 10px;
+      }
+
+      .prix {
+        position: relative;
+
+        .pourcentage {
+          position: absolute;
+          top: 50%;
+          left: 100%;
+          transform: translate(-100%, -50%);
+          font-size: 1.3rem;
+          font-family: "poppins", serif;
+          background: #ff6600;
+          color: #ffffff;
+          width: 65px;
+          border-radius: 5px 0 0 5px;
+        }
+
+        .prix-apres {
+          font-family: "poppins", serif;
+          font-size: 2.8rem;
+          margin: 20px 0;
+
+          span {
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      .prix-avant {
+        font-family: "poppins", serif;
+        margin: 20px 0;
+
+        span {
+          text-decoration: line-through;
+        }
+      }
+
+      .economie {
+        font-family: "poppins", serif;
+        margin: 20px 0;
+        font-size: 1.3rem;
+
+        span {
+          color: #ff6600;
+          font-size: 1.5rem;
+        }
+      }
+
+      .info {
+        font-family: "poppins", serif;
+        margin: 20px 15px;
+        font-size: 0.9rem;
+      }
+    }
   }
 
   .premium {
