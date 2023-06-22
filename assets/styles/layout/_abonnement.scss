@@ -1,0 +1,25 @@
+.abonnement {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 5vh 45vh;
+  grid-template-areas:
+    "title title title"
+    "premium vip diamant";
+  text-align: center;
+
+  h2 {
+    grid-area: title;
+  }
+
+  .premium {
+    grid-area: premium;
+  }
+
+  .vip {
+    grid-area: vip;
+  }
+
+  .diamant {
+    grid-area: diamant;
+  }
+}

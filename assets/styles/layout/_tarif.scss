@@ -1,11 +1,52 @@
 .service {
-  .interieur {
+  min-width: 1000px;
+  background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%),
+    radial-gradient(
+      91% 146%,
+      rgba(255, 255, 255, 0.5) 47%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  background-blend-mode: screen;
+
+  .interieur,
+  .exterieur {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 50vh;
+    grid-template-rows: 45vh;
+    font-size: 1.3rem;
+    font-family: "montserrat";
 
-    .left-ext {
+    h3 {
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      text-align: center;
+      margin: 0 0 20px 0;
     }
+
+    p {
+      padding: 6.5px 0;
+    }
+
+    ul {
+      list-style: url(../images/arrow-right-solid.svg);
+    }
+
+    ul > li {
+      margin: 6.5px 0;
+
+      span {
+        color: #d90429;
+      }
+    }
+  }
+
+  .interieur {
+    .left-ext {
+      margin: 20px;
+      padding: 25px 50px;
+      border: 1px dashed rgb(166, 114, 69);
+    }
+
     .right-ext {
       display: grid;
       grid-template-columns: 50% 50%;
@@ -32,11 +73,8 @@
       }
     }
   }
-  .exterieur {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 50vh;
 
+  .exterieur {
     .left-int {
       display: grid;
       grid-template-columns: 50% 50%;
@@ -51,7 +89,7 @@
       }
 
       .carpette {
-        background: url(../images/interieur-aspirateur.jpg) center/cover;
+        background: url(../images/close-up-car-care-dusting.jpg) center/cover;
       }
 
       .siege {
@@ -63,6 +101,9 @@
       }
     }
     .right-int {
+      margin: 20px;
+      padding: 25px 50px;
+      border: 1px dashed rgb(166, 114, 69);
     }
   }
 }

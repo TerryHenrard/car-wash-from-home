@@ -9,9 +9,13 @@ header {
     transform: translate(-50%, -50%);
     width: 80vw;
     max-width: 1500px;
+    min-width: 1000px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    border-radius: 50px;
+    z-index: 100;
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 
     .logo {
       a {
@@ -148,6 +152,8 @@ header {
         position: absolute;
         bottom: 50px;
         font-size: 2rem;
+        color: #d90429;
+        cursor: pointer;
       }
     }
   }

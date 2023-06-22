@@ -42,9 +42,13 @@ header nav {
   transform: translate(-50%, -50%);
   width: 80vw;
   max-width: 1500px;
+  min-width: 1000px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  border-radius: 50px;
+  z-index: 100;
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 }
 header nav .logo a {
   color: #343a40;
@@ -162,12 +166,50 @@ header .header-text div .fa-solid {
   position: absolute;
   bottom: 50px;
   font-size: 2rem;
+  color: #d90429;
+  cursor: pointer;
 }
 
-.service .interieur {
+.service {
+  min-width: 1000px;
+  background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
+  background-blend-mode: screen;
+}
+.service .interieur,
+.service .exterieur {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 50vh;
+  grid-template-rows: 45vh;
+  font-size: 1.3rem;
+  font-family: "montserrat";
+}
+.service .interieur h3,
+.service .exterieur h3 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+.service .interieur p,
+.service .exterieur p {
+  padding: 6.5px 0;
+}
+.service .interieur ul,
+.service .exterieur ul {
+  list-style: url(../images/arrow-right-solid.svg);
+}
+.service .interieur ul > li,
+.service .exterieur ul > li {
+  margin: 6.5px 0;
+}
+.service .interieur ul > li span,
+.service .exterieur ul > li span {
+  color: #d90429;
+}
+.service .interieur .left-ext {
+  margin: 20px;
+  padding: 25px 50px;
+  border: 1px dashed rgb(166, 114, 69);
 }
 .service .interieur .right-ext {
   display: grid;
@@ -189,11 +231,6 @@ header .header-text div .fa-solid {
 .service .interieur .right-ext .detail {
   background: url(../images/grosplan-porsche.jpg) center/cover;
 }
-.service .exterieur {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 50vh;
-}
 .service .exterieur .left-int {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -206,11 +243,36 @@ header .header-text div .fa-solid {
   background: url(../images/lavage-interieur.jpg) center/cover;
 }
 .service .exterieur .left-int .carpette {
-  background: url(../images/interieur-aspirateur.jpg) center/cover;
+  background: url(../images/close-up-car-care-dusting.jpg) center/cover;
 }
 .service .exterieur .left-int .siege {
   background: url(../images/interieur-karcher.jpg) center/cover;
 }
 .service .exterieur .left-int .porte {
   background: url(../images/interieur-chiffon.jpg) center/cover;
+}
+.service .exterieur .right-int {
+  margin: 20px;
+  padding: 25px 50px;
+  border: 1px dashed rgb(166, 114, 69);
+}
+
+.abonnement {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 5vh 45vh;
+  grid-template-areas: "title title title" "premium vip diamant";
+  text-align: center;
+}
+.abonnement h2 {
+  grid-area: title;
+}
+.abonnement .premium {
+  grid-area: premium;
+}
+.abonnement .vip {
+  grid-area: vip;
+}
+.abonnement .diamant {
+  grid-area: diamant;
 }/*# sourceMappingURL=index.css.map */
