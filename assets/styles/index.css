@@ -172,6 +172,7 @@ header .header-text div .fa-solid {
 
 .tarif {
   min-width: 1000px;
+  background-color: #dcd9d4;
   background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
   background-blend-mode: screen;
 }
@@ -259,8 +260,10 @@ header .header-text div .fa-solid {
 
 .abonnement {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 26.67vw 26.67vw 26.67vw;
   grid-template-rows: 8vh 46vh 46vh;
+  align-items: center;
+  justify-content: center;
   grid-template-areas: "title title title" "abronze asilver agold" "apremium avip adiamant";
   text-align: center;
   background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
@@ -433,4 +436,59 @@ header .header-text div .fa-solid {
 }
 .abonnement .gold .abonnement-container h3 i {
   color: #ffd700;
+}
+
+.ecologie {
+  background-color: #dcd9d4;
+  background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
+  background-blend-mode: screen;
+}
+.ecologie .eco-container {
+  width: 75vw;
+  margin: 40px auto;
+  text-align: justify;
+}
+.ecologie .eco-container h3 {
+  font-family: "montserrat", serif;
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+.ecologie .eco-container p {
+  font-family: "poppins", serif;
+  line-height: 30px;
+}
+.ecologie .eco-container p .lettrine {
+  font-family: "poppins", sans-serif;
+  font-size: 3rem;
+}
+.ecologie .eco-container p span {
+  font-weight: bolder;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.footer {
+  background: #1f2937;
+  color: #ffffff;
+  font-family: "poppins", serif;
+}
+.footer .footer-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 30px 0 0 0;
+  height: 20vh;
+}
+.footer .footer-container .apropos h4 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #eeeeee;
+}
+.footer .footer-container .apropos ul > li a:visited {
+  color: #ffffff;
+}
+.footer .footer-container .contact h4 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #eeeeee;
 }/*# sourceMappingURL=index.css.map */

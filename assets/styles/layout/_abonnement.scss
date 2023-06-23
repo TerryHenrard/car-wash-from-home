@@ -1,7 +1,9 @@
 .abonnement {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 26.67vw 26.67vw 26.67vw;
   grid-template-rows: 8vh 46vh 46vh;
+  align-items: center;
+  justify-content: center;
   grid-template-areas:
     "title title title"
     "abronze asilver agold"

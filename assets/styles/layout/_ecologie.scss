@@ -1,0 +1,37 @@
+.ecologie {
+  background-color: #dcd9d4;
+  background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%),
+    radial-gradient(
+      91% 146%,
+      rgba(255, 255, 255, 0.5) 47%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  background-blend-mode: screen;
+
+  .eco-container {
+    width: 75vw;
+    margin: 40px auto;
+    text-align: justify;
+    h3 {
+      font-family: "montserrat", serif;
+      font-size: 1.5rem;
+      margin: 20px 0;
+    }
+
+    p {
+      font-family: "poppins", serif;
+      line-height: 30px;
+
+      .lettrine {
+        font-family: "poppins", sans-serif;
+        font-size: 3rem;
+      }
+
+      span {
+        font-weight: bolder;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
