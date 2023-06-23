@@ -1,10 +1,11 @@
 .abonnement {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 8vh 45vh;
+  grid-template-rows: 8vh 46vh 46vh;
   grid-template-areas:
     "title title title"
-    "premium vip diamant";
+    "abronze asilver agold"
+    "apremium avip adiamant";
   text-align: center;
   background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%),
     radial-gradient(
@@ -28,7 +29,10 @@
 
   .premium,
   .vip,
-  .diamant {
+  .diamant,
+  .bronze,
+  .silver,
+  .gold {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,14 +112,50 @@
   }
 
   .premium {
-    grid-area: premium;
+    grid-area: apremium;
   }
 
   .vip {
-    grid-area: vip;
+    grid-area: avip;
   }
 
   .diamant {
-    grid-area: diamant;
+    grid-area: adiamant;
+  }
+
+  .bronze {
+    grid-area: abronze;
+
+    .abonnement-container {
+      h3 {
+        i {
+          color: #614e1a;
+        }
+      }
+    }
+  }
+
+  .silver {
+    grid-area: asilver;
+
+    .abonnement-container {
+      h3 {
+        i {
+          color: #c0c0c0;
+        }
+      }
+    }
+  }
+
+  .gold {
+    grid-area: agold;
+
+    .abonnement-container {
+      h3 {
+        i {
+          color: #ffd700;
+        }
+      }
+    }
   }
 }

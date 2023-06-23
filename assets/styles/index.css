@@ -260,8 +260,8 @@ header .header-text div .fa-solid {
 .abonnement {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 8vh 45vh;
-  grid-template-areas: "title title title" "premium vip diamant";
+  grid-template-rows: 8vh 46vh 46vh;
+  grid-template-areas: "title title title" "abronze asilver agold" "apremium avip adiamant";
   text-align: center;
   background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
   background-blend-mode: screen;
@@ -279,14 +279,20 @@ header .header-text div .fa-solid {
 }
 .abonnement .premium,
 .abonnement .vip,
-.abonnement .diamant {
+.abonnement .diamant,
+.abonnement .bronze,
+.abonnement .silver,
+.abonnement .gold {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .abonnement .premium .abonnement-container,
 .abonnement .vip .abonnement-container,
-.abonnement .diamant .abonnement-container {
+.abonnement .diamant .abonnement-container,
+.abonnement .bronze .abonnement-container,
+.abonnement .silver .abonnement-container,
+.abonnement .gold .abonnement-container {
   width: 55%;
   min-width: 250px;
   border-radius: 20px;
@@ -295,25 +301,37 @@ header .header-text div .fa-solid {
 }
 .abonnement .premium .abonnement-container h3,
 .abonnement .vip .abonnement-container h3,
-.abonnement .diamant .abonnement-container h3 {
+.abonnement .diamant .abonnement-container h3,
+.abonnement .bronze .abonnement-container h3,
+.abonnement .silver .abonnement-container h3,
+.abonnement .gold .abonnement-container h3 {
   font-family: "montserrat", serif;
   margin: 20px 15px;
   font-size: 1.2rem;
 }
 .abonnement .premium .abonnement-container .description,
 .abonnement .vip .abonnement-container .description,
-.abonnement .diamant .abonnement-container .description {
+.abonnement .diamant .abonnement-container .description,
+.abonnement .bronze .abonnement-container .description,
+.abonnement .silver .abonnement-container .description,
+.abonnement .gold .abonnement-container .description {
   font-family: "poppins", serif;
   margin: 20px 10px;
 }
 .abonnement .premium .abonnement-container .prix,
 .abonnement .vip .abonnement-container .prix,
-.abonnement .diamant .abonnement-container .prix {
+.abonnement .diamant .abonnement-container .prix,
+.abonnement .bronze .abonnement-container .prix,
+.abonnement .silver .abonnement-container .prix,
+.abonnement .gold .abonnement-container .prix {
   position: relative;
 }
 .abonnement .premium .abonnement-container .prix .pourcentage,
 .abonnement .vip .abonnement-container .prix .pourcentage,
-.abonnement .diamant .abonnement-container .prix .pourcentage {
+.abonnement .diamant .abonnement-container .prix .pourcentage,
+.abonnement .bronze .abonnement-container .prix .pourcentage,
+.abonnement .silver .abonnement-container .prix .pourcentage,
+.abonnement .gold .abonnement-container .prix .pourcentage {
   position: absolute;
   top: 50%;
   left: 100%;
@@ -327,53 +345,92 @@ header .header-text div .fa-solid {
 }
 .abonnement .premium .abonnement-container .prix .prix-apres,
 .abonnement .vip .abonnement-container .prix .prix-apres,
-.abonnement .diamant .abonnement-container .prix .prix-apres {
+.abonnement .diamant .abonnement-container .prix .prix-apres,
+.abonnement .bronze .abonnement-container .prix .prix-apres,
+.abonnement .silver .abonnement-container .prix .prix-apres,
+.abonnement .gold .abonnement-container .prix .prix-apres {
   font-family: "poppins", serif;
   font-size: 2.8rem;
   margin: 20px 0;
 }
 .abonnement .premium .abonnement-container .prix .prix-apres span,
 .abonnement .vip .abonnement-container .prix .prix-apres span,
-.abonnement .diamant .abonnement-container .prix .prix-apres span {
+.abonnement .diamant .abonnement-container .prix .prix-apres span,
+.abonnement .bronze .abonnement-container .prix .prix-apres span,
+.abonnement .silver .abonnement-container .prix .prix-apres span,
+.abonnement .gold .abonnement-container .prix .prix-apres span {
   font-size: 0.9rem;
 }
 .abonnement .premium .abonnement-container .prix-avant,
 .abonnement .vip .abonnement-container .prix-avant,
-.abonnement .diamant .abonnement-container .prix-avant {
+.abonnement .diamant .abonnement-container .prix-avant,
+.abonnement .bronze .abonnement-container .prix-avant,
+.abonnement .silver .abonnement-container .prix-avant,
+.abonnement .gold .abonnement-container .prix-avant {
   font-family: "poppins", serif;
   margin: 20px 0;
 }
 .abonnement .premium .abonnement-container .prix-avant span,
 .abonnement .vip .abonnement-container .prix-avant span,
-.abonnement .diamant .abonnement-container .prix-avant span {
+.abonnement .diamant .abonnement-container .prix-avant span,
+.abonnement .bronze .abonnement-container .prix-avant span,
+.abonnement .silver .abonnement-container .prix-avant span,
+.abonnement .gold .abonnement-container .prix-avant span {
   text-decoration: line-through;
 }
 .abonnement .premium .abonnement-container .economie,
 .abonnement .vip .abonnement-container .economie,
-.abonnement .diamant .abonnement-container .economie {
+.abonnement .diamant .abonnement-container .economie,
+.abonnement .bronze .abonnement-container .economie,
+.abonnement .silver .abonnement-container .economie,
+.abonnement .gold .abonnement-container .economie {
   font-family: "poppins", serif;
   margin: 20px 0;
   font-size: 1.3rem;
 }
 .abonnement .premium .abonnement-container .economie span,
 .abonnement .vip .abonnement-container .economie span,
-.abonnement .diamant .abonnement-container .economie span {
+.abonnement .diamant .abonnement-container .economie span,
+.abonnement .bronze .abonnement-container .economie span,
+.abonnement .silver .abonnement-container .economie span,
+.abonnement .gold .abonnement-container .economie span {
   color: #ff6600;
   font-size: 1.5rem;
 }
 .abonnement .premium .abonnement-container .info,
 .abonnement .vip .abonnement-container .info,
-.abonnement .diamant .abonnement-container .info {
+.abonnement .diamant .abonnement-container .info,
+.abonnement .bronze .abonnement-container .info,
+.abonnement .silver .abonnement-container .info,
+.abonnement .gold .abonnement-container .info {
   font-family: "poppins", serif;
   margin: 20px 15px;
   font-size: 0.9rem;
 }
 .abonnement .premium {
-  grid-area: premium;
+  grid-area: apremium;
 }
 .abonnement .vip {
-  grid-area: vip;
+  grid-area: avip;
 }
 .abonnement .diamant {
-  grid-area: diamant;
+  grid-area: adiamant;
+}
+.abonnement .bronze {
+  grid-area: abronze;
+}
+.abonnement .bronze .abonnement-container h3 i {
+  color: #614e1a;
+}
+.abonnement .silver {
+  grid-area: asilver;
+}
+.abonnement .silver .abonnement-container h3 i {
+  color: #c0c0c0;
+}
+.abonnement .gold {
+  grid-area: agold;
+}
+.abonnement .gold .abonnement-container h3 i {
+  color: #ffd700;
 }/*# sourceMappingURL=index.css.map */
