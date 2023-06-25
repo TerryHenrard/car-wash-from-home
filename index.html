@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<!--SEO
-1) title (répond directement à une recherche google) + meta description
-2) se positionner sur une niche de mot clé
-3) créer des pages qui utiliseront ses mots clés dans leur titre
-    pédagogique/soigner la rédaction/facile à lire/sans faures d'orthographe/plusieurs paragraphes/pas de texte sur les images/du contenu original/du contenu illustré/pas de duplication de contenu
-4) vitesse de chargement
-5) site responsive
-6) backlinks
-7) internal links-->
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +9,13 @@
   <link rel="stylesheet" href="./assets/styles/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="shortcut icon" href="./assets/images/car-side-solid.svg">
+  <script src="./assets/scripts/script.js" defer></script>
   <title>LVD | Car wash à domicile à Charleroi | intérieur et extérieur</title>
 </head>
 
 <body>
   <header id="start">
-    <nav>
+    <nav id="navbar">
       <div class="logo">
         <a href="#start">lvd</a>
       </div>
@@ -107,11 +98,11 @@
         <h3><i class="fa-solid fa-circle"></i> Bronze</h3>
         <p class="description">3 lavages intérieur</p>
         <div class="prix">
-          <p class="pourcentage">-10%</p>
-          <p class="prix-apres">40,5<span>€</span></p>
+          <p class="pourcentage">-11%</p>
+          <p class="prix-apres">40<span>€</span></p>
         </div>
         <p class="prix-avant">au lieu de <span>45€</span></p>
-        <p class="economie">Économisez <span>4,5€</span></p>
+        <p class="economie">Économisez <span>5€</span></p>
         <p class="info"><i class="fa-solid fa-triangle-exclamation"></i> Résilation à tout moment, après au moins 2
           lavages</p>
       </div>
@@ -149,11 +140,11 @@
         <h3><i class="fa-solid fa-star"></i> Premium</h3>
         <p class="description">3 lavages extérieur</p>
         <div class="prix">
-          <p class="pourcentage">-10%</p>
-          <p class="prix-apres">67,5<span>€</span></p>
+          <p class="pourcentage">-12%</p>
+          <p class="prix-apres">66<span>€</span></p>
         </div>
         <p class="prix-avant">au lieu de <span>75€</span></p>
-        <p class="economie">Économisez <span>7,5€</span></p>
+        <p class="economie">Économisez <span>9€</span></p>
         <p class="info"><i class="fa-solid fa-triangle-exclamation"></i> Résilation à tout moment, après au moins 2
           lavages</p>
       </div>
@@ -222,7 +213,13 @@
         <h3>Foire aux questions</h3>
       </div>
       <div class="question">
-        <h5>Aurez-vous besoin d'eau ou d'une prise de courant?</h5>
+        <h5>Comment prendre rendez-vous?</h5>
+        <p>Il vous suffit de nous téléphoner ou d'envoyer un email avec la prestation que vous avez choisie (abonnement
+          ou non) et de nous indiquer vos disponibités, un collaborateur vous recontactera le plus rapidement
+          possible.</p><br><br>
+      </div>
+      <div class="question">
+        <h5>Aurons-nous besoin d'eau ou d'une prise de courant?</h5>
         <p>
           Concernant l'eau oui, cela nous évite de nous déplacer en surcharge.
           Concernant la prise de courant, idéalement oui, si votre véhicule est au delà des 50 mètres de la prise de
@@ -234,30 +231,24 @@
         <h5>Comment est-ce que cela se passe lorsque le nettoyeur LVD arrive?</h5>
         <p>
           La personne en charge de votre véhicule sonne chez vous et prend connaissance du véhicule. Avec votre
-          permission il rempli les sceaux d'eau chaude, et branche les appareils électriques tels que l'aspirateur ou la
+          permission il rempli les seaux d'eau chaude, et branche les appareils électriques tels que l'aspirateur ou la
           shampouineuse.
         </p><br><br>
       </div>
       <div class="question">
-        <h5>Comment fonctionne la prise de rendez-vous?</h5>
-        <p>Il vous suffit de nous téléphoner ou d'envoyer un email avec la prestation que vous avez choisie (abonnement
-          ou non) et de nous indiquer vos disponibités, un collaborateur vous recontactera le plus rapidement
-          possible.</p><br><br>
-      </div>
-      <div class="question">
         <h5>En quoi consiste l'option "shampoing sièges et tapis"?</h5>
         <p>
-          L'option "shampoing sièges et tapis" consiste à nettoyer en profondeur les tissus des sièges et des tapis de
+          L'option consiste à nettoyer en profondeur les tissus des sièges et des tapis de
           votre voiture à l'aide d'une shampouineuse. Cette méthode élimine les taches, les odeurs et la saleté
           incrustée, redonnant ainsi de la fraîcheur à l'intérieur de votre véhicule. La machine injecte un mélange de
-          shampoing et d'eau chaude permettant ainsi de nettoyer les tissus en éliminant la saleté, les taches et les
-          odeurs. Ensuite la shampouineuse extrait le mélange, laissant les sièges et les tapis propres et revitalisés.
+          shampoing et d'eau chaude permettant ainsi de nettoyer les tissus. Ensuite la shampouineuse extrait le
+          mélange, laissant les sièges et les tapis propres et revitalisés.
         </p><br><br>
       </div>
       <div class="question">
         <h5>En combien de temps les sièges sèchent ils?</h5>
         <p>
-          Lorsque vous utilisez l'option "shampoing sièges et tapis" avec une shampouineuse, le temps de séchage des
+          Lorsque vous utilisez l'option "shampoing sièges et tapis", le temps de séchage des
           sièges dépend du temps extérieur. En
           général, il est recommandé de laisser suffisamment de temps de séchage, qui peut varier de quelques heures en
           cas de temps ensoleillé à
@@ -273,7 +264,7 @@
           présentes sur les sièges. Nous mettons tout en œuvre pour maximiser les résultats et vous offrir
           des sièges propres et rafraîchis. Bien que certaines taches persistantes puissent nécessiter des traitements
           supplémentaires, notre processus de shampoing est conçu pour fournir des résultats remarquables et rendre vos
-          sièges aussi propres que possible. Dans 99,99% des cas c'est missions réussies.</p><br><br>
+          sièges aussi propres que possible. Dans 99,99% des cas c'est mission réussie.</p><br><br>
       </div>
     </div>
   </section>
@@ -291,7 +282,8 @@
       </div>
       <div class="contact">
         <h4>contact</h4>
-        <p>mail: test@test.test</p>
+        <p class="mail">mail: </p>
+        <a href="mailto:test@test.test">test@test.test</a>
         <p>tel: +32 498 14 66 51</p>
       </div>
     </div>

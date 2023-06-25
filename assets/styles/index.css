@@ -49,6 +49,7 @@ header nav {
   border-radius: 50px;
   z-index: 100;
   background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  transition: 0.2s ease-in-out;
 }
 header nav .logo a {
   color: #343a40;
@@ -474,7 +475,7 @@ header .header-text div .fa-solid {
 .ecologie .eco-container h3 {
   font-family: "montserrat", serif;
   font-size: 1.5rem;
-  margin: 20px 0;
+  padding: 20px 0;
 }
 .ecologie .eco-container p {
   font-family: "poppins", serif;
@@ -539,4 +540,13 @@ header .header-text div .fa-solid {
   font-size: 1.2rem;
   text-transform: uppercase;
   color: #eeeeee;
+}
+.footer .footer-container .contact .mail {
+  display: inline;
+}
+.footer .footer-container .contact a {
+  color: #ffffff;
+}
+.footer .footer-container .contact a:visited {
+  color: #ffffff;
 }/*# sourceMappingURL=index.css.map */
