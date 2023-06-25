@@ -33,7 +33,7 @@ body {
   src: url(../fonts/Allura-Regular.ttf);
 }
 header {
-  background: url(../images/pexels-jay-pizzle-3772857.jpg) no-repeat center/cover;
+  background: url(../images/pexels-jay-pizzle-3772857.webp) no-repeat center/cover;
 }
 header nav {
   position: fixed;
@@ -221,16 +221,16 @@ header .header-text div .fa-solid {
   margin: 1px;
 }
 .tarif .interieur .right-ext .carrosserie {
-  background: url(../images/grosplan-retro.jpg) center/cover;
+  background: url(../images/grosplan-retro.webp) center/cover;
 }
 .tarif .interieur .right-ext .pneu {
-  background: url(../images/nettoyage-pneu.jpg) center/cover;
+  background: url(../images/nettoyage-pneu.webp) center/cover;
 }
 .tarif .interieur .right-ext .vitre {
-  background: url(../images/grosplan-vitre.jpg) center/cover;
+  background: url(../images/grosplan-vitre.webp) center/cover;
 }
 .tarif .interieur .right-ext .detail {
-  background: url(../images/grosplan-porsche.jpg) center/cover;
+  background: url(../images/grosplan-porsche.webp) center/cover;
 }
 .tarif .exterieur .left-int {
   display: grid;
@@ -241,16 +241,16 @@ header .header-text div .fa-solid {
   margin: 1px;
 }
 .tarif .exterieur .left-int .tableauBord {
-  background: url(../images/lavage-interieur.jpg) center/cover;
+  background: url(../images/lavage-interieur.webp) center/cover;
 }
 .tarif .exterieur .left-int .carpette {
-  background: url(../images/close-up-car-care-dusting.jpg) center/cover;
+  background: url(../images/close-up-car-care-dusting.webp) center/cover;
 }
 .tarif .exterieur .left-int .siege {
-  background: url(../images/interieur-karcher.jpg) center/cover;
+  background: url(../images/interieur-karcher.webp) center/cover;
 }
 .tarif .exterieur .left-int .porte {
-  background: url(../images/interieur-chiffon.jpg) center/cover;
+  background: url(../images/interieur-chiffon.webp) center/cover;
 }
 .tarif .exterieur .right-int {
   margin: 20px;
