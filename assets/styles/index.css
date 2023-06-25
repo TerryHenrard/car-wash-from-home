@@ -301,6 +301,7 @@ header .header-text div .fa-solid {
   border-radius: 20px;
   box-shadow: 0px 0px 5px 0px rgb(189, 189, 189);
   background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 1500%);
+  transition: 0.3s;
 }
 .abonnement .premium .abonnement-container h3,
 .abonnement .vip .abonnement-container h3,
@@ -427,6 +428,28 @@ header .header-text div .fa-solid {
 }
 .abonnement .silver {
   grid-area: asilver;
+  position: relative;
+}
+.abonnement .silver:before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: "le plus choisi";
+  color: #ffffff;
+  font-family: "montserrat", serif;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: bolder;
+  position: absolute;
+  z-index: 1;
+  width: 55%;
+  min-width: 250px;
+  height: 17px;
+  background: #ff6600;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20px 20px 0 0;
 }
 .abonnement .silver .abonnement-container h3 i {
   color: #c0c0c0;
@@ -465,6 +488,31 @@ header .header-text div .fa-solid {
   font-weight: bolder;
   font-size: 1.2rem;
   text-transform: uppercase;
+}
+
+.faq {
+  background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
+  background-blend-mode: screen;
+  padding: 40px 0;
+}
+.faq .faq-container {
+  width: 75vw;
+  margin: 0 auto;
+  text-align: justify;
+}
+.faq .faq-container .faq-title h3 {
+  font-family: "montserrat", serif;
+  font-size: 1.5rem;
+  margin: 0 0 40px 0;
+}
+.faq .faq-container .question h5 {
+  font-family: "montserrat", serif;
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+.faq .faq-container .question p {
+  font-family: "poppins", serif;
+  line-height: 30px;
 }
 
 .footer {

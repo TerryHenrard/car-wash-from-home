@@ -42,10 +42,10 @@
     .abonnement-container {
       width: 55%;
       min-width: 250px;
-      // height: 85%;
       border-radius: 20px;
       box-shadow: 0px 0px 5px 0px rgb(189, 189, 189);
       background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 1500%);
+      transition: 0.3s;
 
       h3 {
         font-family: "montserrat", serif;
@@ -139,6 +139,29 @@
 
   .silver {
     grid-area: asilver;
+    position: relative;
+
+    &:before {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      content: "le plus choisi";
+      color: #ffffff;
+      font-family: "montserrat", serif;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      font-weight: bolder;
+      position: absolute;
+      z-index: 1;
+      width: 55%;
+      min-width: 250px;
+      height: 17px;
+      background: #ff6600;
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 20px 20px 0 0;
+    }
 
     .abonnement-container {
       h3 {

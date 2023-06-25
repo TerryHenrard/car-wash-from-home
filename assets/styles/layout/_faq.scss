@@ -1,0 +1,35 @@
+.faq {
+  background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%),
+    radial-gradient(
+      91% 146%,
+      rgba(255, 255, 255, 0.5) 47%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  background-blend-mode: screen;
+  padding: 40px 0;
+  .faq-container {
+    width: 75vw;
+    margin: 0 auto;
+    text-align: justify;
+
+    .faq-title {
+      h3 {
+        font-family: "montserrat", serif;
+        font-size: 1.5rem;
+        margin: 0 0 40px 0;
+      }
+    }
+
+    .question {
+      h5 {
+        font-family: "montserrat", serif;
+        font-size: 1.2rem;
+        margin: 5px 0;
+      }
+      p {
+        font-family: "poppins", serif;
+        line-height: 30px;
+      }
+    }
+  }
+}
