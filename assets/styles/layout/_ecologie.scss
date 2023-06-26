@@ -33,5 +33,12 @@
         text-transform: uppercase;
       }
     }
+
+    .eco-part1,
+    .eco-part2,
+    .eco-part3 {
+      opacity: 0;
+      transition: 0.3s;
+    }
   }
 }

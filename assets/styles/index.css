@@ -54,7 +54,7 @@ header nav {
   border-radius: 50px;
   z-index: 100;
   background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 header nav .logo a {
   color: #343a40;
@@ -232,11 +232,17 @@ header .header-text div .fa-solid {
   margin: 20px;
   padding: 25px 50px;
   border: 1px dashed rgb(166, 114, 69);
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: 0.5s;
 }
 .tarif .interieur .right-ext {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
+  transform: translateX(100px);
+  opacity: 0;
+  transition: 0.5s;
 }
 .tarif .interieur .right-ext div {
   margin: 1px;
@@ -253,10 +259,17 @@ header .header-text div .fa-solid {
 .tarif .interieur .right-ext .detail {
   background: url(../images/grosplan-porsche.webp) center/cover;
 }
+.tarif .interieur .tarif-anim {
+  opacity: 1;
+  transform: translateX(0);
+}
 .tarif .exterieur .left-int {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: 0.5s;
 }
 .tarif .exterieur .left-int div {
   margin: 1px;
@@ -277,6 +290,13 @@ header .header-text div .fa-solid {
   margin: 20px;
   padding: 25px 50px;
   border: 1px dashed rgb(166, 114, 69);
+  transform: translateX(100px);
+  opacity: 0;
+  transition: 0.5s;
+}
+.tarif .exterieur .tarif-anim {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .abonnement {
@@ -310,6 +330,7 @@ header .header-text div .fa-solid {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
 }
 .abonnement .premium .abonnement-container,
 .abonnement .vip .abonnement-container,
@@ -490,6 +511,14 @@ header .header-text div .fa-solid {
 .abonnement .gold .abonnement-container h3 i {
   color: #ffd700;
 }
+.abonnement .abonnement-anim {
+  animation: abonnement-anim 0.5s ease-in-out forwards;
+}
+@keyframes abonnement-anim {
+  100% {
+    opacity: 1;
+  }
+}
 
 .ecologie {
   background-color: #dcd9d4;
@@ -519,6 +548,12 @@ header .header-text div .fa-solid {
   font-size: 1.2rem;
   text-transform: uppercase;
 }
+.ecologie .eco-container .eco-part1,
+.ecologie .eco-container .eco-part2,
+.ecologie .eco-container .eco-part3 {
+  opacity: 0;
+  transition: 0.3s;
+}
 
 .faq {
   background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
@@ -535,12 +570,31 @@ header .header-text div .fa-solid {
   font-size: 1.5rem;
   margin: 0 0 40px 0;
 }
-.faq .faq-container .question h5 {
+.faq .faq-container .question1,
+.faq .faq-container .question2,
+.faq .faq-container .question3,
+.faq .faq-container .question4,
+.faq .faq-container .question5,
+.faq .faq-container .question6 {
+  opacity: 0;
+  transition: 0.3s;
+}
+.faq .faq-container .question1 h5,
+.faq .faq-container .question2 h5,
+.faq .faq-container .question3 h5,
+.faq .faq-container .question4 h5,
+.faq .faq-container .question5 h5,
+.faq .faq-container .question6 h5 {
   font-family: "montserrat", serif;
   font-size: 1.2rem;
   margin: 5px 0;
 }
-.faq .faq-container .question p {
+.faq .faq-container .question1 p,
+.faq .faq-container .question2 p,
+.faq .faq-container .question3 p,
+.faq .faq-container .question4 p,
+.faq .faq-container .question5 p,
+.faq .faq-container .question6 p {
   font-family: "poppins", serif;
   line-height: 30px;
 }

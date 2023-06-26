@@ -46,12 +46,18 @@
       margin: 20px;
       padding: 25px 50px;
       border: 1px dashed rgb(166, 114, 69);
+      transform: translateX(-100px);
+      opacity: 0;
+      transition: 0.5s;
     }
 
     .right-ext {
       display: grid;
       grid-template-columns: 50% 50%;
       grid-template-rows: 50% 50%;
+      transform: translateX(100px);
+      opacity: 0;
+      transition: 0.5s;
 
       div {
         margin: 1px;
@@ -73,6 +79,11 @@
         background: url(../images/grosplan-porsche.webp) center/cover;
       }
     }
+
+    .tarif-anim {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .exterieur {
@@ -80,6 +91,9 @@
       display: grid;
       grid-template-columns: 50% 50%;
       grid-template-rows: 50% 50%;
+      transform: translateX(-100px);
+      opacity: 0;
+      transition: 0.5s;
 
       div {
         margin: 1px;
@@ -105,6 +119,14 @@
       margin: 20px;
       padding: 25px 50px;
       border: 1px dashed rgb(166, 114, 69);
+      transform: translateX(100px);
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .tarif-anim {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }

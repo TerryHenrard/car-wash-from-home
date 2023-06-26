@@ -38,6 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
 
     .abonnement-container {
       width: 55%;
@@ -204,6 +205,15 @@
         i {
           color: #ffd700;
         }
+      }
+    }
+  }
+
+  .abonnement-anim {
+    animation: abonnement-anim 0.5s ease-in-out forwards;
+    @keyframes abonnement-anim {
+      100% {
+        opacity: 1;
       }
     }
   }
