@@ -10,7 +10,7 @@ html {
 
 body {
   font-family: "montserra", serif;
-  transition: 0.3s;
+  transition: 0.5s;
   opacity: 0;
 }
 
@@ -37,6 +37,100 @@ body {
 header {
   background: url(../images/pexels-jay-pizzle-3772857.webp) no-repeat center/cover;
 }
+header #side-bar.active {
+  left: 0;
+}
+header .active span {
+  position: absolute;
+}
+header .active span:nth-child(1) {
+  transform: rotate(45deg);
+}
+header .active span:nth-child(2) {
+  opacity: 0;
+}
+header .active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+header #side-bar {
+  position: fixed;
+  width: 230px;
+  height: 100vh;
+  background-image: linear-gradient(to bottom, #ffecd2 0%, #ffa98c 100%);
+  top: 0;
+  left: -230px;
+  transition: 0.3s ease-out;
+  z-index: 1000;
+  padding: 0 0 0 20px;
+}
+header #side-bar .toggle-btn {
+  position: absolute;
+  top: 30px;
+  left: 240px;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+header #side-bar .toggle-btn span {
+  width: 60px;
+  height: 10px;
+  border-radius: 5px;
+  background: #ffecd2;
+  display: block;
+  margin-top: 4px;
+  transition: 0.3s ease;
+}
+header #side-bar .side-bar-logo {
+  color: #343a40;
+  text-decoration: none;
+  font-family: "mrdafoe";
+  font-size: 2rem;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+header #side-bar .side-bar-logo:visited {
+  color: #343a40;
+}
+header #side-bar ul {
+  list-style: none;
+}
+header #side-bar ul li {
+  height: 80px;
+  font-family: "montserrat", serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+header #side-bar ul li a {
+  color: #292929;
+  list-style: none;
+  font-size: 1.6rem;
+  padding-left: 5px;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+header #side-bar ul li a:visited {
+  color: #343a40;
+}
+header #side-bar .side-bar-social-network {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 80px;
+}
+header #side-bar .side-bar-social-network i {
+  width: 33%;
+  height: 100%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 header .nav-anim {
   transform: translate(-50%, -50%);
 }
@@ -53,7 +147,7 @@ header nav {
   align-items: center;
   border-radius: 50px;
   z-index: 100;
-  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  background-image: linear-gradient(to right, #ffecd2 0%, #ffa98c 100%);
   transition: 0.2s ease-in-out;
 }
 header nav .logo a {

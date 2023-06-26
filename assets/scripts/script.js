@@ -21,6 +21,12 @@ const question3 = document.querySelector(".question3");
 const question4 = document.querySelector(".question4");
 const question5 = document.querySelector(".question5");
 const question6 = document.querySelector(".question6");
+const sidebar = document.getElementById("side-bar");
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+});
 
 let tarifAnimations = () => {
   if (scrollY > 150) {
@@ -121,6 +127,7 @@ window.addEventListener("scroll", () => {
   abonnementAnimations();
   ecologieAnimations();
   faqAnimations();
+  navbarAnimation();
 });
 
 navbar.addEventListener("mouseover", () => {
