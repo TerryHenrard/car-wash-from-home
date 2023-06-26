@@ -129,6 +129,11 @@ header {
     background-image: linear-gradient(to right, #ffecd2 0%, #ffa98c 100%);
     transition: 0.2s ease-in-out;
 
+    @media only screen and (max-width: 1020px) {
+      min-width: 0;
+      width: 50vw;
+    }
+
     .logo {
       a {
         color: #343a40;

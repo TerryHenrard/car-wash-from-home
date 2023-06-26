@@ -150,6 +150,12 @@ header nav {
   background-image: linear-gradient(to right, #ffecd2 0%, #ffa98c 100%);
   transition: 0.2s ease-in-out;
 }
+@media only screen and (max-width: 1020px) {
+  header nav {
+    min-width: 0;
+    width: 50vw;
+  }
+}
 header nav .logo a {
   color: #343a40;
   text-decoration: none;
