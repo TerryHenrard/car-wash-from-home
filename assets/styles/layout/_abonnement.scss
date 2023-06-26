@@ -115,14 +115,38 @@
 
   .premium {
     grid-area: apremium;
+
+    .abonnement-container {
+      h3 {
+        i {
+          color: #614e1a;
+        }
+      }
+    }
   }
 
   .vip {
     grid-area: avip;
+
+    .abonnement-container {
+      h3 {
+        i {
+          color: #c0c0c0;
+        }
+      }
+    }
   }
 
   .diamant {
     grid-area: adiamant;
+
+    .abonnement-container {
+      h3 {
+        i {
+          color: #ffd700;
+        }
+      }
+    }
   }
 
   .bronze {

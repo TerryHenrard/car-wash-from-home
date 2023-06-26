@@ -10,6 +10,8 @@ html {
 
 body {
   font-family: "montserra", serif;
+  transition: 0.3s;
+  opacity: 0;
 }
 
 @font-face {
@@ -35,11 +37,14 @@ body {
 header {
   background: url(../images/pexels-jay-pizzle-3772857.webp) no-repeat center/cover;
 }
+header .nav-anim {
+  transform: translate(-50%, -50%);
+}
 header nav {
   position: fixed;
   top: 50px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 100%);
   width: 80vw;
   max-width: 1500px;
   min-width: 1000px;
@@ -49,7 +54,7 @@ header nav {
   border-radius: 50px;
   z-index: 100;
   background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
-  transition: 0.2s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 header nav .logo a {
   color: #343a40;
@@ -146,6 +151,11 @@ header .header-text div h1 {
   font-family: "parisienne";
   font-weight: 500;
   text-shadow: 3px 0 3px #d90429;
+  transform: translateY(-40px);
+  transition: 0.5s;
+}
+header .header-text div .h1-anim {
+  transform: translateY(0px);
 }
 header .header-text div h2 {
   font-family: "poppins", sans-serif;
@@ -154,6 +164,11 @@ header .header-text div h2 {
   text-transform: uppercase;
   letter-spacing: 5px;
   text-shadow: 5px -1px 0 #d90429;
+  transform: translateY(40px);
+  transition: 0.3s;
+}
+header .header-text div .h2-anim {
+  transform: translateY(0px);
 }
 header .header-text div p {
   font-size: 1.3rem;
@@ -162,6 +177,11 @@ header .header-text div p {
   letter-spacing: 5px;
   font-weight: 100;
   color: #d90429;
+  transform: translateX(40px);
+  transition: 0.3s;
+}
+header .header-text div .p-anim {
+  transform: translateY(0px);
 }
 header .header-text div .fa-solid {
   position: absolute;
@@ -415,11 +435,20 @@ header .header-text div .fa-solid {
 .abonnement .premium {
   grid-area: apremium;
 }
+.abonnement .premium .abonnement-container h3 i {
+  color: #614e1a;
+}
 .abonnement .vip {
   grid-area: avip;
 }
+.abonnement .vip .abonnement-container h3 i {
+  color: #c0c0c0;
+}
 .abonnement .diamant {
   grid-area: adiamant;
+}
+.abonnement .diamant .abonnement-container h3 i {
+  color: #ffd700;
 }
 .abonnement .bronze {
   grid-area: abronze;
