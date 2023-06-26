@@ -9,6 +9,10 @@
     );
   background-blend-mode: screen;
 
+  @media only screen and (max-width: 1000px) {
+    min-width: 0;
+  }
+
   .interieur,
   .exterieur {
     display: grid;
@@ -17,15 +21,28 @@
     font-size: 1.3rem;
     font-family: "montserrat";
 
+    @media only screen and (max-width: 1000px) {
+      grid-template-columns: 100%;
+      grid-template-rows: 45vh 45vh;
+    }
+
     h3 {
       text-transform: uppercase;
       font-size: 1.5rem;
       text-align: center;
       margin: 0 0 20px 0;
+
+      @media only screen and (max-width: 550px) {
+        font-size: 1.4rem;
+      }
     }
 
     p {
       padding: 6.5px 0;
+
+      @media only screen and (max-width: 550px) {
+        font-size: 1.1rem;
+      }
     }
 
     ul {
@@ -34,6 +51,10 @@
 
     ul > li {
       margin: 6.5px 0;
+
+      @media only screen and (max-width: 550px) {
+        font-size: 1.1rem;
+      }
 
       span {
         color: #d90429;
@@ -46,7 +67,7 @@
       margin: 20px;
       padding: 25px 50px;
       border: 1px dashed rgb(166, 114, 69);
-      transform: translateX(-100px);
+      transform: translateX(100px);
       opacity: 0;
       transition: 0.5s;
     }
@@ -55,7 +76,7 @@
       display: grid;
       grid-template-columns: 50% 50%;
       grid-template-rows: 50% 50%;
-      transform: translateX(100px);
+      transform: translateX(-100px);
       opacity: 0;
       transition: 0.5s;
 
@@ -87,13 +108,24 @@
   }
 
   .exterieur {
+    @media only screen and (max-width: 1000px) {
+      grid-template-areas:
+        "texte texte"
+        "photo photo";
+      grid-template-columns: 100%;
+      grid-template-rows: 45vh 45vh;
+    }
     .left-int {
       display: grid;
       grid-template-columns: 50% 50%;
       grid-template-rows: 50% 50%;
-      transform: translateX(-100px);
+      transform: translateX(100px);
       opacity: 0;
       transition: 0.5s;
+
+      @media only screen and (max-width: 1000px) {
+        grid-area: photo;
+      }
 
       div {
         margin: 1px;
@@ -119,9 +151,13 @@
       margin: 20px;
       padding: 25px 50px;
       border: 1px dashed rgb(166, 114, 69);
-      transform: translateX(100px);
+      transform: translateX(-100px);
       opacity: 0;
       transition: 0.5s;
+
+      @media only screen and (max-width: 1000px) {
+        grid-area: texte;
+      }
     }
 
     .tarif-anim {

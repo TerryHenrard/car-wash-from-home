@@ -15,10 +15,17 @@
         font-size: 1.2rem;
         text-transform: uppercase;
         color: #eeeeee;
+
+        @media only screen and (max-width: 550px) {
+          font-size: 1rem;
+        }
       }
 
       ul > li {
         a {
+          @media only screen and (max-width: 550px) {
+            font-size: 0.8rem;
+          }
           &:visited {
             color: #ffffff;
           }
@@ -30,16 +37,33 @@
         font-size: 1.2rem;
         text-transform: uppercase;
         color: #eeeeee;
+        @media only screen and (max-width: 550px) {
+          font-size: 1rem;
+        }
       }
 
       .mail {
         display: inline;
+
+        @media only screen and (max-width: 550px) {
+          font-size: 0.8rem;
+        }
       }
 
       a {
         color: #ffffff;
+
+        @media only screen and (max-width: 550px) {
+          font-size: 0.8rem;
+        }
         &:visited {
           color: #ffffff;
+        }
+      }
+
+      p {
+        @media only screen and (max-width: 550px) {
+          font-size: 0.8rem;
         }
       }
     }

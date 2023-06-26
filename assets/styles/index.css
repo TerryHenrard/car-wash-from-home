@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: "montserra", serif;
+  font-family: "montserrat", serif;
   transition: 0.5s;
   opacity: 0;
 }
@@ -62,6 +62,12 @@ header #side-bar {
   transition: 0.3s ease-out;
   z-index: 1000;
   padding: 0 0 0 20px;
+  display: none;
+}
+@media only screen and (max-width: 1000px) {
+  header #side-bar {
+    display: inline;
+  }
 }
 header #side-bar .toggle-btn {
   position: absolute;
@@ -75,7 +81,7 @@ header #side-bar .toggle-btn span {
   width: 60px;
   height: 10px;
   border-radius: 5px;
-  background: #ffecd2;
+  background: #000000;
   display: block;
   margin-top: 4px;
   transition: 0.3s ease;
@@ -150,10 +156,9 @@ header nav {
   background-image: linear-gradient(to right, #ffecd2 0%, #ffa98c 100%);
   transition: 0.2s ease-in-out;
 }
-@media only screen and (max-width: 1020px) {
+@media only screen and (max-width: 1000px) {
   header nav {
-    min-width: 0;
-    width: 50vw;
+    display: none;
   }
 }
 header nav .logo a {
@@ -254,6 +259,11 @@ header .header-text div h1 {
   transform: translateY(-40px);
   transition: 0.5s;
 }
+@media only screen and (max-width: 550px) {
+  header .header-text div h1 {
+    font-size: 4rem;
+  }
+}
 header .header-text div .h1-anim {
   transform: translateY(0px);
 }
@@ -267,6 +277,12 @@ header .header-text div h2 {
   transform: translateY(40px);
   transition: 0.3s;
 }
+@media only screen and (max-width: 550px) {
+  header .header-text div h2 {
+    font-size: 3rem;
+    margin-top: -20px;
+  }
+}
 header .header-text div .h2-anim {
   transform: translateY(0px);
 }
@@ -279,6 +295,11 @@ header .header-text div p {
   color: #d90429;
   transform: translateX(40px);
   transition: 0.3s;
+}
+@media only screen and (max-width: 550px) {
+  header .header-text div p {
+    font-size: 0.9rem;
+  }
 }
 header .header-text div .p-anim {
   transform: translateY(0px);
@@ -297,6 +318,11 @@ header .header-text div .fa-solid {
   background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
   background-blend-mode: screen;
 }
+@media only screen and (max-width: 1000px) {
+  .tarif {
+    min-width: 0;
+  }
+}
 .tarif .interieur,
 .tarif .exterieur {
   display: grid;
@@ -305,6 +331,13 @@ header .header-text div .fa-solid {
   font-size: 1.3rem;
   font-family: "montserrat";
 }
+@media only screen and (max-width: 1000px) {
+  .tarif .interieur,
+  .tarif .exterieur {
+    grid-template-columns: 100%;
+    grid-template-rows: 45vh 45vh;
+  }
+}
 .tarif .interieur h3,
 .tarif .exterieur h3 {
   text-transform: uppercase;
@@ -312,9 +345,21 @@ header .header-text div .fa-solid {
   text-align: center;
   margin: 0 0 20px 0;
 }
+@media only screen and (max-width: 550px) {
+  .tarif .interieur h3,
+  .tarif .exterieur h3 {
+    font-size: 1.4rem;
+  }
+}
 .tarif .interieur p,
 .tarif .exterieur p {
   padding: 6.5px 0;
+}
+@media only screen and (max-width: 550px) {
+  .tarif .interieur p,
+  .tarif .exterieur p {
+    font-size: 1.1rem;
+  }
 }
 .tarif .interieur ul,
 .tarif .exterieur ul {
@@ -324,6 +369,12 @@ header .header-text div .fa-solid {
 .tarif .exterieur ul > li {
   margin: 6.5px 0;
 }
+@media only screen and (max-width: 550px) {
+  .tarif .interieur ul > li,
+  .tarif .exterieur ul > li {
+    font-size: 1.1rem;
+  }
+}
 .tarif .interieur ul > li span,
 .tarif .exterieur ul > li span {
   color: #d90429;
@@ -332,7 +383,7 @@ header .header-text div .fa-solid {
   margin: 20px;
   padding: 25px 50px;
   border: 1px dashed rgb(166, 114, 69);
-  transform: translateX(-100px);
+  transform: translateX(100px);
   opacity: 0;
   transition: 0.5s;
 }
@@ -340,7 +391,7 @@ header .header-text div .fa-solid {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
-  transform: translateX(100px);
+  transform: translateX(-100px);
   opacity: 0;
   transition: 0.5s;
 }
@@ -363,13 +414,25 @@ header .header-text div .fa-solid {
   opacity: 1;
   transform: translateX(0);
 }
+@media only screen and (max-width: 1000px) {
+  .tarif .exterieur {
+    grid-template-areas: "texte texte" "photo photo";
+    grid-template-columns: 100%;
+    grid-template-rows: 45vh 45vh;
+  }
+}
 .tarif .exterieur .left-int {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
-  transform: translateX(-100px);
+  transform: translateX(100px);
   opacity: 0;
   transition: 0.5s;
+}
+@media only screen and (max-width: 1000px) {
+  .tarif .exterieur .left-int {
+    grid-area: photo;
+  }
 }
 .tarif .exterieur .left-int div {
   margin: 1px;
@@ -390,9 +453,14 @@ header .header-text div .fa-solid {
   margin: 20px;
   padding: 25px 50px;
   border: 1px dashed rgb(166, 114, 69);
-  transform: translateX(100px);
+  transform: translateX(-100px);
   opacity: 0;
   transition: 0.5s;
+}
+@media only screen and (max-width: 1000px) {
+  .tarif .exterieur .right-int {
+    grid-area: texte;
+  }
 }
 .tarif .exterieur .tarif-anim {
   opacity: 1;
@@ -411,6 +479,20 @@ header .header-text div .fa-solid {
   background-blend-mode: screen;
   min-width: 1000px;
 }
+@media only screen and (max-width: 1000px) {
+  .abonnement {
+    min-width: 0;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 50vh 50vh 50vh;
+    grid-template-areas: "abronze apremium" "asilver avip" "agold adiamant";
+  }
+}
+@media only screen and (max-width: 600px) {
+  .abonnement {
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 33vh 33vh 33vh;
+  }
+}
 .abonnement h2 {
   grid-area: title;
   text-transform: uppercase;
@@ -420,6 +502,11 @@ header .header-text div .fa-solid {
   align-items: center;
   justify-content: center;
   margin: 10px 0 0 0;
+}
+@media only screen and (max-width: 1000px) {
+  .abonnement h2 {
+    display: none;
+  }
 }
 .abonnement .premium,
 .abonnement .vip,
@@ -431,6 +518,16 @@ header .header-text div .fa-solid {
   align-items: center;
   justify-content: center;
   opacity: 0;
+}
+@media only screen and (max-width: 600px) {
+  .abonnement .premium,
+  .abonnement .vip,
+  .abonnement .diamant,
+  .abonnement .bronze,
+  .abonnement .silver,
+  .abonnement .gold {
+    transform: scale(0.7);
+  }
 }
 .abonnement .premium .abonnement-container,
 .abonnement .vip .abonnement-container,
@@ -630,10 +727,20 @@ header .header-text div .fa-solid {
   margin: 40px auto;
   text-align: justify;
 }
+@media only screen and (max-width: 550px) {
+  .ecologie .eco-container {
+    font-size: 0.8rem;
+  }
+}
 .ecologie .eco-container h3 {
   font-family: "montserrat", serif;
   font-size: 1.5rem;
   padding: 20px 0;
+}
+@media only screen and (max-width: 550px) {
+  .ecologie .eco-container h3 {
+    font-size: 1.3rem;
+  }
 }
 .ecologie .eco-container p {
   font-family: "poppins", serif;
@@ -647,6 +754,11 @@ header .header-text div .fa-solid {
   font-weight: bolder;
   font-size: 1.2rem;
   text-transform: uppercase;
+}
+@media only screen and (max-width: 550px) {
+  .ecologie .eco-container p span {
+    font-size: 1rem;
+  }
 }
 .ecologie .eco-container .eco-part1,
 .ecologie .eco-container .eco-part2,
@@ -670,6 +782,11 @@ header .header-text div .fa-solid {
   font-size: 1.5rem;
   margin: 0 0 40px 0;
 }
+@media only screen and (max-width: 550px) {
+  .faq .faq-container .faq-title h3 {
+    font-size: 1.3rem;
+  }
+}
 .faq .faq-container .question1,
 .faq .faq-container .question2,
 .faq .faq-container .question3,
@@ -689,6 +806,16 @@ header .header-text div .fa-solid {
   font-size: 1.2rem;
   margin: 5px 0;
 }
+@media only screen and (max-width: 550px) {
+  .faq .faq-container .question1 h5,
+  .faq .faq-container .question2 h5,
+  .faq .faq-container .question3 h5,
+  .faq .faq-container .question4 h5,
+  .faq .faq-container .question5 h5,
+  .faq .faq-container .question6 h5 {
+    font-size: 1rem;
+  }
+}
 .faq .faq-container .question1 p,
 .faq .faq-container .question2 p,
 .faq .faq-container .question3 p,
@@ -697,6 +824,16 @@ header .header-text div .fa-solid {
 .faq .faq-container .question6 p {
   font-family: "poppins", serif;
   line-height: 30px;
+}
+@media only screen and (max-width: 550px) {
+  .faq .faq-container .question1 p,
+  .faq .faq-container .question2 p,
+  .faq .faq-container .question3 p,
+  .faq .faq-container .question4 p,
+  .faq .faq-container .question5 p,
+  .faq .faq-container .question6 p {
+    font-size: 0.8rem;
+  }
 }
 
 .footer {
@@ -716,6 +853,16 @@ header .header-text div .fa-solid {
   text-transform: uppercase;
   color: #eeeeee;
 }
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .apropos h4 {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .apropos ul > li a {
+    font-size: 0.8rem;
+  }
+}
 .footer .footer-container .apropos ul > li a:visited {
   color: #ffffff;
 }
@@ -724,12 +871,32 @@ header .header-text div .fa-solid {
   text-transform: uppercase;
   color: #eeeeee;
 }
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .contact h4 {
+    font-size: 1rem;
+  }
+}
 .footer .footer-container .contact .mail {
   display: inline;
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .contact .mail {
+    font-size: 0.8rem;
+  }
 }
 .footer .footer-container .contact a {
   color: #ffffff;
 }
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .contact a {
+    font-size: 0.8rem;
+  }
+}
 .footer .footer-container .contact a:visited {
   color: #ffffff;
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .contact p {
+    font-size: 0.8rem;
+  }
 }/*# sourceMappingURL=index.css.map */

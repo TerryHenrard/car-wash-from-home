@@ -29,6 +29,11 @@ header {
     transition: 0.3s ease-out;
     z-index: 1000;
     padding: 0 0 0 20px;
+    display: none;
+
+    @media only screen and (max-width: 1000px) {
+      display: inline;
+    }
 
     .toggle-btn {
       position: absolute;
@@ -42,7 +47,7 @@ header {
         width: 60px;
         height: 10px;
         border-radius: 5px;
-        background: #ffecd2;
+        background: #000000;
         display: block;
         margin-top: 4px;
         transition: 0.3s ease;
@@ -129,9 +134,8 @@ header {
     background-image: linear-gradient(to right, #ffecd2 0%, #ffa98c 100%);
     transition: 0.2s ease-in-out;
 
-    @media only screen and (max-width: 1020px) {
-      min-width: 0;
-      width: 50vw;
+    @media only screen and (max-width: 1000px) {
+      display: none;
     }
 
     .logo {
@@ -247,6 +251,10 @@ header {
         text-shadow: 3px 0 3px #d90429;
         transform: translateY(-40px);
         transition: 0.5s;
+
+        @media only screen and (max-width: 550px) {
+          font-size: 4rem;
+        }
       }
 
       .h1-anim {
@@ -262,6 +270,11 @@ header {
         text-shadow: 5px -1px 0 #d90429;
         transform: translateY(40px);
         transition: 0.3s;
+
+        @media only screen and (max-width: 550px) {
+          font-size: 3rem;
+          margin-top: -20px;
+        }
       }
 
       .h2-anim {
@@ -277,6 +290,10 @@ header {
         color: #d90429;
         transform: translateX(40px);
         transition: 0.3s;
+
+        @media only screen and (max-width: 550px) {
+          font-size: 0.9rem;
+        }
       }
 
       .p-anim {
