@@ -29,11 +29,16 @@ btn.addEventListener("click", () => {
 });
 
 let tarifAnimations = () => {
+  if (scrollY == 0) {
+    rightExt.classList.remove("tarif-anim");
+    leftExt.classList.remove("tarif-anim");
+    leftInt.classList.remove("tarif-anim");
+    rightInt.classList.remove("tarif-anim");
+  }
   if (scrollY > 150) {
     rightExt.classList.add("tarif-anim");
     leftExt.classList.add("tarif-anim");
   }
-
   if (scrollY > 500) {
     leftInt.classList.add("tarif-anim");
     rightInt.classList.add("tarif-anim");
@@ -41,6 +46,15 @@ let tarifAnimations = () => {
 };
 
 let abonnementAnimations = () => {
+  if (scrollY < 850) {
+    bronze.classList.remove("abonnement-anim");
+    silver.classList.remove("abonnement-anim");
+    gold.classList.remove("abonnement-anim");
+    premium.classList.remove("abonnement-anim");
+    vip.classList.remove("abonnement-anim");
+    diamant.classList.remove("abonnement-anim");
+  }
+
   if (scrollY > 1100) {
     setTimeout(() => {
       bronze.classList.add("abonnement-anim");
@@ -66,40 +80,58 @@ let abonnementAnimations = () => {
 let ecologieAnimations = () => {
   if (scrollY > 1955) {
     ecoP1.style.opacity = 1;
+  } else {
+    ecoP1.style.opacity = 0;
   }
 
   if (scrollY > 2050) {
     ecoP2.style.opacity = 1;
+  } else {
+    ecoP2.style.opacity = 0;
   }
 
   if (scrollY > 2200) {
     ecoP3.style.opacity = 1;
+  } else {
+    ecoP3.style.opacity = 0;
   }
 };
 
 let faqAnimations = () => {
-  if (scrollY > 2500) {
+  if (scrollY > 2470) {
     question1.style.opacity = 1;
+  } else {
+    question1.style.opacity = 0;
   }
 
   if (scrollY > 2600) {
     question2.style.opacity = 1;
+  } else {
+    question2.style.opacity = 0;
   }
 
-  if (scrollY > 2800) {
+  if (scrollY > 2770) {
     question3.style.opacity = 1;
+  } else {
+    question3.style.opacity = 0;
   }
 
-  if (scrollY > 2900) {
+  if (scrollY > 2890) {
     question4.style.opacity = 1;
+  } else {
+    question4.style.opacity = 0;
   }
 
-  if (scrollY > 3100) {
+  if (scrollY > 3090) {
     question5.style.opacity = 1;
+  } else {
+    question5.style.opacity = 0;
   }
 
-  if (scrollY > 3200) {
+  if (scrollY > 3300) {
     question6.style.opacity = 1;
+  } else {
+    question6.style.opacity = 0;
   }
 };
 

@@ -184,7 +184,7 @@ header nav .menu ul {
   height: 100%;
 }
 header nav .menu ul:hover li:not(:hover) {
-  filter: blur(0.8px);
+  filter: blur(0.67px);
   transform: scale(0.96);
 }
 header nav .menu ul li {
@@ -295,7 +295,7 @@ header .header-text div p {
   color: #d90429;
   transform: translateX(40px);
   transition: 0.3s;
-  text-shadow: 1px 1px 0px #ffffff;
+  text-shadow: 0px 0px 4px #ffffff;
 }
 @media only screen and (max-width: 550px) {
   header .header-text div p {
