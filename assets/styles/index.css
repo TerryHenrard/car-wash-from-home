@@ -326,7 +326,7 @@ header .header-text div .fa-solid {
 .tarif .interieur,
 .tarif .exterieur {
   display: grid;
-  grid-template-columns: 50vw 50vw;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   font-size: 1.3rem;
   font-family: "montserrat";
