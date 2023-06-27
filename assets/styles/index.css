@@ -521,7 +521,7 @@ header .header-text div .fa-solid {
   opacity: 0;
   margin: 20px;
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1300px) {
   .abonnement .premium,
   .abonnement .vip,
   .abonnement .diamant,
@@ -531,7 +531,7 @@ header .header-text div .fa-solid {
     transform: scale(0.9);
   }
 }
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1200px) {
   .abonnement .premium,
   .abonnement .vip,
   .abonnement .diamant,
