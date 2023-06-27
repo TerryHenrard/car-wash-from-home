@@ -859,6 +859,9 @@ header .header-text div .fa-solid {
     font-size: 1rem;
   }
 }
+.footer .footer-container .apropos ul > li a {
+  color: #ffffff;
+}
 @media only screen and (max-width: 550px) {
   .footer .footer-container .apropos ul > li a {
     font-size: 0.8rem;

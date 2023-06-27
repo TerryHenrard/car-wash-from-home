@@ -22,9 +22,12 @@
 
       ul > li {
         a {
+          color: #ffffff;
+
           @media only screen and (max-width: 550px) {
             font-size: 0.8rem;
           }
+
           &:visited {
             color: #ffffff;
           }
