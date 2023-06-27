@@ -484,14 +484,8 @@ header .header-text div .fa-solid {
   .abonnement {
     min-width: 0;
     grid-template-columns: 50vw 50vw;
-    grid-template-rows: 50vh 50vh 50vh;
-    grid-template-areas: "abronze apremium" "asilver avip" "agold adiamant";
-  }
-}
-@media only screen and (max-width: 600px) {
-  .abonnement {
-    grid-template-columns: 50vw 50vw;
     grid-template-rows: 33vh 33vh 33vh;
+    grid-template-areas: "abronze apremium" "asilver avip" "agold adiamant";
   }
 }
 .abonnement h2 {
@@ -541,14 +535,14 @@ header .header-text div .fa-solid {
     transform: scale(0.8);
   }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 450px) {
   .abonnement .premium,
   .abonnement .vip,
   .abonnement .diamant,
   .abonnement .bronze,
   .abonnement .silver,
   .abonnement .gold {
-    transform: scale(0.7);
+    transform: scale(0.6);
   }
 }
 .abonnement .premium .abonnement-container,
@@ -860,7 +854,6 @@ header .header-text div .fa-solid {
 
 .footer {
   background: #1f2937;
-  color: #ffffff;
   font-family: "poppins", serif;
 }
 .footer .footer-container {
@@ -878,6 +871,9 @@ header .header-text div .fa-solid {
   .footer .footer-container .apropos h4 {
     font-size: 1rem;
   }
+}
+.footer .footer-container .apropos ul > li {
+  color: #ffffff;
 }
 .footer .footer-container .apropos ul > li a {
   color: #ffffff;
@@ -917,6 +913,9 @@ header .header-text div .fa-solid {
   }
 }
 .footer .footer-container .contact a:visited {
+  color: #ffffff;
+}
+.footer .footer-container .contact p {
   color: #ffffff;
 }
 @media only screen and (max-width: 550px) {

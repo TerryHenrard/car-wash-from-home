@@ -1,6 +1,5 @@
 .footer {
   background: #1f2937;
-  color: #ffffff;
   font-family: "poppins", serif;
 
   .footer-container {
@@ -21,6 +20,7 @@
       }
 
       ul > li {
+        color: #ffffff;
         a {
           color: #ffffff;
 
@@ -64,6 +64,7 @@
       }
 
       p {
+        color: #ffffff;
         @media only screen and (max-width: 550px) {
           font-size: 0.8rem;
         }
