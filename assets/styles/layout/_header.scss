@@ -290,6 +290,7 @@ header {
         color: #d90429;
         transform: translateX(40px);
         transition: 0.3s;
+        text-shadow: 1px 1px 0px #ffffff;
 
         @media only screen and (max-width: 550px) {
           font-size: 0.9rem;
