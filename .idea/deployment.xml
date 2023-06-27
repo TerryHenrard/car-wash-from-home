@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="endor" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="endor">
+        <serverdata>
+          <mappings>
+            <mapping deploy="LVD" local="$PROJECT_DIR$" web="/LVD" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

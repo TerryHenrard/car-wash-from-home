@@ -16,14 +16,14 @@
   .interieur,
   .exterieur {
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 45vh;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 1fr;
     font-size: 1.3rem;
     font-family: "montserrat";
 
     @media only screen and (max-width: 1000px) {
       grid-template-columns: 100%;
-      grid-template-rows: 45vh 45vh;
+      grid-template-rows: 1fr 1fr;
     }
 
     h3 {
@@ -112,8 +112,8 @@
       grid-template-areas:
         "texte texte"
         "photo photo";
-      grid-template-columns: 100%;
-      grid-template-rows: 45vh 45vh;
+      grid-template-columns: 50vw;
+      grid-template-rows: 1fr 1fr;
     }
     .left-int {
       display: grid;

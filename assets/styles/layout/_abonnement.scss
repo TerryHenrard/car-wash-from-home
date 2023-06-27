@@ -1,7 +1,7 @@
 .abonnement {
   display: grid;
   grid-template-columns: 26.67vw 26.67vw 26.67vw;
-  grid-template-rows: 8vh 46vh 46vh;
+  grid-template-rows: 8vh 1fr 1fr;
   align-items: center;
   justify-content: center;
   grid-template-areas:
@@ -17,6 +17,7 @@
     );
   background-blend-mode: screen;
   min-width: 1000px;
+  padding: 25px;
 
   @media only screen and (max-width: 1000px) {
     min-width: 0;
@@ -57,6 +58,7 @@
     align-items: center;
     justify-content: center;
     opacity: 0;
+    margin: 20px;
 
     @media only screen and (max-width: 600px) {
       transform: scale(0.7);

@@ -78,8 +78,8 @@ header #side-bar .toggle-btn {
   width: 50px;
 }
 header #side-bar .toggle-btn span {
-  width: 60px;
-  height: 10px;
+  width: 30px;
+  height: 5px;
   border-radius: 5px;
   background: #000000;
   display: block;
@@ -110,7 +110,7 @@ header #side-bar ul li {
 header #side-bar ul li a {
   color: #292929;
   list-style: none;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   padding-left: 5px;
   text-decoration: none;
   display: block;
@@ -326,8 +326,8 @@ header .header-text div .fa-solid {
 .tarif .interieur,
 .tarif .exterieur {
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 45vh;
+  grid-template-columns: 50vw 50vw;
+  grid-template-rows: 1fr;
   font-size: 1.3rem;
   font-family: "montserrat";
 }
@@ -335,7 +335,7 @@ header .header-text div .fa-solid {
   .tarif .interieur,
   .tarif .exterieur {
     grid-template-columns: 100%;
-    grid-template-rows: 45vh 45vh;
+    grid-template-rows: 1fr 1fr;
   }
 }
 .tarif .interieur h3,
@@ -417,8 +417,8 @@ header .header-text div .fa-solid {
 @media only screen and (max-width: 1000px) {
   .tarif .exterieur {
     grid-template-areas: "texte texte" "photo photo";
-    grid-template-columns: 100%;
-    grid-template-rows: 45vh 45vh;
+    grid-template-columns: 50vw;
+    grid-template-rows: 1fr 1fr;
   }
 }
 .tarif .exterieur .left-int {
@@ -470,7 +470,7 @@ header .header-text div .fa-solid {
 .abonnement {
   display: grid;
   grid-template-columns: 26.67vw 26.67vw 26.67vw;
-  grid-template-rows: 8vh 46vh 46vh;
+  grid-template-rows: 8vh 1fr 1fr;
   align-items: center;
   justify-content: center;
   grid-template-areas: "title title title" "abronze asilver agold" "apremium avip adiamant";
@@ -478,6 +478,7 @@ header .header-text div .fa-solid {
   background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
   background-blend-mode: screen;
   min-width: 1000px;
+  padding: 25px;
 }
 @media only screen and (max-width: 1000px) {
   .abonnement {
@@ -518,6 +519,7 @@ header .header-text div .fa-solid {
   align-items: center;
   justify-content: center;
   opacity: 0;
+  margin: 20px;
 }
 @media only screen and (max-width: 600px) {
   .abonnement .premium,
