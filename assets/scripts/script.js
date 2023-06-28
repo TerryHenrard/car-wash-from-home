@@ -23,6 +23,7 @@ const question5 = document.querySelector(".question5");
 const question6 = document.querySelector(".question6");
 const sidebar = document.getElementById("side-bar");
 const btn = document.getElementById("btn");
+const navbar = document.getElementById("navbar");
 
 btn.addEventListener("click", () => {
   sidebar.classList.toggle("active");
