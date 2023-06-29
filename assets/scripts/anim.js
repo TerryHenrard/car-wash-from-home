@@ -30,7 +30,7 @@ btn.addEventListener("click", () => {
 });
 
 let tarifAnimations = () => {
-  if (scrollY == 0) {
+  if (scrollY === 0) {
     rightExt.classList.remove("tarif-anim");
     leftExt.classList.remove("tarif-anim");
     leftInt.classList.remove("tarif-anim");
@@ -80,59 +80,59 @@ let abonnementAnimations = () => {
 
 let ecologieAnimations = () => {
   if (scrollY > 1955) {
-    ecoP1.style.opacity = 1;
+    ecoP1.style.opacity = "1";
   } else {
-    ecoP1.style.opacity = 0;
+    ecoP1.style.opacity = "0";
   }
 
   if (scrollY > 2050) {
-    ecoP2.style.opacity = 1;
+    ecoP2.style.opacity = "1";
   } else {
-    ecoP2.style.opacity = 0;
+    ecoP2.style.opacity = "0";
   }
 
   if (scrollY > 2200) {
-    ecoP3.style.opacity = 1;
+    ecoP3.style.opacity = "1";
   } else {
-    ecoP3.style.opacity = 0;
+    ecoP3.style.opacity = "0";
   }
 };
 
 let faqAnimations = () => {
   if (scrollY > 2470) {
-    question1.style.opacity = 1;
+    question1.style.opacity = "1";
   } else {
-    question1.style.opacity = 0;
+    question1.style.opacity = "0";
   }
 
   if (scrollY > 2600) {
-    question2.style.opacity = 1;
+    question2.style.opacity = "1";
   } else {
-    question2.style.opacity = 0;
+    question2.style.opacity = "0";
   }
 
   if (scrollY > 2770) {
-    question3.style.opacity = 1;
+    question3.style.opacity = "1";
   } else {
-    question3.style.opacity = 0;
+    question3.style.opacity = "0";
   }
 
   if (scrollY > 2890) {
-    question4.style.opacity = 1;
+    question4.style.opacity = "1";
   } else {
-    question4.style.opacity = 0;
+    question4.style.opacity = "0";
   }
 
   if (scrollY > 3090) {
-    question5.style.opacity = 1;
+    question5.style.opacity = "1";
   } else {
-    question5.style.opacity = 0;
+    question5.style.opacity = "0";
   }
 
   if (scrollY > 3300) {
-    question6.style.opacity = 1;
+    question6.style.opacity = "1";
   } else {
-    question6.style.opacity = 0;
+    question6.style.opacity = "0";
   }
 };
 

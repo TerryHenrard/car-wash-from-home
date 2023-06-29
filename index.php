@@ -4,12 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Un lavage sur mesure, directement chez vous? C'est possible, nos experts viennent laver votre voiture en faisant attention au moindre détail, à l'intérieur comme à l'extérieur. Où: Charleroi, àpd: 15€, abonnement: jusqu'à -20%!">
+  <meta name="description" content="Un lavage sur mesure, directement chez vous? C'est possible, nos experts viennent laver votre voiture en faisant attention au moindre détail, à l'intérieur comme à l'extérieur. Où: Charleroi, àpd: 15€, abonnement: jusqu'à -20%!">
   <link rel="stylesheet" href="./assets/styles/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="shortcut icon" href="./assets/images/car-side-solid.svg">
-  <script src="./assets/scripts/script.js" defer></script>
+  <script src="./assets/scripts/anim.js" defer></script>
   <title>Car wash à domicile sur Charleroi | Lavage à la main intérieur et extérieur</title>
 </head>
 
@@ -306,6 +305,28 @@
     </div>
   </section>
 
+  <section class="contact" id="contact">
+      <div class="form-container">
+          <form method="post" action="./assets/scripts/mail.php">
+              <div class="last-name-container">
+                  <label for="last-name">Nom: </label>
+                  <input type="text" id="last-name" name="last-name">
+              </div>
+              <div class="email-container">
+                  <label for="email">Email: </label>
+                  <input type="email" id="email" name="email">
+              </div>
+              <div class="textarea-container">
+                  <label for="message">message</label>
+                  <textarea name="message" id="message"></textarea>
+              </div>
+              <div class="submit-container">
+                  <input type="submit" value="Envoyer">
+              </div>
+          </form>
+      </div>
+  </section>
+
   <footer class="footer" id="footer">
     <div class="footer-container">
       <div class="apropos">
@@ -316,12 +337,6 @@
           <li><a href="#ecologie">notre démarche écologique</a></li>
           <li><a href="#faq">questions fréquentes</a></li>
         </ul>
-      </div>
-      <div class="contact">
-        <h4>contact</h4>
-        <p class="mail">mail: </p>
-        <a href="mailto:test@test.test">test@test.test</a>
-        <p>tel: +32 498 14 66 51</p>
       </div>
     </div>
   </footer>
