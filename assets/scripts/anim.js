@@ -129,7 +129,7 @@ let faqAnimations = () => {
     question5.style.opacity = "0";
   }
 
-  if (scrollY > 3300) {
+  if (scrollY > 3150) {
     question6.style.opacity = "1";
   } else {
     question6.style.opacity = "0";
