@@ -342,7 +342,7 @@ header .header-text div .fa-solid {
 .tarif .interieur h3,
 .tarif .exterieur h3 {
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   text-align: center;
   margin: 0 0 20px 0;
 }
@@ -376,9 +376,21 @@ header .header-text div .fa-solid {
     font-size: 1.1rem;
   }
 }
-.tarif .interieur ul > li span,
-.tarif .exterieur ul > li span {
+.tarif .interieur ul > li .cadeau,
+.tarif .exterieur ul > li .cadeau {
   color: #d90429;
+}
+.tarif .interieur ul > li .tissu,
+.tarif .exterieur ul > li .tissu {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.tarif .interieur .tarif-title,
+.tarif .interieur .option-title,
+.tarif .exterieur .tarif-title,
+.tarif .exterieur .option-title {
+  font-size: 1.4rem;
+  font-weight: bolder;
 }
 .tarif .interieur .left-ext {
   margin: 20px;
@@ -400,7 +412,7 @@ header .header-text div .fa-solid {
   margin: 1px;
 }
 .tarif .interieur .right-ext .carrosserie {
-  background: url(../images/grosplan-retro.webp) center/cover;
+  background: url(../images/polissage.webp) center/cover;
 }
 .tarif .interieur .right-ext .pneu {
   background: url(../images/nettoyage-pneu.webp) center/cover;
@@ -665,7 +677,7 @@ header .header-text div .fa-solid {
 .abonnement .gold .abonnement-container .info {
   font-family: "poppins", serif;
   margin: 20px 15px;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
 .abonnement .premium {
   grid-area: apremium;

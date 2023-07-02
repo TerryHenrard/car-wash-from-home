@@ -28,7 +28,7 @@
 
     h3 {
       text-transform: uppercase;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       text-align: center;
       margin: 0 0 20px 0;
 
@@ -56,9 +56,19 @@
         font-size: 1.1rem;
       }
 
-      span {
+      .cadeau {
         color: #d90429;
       }
+      .tissu {
+        font-weight: bold;
+
+        text-decoration: underline;
+      }
+    }
+    .tarif-title,
+    .option-title {
+      font-size: 1.4rem;
+      font-weight: bolder;
     }
   }
 
@@ -85,7 +95,7 @@
       }
 
       .carrosserie {
-        background: url(../images/grosplan-retro.webp) center/cover;
+        background: url(../images/polissage.webp) center/cover;
       }
 
       .pneu {
