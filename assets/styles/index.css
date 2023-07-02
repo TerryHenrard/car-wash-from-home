@@ -1102,6 +1102,9 @@ header .header-text div .fa-solid {
   width: 300px;
   margin: 0 auto 30px auto;
 }
+.rdv .form-container .options-container p {
+  font-size: 18px;
+}
 .rdv .form-container .options-container .polissage-container,
 .rdv .form-container .options-container .shampoing-siege-container,
 .rdv .form-container .options-container .shampoing-tapis-container {
