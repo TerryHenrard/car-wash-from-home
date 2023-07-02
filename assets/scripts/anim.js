@@ -79,19 +79,19 @@ let abonnementAnimations = () => {
 };
 
 let ecologieAnimations = () => {
-  if (scrollY > 1955) {
+  if (scrollY > 1855){
     ecoP1.style.opacity = "1";
   } else {
     ecoP1.style.opacity = "0";
   }
 
-  if (scrollY > 2050) {
+  if (scrollY > 1950) {
     ecoP2.style.opacity = "1";
   } else {
     ecoP2.style.opacity = "0";
   }
 
-  if (scrollY > 2200) {
+  if (scrollY > 2100) {
     ecoP3.style.opacity = "1";
   } else {
     ecoP3.style.opacity = "0";
@@ -99,37 +99,37 @@ let ecologieAnimations = () => {
 };
 
 let faqAnimations = () => {
-  if (scrollY > 2470) {
+  if (scrollY > 2370) {
     question1.style.opacity = "1";
   } else {
     question1.style.opacity = "0";
   }
 
-  if (scrollY > 2600) {
+  if (scrollY > 2500) {
     question2.style.opacity = "1";
   } else {
     question2.style.opacity = "0";
   }
 
-  if (scrollY > 2770) {
+  if (scrollY > 2680) {
     question3.style.opacity = "1";
   } else {
     question3.style.opacity = "0";
   }
 
-  if (scrollY > 2890) {
+  if (scrollY > 2790) {
     question4.style.opacity = "1";
   } else {
     question4.style.opacity = "0";
   }
 
-  if (scrollY > 3090) {
+  if (scrollY > 2910) {
     question5.style.opacity = "1";
   } else {
     question5.style.opacity = "0";
   }
 
-  if (scrollY > 3150) {
+  if (scrollY > 3050) {
     question6.style.opacity = "1";
   } else {
     question6.style.opacity = "0";
