@@ -315,19 +315,64 @@
   </section>
 
   <section class="rdv" id="rdv">
+    <h3>Prenez rendez-vous ici</h3>
     <div class="form-container">
       <form method="post" action="./assets/scripts/mail.php">
         <div class="last-name-container">
-          <label for="last-name">Nom: </label>
-          <input type="text" id="last-name" name="last-name">
+          <input type="text" id="last-name" name="last-name" required>
+          <span class="bar"></span>
+          <label for="last-name">Nom</label>
+        </div>
+        <div class="first-name-container">
+          <input type="text" id="first-name" name="first-name" required>
+          <span class="bar"></span>
+          <label for="first-name">Prénom</label>
         </div>
         <div class="email-container">
-          <label for="email">Email: </label>
-          <input type="email" id="email" name="email">
+          <input type="email" id="email" name="email" required>
+          <span class="bar"></span>
+          <label for="email">Email</label>
+        </div>
+        <div class="adresse-container">
+          <input type="text" id="address" name="address" required>
+          <span class="bar"></span>
+          <label for="address">Adresse</label>
+        </div>
+        <div class="formule-container">
+          <select id="formule" name="formule" required>
+            <option value="" selected>Formule</option>
+            <option value="exterieur">Extérieur</option>
+            <option value="interieur">Intérieur</option>
+            <option value="exterieur-premium">Extérieur premium</option>
+            <option value="exterieur-vip">Extérieur V.I.P</option>
+            <option value="exterieur-diamant">Extérieur diamant</option>
+            <option value="interieur-premium">Intérieur premium</option>
+            <option value="interieur-vip">Intérieur V.I.P</option>
+            <option value="interieur-diamant">Intérieur diamant</option>
+          </select>
+        </div>
+        <div class="options-container">
+          <div class="polissage-container">
+            <input type="checkbox" id="polissage" name="polissage">
+            <label for="polissage">Polissage</label>
+          </div>
+          <div class="shampoing-siege-container">
+            <input type="checkbox" id="shampoing-siege" name="shampoing-siege">
+            <label for="shampoing-siege">Shampoing siege</label>
+          </div>
+          <div class="shampoing-tapis-container">
+            <input type="checkbox" id="shampoing-tapis" name="shampoing-tapis">
+            <label for="shampoing-tapis">Shampoing tapis</label>
+          </div>
+        </div>
+        <div class="date-container">
+          <input type="date" id="date" min="2023-07-02" max="2025-07-02" name="date">
+        </div>
+        <div class="time-container">
+          <input type="time" id="time" min="08:00" max="18:00" name="time">
         </div>
         <div class="textarea-container">
-          <label for="message">message</label>
-          <textarea name="message" id="message"></textarea>
+          <textarea name="message" id="message" placeholder="Message"></textarea>
         </div>
         <div class="submit-container">
           <input type="submit" value="Envoyer">

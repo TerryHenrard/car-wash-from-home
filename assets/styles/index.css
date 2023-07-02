@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -295,7 +296,7 @@ header .header-text div p {
   color: #d90429;
   transform: translateX(40px);
   transition: 0.3s;
-  text-shadow: 0px 0px 4px #ffffff;
+  text-shadow: 2px 1px 1px #ffffff;
 }
 @media only screen and (max-width: 550px) {
   header .header-text div p {
@@ -932,4 +933,314 @@ header .header-text div .fa-solid {
   .footer .footer-container .contact p {
     font-size: 0.8rem;
   }
+}
+
+.rdv {
+  text-align: center;
+}
+.rdv h3 {
+  font-family: "montserrat", serif;
+  font-size: 1.5rem;
+  padding: 40px 0;
+}
+.rdv .form-container .last-name-container,
+.rdv .form-container .first-name-container,
+.rdv .form-container .email-container,
+.rdv .form-container .adresse-container,
+.rdv .form-container .date-container,
+.rdv .form-container .time-container {
+  position: relative;
+  margin: 0 auto 30px auto;
+  width: 300px;
+  color: #999;
+}
+.rdv .form-container .last-name-container input,
+.rdv .form-container .first-name-container input,
+.rdv .form-container .email-container input,
+.rdv .form-container .adresse-container input,
+.rdv .form-container .date-container input,
+.rdv .form-container .time-container input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+.rdv .form-container .last-name-container input:focus,
+.rdv .form-container .first-name-container input:focus,
+.rdv .form-container .email-container input:focus,
+.rdv .form-container .adresse-container input:focus,
+.rdv .form-container .date-container input:focus,
+.rdv .form-container .time-container input:focus {
+  outline: none;
+}
+.rdv .form-container .last-name-container input:focus ~ label,
+.rdv .form-container .last-name-container input:valid ~ label,
+.rdv .form-container .first-name-container input:focus ~ label,
+.rdv .form-container .first-name-container input:valid ~ label,
+.rdv .form-container .email-container input:focus ~ label,
+.rdv .form-container .email-container input:valid ~ label,
+.rdv .form-container .adresse-container input:focus ~ label,
+.rdv .form-container .adresse-container input:valid ~ label,
+.rdv .form-container .date-container input:focus ~ label,
+.rdv .form-container .date-container input:valid ~ label,
+.rdv .form-container .time-container input:focus ~ label,
+.rdv .form-container .time-container input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #5264ae;
+}
+.rdv .form-container .last-name-container input:focus ~ .bar:before,
+.rdv .form-container .last-name-container input:focus ~ .bar:after,
+.rdv .form-container .first-name-container input:focus ~ .bar:before,
+.rdv .form-container .first-name-container input:focus ~ .bar:after,
+.rdv .form-container .email-container input:focus ~ .bar:before,
+.rdv .form-container .email-container input:focus ~ .bar:after,
+.rdv .form-container .adresse-container input:focus ~ .bar:before,
+.rdv .form-container .adresse-container input:focus ~ .bar:after,
+.rdv .form-container .date-container input:focus ~ .bar:before,
+.rdv .form-container .date-container input:focus ~ .bar:after,
+.rdv .form-container .time-container input:focus ~ .bar:before,
+.rdv .form-container .time-container input:focus ~ .bar:after {
+  width: 50%;
+}
+.rdv .form-container .last-name-container .bar,
+.rdv .form-container .first-name-container .bar,
+.rdv .form-container .email-container .bar,
+.rdv .form-container .adresse-container .bar,
+.rdv .form-container .date-container .bar,
+.rdv .form-container .time-container .bar {
+  position: relative;
+  display: block;
+  width: 300px;
+}
+.rdv .form-container .last-name-container .bar:before, .rdv .form-container .last-name-container .bar:after,
+.rdv .form-container .first-name-container .bar:before,
+.rdv .form-container .first-name-container .bar:after,
+.rdv .form-container .email-container .bar:before,
+.rdv .form-container .email-container .bar:after,
+.rdv .form-container .adresse-container .bar:before,
+.rdv .form-container .adresse-container .bar:after,
+.rdv .form-container .date-container .bar:before,
+.rdv .form-container .date-container .bar:after,
+.rdv .form-container .time-container .bar:before,
+.rdv .form-container .time-container .bar:after {
+  content: "";
+  height: 1px;
+  width: 0;
+  position: absolute;
+  background: #5264ae;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.rdv .form-container .last-name-container .bar:before,
+.rdv .form-container .first-name-container .bar:before,
+.rdv .form-container .email-container .bar:before,
+.rdv .form-container .adresse-container .bar:before,
+.rdv .form-container .date-container .bar:before,
+.rdv .form-container .time-container .bar:before {
+  left: 50%;
+}
+.rdv .form-container .last-name-container .bar:after,
+.rdv .form-container .first-name-container .bar:after,
+.rdv .form-container .email-container .bar:after,
+.rdv .form-container .adresse-container .bar:after,
+.rdv .form-container .date-container .bar:after,
+.rdv .form-container .time-container .bar:after {
+  right: 50%;
+}
+.rdv .form-container .last-name-container label,
+.rdv .form-container .first-name-container label,
+.rdv .form-container .email-container label,
+.rdv .form-container .adresse-container label,
+.rdv .form-container .date-container label,
+.rdv .form-container .time-container label {
+  color: #999;
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.rdv .form-container .date-container input,
+.rdv .form-container .time-container input {
+  cursor: pointer;
+}
+.rdv .form-container .formule-container {
+  position: relative;
+  margin: 0 auto 30px auto;
+  width: 300px;
+  color: #999;
+  font-weight: 900;
+}
+.rdv .form-container .formule-container select {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #757575;
+  cursor: pointer;
+  color: #999;
+}
+.rdv .form-container .formule-container select:focus {
+  outline: none;
+}
+.rdv .form-container .formule-container select:valid {
+  color: #000000;
+}
+.rdv .form-container .formule-container select option {
+  color: #000000;
+}
+.rdv .form-container .options-container {
+  width: 300px;
+  margin: 0 auto 30px auto;
+}
+.rdv .form-container .options-container .polissage-container,
+.rdv .form-container .options-container .shampoing-siege-container,
+.rdv .form-container .options-container .shampoing-tapis-container {
+  text-align: left;
+}
+.rdv .form-container .options-container .polissage-container input:not(:checked),
+.rdv .form-container .options-container .polissage-container input:checked,
+.rdv .form-container .options-container .shampoing-siege-container input:not(:checked),
+.rdv .form-container .options-container .shampoing-siege-container input:checked,
+.rdv .form-container .options-container .shampoing-tapis-container input:not(:checked),
+.rdv .form-container .options-container .shampoing-tapis-container input:checked {
+  position: absolute;
+  left: 0;
+  opacity: 0.01;
+}
+.rdv .form-container .options-container .polissage-container input:not(:checked) + label,
+.rdv .form-container .options-container .polissage-container input:checked + label,
+.rdv .form-container .options-container .shampoing-siege-container input:not(:checked) + label,
+.rdv .form-container .options-container .shampoing-siege-container input:checked + label,
+.rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label,
+.rdv .form-container .options-container .shampoing-tapis-container input:checked + label {
+  position: relative;
+  padding-left: 2.3em;
+  font-size: 1.05em;
+  line-height: 1.7;
+  cursor: pointer;
+}
+.rdv .form-container .options-container .polissage-container input:not(:checked) + label:before,
+.rdv .form-container .options-container .polissage-container input:checked + label:before,
+.rdv .form-container .options-container .shampoing-siege-container input:not(:checked) + label:before,
+.rdv .form-container .options-container .shampoing-siege-container input:checked + label:before,
+.rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label:before,
+.rdv .form-container .options-container .shampoing-tapis-container input:checked + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.4em;
+  height: 1.4em;
+  border: 1px solid #aaa;
+  background: #fff;
+  border-radius: 0.2em;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 #5264ae;
+  transition: all 0.275s;
+}
+.rdv .form-container .options-container .polissage-container input:not(:checked) + label:after,
+.rdv .form-container .options-container .polissage-container input:checked + label:after,
+.rdv .form-container .options-container .shampoing-siege-container input:not(:checked) + label:after,
+.rdv .form-container .options-container .shampoing-siege-container input:checked + label:after,
+.rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label:after,
+.rdv .form-container .options-container .shampoing-tapis-container input:checked + label:after {
+  content: "✕";
+  position: absolute;
+  top: 0.55em;
+  left: 0.13em;
+  font-size: 1.375em;
+  color: #5264ae;
+  line-height: 0;
+  transition: all 0.2s;
+}
+.rdv .form-container .options-container .polissage-container input:not(:checked) + label:after,
+.rdv .form-container .options-container .shampoing-siege-container input:not(:checked) + label:after,
+.rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0) rotate(45deg);
+}
+.rdv .form-container .options-container .polissage-container input:checked + label:after,
+.rdv .form-container .options-container .shampoing-siege-container input:checked + label:after,
+.rdv .form-container .options-container .shampoing-tapis-container input:checked + label:after {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+.rdv .form-container .options-container .polissage-container input:disabled:not(:checked) + label:before,
+.rdv .form-container .options-container .polissage-container input:disabled:checked + label:before,
+.rdv .form-container .options-container .shampoing-siege-container input:disabled:not(:checked) + label:before,
+.rdv .form-container .options-container .shampoing-siege-container input:disabled:checked + label:before,
+.rdv .form-container .options-container .shampoing-tapis-container input:disabled:not(:checked) + label:before,
+.rdv .form-container .options-container .shampoing-tapis-container input:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #e9e9e9;
+}
+.rdv .form-container .options-container .polissage-container input:disabled:checked + label:after,
+.rdv .form-container .options-container .shampoing-siege-container input:disabled:checked + label:after,
+.rdv .form-container .options-container .shampoing-tapis-container input:disabled:checked + label:after {
+  color: #777;
+}
+.rdv .form-container .options-container .polissage-container input:disabled + label,
+.rdv .form-container .options-container .shampoing-siege-container input:disabled + label,
+.rdv .form-container .options-container .shampoing-tapis-container input:disabled + label {
+  color: #aaa;
+}
+.rdv .form-container .options-container .polissage-container input:checked:focus + label:before,
+.rdv .form-container .options-container .polissage-container input:not(:checked):focus + label:before,
+.rdv .form-container .options-container .shampoing-siege-container input:checked:focus + label:before,
+.rdv .form-container .options-container .shampoing-siege-container input:not(:checked):focus + label:before,
+.rdv .form-container .options-container .shampoing-tapis-container input:checked:focus + label:before,
+.rdv .form-container .options-container .shampoing-tapis-container input:not(:checked):focus + label:before {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 6px rgba(97, 94, 255, 0.2);
+}
+.rdv .form-container .textarea-container {
+  margin: 0 auto 30px auto;
+  width: 300px;
+  color: #999;
+}
+.rdv .form-container .textarea-container textarea {
+  font-size: 18px;
+  width: 100%;
+  resize: none;
+  height: 170px;
+  font-family: "arial", serif;
+}
+.rdv .form-container .textarea-container textarea::-moz-placeholder {
+  color: #999;
+  font-size: 18px;
+  font-weight: lighter;
+  padding: 3px 0 0 5px;
+  font-family: "arial", serif;
+}
+.rdv .form-container .textarea-container textarea::placeholder {
+  color: #999;
+  font-size: 18px;
+  font-weight: lighter;
+  padding: 3px 0 0 5px;
+  font-family: "arial", serif;
+}
+.rdv .form-container .submit-container {
+  margin: 30px;
+}
+.rdv .form-container .submit-container input {
+  padding: 10px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  background: #ffffff;
+  transition: 0.3s;
+  border: 1px solid #000000;
+}
+.rdv .form-container .submit-container input:hover {
+  border: 1px solid #ffffff;
+  background: #000000;
+  color: #ffffff;
 }/*# sourceMappingURL=index.css.map */
