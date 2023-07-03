@@ -79,7 +79,7 @@ let abonnementAnimations = () => {
 };
 
 let ecologieAnimations = () => {
-  if (scrollY > 1855){
+  if (scrollY > 1855) {
     ecoP1.style.opacity = "1";
   } else {
     ecoP1.style.opacity = "0";

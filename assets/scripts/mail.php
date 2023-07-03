@@ -1,12 +1,14 @@
 <?php
-if(!isset($_POST['last-name'],
-          $_POST['first-name'],
-          $_POST['email'],
-          $_POST['address'],
-          $_POST['formule'],
-          $_POST['date'],
-          $_POST['time'],
-          $_POST['message'])){
+if (
+  !isset($_POST['lastName'],
+  $_POST['firsNname'],
+  $_POST['email'],
+  $_POST['address'],
+  $_POST['formule'],
+  $_POST['date'],
+  $_POST['time'],
+  $_POST['message'])
+) {
   exit(0);
 }
 

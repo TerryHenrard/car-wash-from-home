@@ -4,8 +4,11 @@
 
   .footer-container {
     padding: 30px 50px;
+    display: flex;
+    justify-content: space-around;
 
-    .apropos {
+    .apropos,
+    .contact {
       h4 {
         font-size: 1.2rem;
         text-transform: uppercase;
