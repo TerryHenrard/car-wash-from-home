@@ -233,6 +233,48 @@ header {
     }
   }
 
+  .valid-inscription,
+  .error-inscription {
+    top: 10px;
+    right: -600px;
+    position: fixed;
+    padding: 20px 40px;
+    width: 400px;
+    background: #12d800;
+    z-index: 5000;
+    border-radius: 50px 0 0 50px;
+    opacity: 0;
+    transition: 0.3s;
+    p {
+      font-weight: bold;
+      text-transform: uppercase;
+      display: inline;
+      i {
+        margin: 0 15px 0 0;
+      }
+    }
+  }
+
+  .error-inscription-anim {
+    background: red;
+    animation: inscription-anim 5s;
+  }
+
+  .valid-inscription-anim {
+    animation: inscription-anim 5s;
+  }
+
+  @keyframes inscription-anim {
+    10% {
+      right: 0;
+      opacity: 1;
+    }
+    90% {
+      right: 0;
+      opacity: 1;
+    }
+  }
+
   .header-text {
     height: 100vh;
     text-align: center;

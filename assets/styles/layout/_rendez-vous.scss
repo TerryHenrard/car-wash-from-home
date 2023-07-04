@@ -92,21 +92,22 @@
         -webkit-transition: 0.2s ease all;
       }
 
+      p {
+        display: block;
+      }
+
       .message-error {
         color: red;
         text-align: left;
+        visibility: visible;
       }
 
       .error-label {
-        color: red;
+        color: red !important;
       }
 
       .error-input {
-        border-bottom: 1px solid red;
-      }
-
-      .input-valid {
-        border-bottom: 1px solid green;
+        color: red;
       }
     }
 
@@ -316,13 +317,14 @@
     .textarea-container {
       margin: 0 auto 30px auto;
       width: 300px;
-      color: #999;
+      color: red;
+      text-align: left;
 
       textarea {
         font-size: 18px;
         width: 100%;
         resize: none;
-        height: 170px;
+        height: 150px;
         font-family: "arial", serif;
         &::placeholder {
           color: #999;

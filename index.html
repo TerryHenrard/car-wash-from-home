@@ -29,7 +29,7 @@
         <li><a href="#abonnement">abonnements</a></li>
         <li><a href="#ecologie">être éco-responsable ?</a></li>
         <li><a href="#faq">faq</a></li>
-        <li><a href="#rdv">rendez-vous?</a></li>
+        <li><a href="#rdv">réservez?</a></li>
       </ul>
       <div class="side-bar-social-network">
         <i class="fa-brands fa-facebook-f"></i>
@@ -48,7 +48,7 @@
           <li><a href="#abonnement">abonnements</a></li>
           <li><a href="#ecologie">être éco-responsable ?</a></li>
           <li><a href="#faq">faq</a></li>
-          <li><a href="#rdv">rendez-vous?</a></li>
+          <li><a href="#rdv">réservez?</a></li>
         </ul>
       </div>
       <div class="social-network">
@@ -59,6 +59,13 @@
         </ul>
       </div>
     </nav>
+    <div class="valid-inscription">
+      <p><i class="fa-solid fa-circle-check fa-beat"></i>Réservation validée!</p>
+    </div>
+    <div class="error-inscription">
+      <i class="fa-solid fa-circle-xmark fa-beat"></i>
+      <p>Veuillez remplir correctement les champs</p>
+    </div>
     <div class="header-text">
       <div>
         <h1 class="h1-main-title">Car Wash</h1>
@@ -322,9 +329,9 @@
   </section>
 
   <section class="rdv" id="rdv">
-    <h3>Commandez votre lavage à domicile!</h3>
+    <h3>Réservez votre lavage à domicile!</h3>
     <div class="form-container">
-      <form method="post" action="./assets/scripts/mail.php" id="contact-form">
+      <form action="" id="contact-form">
         <div class="last-name-container">
           <input type="text" id="lastName" name="lastName" required>
           <span class="bar"></span>
@@ -352,7 +359,7 @@
         <div class="rue-container">
           <input type="text" id="rue" name="rue" required>
           <span class="bar"></span>
-          <label for="address">Rue + numéro</label>
+          <label for="rue">Rue + numéro</label>
           <p class="message-error-rue"></p>
         </div>
         <div class="ville-container">
@@ -431,7 +438,8 @@
           <input type="time" id="time" min="08:00" max="18:00" name="time" required>
         </div>
         <div class="textarea-container">
-          <textarea id="message" placeholder="Message (facultatif)" name="message"></textarea>
+          <textarea id="message" maxlength="250" spellcheck="true" name="message"></textarea>
+          <p class="message-error-message"></p>
         </div>
         <div class="submit-container">
           <input type="submit" value="Commander">
@@ -455,7 +463,7 @@
           <li><a href="#abonnement">abonnements</a></li>
           <li><a href="#ecologie">notre démarche écologique</a></li>
           <li><a href="#faq">questions fréquentes</a></li>
-          <li><a href="#rdv">rendez-vous?</a></li>
+          <li><a href="#rdv">réservez?</a></li>
         </ul>
       </div>
       <div class="contact">

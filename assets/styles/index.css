@@ -240,6 +240,46 @@ header nav .social-network ul {
 header nav .social-network ul li {
   cursor: pointer;
 }
+header .valid-inscription,
+header .error-inscription {
+  top: 10px;
+  right: -600px;
+  position: fixed;
+  padding: 20px 40px;
+  width: 400px;
+  background: #12d800;
+  z-index: 5000;
+  border-radius: 50px 0 0 50px;
+  opacity: 0;
+  transition: 0.3s;
+}
+header .valid-inscription p,
+header .error-inscription p {
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline;
+}
+header .valid-inscription p i,
+header .error-inscription p i {
+  margin: 0 15px 0 0;
+}
+header .error-inscription-anim {
+  background: red;
+  animation: inscription-anim 5s;
+}
+header .valid-inscription-anim {
+  animation: inscription-anim 5s;
+}
+@keyframes inscription-anim {
+  10% {
+    right: 0;
+    opacity: 1;
+  }
+  90% {
+    right: 0;
+    opacity: 1;
+  }
+}
 header .header-text {
   height: 100vh;
   text-align: center;
@@ -1110,6 +1150,16 @@ header .header-text div .fa-solid {
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
 }
+.rdv .form-container .last-name-container p,
+.rdv .form-container .first-name-container p,
+.rdv .form-container .email-container p,
+.rdv .form-container .tel-container p,
+.rdv .form-container .rue-container p,
+.rdv .form-container .ville-container p,
+.rdv .form-container .date-container p,
+.rdv .form-container .time-container p {
+  display: block;
+}
 .rdv .form-container .last-name-container .message-error,
 .rdv .form-container .first-name-container .message-error,
 .rdv .form-container .email-container .message-error,
@@ -1120,6 +1170,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .time-container .message-error {
   color: red;
   text-align: left;
+  visibility: visible;
 }
 .rdv .form-container .last-name-container .error-label,
 .rdv .form-container .first-name-container .error-label,
@@ -1129,7 +1180,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .ville-container .error-label,
 .rdv .form-container .date-container .error-label,
 .rdv .form-container .time-container .error-label {
-  color: red;
+  color: red !important;
 }
 .rdv .form-container .last-name-container .error-input,
 .rdv .form-container .first-name-container .error-input,
@@ -1139,17 +1190,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .ville-container .error-input,
 .rdv .form-container .date-container .error-input,
 .rdv .form-container .time-container .error-input {
-  border-bottom: 1px solid red;
-}
-.rdv .form-container .last-name-container .input-valid,
-.rdv .form-container .first-name-container .input-valid,
-.rdv .form-container .email-container .input-valid,
-.rdv .form-container .tel-container .input-valid,
-.rdv .form-container .rue-container .input-valid,
-.rdv .form-container .ville-container .input-valid,
-.rdv .form-container .date-container .input-valid,
-.rdv .form-container .time-container .input-valid {
-  border-bottom: 1px solid green;
+  color: red;
 }
 .rdv .form-container .date-container input,
 .rdv .form-container .time-container input {
@@ -1455,13 +1496,14 @@ header .header-text div .fa-solid {
 .rdv .form-container .textarea-container {
   margin: 0 auto 30px auto;
   width: 300px;
-  color: #999;
+  color: red;
+  text-align: left;
 }
 .rdv .form-container .textarea-container textarea {
   font-size: 18px;
   width: 100%;
   resize: none;
-  height: 170px;
+  height: 150px;
   font-family: "arial", serif;
 }
 .rdv .form-container .textarea-container textarea::-moz-placeholder {
