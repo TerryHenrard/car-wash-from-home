@@ -253,15 +253,33 @@ header .error-inscription {
   opacity: 0;
   transition: 0.3s;
 }
+@media only screen and (max-width: 500px) {
+  header .valid-inscription,
+  header .error-inscription {
+    width: 300px;
+  }
+}
 header .valid-inscription p,
 header .error-inscription p {
   font-weight: bold;
   text-transform: uppercase;
   display: inline;
 }
+@media only screen and (max-width: 500px) {
+  header .valid-inscription p,
+  header .error-inscription p {
+    font-size: 0.8rem;
+  }
+}
 header .valid-inscription p i,
 header .error-inscription p i {
   margin: 0 15px 0 0;
+}
+@media only screen and (max-width: 500px) {
+  header .valid-inscription p i,
+  header .error-inscription p i {
+    font-size: 0.8rem;
+  }
 }
 header .error-inscription-anim {
   background: red;
@@ -995,9 +1013,19 @@ header .header-text div .fa-solid {
   width: 50vw;
   margin: 0 auto;
 }
+@media only screen and (max-width: 500px) {
+  .rdv .form-container {
+    width: 85vw;
+  }
+}
 .rdv .form-container form {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+@media only screen and (max-width: 1300px) {
+  .rdv .form-container form {
+    grid-template-columns: 1fr;
+  }
 }
 .rdv .form-container .last-name-container,
 .rdv .form-container .first-name-container,
@@ -1026,6 +1054,18 @@ header .header-text div .fa-solid {
   width: 100%;
   border: none;
   border-bottom: 1px solid #757575;
+}
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .last-name-container input,
+  .rdv .form-container .first-name-container input,
+  .rdv .form-container .email-container input,
+  .rdv .form-container .tel-container input,
+  .rdv .form-container .rue-container input,
+  .rdv .form-container .ville-container input,
+  .rdv .form-container .date-container input,
+  .rdv .form-container .time-container input {
+    font-size: 12px;
+  }
 }
 .rdv .form-container .last-name-container input:focus,
 .rdv .form-container .first-name-container input:focus,
@@ -1150,6 +1190,18 @@ header .header-text div .fa-solid {
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
 }
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .last-name-container label,
+  .rdv .form-container .first-name-container label,
+  .rdv .form-container .email-container label,
+  .rdv .form-container .tel-container label,
+  .rdv .form-container .rue-container label,
+  .rdv .form-container .ville-container label,
+  .rdv .form-container .date-container label,
+  .rdv .form-container .time-container label {
+    font-size: 0.8rem;
+  }
+}
 .rdv .form-container .last-name-container p,
 .rdv .form-container .first-name-container p,
 .rdv .form-container .email-container p,
@@ -1159,6 +1211,18 @@ header .header-text div .fa-solid {
 .rdv .form-container .date-container p,
 .rdv .form-container .time-container p {
   display: block;
+}
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .last-name-container p,
+  .rdv .form-container .first-name-container p,
+  .rdv .form-container .email-container p,
+  .rdv .form-container .tel-container p,
+  .rdv .form-container .rue-container p,
+  .rdv .form-container .ville-container p,
+  .rdv .form-container .date-container p,
+  .rdv .form-container .time-container p {
+    font-size: 0.8rem;
+  }
 }
 .rdv .form-container .last-name-container .message-error,
 .rdv .form-container .first-name-container .message-error,
@@ -1204,12 +1268,38 @@ header .header-text div .fa-solid {
   justify-content: space-around;
   text-align: left;
 }
+@media only screen and (max-width: 730px) {
+  .rdv .form-container .formule-container {
+    width: 300px;
+    flex-direction: column;
+  }
+}
+.rdv .form-container .formule-container .formule-base-container,
+.rdv .form-container .formule-container .formule-abonnement-container {
+  width: 100%;
+}
 .rdv .form-container .formule-container .formule-base-container .title-formule-base p,
 .rdv .form-container .formule-container .formule-base-container .title-formule-abonnement p,
 .rdv .form-container .formule-container .formule-abonnement-container .title-formule-base p,
 .rdv .form-container .formule-container .formule-abonnement-container .title-formule-abonnement p {
   font-size: 18px;
   margin: 0 0 10px 0;
+}
+@media only screen and (max-width: 730px) {
+  .rdv .form-container .formule-container .formule-base-container .title-formule-base p,
+  .rdv .form-container .formule-container .formule-base-container .title-formule-abonnement p,
+  .rdv .form-container .formule-container .formule-abonnement-container .title-formule-base p,
+  .rdv .form-container .formule-container .formule-abonnement-container .title-formule-abonnement p {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .formule-container .formule-base-container .title-formule-base p,
+  .rdv .form-container .formule-container .formule-base-container .title-formule-abonnement p,
+  .rdv .form-container .formule-container .formule-abonnement-container .title-formule-base p,
+  .rdv .form-container .formule-container .formule-abonnement-container .title-formule-abonnement p {
+    font-size: 1.1rem;
+  }
 }
 .rdv .form-container .formule-container .formule-base-container .exterieur1 input:not(:checked),
 .rdv .form-container .formule-container .formule-base-container .exterieur1 input:checked,
@@ -1252,6 +1342,26 @@ header .header-text div .fa-solid {
   font-size: 1.05em;
   line-height: 1.7;
   cursor: pointer;
+}
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .formule-container .formule-base-container .exterieur1 input:not(:checked) + label,
+  .rdv .form-container .formule-container .formule-base-container .exterieur1 input:checked + label,
+  .rdv .form-container .formule-container .formule-base-container .interieur1 input:not(:checked) + label,
+  .rdv .form-container .formule-container .formule-base-container .interieur1 input:checked + label,
+  .rdv .form-container .formule-container .formule-base-container .formule-abonnement-exterieur-container input:not(:checked) + label,
+  .rdv .form-container .formule-container .formule-base-container .formule-abonnement-exterieur-container input:checked + label,
+  .rdv .form-container .formule-container .formule-base-container .formule-abonnement-interieur-container input:not(:checked) + label,
+  .rdv .form-container .formule-container .formule-base-container .formule-abonnement-interieur-container input:checked + label,
+  .rdv .form-container .formule-container .formule-abonnement-container .exterieur1 input:not(:checked) + label,
+  .rdv .form-container .formule-container .formule-abonnement-container .exterieur1 input:checked + label,
+  .rdv .form-container .formule-container .formule-abonnement-container .interieur1 input:not(:checked) + label,
+  .rdv .form-container .formule-container .formule-abonnement-container .interieur1 input:checked + label,
+  .rdv .form-container .formule-container .formule-abonnement-container .formule-abonnement-exterieur-container input:not(:checked) + label,
+  .rdv .form-container .formule-container .formule-abonnement-container .formule-abonnement-exterieur-container input:checked + label,
+  .rdv .form-container .formule-container .formule-abonnement-container .formule-abonnement-interieur-container input:not(:checked) + label,
+  .rdv .form-container .formule-container .formule-abonnement-container .formule-abonnement-interieur-container input:checked + label {
+    font-size: 0.9rem;
+  }
 }
 .rdv .form-container .formule-container .formule-base-container .exterieur1 input:not(:checked) + label:before,
 .rdv .form-container .formule-container .formule-base-container .exterieur1 input:checked + label:before,
@@ -1393,6 +1503,11 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container p {
   font-size: 18px;
 }
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .options-container p {
+    font-size: 1.1rem;
+  }
+}
 .rdv .form-container .options-container .polissage-container,
 .rdv .form-container .options-container .shampoing-siege-container,
 .rdv .form-container .options-container .shampoing-tapis-container {
@@ -1419,6 +1534,16 @@ header .header-text div .fa-solid {
   font-size: 1.05em;
   line-height: 1.7;
   cursor: pointer;
+}
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .options-container .polissage-container input:not(:checked) + label,
+  .rdv .form-container .options-container .polissage-container input:checked + label,
+  .rdv .form-container .options-container .shampoing-siege-container input:not(:checked) + label,
+  .rdv .form-container .options-container .shampoing-siege-container input:checked + label,
+  .rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label,
+  .rdv .form-container .options-container .shampoing-tapis-container input:checked + label {
+    font-size: 0.9rem;
+  }
 }
 .rdv .form-container .options-container .polissage-container input:not(:checked) + label:before,
 .rdv .form-container .options-container .polissage-container input:checked + label:before,
@@ -1506,6 +1631,11 @@ header .header-text div .fa-solid {
   height: 150px;
   font-family: "arial", serif;
 }
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .textarea-container textarea {
+    font-size: 0.9rem;
+  }
+}
 .rdv .form-container .textarea-container textarea::-moz-placeholder {
   color: #999;
   font-size: 18px;
@@ -1519,6 +1649,14 @@ header .header-text div .fa-solid {
   font-weight: lighter;
   padding: 3px 0 0 5px;
   font-family: "arial", serif;
+}
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .textarea-container textarea::-moz-placeholder {
+    font-size: 0.8rem;
+  }
+  .rdv .form-container .textarea-container textarea::placeholder {
+    font-size: 0.8rem;
+  }
 }
 .rdv .form-container .submit-container {
   display: flex;
@@ -1545,4 +1683,10 @@ header .header-text div .fa-solid {
   text-align: left;
   width: 300px;
   margin: 0 auto 30px auto;
+}
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .price,
+  .rdv .form-container .estimated-time {
+    font-size: 0.9rem;
+  }
 }/*# sourceMappingURL=index.css.map */

@@ -245,12 +245,24 @@ header {
     border-radius: 50px 0 0 50px;
     opacity: 0;
     transition: 0.3s;
+
+    @media only screen and (max-width: 500px) {
+      width: 300px;
+    }
     p {
       font-weight: bold;
       text-transform: uppercase;
       display: inline;
+
+      @media only screen and (max-width: 500px) {
+        font-size: 0.8rem;
+      }
       i {
         margin: 0 15px 0 0;
+
+        @media only screen and (max-width: 500px) {
+          font-size: 0.8rem;
+        }
       }
     }
   }
