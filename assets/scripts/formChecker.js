@@ -24,7 +24,7 @@ let lastName,
   message;
 let formule = [];
 let abonnement = [];
-let options = [];
+let option = [];
 
 const errorDisplay = (tag, message, valid) => {
   const input = document.getElementById(tag);
@@ -183,6 +183,7 @@ inputsText.forEach((input) => {
 
 inputsCkb.forEach((input) => {
   input.addEventListener("input", (e) => {
+    let index;
     switch (e.target.id) {
       case "exterieur1":
         if (e.target.checked) {
@@ -192,7 +193,12 @@ inputsCkb.forEach((input) => {
         } else {
           price -= 15;
           time -= 20;
-          formule.pop();
+
+          index = formule.indexOf(e.target.value);
+
+          if (index !== -1) {
+            formule.splice(index, 1);
+          }
         }
         break;
       case "interieur1":
@@ -203,7 +209,12 @@ inputsCkb.forEach((input) => {
         } else {
           price -= 25;
           time -= 30;
-          formule.pop();
+
+          index = formule.indexOf(e.target.value);
+
+          if (index !== -1) {
+            formule.splice(index, 1);
+          }
         }
         break;
       case "exterieur3":
@@ -212,7 +223,12 @@ inputsCkb.forEach((input) => {
           abonnement.push(e.target.value);
         } else {
           price -= 40;
-          abonnement.pop();
+
+          index = abonnement.indexOf(e.target.value);
+
+          if (index !== -1) {
+            abonnement.splice(index, 1);
+          }
         }
         break;
       case "exterieur5":
@@ -221,7 +237,12 @@ inputsCkb.forEach((input) => {
           abonnement.push(e.target.value);
         } else {
           price -= 63;
-          abonnement.pop();
+
+          index = abonnement.indexOf(e.target.value);
+
+          if (index !== -1) {
+            abonnement.splice(index, 1);
+          }
         }
         break;
       case "exterieur10":
@@ -230,7 +251,12 @@ inputsCkb.forEach((input) => {
           abonnement.push(e.target.value);
         } else {
           price -= 120;
-          abonnement.pop();
+
+          index = abonnement.indexOf(e.target.value);
+
+          if (index !== -1) {
+            abonnement.splice(index, 1);
+          }
         }
         break;
       case "interieur3":
@@ -239,7 +265,12 @@ inputsCkb.forEach((input) => {
           abonnement.push(e.target.value);
         } else {
           price -= 66;
-          abonnement.pop();
+
+          index = abonnement.indexOf(e.target.value);
+
+          if (index !== -1) {
+            abonnement.splice(index, 1);
+          }
         }
         break;
       case "interieur5":
@@ -248,7 +279,12 @@ inputsCkb.forEach((input) => {
           abonnement.push(e.target.value);
         } else {
           price -= 105;
-          abonnement.pop();
+
+          index = abonnement.indexOf(e.target.value);
+
+          if (index !== -1) {
+            abonnement.splice(index, 1);
+          }
         }
         break;
       case "interieur10":
@@ -257,40 +293,60 @@ inputsCkb.forEach((input) => {
           abonnement.push(e.target.value);
         } else {
           price -= 200;
-          abonnement.pop();
+
+          index = abonnement.indexOf(e.target.value);
+
+          if (index !== -1) {
+            abonnement.splice(index, 1);
+          }
         }
         break;
       case "polissage":
         if (e.target.checked) {
           price += 80;
           time += 150;
-          options.push(e.target.value);
+          option.push(e.target.value);
         } else {
           price -= 80;
           time -= 150;
-          options.pop();
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
         }
         break;
       case "shampoing-siege":
         if (e.target.checked) {
           price += 60;
           time += 20;
-          options.push(e.target.value);
+          option.push(e.target.value);
         } else {
           price -= 60;
           time -= 20;
-          options.pop();
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
         }
         break;
       case "shampoing-tapis":
         if (e.target.checked) {
           price += 30;
           time += 10;
-          options.push(e.target.value);
+          option.push(e.target.value);
         } else {
           price -= 30;
           time -= 10;
-          options.pop();
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
         }
         break;
       default:
@@ -326,13 +382,13 @@ form.addEventListener("submit", (e) => {
       postcode,
       formule,
       abonnement,
-      options,
+      option,
       date,
       hours,
+      price,
+      time,
       message,
     };
-
-    console.log(data);
 
     validAnim.classList.add("valid-inscription-anim");
     setTimeout(() => {
@@ -345,6 +401,21 @@ form.addEventListener("submit", (e) => {
     inputTime.value = "";
     spanPrice.textContent = "";
     spanTime.textContent = "";
+
+    let jsonData = JSON.stringify(data);
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "assets/scripts/mail.php", true);
+
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      console.log(xhr.responseText);
+    }
+
+    console.log(jsonData);
+    xhr.send(jsonData);
   } else {
     errorAnim.classList.add("error-inscription-anim");
     setTimeout(() => {

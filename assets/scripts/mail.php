@@ -1,28 +1,41 @@
 <?php
-if (
-  !isset($_POST['lastName'],
-  $_POST['firsNname'],
-  $_POST['email'],
-  $_POST['address'],
-  $_POST['formule'],
-  $_POST['date'],
-  $_POST['time'],
-  $_POST['message'])
-) {
-  exit(0);
+
+$jsonData = file_get_contents('php://input');
+
+$objet = json_decode($jsonData, false, 512, JSON_THROW_ON_ERROR);
+
+$formule = "";
+foreach ($objet->formule as $element){
+  $formule .= $element . " ";
+}
+
+$abonnement = "";
+foreach ($objet->abonnement as $element){
+  $abonnement .= $element . " ";
+}
+
+$option = "";
+foreach ($objet->option as $element){
+  $option .= $element . " ";
 }
 
 $to = "contact@carwashfromhome.com";
 $subject = "rendez-vous";
-$message = "Nom : " . $_POST['last-name'] . "
-            Prenom : " . $_POST['first-name'] . "
-            email : " . $_POST['email'] . "
-            adresse : " . $_POST['address'] . "
-            formule : " . $_POST['formule'] . "
-            date : " . $_POST['date'] . "
-            heure : " . $_POST['time'] . "
-            message : " . $_POST['message'];
+$body = "nom : " . $objet->lastName . "
+         prenom : " . $objet->firstName . "
+         email : " . $objet->email . "
+         telephone : " . $objet->phoneNumber . "
+         adresse : " . $objet->streetAndNumber . "
+         code postal : " . $objet->postcode . "
+         formule : " . $formule . "
+         abonnement : " . $abonnement . "
+         option : " . $option . "
+         date : " . $objet->date . "
+         heure : " . $objet->hours . "
+         prix : " . $objet->price . "euros
+         temps : " . $objet->time . "min
+         message : " . $objet->message;
 
-mail($to, $subject, $message, "Reply-to:" . $_POST['email']);
+mail($to, $subject, $body, "Reply-to:" . $objet->email);
 
 header("Location: ../../index.html#rdv");

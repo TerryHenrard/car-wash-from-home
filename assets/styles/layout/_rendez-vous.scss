@@ -397,17 +397,18 @@
       align-items: center;
       margin: 30px;
       input {
+        color: #ffffff;
         padding: 10px 30px;
         border-radius: 30px;
         cursor: pointer;
-        background: #ffffff;
+        background: #000000;
         transition: 0.3s;
-        border: 1px solid #000000;
+        border: 1px solid #ffffff;
 
         &:hover {
-          border: 1px solid #ffffff;
-          background: #000000;
-          color: #ffffff;
+          border: 1px solid #000000;
+          background: #ffffff;
+          color: #000000;
         }
       }
     }
