@@ -21,6 +21,7 @@ const question3 = document.querySelector(".question3");
 const question4 = document.querySelector(".question4");
 const question5 = document.querySelector(".question5");
 const question6 = document.querySelector(".question6");
+const question7 = document.querySelector(".question7");
 const sidebar = document.getElementById("side-bar");
 const btn = document.getElementById("btn");
 const navbar = document.getElementById("navbar");
@@ -28,6 +29,17 @@ const navbar = document.getElementById("navbar");
 btn.addEventListener("click", () => {
   sidebar.classList.toggle("active");
 });
+
+let lastScroll = 0;
+let navbarAnimation = () => {
+  if (scrollY < lastScroll) {
+    navbar.style.top = 50 + "px";
+  } else {
+    navbar.style.top = -23 + "px";
+  }
+
+  lastScroll = scrollY;
+};
 
 let tarifAnimations = () => {
   if (scrollY === 0) {
@@ -134,17 +146,11 @@ let faqAnimations = () => {
   } else {
     question6.style.opacity = "0";
   }
-};
-
-let lastScroll = 0;
-let navbarAnimation = () => {
-  if (scrollY < lastScroll) {
-    navbar.style.top = 50 + "px";
+  if (scrollY > 3200) {
+    question7.style.opacity = "1";
   } else {
-    navbar.style.top = -20 + "px";
+    question7.style.opacity = "0";
   }
-
-  lastScroll = scrollY;
 };
 
 let loadAnimations = () => {

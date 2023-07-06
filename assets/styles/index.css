@@ -79,25 +79,20 @@ header #side-bar .toggle-btn {
   width: 50px;
 }
 header #side-bar .toggle-btn span {
-  width: 30px;
-  height: 5px;
+  width: 50px;
+  height: 8px;
   border-radius: 5px;
   background: #000000;
   display: block;
-  margin-top: 4px;
+  margin-top: 6px;
   transition: 0.3s ease;
 }
 header #side-bar .side-bar-logo {
-  color: #343a40;
-  text-decoration: none;
-  font-family: "mrdafoe";
-  font-size: 2rem;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-header #side-bar .side-bar-logo:visited {
-  color: #343a40;
+  background: url(../images/logo1.png) center/cover;
+  display: block;
+  height: 120px;
+  width: 150px;
+  margin: 10px 0 0 0;
 }
 header #side-bar ul {
   list-style: none;
@@ -105,7 +100,8 @@ header #side-bar ul {
 header #side-bar ul li {
   height: 80px;
   font-family: "montserrat", serif;
-  font-weight: 600;
+  font-weight: bolder;
+  text-transform: uppercase;
   cursor: pointer;
 }
 header #side-bar ul li a {
@@ -163,16 +159,10 @@ header nav {
   }
 }
 header nav .logo a {
-  color: #343a40;
-  text-decoration: none;
-  font-family: "mrdafoe";
-  font-size: 2.5rem;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-header nav .logo a:visited {
-  color: #343a40;
+  background: url(../images/logo1.png) center/cover;
+  display: block;
+  height: 75px;
+  width: 100px;
 }
 header nav .menu {
   width: 66%;
@@ -196,6 +186,11 @@ header nav .menu ul li {
   text-transform: uppercase;
   cursor: pointer;
   position: relative;
+}
+@media only screen and (max-width: 1400px) {
+  header nav .menu ul li {
+    font-size: 0.7rem;
+  }
 }
 header nav .menu ul li a {
   text-decoration: none;
@@ -451,6 +446,19 @@ header .header-text div .fa-solid {
   font-size: 1.4rem;
   font-weight: bolder;
 }
+.tarif .interieur ul li a,
+.tarif .exterieur ul li a {
+  cursor: pointer;
+  color: #000000;
+}
+.tarif .interieur ul li a i,
+.tarif .exterieur ul li a i {
+  font-size: 1rem;
+}
+.tarif .interieur ul li a:visited,
+.tarif .exterieur ul li a:visited {
+  color: #000000;
+}
 .tarif .interieur .left-ext {
   margin: 20px;
   padding: 25px 50px;
@@ -458,6 +466,7 @@ header .header-text div .fa-solid {
   transform: translateX(100px);
   opacity: 0;
   transition: 0.5s;
+  overflow: hidden;
 }
 .tarif .interieur .right-ext {
   display: grid;
@@ -880,7 +889,8 @@ header .header-text div .fa-solid {
 .faq .faq-container .question3,
 .faq .faq-container .question4,
 .faq .faq-container .question5,
-.faq .faq-container .question6 {
+.faq .faq-container .question6,
+.faq .faq-container .question7 {
   opacity: 0;
   transition: 0.3s;
 }
@@ -889,7 +899,8 @@ header .header-text div .fa-solid {
 .faq .faq-container .question3 h5,
 .faq .faq-container .question4 h5,
 .faq .faq-container .question5 h5,
-.faq .faq-container .question6 h5 {
+.faq .faq-container .question6 h5,
+.faq .faq-container .question7 h5 {
   font-family: "montserrat", serif;
   font-size: 1.2rem;
   margin: 5px 0;
@@ -900,7 +911,8 @@ header .header-text div .fa-solid {
   .faq .faq-container .question3 h5,
   .faq .faq-container .question4 h5,
   .faq .faq-container .question5 h5,
-  .faq .faq-container .question6 h5 {
+  .faq .faq-container .question6 h5,
+  .faq .faq-container .question7 h5 {
     font-size: 1rem;
   }
 }
@@ -909,7 +921,8 @@ header .header-text div .fa-solid {
 .faq .faq-container .question3 p,
 .faq .faq-container .question4 p,
 .faq .faq-container .question5 p,
-.faq .faq-container .question6 p {
+.faq .faq-container .question6 p,
+.faq .faq-container .question7 p {
   font-family: "poppins", serif;
   line-height: 30px;
 }
@@ -919,7 +932,8 @@ header .header-text div .fa-solid {
   .faq .faq-container .question3 p,
   .faq .faq-container .question4 p,
   .faq .faq-container .question5 p,
-  .faq .faq-container .question6 p {
+  .faq .faq-container .question6 p,
+  .faq .faq-container .question7 p {
     font-size: 0.8rem;
   }
 }
@@ -973,32 +987,30 @@ header .header-text div .fa-solid {
     font-size: 1rem;
   }
 }
-.footer .footer-container .contact .mail {
-  display: inline;
-}
 @media only screen and (max-width: 550px) {
   .footer .footer-container .contact .mail {
     font-size: 0.8rem;
   }
 }
-.footer .footer-container .contact a {
-  color: #ffffff;
-}
-@media only screen and (max-width: 550px) {
-  .footer .footer-container .contact a {
-    font-size: 0.8rem;
-  }
-}
-.footer .footer-container .contact a:visited {
-  color: #ffffff;
-}
 .footer .footer-container .contact p {
   color: #ffffff;
+  display: inline;
 }
 @media only screen and (max-width: 550px) {
   .footer .footer-container .contact p {
     font-size: 0.8rem;
   }
+}
+.footer .footer-container .contact p a {
+  color: #ffffff;
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .contact p a {
+    font-size: 0.8rem;
+  }
+}
+.footer .footer-container .contact p a:visited {
+  color: #ffffff;
 }
 
 .rdv {
@@ -1273,6 +1285,9 @@ header .header-text div .fa-solid {
     width: 300px;
     flex-direction: column;
   }
+}
+.rdv .form-container .formule-container .formule-base-container {
+  margin: 0 0 30px 0;
 }
 .rdv .form-container .formule-container .formule-base-container,
 .rdv .form-container .formule-container .formule-abonnement-container {

@@ -151,9 +151,14 @@
         flex-direction: column;
       }
 
+      .formule-base-container {
+        margin: 0 0 30px 0;
+      }
+
       .formule-base-container,
       .formule-abonnement-container {
         width: 100%;
+
         .title-formule-base,
         .title-formule-abonnement {
           p {

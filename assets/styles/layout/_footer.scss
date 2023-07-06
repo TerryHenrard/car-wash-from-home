@@ -45,28 +45,26 @@
       }
 
       .mail {
-        display: inline;
-
         @media only screen and (max-width: 550px) {
           font-size: 0.8rem;
         }
       }
-
-      a {
-        color: #ffffff;
-
-        @media only screen and (max-width: 550px) {
-          font-size: 0.8rem;
-        }
-        &:visited {
-          color: #ffffff;
-        }
-      }
-
       p {
         color: #ffffff;
+        display: inline;
         @media only screen and (max-width: 550px) {
           font-size: 0.8rem;
+        }
+
+        a {
+          color: #ffffff;
+
+          @media only screen and (max-width: 550px) {
+            font-size: 0.8rem;
+          }
+          &:visited {
+            color: #ffffff;
+          }
         }
       }
     }
