@@ -367,16 +367,16 @@
           <label for="tel">Téléphone</label>
           <p class="message-error-tel"></p>
         </div>
-        <div class="rue-container">
-          <input type="text" id="rue" name="rue" required>
+        <div class="adresse-container">
+          <input type="text" id="adresse" name="adresse" required>
           <span class="bar"></span>
-          <label for="rue">Rue + numéro</label>
-          <p class="message-error-rue"></p>
+          <label for="adresse">Adresse</label>
+          <p class="message-error-adresse"></p>
         </div>
         <div class="ville-container">
           <input type="text" id="ville" name="ville" required>
           <span class="bar"></span>
-          <label for="ville">Code postal</label>
+          <label for="ville">Ville</label>
           <p class="message-error-ville"></p>
         </div>
         <div class="formule-container">
@@ -443,10 +443,16 @@
           </div>
         </div>
         <div class="date-container">
-          <input type="date" id="date" min="2023-07-02" max="2025-07-02" name="date" required>
+          <p>Date</p>
+          <label for="date"></label>
+          <input type="date" id="date" name="date" required>
+          <p class="message-error-date"></p>
         </div>
         <div class="time-container">
+          <p>Heure</p>
+          <label for="time"></label>
           <input type="time" id="time" min="08:00" max="18:00" name="time" required>
+          <p class="message-error-time"></p>
         </div>
         <div class="textarea-container">
           <textarea id="message" maxlength="250" spellcheck="true" placeholder="Message (facultatif)"

@@ -23,11 +23,56 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .date-container,
+    .time-container {
+      p {
+        font-size: 18px;
+        color: #000000;
+
+        @media only screen and (max-width: 500px) {
+          font-size: 1.1rem !important;
+        }
+      }
+      #time,
+      #date {
+        box-sizing: border-box;
+        outline: 0;
+        padding-left: 0.75rem;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        appearance: auto;
+        -moz-appearance: textfield;
+        -webkit-appearance: none;
+        margin: 0;
+
+        &::-webkit-calendar-picker-indicator {
+          background: none;
+          bottom: 0;
+          color: transparent;
+          cursor: pointer;
+          height: auto;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: auto;
+        }
+
+        &::-webkit-datetime-edit {
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+
     .last-name-container,
     .first-name-container,
     .email-container,
     .tel-container,
-    .rue-container,
+    .adresse-container,
     .ville-container,
     .date-container,
     .time-container {
@@ -400,7 +445,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 30px;
+      margin: 0 30px 30px 30px;
       input {
         color: #ffffff;
         padding: 10px 30px;

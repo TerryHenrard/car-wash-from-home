@@ -17,14 +17,45 @@ let lastName,
   firstName,
   email,
   phoneNumber,
-  streetAndNumber,
-  postcode,
-  date,
+  address,
+  city,
+  dateAppointement,
   hours,
   message;
 let formule = [];
 let abonnement = [];
 let option = [];
+
+let date = new Date();
+let jour = date.getDate().toString().padStart(2, "0");
+let mois = date.getMonth() + 1;
+let annee = date.getFullYear();
+let heures = date.getHours().toString().padStart(2, "0");
+let minutes = date.getMinutes().toString().padStart(2, "0");
+
+inputDate.value =
+  annee.toString().padStart(2, "0") +
+  "-" +
+  mois.toString().padStart(2, "0") +
+  "-" +
+  jour;
+inputTime.value = heures + ":" + minutes;
+
+let dateMin =
+  (annee - 1).toString().padStart(2, "0") +
+  "-" +
+  mois.toString().padStart(2, "0") +
+  "-" +
+  jour;
+let dateMax =
+  (annee + 1).toString().padStart(2, "0") +
+  "-" +
+  mois.toString().padStart(2, "0") +
+  "-" +
+  jour;
+
+inputDate.setAttribute("min", dateMin);
+inputDate.setAttribute("max", dateMax);
 
 const errorDisplay = (tag, message, valid) => {
   const input = document.getElementById(tag);
@@ -122,23 +153,23 @@ const phoneNumberChecker = (value) => {
   }
 };
 
-const streetAndNumberChecker = (value) => {
+const adressChecker = (value) => {
   if (!value.match(/^[\p{L}\d\s\.,#'\-]*$/gmu)) {
-    errorDisplay("rue", "cette adresse n'est pas valide");
-    streetAndNumber = null;
+    errorDisplay("adresse", "cette adresse n'est pas valide");
+    address = null;
   } else {
-    errorDisplay("rue", "", true);
-    streetAndNumber = value;
+    errorDisplay("adresse", "", true);
+    address = value;
   }
 };
 
-const postcodeChecker = (value) => {
-  if (!value.match(/^[\d]{0,4}$/)) {
-    errorDisplay("ville", "ce code postal n'est pas valide");
-    postcode = null;
+const cityChecker = (value) => {
+  if (!value.match(/^([a-zA-Z\p{L}]+(?:. |-| |'))*[a-zA-Z\p{L}]*$/gmu)) {
+    errorDisplay("ville", "cette ville n'est pas valide");
+    city = null;
   } else {
     errorDisplay("ville", "", true);
-    postcode = value;
+    city = value;
   }
 };
 
@@ -167,11 +198,11 @@ inputsText.forEach((input) => {
       case "tel":
         phoneNumberChecker(e.target.value);
         break;
-      case "rue":
-        streetAndNumberChecker(e.target.value);
+      case "adresse":
+        adressChecker(e.target.value);
         break;
       case "ville":
-        postcodeChecker(e.target.value);
+        cityChecker(e.target.value);
         break;
       case "message":
         messageChecker(e.target.value);
@@ -179,6 +210,16 @@ inputsText.forEach((input) => {
         null;
     }
   });
+});
+
+let inputDateClicked = false;
+inputDate.addEventListener("click", () => {
+  inputDateClicked = true;
+});
+
+let inputTimeClicked = false;
+inputTime.addEventListener("click", () => {
+  inputTimeClicked = true;
 });
 
 inputsCkb.forEach((input) => {
@@ -360,17 +401,25 @@ inputsCkb.forEach((input) => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  date = inputDate.value;
-  hours = inputTime.value;
+  if (inputTimeClicked && inputDateClicked) {
+    errorDisplay("date", "", true);
+    errorDisplay("time", "", true);
+
+    dateAppointement = inputDate.value;
+    hours = inputTime.value;
+  } else {
+    dateAppointement = null;
+    hours = null;
+  }
 
   if (
     lastName &&
     firstName &&
     email &&
     phoneNumber &&
-    streetAndNumber &&
-    postcode &&
-    date &&
+    address &&
+    city &&
+    dateAppointement &&
     hours
   ) {
     const data = {
@@ -378,12 +427,12 @@ form.addEventListener("submit", (e) => {
       firstName,
       email,
       phoneNumber,
-      streetAndNumber,
-      postcode,
+      address,
+      city,
       formule,
       abonnement,
       option,
-      date,
+      dateAppointement,
       hours,
       price,
       time,
@@ -417,6 +466,9 @@ form.addEventListener("submit", (e) => {
     console.log(jsonData);
     xhr.send(jsonData);
   } else {
+    errorDisplay("date", "Veuillez sélectionner une date qui vous convient");
+    errorDisplay("time", "Veuillez sélectionner une heure qui vous convient");
+
     errorAnim.classList.add("error-inscription-anim");
     setTimeout(() => {
       errorAnim.classList.remove("error-inscription-anim");

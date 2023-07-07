@@ -1039,11 +1039,60 @@ header .header-text div .fa-solid {
     grid-template-columns: 1fr;
   }
 }
+.rdv .form-container .date-container p,
+.rdv .form-container .time-container p {
+  font-size: 18px;
+  color: #000000;
+}
+@media only screen and (max-width: 500px) {
+  .rdv .form-container .date-container p,
+  .rdv .form-container .time-container p {
+    font-size: 1.1rem !important;
+  }
+}
+.rdv .form-container .date-container #time,
+.rdv .form-container .date-container #date,
+.rdv .form-container .time-container #time,
+.rdv .form-container .time-container #date {
+  box-sizing: border-box;
+  outline: 0;
+  padding-left: 0.75rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  appearance: auto;
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  margin: 0;
+}
+.rdv .form-container .date-container #time::-webkit-calendar-picker-indicator,
+.rdv .form-container .date-container #date::-webkit-calendar-picker-indicator,
+.rdv .form-container .time-container #time::-webkit-calendar-picker-indicator,
+.rdv .form-container .time-container #date::-webkit-calendar-picker-indicator {
+  background: none;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+.rdv .form-container .date-container #time::-webkit-datetime-edit,
+.rdv .form-container .date-container #date::-webkit-datetime-edit,
+.rdv .form-container .time-container #time::-webkit-datetime-edit,
+.rdv .form-container .time-container #date::-webkit-datetime-edit {
+  text-align: center;
+  width: 100%;
+}
 .rdv .form-container .last-name-container,
 .rdv .form-container .first-name-container,
 .rdv .form-container .email-container,
 .rdv .form-container .tel-container,
-.rdv .form-container .rue-container,
+.rdv .form-container .adresse-container,
 .rdv .form-container .ville-container,
 .rdv .form-container .date-container,
 .rdv .form-container .time-container {
@@ -1056,7 +1105,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .first-name-container input,
 .rdv .form-container .email-container input,
 .rdv .form-container .tel-container input,
-.rdv .form-container .rue-container input,
+.rdv .form-container .adresse-container input,
 .rdv .form-container .ville-container input,
 .rdv .form-container .date-container input,
 .rdv .form-container .time-container input {
@@ -1072,7 +1121,7 @@ header .header-text div .fa-solid {
   .rdv .form-container .first-name-container input,
   .rdv .form-container .email-container input,
   .rdv .form-container .tel-container input,
-  .rdv .form-container .rue-container input,
+  .rdv .form-container .adresse-container input,
   .rdv .form-container .ville-container input,
   .rdv .form-container .date-container input,
   .rdv .form-container .time-container input {
@@ -1083,7 +1132,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .first-name-container input:focus,
 .rdv .form-container .email-container input:focus,
 .rdv .form-container .tel-container input:focus,
-.rdv .form-container .rue-container input:focus,
+.rdv .form-container .adresse-container input:focus,
 .rdv .form-container .ville-container input:focus,
 .rdv .form-container .date-container input:focus,
 .rdv .form-container .time-container input:focus {
@@ -1097,8 +1146,8 @@ header .header-text div .fa-solid {
 .rdv .form-container .email-container input:valid ~ label,
 .rdv .form-container .tel-container input:focus ~ label,
 .rdv .form-container .tel-container input:valid ~ label,
-.rdv .form-container .rue-container input:focus ~ label,
-.rdv .form-container .rue-container input:valid ~ label,
+.rdv .form-container .adresse-container input:focus ~ label,
+.rdv .form-container .adresse-container input:valid ~ label,
 .rdv .form-container .ville-container input:focus ~ label,
 .rdv .form-container .ville-container input:valid ~ label,
 .rdv .form-container .date-container input:focus ~ label,
@@ -1117,8 +1166,8 @@ header .header-text div .fa-solid {
 .rdv .form-container .email-container input:focus ~ .bar:after,
 .rdv .form-container .tel-container input:focus ~ .bar:before,
 .rdv .form-container .tel-container input:focus ~ .bar:after,
-.rdv .form-container .rue-container input:focus ~ .bar:before,
-.rdv .form-container .rue-container input:focus ~ .bar:after,
+.rdv .form-container .adresse-container input:focus ~ .bar:before,
+.rdv .form-container .adresse-container input:focus ~ .bar:after,
 .rdv .form-container .ville-container input:focus ~ .bar:before,
 .rdv .form-container .ville-container input:focus ~ .bar:after,
 .rdv .form-container .date-container input:focus ~ .bar:before,
@@ -1131,7 +1180,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .first-name-container .bar,
 .rdv .form-container .email-container .bar,
 .rdv .form-container .tel-container .bar,
-.rdv .form-container .rue-container .bar,
+.rdv .form-container .adresse-container .bar,
 .rdv .form-container .ville-container .bar,
 .rdv .form-container .date-container .bar,
 .rdv .form-container .time-container .bar {
@@ -1146,8 +1195,8 @@ header .header-text div .fa-solid {
 .rdv .form-container .email-container .bar:after,
 .rdv .form-container .tel-container .bar:before,
 .rdv .form-container .tel-container .bar:after,
-.rdv .form-container .rue-container .bar:before,
-.rdv .form-container .rue-container .bar:after,
+.rdv .form-container .adresse-container .bar:before,
+.rdv .form-container .adresse-container .bar:after,
 .rdv .form-container .ville-container .bar:before,
 .rdv .form-container .ville-container .bar:after,
 .rdv .form-container .date-container .bar:before,
@@ -1167,7 +1216,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .first-name-container .bar:before,
 .rdv .form-container .email-container .bar:before,
 .rdv .form-container .tel-container .bar:before,
-.rdv .form-container .rue-container .bar:before,
+.rdv .form-container .adresse-container .bar:before,
 .rdv .form-container .ville-container .bar:before,
 .rdv .form-container .date-container .bar:before,
 .rdv .form-container .time-container .bar:before {
@@ -1177,7 +1226,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .first-name-container .bar:after,
 .rdv .form-container .email-container .bar:after,
 .rdv .form-container .tel-container .bar:after,
-.rdv .form-container .rue-container .bar:after,
+.rdv .form-container .adresse-container .bar:after,
 .rdv .form-container .ville-container .bar:after,
 .rdv .form-container .date-container .bar:after,
 .rdv .form-container .time-container .bar:after {
@@ -1187,7 +1236,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .first-name-container label,
 .rdv .form-container .email-container label,
 .rdv .form-container .tel-container label,
-.rdv .form-container .rue-container label,
+.rdv .form-container .adresse-container label,
 .rdv .form-container .ville-container label,
 .rdv .form-container .date-container label,
 .rdv .form-container .time-container label {
@@ -1207,7 +1256,7 @@ header .header-text div .fa-solid {
   .rdv .form-container .first-name-container label,
   .rdv .form-container .email-container label,
   .rdv .form-container .tel-container label,
-  .rdv .form-container .rue-container label,
+  .rdv .form-container .adresse-container label,
   .rdv .form-container .ville-container label,
   .rdv .form-container .date-container label,
   .rdv .form-container .time-container label {
@@ -1218,7 +1267,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .first-name-container p,
 .rdv .form-container .email-container p,
 .rdv .form-container .tel-container p,
-.rdv .form-container .rue-container p,
+.rdv .form-container .adresse-container p,
 .rdv .form-container .ville-container p,
 .rdv .form-container .date-container p,
 .rdv .form-container .time-container p {
@@ -1229,7 +1278,7 @@ header .header-text div .fa-solid {
   .rdv .form-container .first-name-container p,
   .rdv .form-container .email-container p,
   .rdv .form-container .tel-container p,
-  .rdv .form-container .rue-container p,
+  .rdv .form-container .adresse-container p,
   .rdv .form-container .ville-container p,
   .rdv .form-container .date-container p,
   .rdv .form-container .time-container p {
@@ -1240,7 +1289,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .first-name-container .message-error,
 .rdv .form-container .email-container .message-error,
 .rdv .form-container .tel-container .message-error,
-.rdv .form-container .rue-container .message-error,
+.rdv .form-container .adresse-container .message-error,
 .rdv .form-container .ville-container .message-error,
 .rdv .form-container .date-container .message-error,
 .rdv .form-container .time-container .message-error {
@@ -1252,7 +1301,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .first-name-container .error-label,
 .rdv .form-container .email-container .error-label,
 .rdv .form-container .tel-container .error-label,
-.rdv .form-container .rue-container .error-label,
+.rdv .form-container .adresse-container .error-label,
 .rdv .form-container .ville-container .error-label,
 .rdv .form-container .date-container .error-label,
 .rdv .form-container .time-container .error-label {
@@ -1262,7 +1311,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .first-name-container .error-input,
 .rdv .form-container .email-container .error-input,
 .rdv .form-container .tel-container .error-input,
-.rdv .form-container .rue-container .error-input,
+.rdv .form-container .adresse-container .error-input,
 .rdv .form-container .ville-container .error-input,
 .rdv .form-container .date-container .error-input,
 .rdv .form-container .time-container .error-input {
@@ -1677,7 +1726,7 @@ header .header-text div .fa-solid {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px;
+  margin: 0 30px 30px 30px;
 }
 .rdv .form-container .submit-container input {
   color: #ffffff;
