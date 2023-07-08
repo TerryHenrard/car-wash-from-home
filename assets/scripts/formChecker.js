@@ -27,32 +27,23 @@ let abonnement = [];
 let option = [];
 
 let date = new Date();
-let jour = date.getDate().toString().padStart(2, "0");
-let mois = date.getMonth() + 1;
+let jour = date.getDate();
+let mois = (date.getMonth() + 1).toString().padStart(2, "0");
 let annee = date.getFullYear();
 let heures = date.getHours().toString().padStart(2, "0");
 let minutes = date.getMinutes().toString().padStart(2, "0");
 
+let dayDate =
+  annee.toString() + "-" + mois + "-" + jour.toString().padStart(2, "0");
+
 inputDate.value =
-  annee.toString().padStart(2, "0") +
-  "-" +
-  mois.toString().padStart(2, "0") +
-  "-" +
-  jour;
+  annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
 inputTime.value = heures + ":" + minutes;
 
 let dateMin =
-  (annee - 1).toString().padStart(2, "0") +
-  "-" +
-  mois.toString().padStart(2, "0") +
-  "-" +
-  jour;
+  annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
 let dateMax =
-  (annee + 1).toString().padStart(2, "0") +
-  "-" +
-  mois.toString().padStart(2, "0") +
-  "-" +
-  jour;
+  (annee + 1).toString() + "-" + mois + "-" + jour.toString().padStart(2, "0");
 
 inputDate.setAttribute("min", dateMin);
 inputDate.setAttribute("max", dateMax);
@@ -72,23 +63,6 @@ const errorDisplay = (tag, message, valid) => {
   } else {
     input.classList.remove("error-input");
     label.classList.remove("error-label");
-    inputErrorMessage.classList.remove("message-error");
-    inputErrorMessage.textContent = message;
-  }
-};
-
-const errorDisplayTextarea = (tag, message, valid) => {
-  const textarea = document.getElementById("message");
-  const inputErrorMessage = document.querySelector(
-    "." + "message-error-" + tag
-  );
-
-  if (!valid) {
-    textarea.classList.add("error-input");
-    inputErrorMessage.classList.add("message-error");
-    inputErrorMessage.textContent = message;
-  } else {
-    textarea.classList.remove("error-input");
     inputErrorMessage.classList.remove("message-error");
     inputErrorMessage.textContent = message;
   }
@@ -173,12 +147,22 @@ const cityChecker = (value) => {
   }
 };
 
+const timeChecker = (value) => {
+  if (value < "08:00" || value > "17:00") {
+    errorDisplay("time", "nous somme disponibles de 08:00 à 17:00");
+    hours = null;
+  } else {
+    errorDisplay("time", "", true);
+    hours = value;
+  }
+};
+
 const messageChecker = (value) => {
   if (value.length >= 250) {
-    errorDisplayTextarea("message", "250 caractères autorisés uniquement");
+    errorDisplay("message", "250 caractères autorisés uniquement");
     message = null;
   } else {
-    errorDisplayTextarea("message", "", true);
+    errorDisplay("message", "", true);
     message = value;
   }
 };
@@ -210,16 +194,6 @@ inputsText.forEach((input) => {
         null;
     }
   });
-});
-
-let inputDateClicked = false;
-inputDate.addEventListener("click", () => {
-  inputDateClicked = true;
-});
-
-let inputTimeClicked = false;
-inputTime.addEventListener("click", () => {
-  inputTimeClicked = true;
 });
 
 inputsCkb.forEach((input) => {
@@ -393,24 +367,22 @@ inputsCkb.forEach((input) => {
       default:
         null;
     }
+    console.log(formule);
+    console.log(abonnement);
+    console.log(option);
     spanPrice.textContent = price + "€";
     spanTime.textContent = time + "min";
   });
 });
 
+setInterval(() => {
+  timeChecker(inputTime.value);
+}, 500);
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (inputTimeClicked && inputDateClicked) {
-    errorDisplay("date", "", true);
-    errorDisplay("time", "", true);
-
-    dateAppointement = inputDate.value;
-    hours = inputTime.value;
-  } else {
-    dateAppointement = null;
-    hours = null;
-  }
+  dateAppointement = inputDate.value;
 
   if (
     lastName &&
@@ -439,6 +411,8 @@ form.addEventListener("submit", (e) => {
       message,
     };
 
+    console.log(data);
+
     validAnim.classList.add("valid-inscription-anim");
     setTimeout(() => {
       validAnim.classList.remove("valid-inscription-anim");
@@ -446,6 +420,9 @@ form.addEventListener("submit", (e) => {
 
     inputsText.forEach((input) => (input.value = ""));
     inputsCkb.forEach((input) => (input.checked = false));
+    formule = [];
+    abonnement = [];
+    option = [];
     inputDate.value = "";
     inputTime.value = "";
     spanPrice.textContent = "";
@@ -463,12 +440,8 @@ form.addEventListener("submit", (e) => {
       console.log(xhr.responseText);
     }
 
-    console.log(jsonData);
     xhr.send(jsonData);
   } else {
-    errorDisplay("date", "Veuillez sélectionner une date qui vous convient");
-    errorDisplay("time", "Veuillez sélectionner une heure qui vous convient");
-
     errorAnim.classList.add("error-inscription-anim");
     setTimeout(() => {
       errorAnim.classList.remove("error-inscription-anim");

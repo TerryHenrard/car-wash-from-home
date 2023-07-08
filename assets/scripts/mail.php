@@ -5,17 +5,17 @@ $jsonData = file_get_contents('php://input');
 $objet = json_decode($jsonData, false, 512, JSON_THROW_ON_ERROR);
 
 $formule = "";
-foreach ($objet->formule as $element){
+foreach ($objet->formule as $element) {
   $formule .= $element . " ";
 }
 
 $abonnement = "";
-foreach ($objet->abonnement as $element){
+foreach ($objet->abonnement as $element) {
   $abonnement .= $element . " ";
 }
 
 $option = "";
-foreach ($objet->option as $element){
+foreach ($objet->option as $element) {
   $option .= $element . " ";
 }
 
@@ -25,12 +25,12 @@ $body = "nom : " . $objet->lastName . "
 prenom : " . $objet->firstName . "
 email : " . $objet->email . "
 telephone : " . $objet->phoneNumber . "
-adresse : " . $objet->streetAndNumber . "
-code postal : " . $objet->postcode . "
+adresse : " . $objet->address . "
+ville : " . $objet->city . "
 formule : " . $formule . "
 abonnement : " . $abonnement . "
 option : " . $option . "
-date : " . $objet->date . "
+date : " . $objet->dateAppointement . "
 heure : " . $objet->hours . "
 prix : " . $objet->price . "euros
 temps : " . $objet->time . "min

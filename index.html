@@ -445,16 +445,17 @@
         <div class="date-container">
           <p>Date</p>
           <label for="date"></label>
-          <input type="date" id="date" name="date" required>
+          <input type="date" id="date" name="date">
           <p class="message-error-date"></p>
         </div>
         <div class="time-container">
           <p>Heure</p>
           <label for="time"></label>
-          <input type="time" id="time" min="08:00" max="18:00" name="time" required>
+          <input type="time" id="time" name="time">
           <p class="message-error-time"></p>
         </div>
         <div class="textarea-container">
+          <label for="message"></label>
           <textarea id="message" maxlength="250" spellcheck="true" placeholder="Message (facultatif)"
             name="message"></textarea>
           <p class="message-error-message"></p>
