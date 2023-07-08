@@ -37,5 +37,3 @@ temps : " . $objet->time . "min
 message : " . $objet->message;
 
 mail($to, $subject, $body, "Reply-to:" . $objet->email);
-
-header("Location: ../../index.html#rdv");

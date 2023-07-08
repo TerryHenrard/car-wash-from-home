@@ -30,15 +30,13 @@ let date = new Date();
 let jour = date.getDate();
 let mois = (date.getMonth() + 1).toString().padStart(2, "0");
 let annee = date.getFullYear();
-let heures = date.getHours().toString().padStart(2, "0");
-let minutes = date.getMinutes().toString().padStart(2, "0");
 
 let dayDate =
   annee.toString() + "-" + mois + "-" + jour.toString().padStart(2, "0");
 
 inputDate.value =
   annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
-inputTime.value = heures + ":" + minutes;
+inputTime.value = "08:00";
 
 let dateMin =
   annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
@@ -367,13 +365,22 @@ inputsCkb.forEach((input) => {
       default:
         null;
     }
-    console.log(formule);
-    console.log(abonnement);
-    console.log(option);
+
     spanPrice.textContent = price + "€";
     spanTime.textContent = time + "min";
   });
 });
+
+const changeDate = (value) => {
+  let part = value.split("-");
+  let year = part[0];
+  let month = part[1];
+  let day = part[2];
+
+  let dateInverse = day + "-" + month + "-" + year;
+
+  return dateInverse;
+};
 
 setInterval(() => {
   timeChecker(inputTime.value);
@@ -383,6 +390,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   dateAppointement = inputDate.value;
+  dateAppointement = changeDate(dateAppointement);
 
   if (
     lastName &&
@@ -411,8 +419,6 @@ form.addEventListener("submit", (e) => {
       message,
     };
 
-    console.log(data);
-
     validAnim.classList.add("valid-inscription-anim");
     setTimeout(() => {
       validAnim.classList.remove("valid-inscription-anim");
@@ -423,8 +429,11 @@ form.addEventListener("submit", (e) => {
     formule = [];
     abonnement = [];
     option = [];
-    inputDate.value = "";
-    inputTime.value = "";
+    inputDate.value =
+      annee.toString() + "-" + mois + "-" + jour.toString().padStart(2, "0");
+    inputTime.value = "08:00";
+    price = 0;
+    time = 0;
     spanPrice.textContent = "";
     spanTime.textContent = "";
 

@@ -959,6 +959,12 @@ header .header-text div .fa-solid {
     font-size: 1rem;
   }
 }
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .apropos ul,
+  .footer .footer-container .contact ul {
+    list-style: none;
+  }
+}
 .footer .footer-container .apropos ul > li,
 .footer .footer-container .contact ul > li {
   color: #ffffff;
@@ -971,6 +977,7 @@ header .header-text div .fa-solid {
   .footer .footer-container .apropos ul > li a,
   .footer .footer-container .contact ul > li a {
     font-size: 0.8rem;
+    list-style: none;
   }
 }
 .footer .footer-container .apropos ul > li a:visited,
@@ -1322,7 +1329,7 @@ header .header-text div .fa-solid {
   cursor: pointer;
 }
 .rdv .form-container .formule-container {
-  width: 350px;
+  width: 325px;
   margin: 0 auto 30px auto;
   display: flex;
   align-items: flex-start;
@@ -1338,9 +1345,12 @@ header .header-text div .fa-solid {
 .rdv .form-container .formule-container .formule-base-container {
   margin: 0 0 30px 0;
 }
-.rdv .form-container .formule-container .formule-base-container,
-.rdv .form-container .formule-container .formule-abonnement-container {
-  width: 100%;
+@media only screen and (max-width: 730px) {
+  .rdv .form-container .formule-container .formule-base-container,
+  .rdv .form-container .formule-container .formule-abonnement-container {
+    width: 100%;
+    flex-direction: column;
+  }
 }
 .rdv .form-container .formule-container .formule-base-container .title-formule-base p,
 .rdv .form-container .formule-container .formule-base-container .title-formule-abonnement p,
@@ -1566,6 +1576,7 @@ header .header-text div .fa-solid {
 }
 .rdv .form-container .options-container p {
   font-size: 18px;
+  margin: 0 0 10px 0;
 }
 @media only screen and (max-width: 500px) {
   .rdv .form-container .options-container p {

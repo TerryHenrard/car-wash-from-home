@@ -184,7 +184,7 @@
     }
 
     .formule-container {
-      width: 350px;
+      width: 325px;
       margin: 0 auto 30px auto;
       display: flex;
       align-items: flex-start;
@@ -202,8 +202,10 @@
 
       .formule-base-container,
       .formule-abonnement-container {
-        width: 100%;
-
+        @media only screen and (max-width: 730px) {
+          width: 100%;
+          flex-direction: column;
+        }
         .title-formule-base,
         .title-formule-abonnement {
           p {
@@ -315,6 +317,7 @@
 
       p {
         font-size: 18px;
+        margin: 0 0 10px 0;
 
         @media only screen and (max-width: 500px) {
           font-size: 1.1rem;

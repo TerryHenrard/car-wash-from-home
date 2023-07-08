@@ -19,6 +19,12 @@
         }
       }
 
+      ul {
+        @media only screen and (max-width: 550px) {
+          list-style: none;
+        }
+      }
+
       ul > li {
         color: #ffffff;
         a {
@@ -26,6 +32,7 @@
 
           @media only screen and (max-width: 550px) {
             font-size: 0.8rem;
+            list-style: none;
           }
 
           &:visited {
