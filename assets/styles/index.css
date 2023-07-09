@@ -56,7 +56,7 @@ header .active span:nth-child(3) {
 header #side-bar {
   position: fixed;
   width: 230px;
-  height: 100vh;
+  height: 100%;
   background-image: linear-gradient(to bottom, #ffecd2 0%, #ffa98c 100%);
   top: 0;
   left: -230px;
@@ -70,6 +70,12 @@ header #side-bar {
     display: inline;
   }
 }
+@media only screen and (max-width: 330px) {
+  header #side-bar {
+    width: 190px;
+    left: -190px;
+  }
+}
 header #side-bar .toggle-btn {
   position: absolute;
   top: 30px;
@@ -77,6 +83,11 @@ header #side-bar .toggle-btn {
   cursor: pointer;
   height: 50px;
   width: 50px;
+}
+@media only screen and (max-width: 330px) {
+  header #side-bar .toggle-btn {
+    left: 200px;
+  }
 }
 header #side-bar .toggle-btn span {
   width: 50px;
@@ -116,6 +127,11 @@ header #side-bar ul li a {
   align-items: center;
   justify-content: flex-start;
 }
+@media only screen and (max-width: 330px) {
+  header #side-bar ul li a {
+    font-size: 0.9rem;
+  }
+}
 header #side-bar ul li a:visited {
   color: #343a40;
 }
@@ -133,6 +149,11 @@ header #side-bar .side-bar-social-network i {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media only screen and (max-width: 330px) {
+  header #side-bar .side-bar-social-network i {
+    font-size: 0.9rem;
+  }
 }
 header .nav-anim {
   transform: translate(-50%, -50%);
@@ -309,7 +330,7 @@ header .header-text div h1 {
   font-size: 5rem;
   font-family: "parisienne";
   font-weight: 500;
-  text-shadow: 3px 0 3px #d90429;
+  filter: drop-shadow(3px 0 3px #d90429);
   transform: translateY(-40px);
   transition: 0.5s;
 }
@@ -327,7 +348,7 @@ header .header-text div h2 {
   font-size: 4rem;
   text-transform: uppercase;
   letter-spacing: 5px;
-  text-shadow: 5px -1px 0 #d90429;
+  filter: drop-shadow(3px 0 3px #d90429);
   transform: translateY(40px);
   transition: 0.3s;
 }
@@ -346,10 +367,10 @@ header .header-text div p {
   text-transform: uppercase;
   letter-spacing: 5px;
   font-weight: 100;
-  color: #d90429;
+  color: #ffffff;
   transform: translateX(40px);
   transition: 0.3s;
-  text-shadow: 2px 1px 1px #ffffff;
+  filter: drop-shadow(3px 0 3px #d90429);
 }
 @media only screen and (max-width: 550px) {
   header .header-text div p {
@@ -368,6 +389,7 @@ header .header-text div .fa-solid {
 }
 
 .tarif {
+  overflow-x: hidden;
   min-width: 1000px;
   background-color: #dcd9d4;
   background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
@@ -393,6 +415,12 @@ header .header-text div .fa-solid {
     grid-template-rows: 1fr 1fr;
   }
 }
+@media only screen and (max-width: 330px) {
+  .tarif .interieur,
+  .tarif .exterieur {
+    grid-template-columns: none;
+  }
+}
 .tarif .interieur h3,
 .tarif .exterieur h3 {
   text-transform: uppercase;
@@ -406,6 +434,12 @@ header .header-text div .fa-solid {
     font-size: 1.4rem;
   }
 }
+@media only screen and (max-width: 330px) {
+  .tarif .interieur h3,
+  .tarif .exterieur h3 {
+    font-size: 1.1rem;
+  }
+}
 .tarif .interieur p,
 .tarif .exterieur p {
   padding: 6.5px 0;
@@ -414,6 +448,12 @@ header .header-text div .fa-solid {
   .tarif .interieur p,
   .tarif .exterieur p {
     font-size: 1.1rem;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .tarif .interieur p,
+  .tarif .exterieur p {
+    font-size: 0.9rem;
   }
 }
 .tarif .interieur ul,
@@ -428,6 +468,12 @@ header .header-text div .fa-solid {
   .tarif .interieur ul > li,
   .tarif .exterieur ul > li {
     font-size: 1.1rem;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .tarif .interieur ul > li,
+  .tarif .exterieur ul > li {
+    font-size: 0.9rem;
   }
 }
 .tarif .interieur ul > li .cadeau,
@@ -446,6 +492,14 @@ header .header-text div .fa-solid {
   font-size: 1.4rem;
   font-weight: bolder;
 }
+@media only screen and (max-width: 330px) {
+  .tarif .interieur .tarif-title,
+  .tarif .interieur .option-title,
+  .tarif .exterieur .tarif-title,
+  .tarif .exterieur .option-title {
+    font-size: 1.1rem;
+  }
+}
 .tarif .interieur ul li a,
 .tarif .exterieur ul li a {
   cursor: pointer;
@@ -454,6 +508,12 @@ header .header-text div .fa-solid {
 .tarif .interieur ul li a i,
 .tarif .exterieur ul li a i {
   font-size: 1rem;
+}
+@media only screen and (max-width: 330px) {
+  .tarif .interieur ul li a i,
+  .tarif .exterieur ul li a i {
+    font-size: 0.9rem;
+  }
 }
 .tarif .interieur ul li a:visited,
 .tarif .exterieur ul li a:visited {
@@ -466,7 +526,13 @@ header .header-text div .fa-solid {
   transform: translateX(100px);
   opacity: 0;
   transition: 0.5s;
-  overflow: hidden;
+}
+@media only screen and (max-width: 330px) {
+  .tarif .interieur .left-ext {
+    margin: 5px;
+    border: none;
+    padding: 0;
+  }
 }
 .tarif .interieur .right-ext {
   display: grid;
@@ -543,6 +609,13 @@ header .header-text div .fa-solid {
     grid-area: texte;
   }
 }
+@media only screen and (max-width: 330px) {
+  .tarif .exterieur .right-int {
+    margin: 5px;
+    border: none;
+    padding: 0;
+  }
+}
 .tarif .exterieur .tarif-anim {
   opacity: 1;
   transform: translateX(0);
@@ -561,12 +634,10 @@ header .header-text div .fa-solid {
   min-width: 1000px;
   padding: 25px;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
   .abonnement {
     min-width: 0;
-    grid-template-columns: 50vw 50vw;
-    grid-template-rows: 33vh 33vh 33vh;
-    grid-template-areas: "abronze apremium" "asilver avip" "agold adiamant";
+    display: block;
   }
 }
 .abonnement h2 {
@@ -577,11 +648,11 @@ header .header-text div .fa-solid {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px 0 0 0;
+  margin: 10px 0;
 }
 @media only screen and (max-width: 1000px) {
   .abonnement h2 {
-    display: none;
+    font-size: 1.3rem;
   }
 }
 .abonnement .premium,
@@ -595,6 +666,17 @@ header .header-text div .fa-solid {
   justify-content: center;
   opacity: 0;
   margin: 20px;
+}
+@media only screen and (max-width: 1100px) {
+  .abonnement .premium,
+  .abonnement .vip,
+  .abonnement .diamant,
+  .abonnement .bronze,
+  .abonnement .silver,
+  .abonnement .gold {
+    display: inline-flex;
+    margin: 0 auto;
+  }
 }
 @media only screen and (max-width: 1300px) {
   .abonnement .premium,
@@ -623,7 +705,7 @@ header .header-text div .fa-solid {
   .abonnement .bronze,
   .abonnement .silver,
   .abonnement .gold {
-    transform: scale(0.6);
+    transform: scale(0.75);
   }
 }
 .abonnement .premium .abonnement-container,
@@ -824,9 +906,9 @@ header .header-text div .fa-solid {
   margin: 40px auto;
   text-align: justify;
 }
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 330px) {
   .ecologie .eco-container {
-    font-size: 0.8rem;
+    margin: 20px auto;
   }
 }
 .ecologie .eco-container h3 {
@@ -839,13 +921,29 @@ header .header-text div .fa-solid {
     font-size: 1.3rem;
   }
 }
+@media only screen and (max-width: 330px) {
+  .ecologie .eco-container h3 {
+    font-size: 1.1rem;
+    padding: 0 0 20px 0;
+  }
+}
 .ecologie .eco-container p {
   font-family: "poppins", serif;
   line-height: 30px;
 }
+@media only screen and (max-width: 330px) {
+  .ecologie .eco-container p {
+    font-size: 0.8rem;
+  }
+}
 .ecologie .eco-container p .lettrine {
   font-family: "poppins", sans-serif;
   font-size: 3rem;
+}
+@media only screen and (max-width: 330px) {
+  .ecologie .eco-container p .lettrine {
+    font-size: 2rem;
+  }
 }
 .ecologie .eco-container p span {
   font-weight: bolder;
@@ -855,6 +953,11 @@ header .header-text div .fa-solid {
 @media only screen and (max-width: 550px) {
   .ecologie .eco-container p span {
     font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .ecologie .eco-container p span {
+    font-size: 0.9rem;
   }
 }
 .ecologie .eco-container .eco-part1,
@@ -869,6 +972,11 @@ header .header-text div .fa-solid {
   background-blend-mode: screen;
   padding: 40px 0;
 }
+@media only screen and (max-width: 330px) {
+  .faq {
+    padding: 20px 0;
+  }
+}
 .faq .faq-container {
   width: 75vw;
   margin: 0 auto;
@@ -882,6 +990,7 @@ header .header-text div .fa-solid {
 @media only screen and (max-width: 550px) {
   .faq .faq-container .faq-title h3 {
     font-size: 1.3rem;
+    margin: 0 0 20px 0;
   }
 }
 .faq .faq-container .question1,
@@ -913,7 +1022,7 @@ header .header-text div .fa-solid {
   .faq .faq-container .question5 h5,
   .faq .faq-container .question6 h5,
   .faq .faq-container .question7 h5 {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 .faq .faq-container .question1 p,
@@ -946,6 +1055,19 @@ header .header-text div .fa-solid {
   padding: 30px 50px;
   display: flex;
   justify-content: space-around;
+}
+@media only screen and (max-width: 500px) {
+  .footer .footer-container {
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .footer .footer-container .apropos,
+  .footer .footer-container .contact {
+    margin: 10px;
+  }
 }
 .footer .footer-container .apropos h4,
 .footer .footer-container .contact h4 {
@@ -1028,6 +1150,11 @@ header .header-text div .fa-solid {
   font-size: 1.5rem;
   padding: 40px 0;
 }
+@media only screen and (max-width: 330px) {
+  .rdv h3 {
+    font-size: 1.3rem;
+  }
+}
 .rdv .form-container {
   width: 50vw;
   margin: 0 auto;
@@ -1044,6 +1171,11 @@ header .header-text div .fa-solid {
 @media only screen and (max-width: 1300px) {
   .rdv .form-container form {
     grid-template-columns: 1fr;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .rdv .form-container form {
+    display: inline;
   }
 }
 .rdv .form-container .date-container p,
@@ -1107,6 +1239,18 @@ header .header-text div .fa-solid {
   margin: 0 auto 30px auto;
   width: 300px;
   color: #999;
+}
+@media only screen and (max-width: 330px) {
+  .rdv .form-container .last-name-container,
+  .rdv .form-container .first-name-container,
+  .rdv .form-container .email-container,
+  .rdv .form-container .tel-container,
+  .rdv .form-container .adresse-container,
+  .rdv .form-container .ville-container,
+  .rdv .form-container .date-container,
+  .rdv .form-container .time-container {
+    width: 250px;
+  }
 }
 .rdv .form-container .last-name-container input,
 .rdv .form-container .first-name-container input,
@@ -1324,6 +1468,12 @@ header .header-text div .fa-solid {
 .rdv .form-container .time-container .error-input {
   color: red;
 }
+@media only screen and (max-width: 330px) {
+  .rdv .form-container .date-container,
+  .rdv .form-container .time-container {
+    width: 250px;
+  }
+}
 .rdv .form-container .date-container input,
 .rdv .form-container .time-container input {
   cursor: pointer;
@@ -1340,6 +1490,11 @@ header .header-text div .fa-solid {
   .rdv .form-container .formule-container {
     width: 300px;
     flex-direction: column;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .rdv .form-container .formule-container {
+    width: 250px;
   }
 }
 .rdv .form-container .formule-container .formule-base-container {
@@ -1574,6 +1729,11 @@ header .header-text div .fa-solid {
   width: 300px;
   margin: 0 auto 30px auto;
 }
+@media only screen and (max-width: 330px) {
+  .rdv .form-container .options-container {
+    width: 250px;
+  }
+}
 .rdv .form-container .options-container p {
   font-size: 18px;
   margin: 0 0 10px 0;
@@ -1585,7 +1745,8 @@ header .header-text div .fa-solid {
 }
 .rdv .form-container .options-container .polissage-container,
 .rdv .form-container .options-container .shampoing-siege-container,
-.rdv .form-container .options-container .shampoing-tapis-container {
+.rdv .form-container .options-container .shampoing-tapis-container,
+.rdv .form-container .options-container .nettoyage-bloc-moteur {
   text-align: left;
 }
 .rdv .form-container .options-container .polissage-container input:not(:checked),
@@ -1593,7 +1754,9 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-siege-container input:not(:checked),
 .rdv .form-container .options-container .shampoing-siege-container input:checked,
 .rdv .form-container .options-container .shampoing-tapis-container input:not(:checked),
-.rdv .form-container .options-container .shampoing-tapis-container input:checked {
+.rdv .form-container .options-container .shampoing-tapis-container input:checked,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:not(:checked),
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:checked {
   position: absolute;
   left: 0;
   opacity: 0.01;
@@ -1603,7 +1766,9 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-siege-container input:not(:checked) + label,
 .rdv .form-container .options-container .shampoing-siege-container input:checked + label,
 .rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label,
-.rdv .form-container .options-container .shampoing-tapis-container input:checked + label {
+.rdv .form-container .options-container .shampoing-tapis-container input:checked + label,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:not(:checked) + label,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:checked + label {
   position: relative;
   padding-left: 2.3em;
   font-size: 1.05em;
@@ -1616,7 +1781,9 @@ header .header-text div .fa-solid {
   .rdv .form-container .options-container .shampoing-siege-container input:not(:checked) + label,
   .rdv .form-container .options-container .shampoing-siege-container input:checked + label,
   .rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label,
-  .rdv .form-container .options-container .shampoing-tapis-container input:checked + label {
+  .rdv .form-container .options-container .shampoing-tapis-container input:checked + label,
+  .rdv .form-container .options-container .nettoyage-bloc-moteur input:not(:checked) + label,
+  .rdv .form-container .options-container .nettoyage-bloc-moteur input:checked + label {
     font-size: 0.9rem;
   }
 }
@@ -1625,7 +1792,9 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-siege-container input:not(:checked) + label:before,
 .rdv .form-container .options-container .shampoing-siege-container input:checked + label:before,
 .rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label:before,
-.rdv .form-container .options-container .shampoing-tapis-container input:checked + label:before {
+.rdv .form-container .options-container .shampoing-tapis-container input:checked + label:before,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:not(:checked) + label:before,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:checked + label:before {
   content: "";
   position: absolute;
   left: 0;
@@ -1643,7 +1812,9 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-siege-container input:not(:checked) + label:after,
 .rdv .form-container .options-container .shampoing-siege-container input:checked + label:after,
 .rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label:after,
-.rdv .form-container .options-container .shampoing-tapis-container input:checked + label:after {
+.rdv .form-container .options-container .shampoing-tapis-container input:checked + label:after,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:not(:checked) + label:after,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:checked + label:after {
   content: "✕";
   position: absolute;
   top: 0.55em;
@@ -1655,13 +1826,15 @@ header .header-text div .fa-solid {
 }
 .rdv .form-container .options-container .polissage-container input:not(:checked) + label:after,
 .rdv .form-container .options-container .shampoing-siege-container input:not(:checked) + label:after,
-.rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label:after {
+.rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label:after,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:not(:checked) + label:after {
   opacity: 0;
   transform: scale(0) rotate(45deg);
 }
 .rdv .form-container .options-container .polissage-container input:checked + label:after,
 .rdv .form-container .options-container .shampoing-siege-container input:checked + label:after,
-.rdv .form-container .options-container .shampoing-tapis-container input:checked + label:after {
+.rdv .form-container .options-container .shampoing-tapis-container input:checked + label:after,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:checked + label:after {
   opacity: 1;
   transform: scale(1) rotate(0);
 }
@@ -1670,19 +1843,23 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-siege-container input:disabled:not(:checked) + label:before,
 .rdv .form-container .options-container .shampoing-siege-container input:disabled:checked + label:before,
 .rdv .form-container .options-container .shampoing-tapis-container input:disabled:not(:checked) + label:before,
-.rdv .form-container .options-container .shampoing-tapis-container input:disabled:checked + label:before {
+.rdv .form-container .options-container .shampoing-tapis-container input:disabled:checked + label:before,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:disabled:not(:checked) + label:before,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:disabled:checked + label:before {
   box-shadow: none;
   border-color: #bbb;
   background-color: #e9e9e9;
 }
 .rdv .form-container .options-container .polissage-container input:disabled:checked + label:after,
 .rdv .form-container .options-container .shampoing-siege-container input:disabled:checked + label:after,
-.rdv .form-container .options-container .shampoing-tapis-container input:disabled:checked + label:after {
+.rdv .form-container .options-container .shampoing-tapis-container input:disabled:checked + label:after,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:disabled:checked + label:after {
   color: #777;
 }
 .rdv .form-container .options-container .polissage-container input:disabled + label,
 .rdv .form-container .options-container .shampoing-siege-container input:disabled + label,
-.rdv .form-container .options-container .shampoing-tapis-container input:disabled + label {
+.rdv .form-container .options-container .shampoing-tapis-container input:disabled + label,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:disabled + label {
   color: #aaa;
 }
 .rdv .form-container .options-container .polissage-container input:checked:focus + label:before,
@@ -1690,7 +1867,9 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-siege-container input:checked:focus + label:before,
 .rdv .form-container .options-container .shampoing-siege-container input:not(:checked):focus + label:before,
 .rdv .form-container .options-container .shampoing-tapis-container input:checked:focus + label:before,
-.rdv .form-container .options-container .shampoing-tapis-container input:not(:checked):focus + label:before {
+.rdv .form-container .options-container .shampoing-tapis-container input:not(:checked):focus + label:before,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:checked:focus + label:before,
+.rdv .form-container .options-container .nettoyage-bloc-moteur input:not(:checked):focus + label:before {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 6px rgba(97, 94, 255, 0.2);
 }
 .rdv .form-container .textarea-container {
@@ -1698,6 +1877,11 @@ header .header-text div .fa-solid {
   width: 300px;
   color: red;
   text-align: left;
+}
+@media only screen and (max-width: 330px) {
+  .rdv .form-container .textarea-container {
+    width: 250px;
+  }
 }
 .rdv .form-container .textarea-container textarea {
   font-size: 18px;

@@ -1,4 +1,5 @@
 .tarif {
+  overflow-x: hidden;
   min-width: 1000px;
   background-color: #dcd9d4;
   background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%),
@@ -26,6 +27,10 @@
       grid-template-rows: 1fr 1fr;
     }
 
+    @media only screen and (max-width: 330px) {
+      grid-template-columns: none;
+    }
+
     h3 {
       text-transform: uppercase;
       font-size: 1.6rem;
@@ -35,6 +40,10 @@
       @media only screen and (max-width: 550px) {
         font-size: 1.4rem;
       }
+
+      @media only screen and (max-width: 330px) {
+        font-size: 1.1rem;
+      }
     }
 
     p {
@@ -42,6 +51,10 @@
 
       @media only screen and (max-width: 550px) {
         font-size: 1.1rem;
+      }
+
+      @media only screen and (max-width: 330px) {
+        font-size: 0.9rem;
       }
     }
 
@@ -54,6 +67,10 @@
 
       @media only screen and (max-width: 550px) {
         font-size: 1.1rem;
+      }
+
+      @media only screen and (max-width: 330px) {
+        font-size: 0.9rem;
       }
 
       .cadeau {
@@ -69,6 +86,10 @@
     .option-title {
       font-size: 1.4rem;
       font-weight: bolder;
+
+      @media only screen and (max-width: 330px) {
+        font-size: 1.1rem;
+      }
     }
 
     ul {
@@ -78,6 +99,10 @@
           color: #000000;
           i {
             font-size: 1rem;
+
+            @media only screen and (max-width: 330px) {
+              font-size: 0.9rem;
+            }
           }
 
           &:visited {
@@ -96,7 +121,12 @@
       transform: translateX(100px);
       opacity: 0;
       transition: 0.5s;
-      overflow: hidden;
+
+      @media only screen and (max-width: 330px) {
+        margin: 5px;
+        border: none;
+        padding: 0;
+      }
     }
 
     .right-ext {
@@ -184,6 +214,12 @@
 
       @media only screen and (max-width: 1000px) {
         grid-area: texte;
+      }
+
+      @media only screen and (max-width: 330px) {
+        margin: 5px;
+        border: none;
+        padding: 0;
       }
     }
 

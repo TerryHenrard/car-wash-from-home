@@ -5,6 +5,10 @@
     font-family: "montserrat", serif;
     font-size: 1.5rem;
     padding: 40px 0;
+
+    @media only screen and (max-width: 330px) {
+      font-size: 1.3rem;
+    }
   }
 
   .form-container {
@@ -21,6 +25,10 @@
 
       @media only screen and (max-width: 1300px) {
         grid-template-columns: 1fr;
+      }
+
+      @media only screen and (max-width: 330px) {
+        display: inline;
       }
     }
 
@@ -80,6 +88,10 @@
       margin: 0 auto 30px auto;
       width: 300px;
       color: #999;
+
+      @media only screen and (max-width: 330px) {
+        width: 250px;
+      }
 
       input {
         font-size: 18px;
@@ -178,6 +190,9 @@
 
     .date-container,
     .time-container {
+      @media only screen and (max-width: 330px) {
+        width: 250px;
+      }
       input {
         cursor: pointer;
       }
@@ -194,6 +209,10 @@
       @media only screen and (max-width: 730px) {
         width: 300px;
         flex-direction: column;
+      }
+
+      @media only screen and (max-width: 330px) {
+        width: 250px;
       }
 
       .formule-base-container {
@@ -315,6 +334,10 @@
       width: 300px;
       margin: 0 auto 30px auto;
 
+      @media only screen and (max-width: 330px) {
+        width: 250px;
+      }
+
       p {
         font-size: 18px;
         margin: 0 0 10px 0;
@@ -326,7 +349,8 @@
 
       .polissage-container,
       .shampoing-siege-container,
-      .shampoing-tapis-container {
+      .shampoing-tapis-container,
+      .nettoyage-bloc-moteur {
         text-align: left;
 
         input:not(:checked),
@@ -418,6 +442,10 @@
       width: 300px;
       color: red;
       text-align: left;
+
+      @media only screen and (max-width: 330px) {
+        width: 250px;
+      }
 
       textarea {
         font-size: 18px;

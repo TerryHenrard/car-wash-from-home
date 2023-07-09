@@ -46,7 +46,7 @@ let dateMax =
 inputDate.setAttribute("min", dateMin);
 inputDate.setAttribute("max", dateMax);
 
-const errorDisplay = (tag, message, valid) => {
+function errorDisplay(tag, message, valid) {
   const input = document.getElementById(tag);
   const label = document.querySelector("label[for='" + tag + "']");
   const inputErrorMessage = document.querySelector(
@@ -64,7 +64,7 @@ const errorDisplay = (tag, message, valid) => {
     inputErrorMessage.classList.remove("message-error");
     inputErrorMessage.textContent = message;
   }
-};
+}
 
 const lastNameChecker = (value) => {
   if (value.length > 47) {
@@ -142,6 +142,24 @@ const cityChecker = (value) => {
   } else {
     errorDisplay("ville", "", true);
     city = value;
+  }
+};
+
+const dateChecher = (value) => {
+  if (value < dateMin) {
+    errorDisplay(
+      "date",
+      "Veuillez sélectionner une date supérieur au " +
+        (jour + 1).toString().padStart(2, "0") +
+        "-" +
+        mois +
+        "-" +
+        annee.toString()
+    );
+    date = null;
+  } else {
+    errorDisplay("date", "", true);
+    date = value;
   }
 };
 
@@ -362,6 +380,21 @@ inputsCkb.forEach((input) => {
           }
         }
         break;
+      case "nettoyage-bloc-moteur":
+        if (e.target.checked) {
+          price += 20;
+          time += 20;
+          option;
+        } else {
+          price -= 20;
+          time -= 20;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
       default:
         null;
     }
@@ -383,6 +416,7 @@ const changeDate = (value) => {
 };
 
 setInterval(() => {
+  dateChecher(inputDate.value);
   timeChecker(inputTime.value);
 }, 500);
 
@@ -430,7 +464,11 @@ form.addEventListener("submit", (e) => {
     abonnement = [];
     option = [];
     inputDate.value =
-      annee.toString() + "-" + mois + "-" + jour.toString().padStart(2, "0");
+      annee.toString() +
+      "-" +
+      mois +
+      "-" +
+      (jour + 2).toString().padStart(2, "0");
     inputTime.value = "08:00";
     price = 0;
     time = 0;

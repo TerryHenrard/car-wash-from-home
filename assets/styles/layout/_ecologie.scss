@@ -13,8 +13,8 @@
     margin: 40px auto;
     text-align: justify;
 
-    @media only screen and (max-width: 550px) {
-      font-size: 0.8rem;
+    @media only screen and (max-width: 330px) {
+      margin: 20px auto;
     }
 
     h3 {
@@ -25,15 +25,28 @@
       @media only screen and (max-width: 550px) {
         font-size: 1.3rem;
       }
+
+      @media only screen and (max-width: 330px) {
+        font-size: 1.1rem;
+        padding: 0 0 20px 0;
+      }
     }
 
     p {
       font-family: "poppins", serif;
       line-height: 30px;
 
+      @media only screen and (max-width: 330px) {
+        font-size: 0.8rem;
+      }
+
       .lettrine {
         font-family: "poppins", sans-serif;
         font-size: 3rem;
+
+        @media only screen and (max-width: 330px) {
+          font-size: 2rem;
+        }
       }
 
       span {
@@ -43,6 +56,10 @@
 
         @media only screen and (max-width: 550px) {
           font-size: 1rem;
+        }
+
+        @media only screen and (max-width: 330px) {
+          font-size: 0.9rem;
         }
       }
     }

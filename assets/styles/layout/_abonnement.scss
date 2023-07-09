@@ -19,14 +19,9 @@
   min-width: 1000px;
   padding: 25px;
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1100px) {
     min-width: 0;
-    grid-template-columns: 50vw 50vw;
-    grid-template-rows: 33vh 33vh 33vh;
-    grid-template-areas:
-      "abronze apremium"
-      "asilver avip"
-      "agold adiamant";
+    display: block;
   }
 
   h2 {
@@ -37,10 +32,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10px 0 0 0;
+    margin: 10px 0;
 
     @media only screen and (max-width: 1000px) {
-      display: none;
+      font-size: 1.3rem;
     }
   }
 
@@ -56,6 +51,11 @@
     opacity: 0;
     margin: 20px;
 
+    @media only screen and (max-width: 1100px) {
+      display: inline-flex;
+      margin: 0 auto;
+    }
+
     @media only screen and (max-width: 1300px) {
       transform: scale(0.9);
     }
@@ -65,7 +65,7 @@
     }
 
     @media only screen and (max-width: 450px) {
-      transform: scale(0.6);
+      transform: scale(0.75);
     }
 
     .abonnement-container {
