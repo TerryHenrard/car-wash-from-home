@@ -529,7 +529,7 @@ header .header-text div .fa-solid {
 }
 @media only screen and (max-width: 330px) {
   .tarif .interieur .left-ext {
-    margin: 5px;
+    margin: 10px 0 10px 20px;
     border: none;
     padding: 0;
   }
@@ -611,7 +611,7 @@ header .header-text div .fa-solid {
 }
 @media only screen and (max-width: 330px) {
   .tarif .exterieur .right-int {
-    margin: 5px;
+    margin: 10px 0 10px 20px;
     border: none;
     padding: 0;
   }
@@ -999,8 +999,8 @@ header .header-text div .fa-solid {
 .faq .faq-container .question4,
 .faq .faq-container .question5,
 .faq .faq-container .question6,
-.faq .faq-container .question7 {
-  opacity: 0;
+.faq .faq-container .question7,
+.faq .faq-container .question8 {
   transition: 0.3s;
 }
 .faq .faq-container .question1 h5,
@@ -1009,10 +1009,32 @@ header .header-text div .fa-solid {
 .faq .faq-container .question4 h5,
 .faq .faq-container .question5 h5,
 .faq .faq-container .question6 h5,
-.faq .faq-container .question7 h5 {
+.faq .faq-container .question7 h5,
+.faq .faq-container .question8 h5 {
   font-family: "montserrat", serif;
   font-size: 1.2rem;
   margin: 5px 0;
+  cursor: pointer;
+}
+.faq .faq-container .question1 h5 i,
+.faq .faq-container .question2 h5 i,
+.faq .faq-container .question3 h5 i,
+.faq .faq-container .question4 h5 i,
+.faq .faq-container .question5 h5 i,
+.faq .faq-container .question6 h5 i,
+.faq .faq-container .question7 h5 i,
+.faq .faq-container .question8 h5 i {
+  transition: 0.3s;
+}
+.faq .faq-container .question1 h5 .arrowUp,
+.faq .faq-container .question2 h5 .arrowUp,
+.faq .faq-container .question3 h5 .arrowUp,
+.faq .faq-container .question4 h5 .arrowUp,
+.faq .faq-container .question5 h5 .arrowUp,
+.faq .faq-container .question6 h5 .arrowUp,
+.faq .faq-container .question7 h5 .arrowUp,
+.faq .faq-container .question8 h5 .arrowUp {
+  transform: rotate(180deg);
 }
 @media only screen and (max-width: 550px) {
   .faq .faq-container .question1 h5,
@@ -1021,7 +1043,8 @@ header .header-text div .fa-solid {
   .faq .faq-container .question4 h5,
   .faq .faq-container .question5 h5,
   .faq .faq-container .question6 h5,
-  .faq .faq-container .question7 h5 {
+  .faq .faq-container .question7 h5,
+  .faq .faq-container .question8 h5 {
     font-size: 1.1rem;
   }
 }
@@ -1031,9 +1054,11 @@ header .header-text div .fa-solid {
 .faq .faq-container .question4 p,
 .faq .faq-container .question5 p,
 .faq .faq-container .question6 p,
-.faq .faq-container .question7 p {
+.faq .faq-container .question7 p,
+.faq .faq-container .question8 p {
   font-family: "poppins", serif;
   line-height: 30px;
+  display: none;
 }
 @media only screen and (max-width: 550px) {
   .faq .faq-container .question1 p,
@@ -1042,8 +1067,30 @@ header .header-text div .fa-solid {
   .faq .faq-container .question4 p,
   .faq .faq-container .question5 p,
   .faq .faq-container .question6 p,
-  .faq .faq-container .question7 p {
+  .faq .faq-container .question7 p,
+  .faq .faq-container .question8 p {
     font-size: 0.8rem;
+  }
+}
+.faq .faq-container .question1 .revealAnswer,
+.faq .faq-container .question2 .revealAnswer,
+.faq .faq-container .question3 .revealAnswer,
+.faq .faq-container .question4 .revealAnswer,
+.faq .faq-container .question5 .revealAnswer,
+.faq .faq-container .question6 .revealAnswer,
+.faq .faq-container .question7 .revealAnswer,
+.faq .faq-container .question8 .revealAnswer {
+  display: block;
+  animation: revealAnswer ease-in 0.2s forwards;
+}
+@keyframes revealAnswer {
+  from {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

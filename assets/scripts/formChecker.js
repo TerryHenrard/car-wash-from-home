@@ -111,7 +111,7 @@ const emailChecker = (value) => {
 const phoneNumberChecker = (value) => {
   if (
     !value.match(
-      /^(((\+|00)32[ ]?(?:\(0\)[ ]?)?)|0){1}(4(60|[789]\d)\/?(\s?\d{2}\.?){2}(\s?\d{2})|(\d\/?\s?\d{3}|\d{2}\/?\s?\d{2})(\.?\s?\d{2}){2})$/
+      /^(((\+|00)32[ ]?(?:\(0\)[ ]?)?)|0){1}(4(60|[6789]\d)\/?(\s?\d{2}\.?){2}(\s?\d{2})|(\d\/?\s?\d{3}|\d{2}\/?\s?\d{2})(\.?\s?\d{2}){2})$/
     )
   ) {
     errorDisplay(
@@ -367,11 +367,11 @@ inputsCkb.forEach((input) => {
       case "shampoing-tapis":
         if (e.target.checked) {
           price += 30;
-          time += 10;
+          time += 15;
           option.push(e.target.value);
         } else {
           price -= 30;
-          time -= 10;
+          time -= 15;
 
           index = option.indexOf(e.target.value);
 
@@ -384,7 +384,7 @@ inputsCkb.forEach((input) => {
         if (e.target.checked) {
           price += 20;
           time += 20;
-          option;
+          option.push(e.target.value);
         } else {
           price -= 20;
           time -= 20;

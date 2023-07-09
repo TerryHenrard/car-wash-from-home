@@ -35,14 +35,22 @@
     .question4,
     .question5,
     .question6,
-    .question7 {
-      opacity: 0;
+    .question7,
+    .question8 {
       transition: 0.3s;
 
       h5 {
         font-family: "montserrat", serif;
         font-size: 1.2rem;
         margin: 5px 0;
+        cursor: pointer;
+
+        i {
+          transition: 0.3s;
+        }
+        .arrowUp {
+          transform: rotate(180deg);
+        }
 
         @media only screen and (max-width: 550px) {
           font-size: 1.1rem;
@@ -51,9 +59,26 @@
       p {
         font-family: "poppins", serif;
         line-height: 30px;
+        display: none;
 
         @media only screen and (max-width: 550px) {
           font-size: 0.8rem;
+        }
+      }
+
+      .revealAnswer {
+        display: block;
+        animation: revealAnswer ease-in 0.2s forwards;
+
+        @keyframes revealAnswer {
+          from {
+            opacity: 0;
+            transform: translateY(-70px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
       }
     }

@@ -15,16 +15,28 @@ const diamant = document.querySelector(".diamant");
 const ecoP1 = document.querySelector(".eco-part1");
 const ecoP2 = document.querySelector(".eco-part2");
 const ecoP3 = document.querySelector(".eco-part3");
-const question1 = document.querySelector(".question1");
-const question2 = document.querySelector(".question2");
-const question3 = document.querySelector(".question3");
-const question4 = document.querySelector(".question4");
-const question5 = document.querySelector(".question5");
-const question6 = document.querySelector(".question6");
-const question7 = document.querySelector(".question7");
+const arrowQ1 = document.querySelector(".question1 > h5 > i");
+const arrowQ2 = document.querySelector(".question2 > h5 > i");
+const arrowQ3 = document.querySelector(".question3 > h5 > i");
+const arrowQ4 = document.querySelector(".question4 > h5 > i");
+const arrowQ5 = document.querySelector(".question5 > h5 > i");
+const arrowQ6 = document.querySelector(".question6 > h5 > i");
+const arrowQ7 = document.querySelector(".question7 > h5 > i");
+const arrowQ8 = document.querySelector(".question8 > h5 > i");
+const question1 = document.querySelector(".question1 > p");
+const question2 = document.querySelector(".question2 > p");
+const question3 = document.querySelector(".question3 > p");
+const question4 = document.querySelector(".question4 > p");
+const question5 = document.querySelector(".question5 > p");
+const question6 = document.querySelector(".question6 > p");
+const question7 = document.querySelector(".question7 > p");
+const question8 = document.querySelector(".question8 > p");
 const sidebar = document.getElementById("side-bar");
 const btn = document.getElementById("btn");
 const navbar = document.getElementById("navbar");
+const faqTitles = document.querySelectorAll(".q > h5");
+
+const faqArrow = document.querySelectorAll(".q > h5 > i");
 
 btn.addEventListener("click", () => {
   sidebar.classList.toggle("active");
@@ -110,49 +122,6 @@ let ecologieAnimations = () => {
   }
 };
 
-let faqAnimations = () => {
-  if (scrollY > 2370) {
-    question1.style.opacity = "1";
-  } else {
-    question1.style.opacity = "0";
-  }
-
-  if (scrollY > 2500) {
-    question2.style.opacity = "1";
-  } else {
-    question2.style.opacity = "0";
-  }
-
-  if (scrollY > 2680) {
-    question3.style.opacity = "1";
-  } else {
-    question3.style.opacity = "0";
-  }
-
-  if (scrollY > 2790) {
-    question4.style.opacity = "1";
-  } else {
-    question4.style.opacity = "0";
-  }
-
-  if (scrollY > 2910) {
-    question5.style.opacity = "1";
-  } else {
-    question5.style.opacity = "0";
-  }
-
-  if (scrollY > 3050) {
-    question6.style.opacity = "1";
-  } else {
-    question6.style.opacity = "0";
-  }
-  if (scrollY > 3200) {
-    question7.style.opacity = "1";
-  } else {
-    question7.style.opacity = "0";
-  }
-};
-
 let loadAnimations = () => {
   body.style.opacity = "1";
   h1MainTitle.classList.add("h1-anim");
@@ -161,11 +130,51 @@ let loadAnimations = () => {
   navbar.classList.add("nav-anim");
 };
 
+faqTitles.forEach((answer) => {
+  answer.addEventListener("click", (e) => {
+    switch (e.target.id) {
+      case "q1":
+        question1.classList.toggle("revealAnswer");
+        arrowQ1.classList.toggle("arrowUp");
+        break;
+      case "q2":
+        question2.classList.toggle("revealAnswer");
+        arrowQ2.classList.toggle("arrowUp");
+        break;
+      case "q3":
+        question3.classList.toggle("revealAnswer");
+        arrowQ3.classList.toggle("arrowUp");
+        break;
+      case "q4":
+        question4.classList.toggle("revealAnswer");
+        arrowQ4.classList.toggle("arrowUp");
+        break;
+      case "q5":
+        question5.classList.toggle("revealAnswer");
+        arrowQ5.classList.toggle("arrowUp");
+        break;
+      case "q6":
+        question6.classList.toggle("revealAnswer");
+        arrowQ6.classList.toggle("arrowUp");
+        break;
+      case "q7":
+        question7.classList.toggle("revealAnswer");
+        arrowQ7.classList.toggle("arrowUp");
+        break;
+      case "q8":
+        question8.classList.toggle("revealAnswer");
+        arrowQ8.classList.toggle("arrowUp");
+        break;
+      default:
+        break;
+    }
+  });
+});
+
 window.addEventListener("scroll", () => {
   tarifAnimations();
   abonnementAnimations();
   ecologieAnimations();
-  faqAnimations();
   navbarAnimation();
 });
 
