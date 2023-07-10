@@ -980,7 +980,6 @@ header .header-text div .fa-solid {
 .faq .faq-container {
   width: 75vw;
   margin: 0 auto;
-  text-align: justify;
 }
 .faq .faq-container .faq-title h3 {
   font-family: "montserrat", serif;
@@ -1002,6 +1001,11 @@ header .header-text div .fa-solid {
 .faq .faq-container .question7,
 .faq .faq-container .question8 {
   transition: 0.3s;
+  padding: 20px 30px;
+  margin: 10px 0;
+  background: rgba(150, 150, 150, 0.1764705882);
+  border-radius: 5px;
+  cursor: pointer;
 }
 .faq .faq-container .question1 h5,
 .faq .faq-container .question2 h5,
@@ -1014,7 +1018,9 @@ header .header-text div .fa-solid {
   font-family: "montserrat", serif;
   font-size: 1.2rem;
   margin: 5px 0;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .faq .faq-container .question1 h5 i,
 .faq .faq-container .question2 h5 i,
@@ -1045,7 +1051,7 @@ header .header-text div .fa-solid {
   .faq .faq-container .question6 h5,
   .faq .faq-container .question7 h5,
   .faq .faq-container .question8 h5 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 .faq .faq-container .question1 p,
@@ -1058,6 +1064,7 @@ header .header-text div .fa-solid {
 .faq .faq-container .question8 p {
   font-family: "poppins", serif;
   line-height: 30px;
+  text-align: justify;
   display: none;
 }
 @media only screen and (max-width: 550px) {

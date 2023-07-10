@@ -34,9 +34,9 @@ const question8 = document.querySelector(".question8 > p");
 const sidebar = document.getElementById("side-bar");
 const btn = document.getElementById("btn");
 const navbar = document.getElementById("navbar");
+const faqContainers = document.querySelectorAll(".q");
 const faqTitles = document.querySelectorAll(".q > h5");
-
-const faqArrow = document.querySelectorAll(".q > h5 > i");
+const faqparagraphs = document.querySelectorAll(".q > p");
 
 btn.addEventListener("click", () => {
   sidebar.classList.toggle("active");
@@ -130,8 +130,90 @@ let loadAnimations = () => {
   navbar.classList.add("nav-anim");
 };
 
-faqTitles.forEach((answer) => {
-  answer.addEventListener("click", (e) => {
+faqTitles.forEach((title) => {
+  title.addEventListener("click", (e) => {
+    switch (e.target.id) {
+      case "q1h5":
+        question1.classList.toggle("revealAnswer");
+        arrowQ1.classList.toggle("arrowUp");
+        break;
+      case "q2h5":
+        question2.classList.toggle("revealAnswer");
+        arrowQ2.classList.toggle("arrowUp");
+        break;
+      case "q3h5":
+        question3.classList.toggle("revealAnswer");
+        arrowQ3.classList.toggle("arrowUp");
+        break;
+      case "q4h5":
+        question4.classList.toggle("revealAnswer");
+        arrowQ4.classList.toggle("arrowUp");
+        break;
+      case "q5h5":
+        question5.classList.toggle("revealAnswer");
+        arrowQ5.classList.toggle("arrowUp");
+        break;
+      case "q6h5":
+        question6.classList.toggle("revealAnswer");
+        arrowQ6.classList.toggle("arrowUp");
+        break;
+      case "q7h5":
+        question7.classList.toggle("revealAnswer");
+        arrowQ7.classList.toggle("arrowUp");
+        break;
+      case "q8h5":
+        question8.classList.toggle("revealAnswer");
+        arrowQ8.classList.toggle("arrowUp");
+        break;
+      default:
+        break;
+    }
+  });
+});
+
+faqparagraphs.forEach((paragraph) => {
+  paragraph.addEventListener("click", (e) => {
+    switch (e.target.id) {
+      case "q1p":
+        question1.classList.toggle("revealAnswer");
+        arrowQ1.classList.toggle("arrowUp");
+        break;
+      case "q2p":
+        question2.classList.toggle("revealAnswer");
+        arrowQ2.classList.toggle("arrowUp");
+        break;
+      case "q3p":
+        question3.classList.toggle("revealAnswer");
+        arrowQ3.classList.toggle("arrowUp");
+        break;
+      case "q4p":
+        question4.classList.toggle("revealAnswer");
+        arrowQ4.classList.toggle("arrowUp");
+        break;
+      case "q5p":
+        question5.classList.toggle("revealAnswer");
+        arrowQ5.classList.toggle("arrowUp");
+        break;
+      case "q6p":
+        question6.classList.toggle("revealAnswer");
+        arrowQ6.classList.toggle("arrowUp");
+        break;
+      case "q7p":
+        question7.classList.toggle("revealAnswer");
+        arrowQ7.classList.toggle("arrowUp");
+        break;
+      case "q8p":
+        question8.classList.toggle("revealAnswer");
+        arrowQ8.classList.toggle("arrowUp");
+        break;
+      default:
+        break;
+    }
+  });
+});
+
+faqContainers.forEach((container) => {
+  container.addEventListener("click", (e) => {
     switch (e.target.id) {
       case "q1":
         question1.classList.toggle("revealAnswer");

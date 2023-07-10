@@ -14,7 +14,6 @@
   .faq-container {
     width: 75vw;
     margin: 0 auto;
-    text-align: justify;
 
     .faq-title {
       h3 {
@@ -38,12 +37,19 @@
     .question7,
     .question8 {
       transition: 0.3s;
+      padding: 20px 30px;
+      margin: 10px 0;
+      background: #9696962d;
+      border-radius: 5px;
+      cursor: pointer;
 
       h5 {
         font-family: "montserrat", serif;
         font-size: 1.2rem;
         margin: 5px 0;
-        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
         i {
           transition: 0.3s;
@@ -53,12 +59,13 @@
         }
 
         @media only screen and (max-width: 550px) {
-          font-size: 1.1rem;
+          font-size: 1rem;
         }
       }
       p {
         font-family: "poppins", serif;
         line-height: 30px;
+        text-align: justify;
         display: none;
 
         @media only screen and (max-width: 550px) {
