@@ -527,6 +527,13 @@ header .header-text div .fa-solid {
   opacity: 0;
   transition: 0.5s;
 }
+.tarif .interieur .left-ext ul li .bold {
+  font-weight: bold;
+}
+.tarif .interieur .left-ext p .start-price {
+  font-weight: bolder;
+  text-decoration: underline;
+}
 @media only screen and (max-width: 330px) {
   .tarif .interieur .left-ext {
     margin: 10px 0 10px 20px;
@@ -603,6 +610,13 @@ header .header-text div .fa-solid {
   transform: translateX(-100px);
   opacity: 0;
   transition: 0.5s;
+}
+.tarif .exterieur .right-int ul li .bold {
+  font-weight: bold;
+}
+.tarif .exterieur .right-int p .start-price {
+  font-weight: bolder;
+  text-decoration: underline;
 }
 @media only screen and (max-width: 1000px) {
   .tarif .exterieur .right-int {
@@ -1806,7 +1820,7 @@ header .header-text div .fa-solid {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 6px rgba(97, 94, 255, 0.2);
 }
 .rdv .form-container .options-container {
-  width: 300px;
+  width: 325px;
   margin: 0 auto 30px auto;
 }
 @media only screen and (max-width: 330px) {
@@ -1828,7 +1842,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-tapis-container,
 .rdv .form-container .options-container .nettoyage-bloc-moteur,
 .rdv .form-container .options-container .protection-ceramique-container,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container,
 .rdv .form-container .options-container .protection-plastiques-container,
 .rdv .form-container .options-container .impermeabilisant-textiles-container {
   text-align: left;
@@ -1843,8 +1857,8 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .nettoyage-bloc-moteur input:checked,
 .rdv .form-container .options-container .protection-ceramique-container input:not(:checked),
 .rdv .form-container .options-container .protection-ceramique-container input:checked,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:not(:checked),
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:checked,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:not(:checked),
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:checked,
 .rdv .form-container .options-container .protection-plastiques-container input:not(:checked),
 .rdv .form-container .options-container .protection-plastiques-container input:checked,
 .rdv .form-container .options-container .impermeabilisant-textiles-container input:not(:checked),
@@ -1863,8 +1877,8 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .nettoyage-bloc-moteur input:checked + label,
 .rdv .form-container .options-container .protection-ceramique-container input:not(:checked) + label,
 .rdv .form-container .options-container .protection-ceramique-container input:checked + label,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:not(:checked) + label,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:checked + label,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:not(:checked) + label,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:checked + label,
 .rdv .form-container .options-container .protection-plastiques-container input:not(:checked) + label,
 .rdv .form-container .options-container .protection-plastiques-container input:checked + label,
 .rdv .form-container .options-container .impermeabilisant-textiles-container input:not(:checked) + label,
@@ -1886,8 +1900,8 @@ header .header-text div .fa-solid {
   .rdv .form-container .options-container .nettoyage-bloc-moteur input:checked + label,
   .rdv .form-container .options-container .protection-ceramique-container input:not(:checked) + label,
   .rdv .form-container .options-container .protection-ceramique-container input:checked + label,
-  .rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:not(:checked) + label,
-  .rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:checked + label,
+  .rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:not(:checked) + label,
+  .rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:checked + label,
   .rdv .form-container .options-container .protection-plastiques-container input:not(:checked) + label,
   .rdv .form-container .options-container .protection-plastiques-container input:checked + label,
   .rdv .form-container .options-container .impermeabilisant-textiles-container input:not(:checked) + label,
@@ -1905,8 +1919,8 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .nettoyage-bloc-moteur input:checked + label:before,
 .rdv .form-container .options-container .protection-ceramique-container input:not(:checked) + label:before,
 .rdv .form-container .options-container .protection-ceramique-container input:checked + label:before,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:not(:checked) + label:before,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:checked + label:before,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:not(:checked) + label:before,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:checked + label:before,
 .rdv .form-container .options-container .protection-plastiques-container input:not(:checked) + label:before,
 .rdv .form-container .options-container .protection-plastiques-container input:checked + label:before,
 .rdv .form-container .options-container .impermeabilisant-textiles-container input:not(:checked) + label:before,
@@ -1933,8 +1947,8 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .nettoyage-bloc-moteur input:checked + label:after,
 .rdv .form-container .options-container .protection-ceramique-container input:not(:checked) + label:after,
 .rdv .form-container .options-container .protection-ceramique-container input:checked + label:after,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:not(:checked) + label:after,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:checked + label:after,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:not(:checked) + label:after,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:checked + label:after,
 .rdv .form-container .options-container .protection-plastiques-container input:not(:checked) + label:after,
 .rdv .form-container .options-container .protection-plastiques-container input:checked + label:after,
 .rdv .form-container .options-container .impermeabilisant-textiles-container input:not(:checked) + label:after,
@@ -1953,7 +1967,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-tapis-container input:not(:checked) + label:after,
 .rdv .form-container .options-container .nettoyage-bloc-moteur input:not(:checked) + label:after,
 .rdv .form-container .options-container .protection-ceramique-container input:not(:checked) + label:after,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:not(:checked) + label:after,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:not(:checked) + label:after,
 .rdv .form-container .options-container .protection-plastiques-container input:not(:checked) + label:after,
 .rdv .form-container .options-container .impermeabilisant-textiles-container input:not(:checked) + label:after {
   opacity: 0;
@@ -1964,7 +1978,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-tapis-container input:checked + label:after,
 .rdv .form-container .options-container .nettoyage-bloc-moteur input:checked + label:after,
 .rdv .form-container .options-container .protection-ceramique-container input:checked + label:after,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:checked + label:after,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:checked + label:after,
 .rdv .form-container .options-container .protection-plastiques-container input:checked + label:after,
 .rdv .form-container .options-container .impermeabilisant-textiles-container input:checked + label:after {
   opacity: 1;
@@ -1980,8 +1994,8 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .nettoyage-bloc-moteur input:disabled:checked + label:before,
 .rdv .form-container .options-container .protection-ceramique-container input:disabled:not(:checked) + label:before,
 .rdv .form-container .options-container .protection-ceramique-container input:disabled:checked + label:before,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:disabled:not(:checked) + label:before,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:disabled:checked + label:before,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:disabled:not(:checked) + label:before,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:disabled:checked + label:before,
 .rdv .form-container .options-container .protection-plastiques-container input:disabled:not(:checked) + label:before,
 .rdv .form-container .options-container .protection-plastiques-container input:disabled:checked + label:before,
 .rdv .form-container .options-container .impermeabilisant-textiles-container input:disabled:not(:checked) + label:before,
@@ -1995,7 +2009,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-tapis-container input:disabled:checked + label:after,
 .rdv .form-container .options-container .nettoyage-bloc-moteur input:disabled:checked + label:after,
 .rdv .form-container .options-container .protection-ceramique-container input:disabled:checked + label:after,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:disabled:checked + label:after,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:disabled:checked + label:after,
 .rdv .form-container .options-container .protection-plastiques-container input:disabled:checked + label:after,
 .rdv .form-container .options-container .impermeabilisant-textiles-container input:disabled:checked + label:after {
   color: #777;
@@ -2005,7 +2019,7 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .shampoing-tapis-container input:disabled + label,
 .rdv .form-container .options-container .nettoyage-bloc-moteur input:disabled + label,
 .rdv .form-container .options-container .protection-ceramique-container input:disabled + label,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:disabled + label,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:disabled + label,
 .rdv .form-container .options-container .protection-plastiques-container input:disabled + label,
 .rdv .form-container .options-container .impermeabilisant-textiles-container input:disabled + label {
   color: #aaa;
@@ -2020,8 +2034,8 @@ header .header-text div .fa-solid {
 .rdv .form-container .options-container .nettoyage-bloc-moteur input:not(:checked):focus + label:before,
 .rdv .form-container .options-container .protection-ceramique-container input:checked:focus + label:before,
 .rdv .form-container .options-container .protection-ceramique-container input:not(:checked):focus + label:before,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:checked:focus + label:before,
-.rdv .form-container .options-container .nettoyage-siege-cuir-alcantara-container input:not(:checked):focus + label:before,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:checked:focus + label:before,
+.rdv .form-container .options-container .nettoyage-sieges-cuir-alcantara-container input:not(:checked):focus + label:before,
 .rdv .form-container .options-container .protection-plastiques-container input:checked:focus + label:before,
 .rdv .form-container .options-container .protection-plastiques-container input:not(:checked):focus + label:before,
 .rdv .form-container .options-container .impermeabilisant-textiles-container input:checked:focus + label:before,

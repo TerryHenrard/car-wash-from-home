@@ -218,12 +218,12 @@ inputsCkb.forEach((input) => {
     switch (e.target.id) {
       case "exterieur1":
         if (e.target.checked) {
-          price += 15;
-          time += 20;
+          price += 20;
+          time += 30;
           formule.push(e.target.value);
         } else {
-          price -= 15;
-          time -= 20;
+          price -= 20;
+          time -= 30;
 
           index = formule.indexOf(e.target.value);
 
@@ -235,11 +235,11 @@ inputsCkb.forEach((input) => {
       case "interieur1":
         if (e.target.checked) {
           price += 25;
-          time += 30;
+          time += 40;
           formule.push(e.target.value);
         } else {
           price -= 25;
-          time -= 30;
+          time -= 40;
 
           index = formule.indexOf(e.target.value);
 
@@ -250,10 +250,10 @@ inputsCkb.forEach((input) => {
         break;
       case "exterieur3":
         if (e.target.checked) {
-          price += 40;
+          price += 54;
           abonnement.push(e.target.value);
         } else {
-          price -= 40;
+          price -= 54;
 
           index = abonnement.indexOf(e.target.value);
 
@@ -264,10 +264,10 @@ inputsCkb.forEach((input) => {
         break;
       case "exterieur5":
         if (e.target.checked) {
-          price += 63;
+          price += 85;
           abonnement.push(e.target.value);
         } else {
-          price -= 63;
+          price -= 85;
 
           index = abonnement.indexOf(e.target.value);
 
@@ -278,10 +278,10 @@ inputsCkb.forEach((input) => {
         break;
       case "exterieur10":
         if (e.target.checked) {
-          price += 120;
+          price += 160;
           abonnement.push(e.target.value);
         } else {
-          price -= 120;
+          price -= 160;
 
           index = abonnement.indexOf(e.target.value);
 
@@ -335,11 +335,11 @@ inputsCkb.forEach((input) => {
       case "polissage":
         if (e.target.checked) {
           price += 80;
-          time += 150;
+          time += 90;
           option.push(e.target.value);
         } else {
           price -= 80;
-          time -= 150;
+          time -= 90;
 
           index = option.indexOf(e.target.value);
 
@@ -351,11 +351,11 @@ inputsCkb.forEach((input) => {
       case "shampoing-siege":
         if (e.target.checked) {
           price += 60;
-          time += 20;
+          time += 30;
           option.push(e.target.value);
         } else {
           price -= 60;
-          time -= 20;
+          time -= 30;
 
           index = option.indexOf(e.target.value);
 
@@ -382,11 +382,11 @@ inputsCkb.forEach((input) => {
         break;
       case "nettoyage-bloc-moteur":
         if (e.target.checked) {
-          price += 20;
+          price += 25;
           time += 20;
           option.push(e.target.value);
         } else {
-          price -= 20;
+          price -= 25;
           time -= 20;
 
           index = option.indexOf(e.target.value);
@@ -395,6 +395,75 @@ inputsCkb.forEach((input) => {
             option.splice(index, 1);
           }
         }
+        break;
+      case "protection-ceramique":
+        if (e.target.checked) {
+          price += 40;
+          time += 10;
+          option.push(e.target.value);
+        } else {
+          price -= 40;
+          time -= 10;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
+
+      case "nettoyage-sieges-cuir-alcantara":
+        if (e.target.checked) {
+          price += 25;
+          time += 15;
+          option.push(e.target.value);
+        } else {
+          price -= 25;
+          time -= 15;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
+
+      case "protection-plastiques":
+        if (e.target.checked) {
+          price += 15;
+          time += 10;
+          option.push(e.target.value);
+        } else {
+          price -= 15;
+          time -= 10;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
+
+      case "impermeabilisant-textiles":
+        if (e.target.checked) {
+          price += 20;
+          time += 10;
+          option.push(e.target.value);
+        } else {
+          price -= 20;
+          time -= 10;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
+
       default:
         null;
     }

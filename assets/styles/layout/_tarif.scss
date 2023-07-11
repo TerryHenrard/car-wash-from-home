@@ -122,6 +122,21 @@
       opacity: 0;
       transition: 0.5s;
 
+      ul {
+        li {
+          .bold {
+            font-weight: bold;
+          }
+        }
+      }
+
+      p {
+        .start-price {
+          font-weight: bolder;
+          text-decoration: underline;
+        }
+      }
+
       @media only screen and (max-width: 330px) {
         margin: 10px 0 10px 20px;
         border: none;
@@ -211,6 +226,21 @@
       transform: translateX(-100px);
       opacity: 0;
       transition: 0.5s;
+
+      ul {
+        li {
+          .bold {
+            font-weight: bold;
+          }
+        }
+      }
+
+      p {
+        .start-price {
+          font-weight: bolder;
+          text-decoration: underline;
+        }
+      }
 
       @media only screen and (max-width: 1000px) {
         grid-area: texte;
