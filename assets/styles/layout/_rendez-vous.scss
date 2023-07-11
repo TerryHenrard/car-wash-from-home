@@ -90,7 +90,7 @@
       color: #999;
 
       @media only screen and (max-width: 330px) {
-        width: 250px;
+        width: 220px;
       }
 
       input {
@@ -191,7 +191,7 @@
     .date-container,
     .time-container {
       @media only screen and (max-width: 330px) {
-        width: 250px;
+        width: 220px;
       }
       input {
         cursor: pointer;
@@ -212,7 +212,7 @@
       }
 
       @media only screen and (max-width: 330px) {
-        width: 250px;
+        width: 220px;
       }
 
       .formule-base-container {
@@ -335,7 +335,7 @@
       margin: 0 auto 30px auto;
 
       @media only screen and (max-width: 330px) {
-        width: 250px;
+        width: 220px;
       }
 
       p {
@@ -350,7 +350,11 @@
       .polissage-container,
       .shampoing-siege-container,
       .shampoing-tapis-container,
-      .nettoyage-bloc-moteur {
+      .nettoyage-bloc-moteur,
+      .protection-ceramique-container,
+      .nettoyage-siege-cuir-alcantara-container,
+      .protection-plastiques-container,
+      .impermeabilisant-textiles-container {
         text-align: left;
 
         input:not(:checked),
@@ -503,6 +507,10 @@
 
       @media only screen and (max-width: 500px) {
         font-size: 0.9rem;
+      }
+
+      @media only screen and (max-width: 330px) {
+        width: auto;
       }
     }
   }

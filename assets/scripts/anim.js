@@ -23,6 +23,9 @@ const arrowQ5 = document.querySelector(".question5 > h5 > i");
 const arrowQ6 = document.querySelector(".question6 > h5 > i");
 const arrowQ7 = document.querySelector(".question7 > h5 > i");
 const arrowQ8 = document.querySelector(".question8 > h5 > i");
+const arrowQ9 = document.querySelector(".question9 > h5 > i");
+const arrowQ10 = document.querySelector(".question10 > h5 > i");
+const arrowQ11 = document.querySelector(".question11 > h5 > i");
 const question1 = document.querySelector(".question1 > p");
 const question2 = document.querySelector(".question2 > p");
 const question3 = document.querySelector(".question3 > p");
@@ -31,6 +34,9 @@ const question5 = document.querySelector(".question5 > p");
 const question6 = document.querySelector(".question6 > p");
 const question7 = document.querySelector(".question7 > p");
 const question8 = document.querySelector(".question8 > p");
+const question9 = document.querySelector(".question9 > p");
+const question10 = document.querySelector(".question10 > p");
+const question11 = document.querySelector(".question11 > p");
 const sidebar = document.getElementById("side-bar");
 const btn = document.getElementById("btn");
 const navbar = document.getElementById("navbar");
@@ -165,6 +171,18 @@ faqTitles.forEach((title) => {
         question8.classList.toggle("revealAnswer");
         arrowQ8.classList.toggle("arrowUp");
         break;
+      case "q9h5":
+        question9.classList.toggle("revealAnswer");
+        arrowQ9.classList.toggle("arrowUp");
+        break;
+      case "q10h5":
+        question10.classList.toggle("revealAnswer");
+        arrowQ10.classList.toggle("arrowUp");
+        break;
+      case "q11h5":
+        question11.classList.toggle("revealAnswer");
+        arrowQ11.classList.toggle("arrowUp");
+        break;
       default:
         break;
     }
@@ -206,6 +224,18 @@ faqparagraphs.forEach((paragraph) => {
         question8.classList.toggle("revealAnswer");
         arrowQ8.classList.toggle("arrowUp");
         break;
+      case "q9p":
+        question9.classList.toggle("revealAnswer");
+        arrowQ9.classList.toggle("arrowUp");
+        break;
+      case "q10p":
+        question10.classList.toggle("revealAnswer");
+        arrowQ10.classList.toggle("arrowUp");
+        break;
+      case "q11p":
+        question11.classList.toggle("revealAnswer");
+        arrowQ11.classList.toggle("arrowUp");
+        break;
       default:
         break;
     }
@@ -246,6 +276,18 @@ faqContainers.forEach((container) => {
       case "q8":
         question8.classList.toggle("revealAnswer");
         arrowQ8.classList.toggle("arrowUp");
+        break;
+      case "q9":
+        question9.classList.toggle("revealAnswer");
+        arrowQ9.classList.toggle("arrowUp");
+        break;
+      case "q10":
+        question10.classList.toggle("revealAnswer");
+        arrowQ10.classList.toggle("arrowUp");
+        break;
+      case "q11":
+        question11.classList.toggle("revealAnswer");
+        arrowQ11.classList.toggle("arrowUp");
         break;
       default:
         break;

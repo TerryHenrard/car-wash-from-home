@@ -35,7 +35,10 @@
     .question5,
     .question6,
     .question7,
-    .question8 {
+    .question8,
+    .question9,
+    .question10,
+    .question11 {
       transition: 0.3s;
       padding: 20px 30px;
       margin: 10px 0;
@@ -59,17 +62,18 @@
         }
 
         @media only screen and (max-width: 550px) {
-          font-size: 1rem;
+          font-size: 0.9rem;
         }
       }
       p {
         font-family: "poppins", serif;
         line-height: 30px;
-        text-align: justify;
+        text-align: left;
         display: none;
 
         @media only screen and (max-width: 550px) {
           font-size: 0.8rem;
+          line-height: 20px;
         }
       }
 
