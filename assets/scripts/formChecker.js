@@ -126,7 +126,7 @@ const phoneNumberChecker = (value) => {
 };
 
 const adressChecker = (value) => {
-  if (!value.match(/^[\p{L}\d\s\.,#'\-]*$/gmu)) {
+  if (!value.match(/^[\p{L}\d\s\.,#‘’'\-]*$/gmu)) {
     errorDisplay("adresse", "cette adresse n'est pas valide");
     address = null;
   } else {
