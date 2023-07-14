@@ -183,6 +183,17 @@ const messageChecker = (value) => {
   }
 };
 
+const convertMinutestoHoursMinutes = (minutes) => {
+  let hours = Math.floor(minutes / 60);
+  let minutesRemaining = minutes % 60;
+
+  if (minutesRemaining < 10) {
+    minutesRemaining = minutesRemaining.toString().padStart(2, "0");
+  }
+
+  return hours + "h" + minutesRemaining;
+};
+
 inputsText.forEach((input) => {
   input.addEventListener("input", (e) => {
     switch (e.target.id) {
@@ -219,11 +230,11 @@ inputsCkb.forEach((input) => {
       case "exterieur1":
         if (e.target.checked) {
           price += 20;
-          time += 30;
+          time += 60;
           formule.push(e.target.value);
         } else {
           price -= 20;
-          time -= 30;
+          time -= 60;
 
           index = formule.indexOf(e.target.value);
 
@@ -234,12 +245,12 @@ inputsCkb.forEach((input) => {
         break;
       case "interieur1":
         if (e.target.checked) {
-          price += 25;
-          time += 40;
+          price += 30;
+          time += 90;
           formule.push(e.target.value);
         } else {
-          price -= 25;
-          time -= 40;
+          price -= 30;
+          time -= 90;
 
           index = formule.indexOf(e.target.value);
 
@@ -292,10 +303,10 @@ inputsCkb.forEach((input) => {
         break;
       case "interieur3":
         if (e.target.checked) {
-          price += 66;
+          price += 81;
           abonnement.push(e.target.value);
         } else {
-          price -= 66;
+          price -= 81;
 
           index = abonnement.indexOf(e.target.value);
 
@@ -306,10 +317,10 @@ inputsCkb.forEach((input) => {
         break;
       case "interieur5":
         if (e.target.checked) {
-          price += 105;
+          price += 126;
           abonnement.push(e.target.value);
         } else {
-          price -= 105;
+          price -= 126;
 
           index = abonnement.indexOf(e.target.value);
 
@@ -320,10 +331,10 @@ inputsCkb.forEach((input) => {
         break;
       case "interieur10":
         if (e.target.checked) {
-          price += 200;
+          price += 240;
           abonnement.push(e.target.value);
         } else {
-          price -= 200;
+          price -= 240;
 
           index = abonnement.indexOf(e.target.value);
 
@@ -334,11 +345,11 @@ inputsCkb.forEach((input) => {
         break;
       case "polissage":
         if (e.target.checked) {
-          price += 80;
+          price += 90;
           time += 90;
           option.push(e.target.value);
         } else {
-          price -= 80;
+          price -= 90;
           time -= 90;
 
           index = option.indexOf(e.target.value);
@@ -351,11 +362,11 @@ inputsCkb.forEach((input) => {
       case "shampoing-siege":
         if (e.target.checked) {
           price += 60;
-          time += 30;
+          time += 45;
           option.push(e.target.value);
         } else {
           price -= 60;
-          time -= 30;
+          time -= 45;
 
           index = option.indexOf(e.target.value);
 
@@ -367,11 +378,11 @@ inputsCkb.forEach((input) => {
       case "shampoing-tapis":
         if (e.target.checked) {
           price += 30;
-          time += 15;
+          time += 20;
           option.push(e.target.value);
         } else {
           price -= 30;
-          time -= 15;
+          time -= 20;
 
           index = option.indexOf(e.target.value);
 
@@ -383,11 +394,11 @@ inputsCkb.forEach((input) => {
       case "nettoyage-bloc-moteur":
         if (e.target.checked) {
           price += 25;
-          time += 20;
+          time += 30;
           option.push(e.target.value);
         } else {
           price -= 25;
-          time -= 20;
+          time -= 30;
 
           index = option.indexOf(e.target.value);
 
@@ -398,12 +409,12 @@ inputsCkb.forEach((input) => {
         break;
       case "protection-ceramique":
         if (e.target.checked) {
-          price += 40;
-          time += 10;
+          price += 50;
+          time += 20;
           option.push(e.target.value);
         } else {
-          price -= 40;
-          time -= 10;
+          price -= 50;
+          time -= 20;
 
           index = option.indexOf(e.target.value);
 
@@ -415,12 +426,12 @@ inputsCkb.forEach((input) => {
 
       case "nettoyage-sieges-cuir-alcantara":
         if (e.target.checked) {
-          price += 25;
-          time += 15;
+          price += 20;
+          time += 20;
           option.push(e.target.value);
         } else {
-          price -= 25;
-          time -= 15;
+          price -= 20;
+          time -= 20;
 
           index = option.indexOf(e.target.value);
 
@@ -469,7 +480,12 @@ inputsCkb.forEach((input) => {
     }
 
     spanPrice.textContent = price + "€";
-    spanTime.textContent = time + "min";
+
+    if (time >= 60) {
+      spanTime.textContent = convertMinutestoHoursMinutes(time);
+    } else {
+      spanTime.textContent = time + "min";
+    }
   });
 });
 

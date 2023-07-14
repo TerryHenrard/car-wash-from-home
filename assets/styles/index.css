@@ -2059,6 +2059,7 @@ header .header-text div .fa-solid {
   resize: none;
   height: 150px;
   font-family: "arial", serif;
+  padding: 5px;
 }
 @media only screen and (max-width: 500px) {
   .rdv .form-container .textarea-container textarea {
