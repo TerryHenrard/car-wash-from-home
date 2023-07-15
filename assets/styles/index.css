@@ -36,7 +36,9 @@ body {
   src: url(../fonts/Allura-Regular.ttf);
 }
 header {
-  background: url(../images/pexels-jay-pizzle-3772857.webp) no-repeat center/cover;
+  height: 85vh;
+  position: relative;
+  background: url(../images/bg2.webp) no-repeat center/cover;
 }
 header #side-bar.active {
   left: 0;
@@ -155,23 +157,18 @@ header #side-bar .side-bar-social-network i {
     font-size: 0.9rem;
   }
 }
-header .nav-anim {
-  transform: translate(-50%, -50%);
-}
 header nav {
   position: fixed;
-  top: 50px;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, 100%);
-  width: 80vw;
-  max-width: 1500px;
+  transform: translateX(-50%);
+  width: 100vw;
   min-width: 1000px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  border-radius: 50px;
   z-index: 100;
-  background-image: linear-gradient(to right, #ffecd2 0%, #ffa98c 100%);
+  background: #476cff;
   transition: 0.2s ease-in-out;
 }
 @media only screen and (max-width: 1000px) {
@@ -191,20 +188,15 @@ header nav .menu {
 header nav .menu ul {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   list-style: none;
   height: 100%;
-}
-header nav .menu ul:hover li:not(:hover) {
-  filter: blur(0.67px);
-  transform: scale(0.96);
 }
 header nav .menu ul li {
   transition: 0.2s;
   font-size: 0.9rem;
   font-family: "montserrat", serif;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 500;
   cursor: pointer;
   position: relative;
 }
@@ -215,13 +207,10 @@ header nav .menu ul li {
 }
 header nav .menu ul li a {
   text-decoration: none;
-  color: #343a40;
+  color: #ffffff;
 }
 header nav .menu ul li a:visited {
-  color: #343a40;
-}
-header nav .menu ul li:hover {
-  transform: scale(1.04);
+  color: #ffffff;
 }
 header nav .menu ul li:hover::after {
   content: "";
@@ -231,7 +220,7 @@ header nav .menu ul li:hover::after {
   transform: translateX(-50%);
   height: 1px;
   width: 100%;
-  background: #343a40;
+  background: #ffffff;
   animation: botToTop 0.3s ease-in-out forwards;
 }
 @keyframes botToTop {
@@ -315,327 +304,186 @@ header .valid-inscription-anim {
   }
 }
 header .header-text {
-  height: 100vh;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: #fefdfc;
+  margin: 0 auto;
+  width: 45vw;
+  min-width: 650px;
 }
 header .header-text div {
-  margin-top: -150px;
-  color: #ffffff;
+  color: #000000;
 }
 header .header-text div h1 {
-  color: #ffffff;
-  font-size: 5rem;
-  font-family: "parisienne";
+  color: #000000;
+  font-size: 3rem;
+  font-family: "poppins";
+  font-weight: 100;
+  margin: 30px 10px;
   font-weight: 500;
-  filter: drop-shadow(3px 0 3px #d90429);
-  transform: translateY(-40px);
+  filter: drop-shadow(1px 0 px #001531);
   transition: 0.5s;
+  text-transform: uppercase;
 }
 @media only screen and (max-width: 550px) {
   header .header-text div h1 {
     font-size: 4rem;
   }
 }
-header .header-text div .h1-anim {
-  transform: translateY(0px);
-}
-header .header-text div h2 {
-  font-family: "poppins", sans-serif;
-  margin-top: -40px;
-  font-size: 4rem;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  filter: drop-shadow(3px 0 3px #d90429);
-  transform: translateY(40px);
-  transition: 0.3s;
-}
-@media only screen and (max-width: 550px) {
-  header .header-text div h2 {
-    font-size: 3rem;
-    margin-top: -20px;
-  }
-}
-header .header-text div .h2-anim {
-  transform: translateY(0px);
-}
 header .header-text div p {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-family: "poppins", serif;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-weight: 100;
-  color: #ffffff;
-  transform: translateX(40px);
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #000000;
   transition: 0.3s;
-  filter: drop-shadow(3px 0 3px #d90429);
+  margin: 30px 10px;
 }
 @media only screen and (max-width: 550px) {
   header .header-text div p {
     font-size: 0.9rem;
   }
 }
-header .header-text div .p-anim {
-  transform: translateY(0px);
-}
-header .header-text div .fa-solid {
-  position: absolute;
-  bottom: 50px;
-  font-size: 2rem;
-  color: #d90429;
-  cursor: pointer;
+header .header-text div a {
+  display: block;
+  color: #000000;
+  padding: 15px 20px;
+  margin: 10px;
+  border: 1px solid #000000;
+  width: 33%;
+  margin: 20px auto;
+  min-width: 230px;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .tarif {
-  overflow-x: hidden;
-  min-width: 1000px;
-  background-color: #dcd9d4;
-  background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%), radial-gradient(91% 146%, rgba(255, 255, 255, 0.5) 47%, rgba(0, 0, 0, 0.5) 100%);
-  background-blend-mode: screen;
+  margin: 100px;
 }
-@media only screen and (max-width: 1000px) {
-  .tarif {
-    min-width: 0;
-  }
-}
-.tarif .interieur,
-.tarif .exterieur {
+.tarif .price-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  font-size: 1.3rem;
-  font-family: "montserrat";
-}
-@media only screen and (max-width: 1000px) {
-  .tarif .interieur,
-  .tarif .exterieur {
-    grid-template-columns: 100%;
-    grid-template-rows: 1fr 1fr;
-  }
-}
-@media only screen and (max-width: 330px) {
-  .tarif .interieur,
-  .tarif .exterieur {
-    grid-template-columns: none;
-  }
-}
-.tarif .interieur h3,
-.tarif .exterieur h3 {
-  text-transform: uppercase;
-  font-size: 1.6rem;
+  grid-template-columns: 33% 33% 33%;
   text-align: center;
-  margin: 0 0 20px 0;
+  border: 1px solid rgb(216, 216, 216);
+  min-width: 1160px;
 }
-@media only screen and (max-width: 550px) {
-  .tarif .interieur h3,
-  .tarif .exterieur h3 {
-    font-size: 1.4rem;
-  }
+.tarif .price-container .m {
+  border-right: 1px solid rgb(216, 216, 216);
+  border-left: 1px solid rgb(216, 216, 216);
 }
-@media only screen and (max-width: 330px) {
-  .tarif .interieur h3,
-  .tarif .exterieur h3 {
-    font-size: 1.1rem;
-  }
+.tarif .price-container .s .s-title,
+.tarif .price-container .s .m-title,
+.tarif .price-container .s .l-title,
+.tarif .price-container .m .s-title,
+.tarif .price-container .m .m-title,
+.tarif .price-container .m .l-title,
+.tarif .price-container .l .s-title,
+.tarif .price-container .l .m-title,
+.tarif .price-container .l .l-title {
+  margin: 50px;
 }
-.tarif .interieur p,
-.tarif .exterieur p {
-  padding: 6.5px 0;
+.tarif .price-container .s .s-title img,
+.tarif .price-container .s .m-title img,
+.tarif .price-container .s .l-title img,
+.tarif .price-container .m .s-title img,
+.tarif .price-container .m .m-title img,
+.tarif .price-container .m .l-title img,
+.tarif .price-container .l .s-title img,
+.tarif .price-container .l .m-title img,
+.tarif .price-container .l .l-title img {
+  height: 50px;
 }
-@media only screen and (max-width: 550px) {
-  .tarif .interieur p,
-  .tarif .exterieur p {
-    font-size: 1.1rem;
-  }
+.tarif .price-container .s .s-title h3,
+.tarif .price-container .s .m-title h3,
+.tarif .price-container .s .l-title h3,
+.tarif .price-container .m .s-title h3,
+.tarif .price-container .m .m-title h3,
+.tarif .price-container .m .l-title h3,
+.tarif .price-container .l .s-title h3,
+.tarif .price-container .l .m-title h3,
+.tarif .price-container .l .l-title h3 {
+  font-size: 2rem;
+  font-weight: 100;
+  font-family: "poppins", serif;
+  text-transform: uppercase;
 }
-@media only screen and (max-width: 330px) {
-  .tarif .interieur p,
-  .tarif .exterieur p {
-    font-size: 0.9rem;
-  }
+.tarif .price-container .s .s-tarif,
+.tarif .price-container .s .m-tarif,
+.tarif .price-container .s .l-tarif,
+.tarif .price-container .m .s-tarif,
+.tarif .price-container .m .m-tarif,
+.tarif .price-container .m .l-tarif,
+.tarif .price-container .l .s-tarif,
+.tarif .price-container .l .m-tarif,
+.tarif .price-container .l .l-tarif {
+  margin: 40px;
 }
-.tarif .interieur ul,
-.tarif .exterieur ul {
-  list-style: url(../images/check-solid.svg);
+.tarif .price-container .s .s-tarif p,
+.tarif .price-container .s .m-tarif p,
+.tarif .price-container .s .l-tarif p,
+.tarif .price-container .m .s-tarif p,
+.tarif .price-container .m .m-tarif p,
+.tarif .price-container .m .l-tarif p,
+.tarif .price-container .l .s-tarif p,
+.tarif .price-container .l .m-tarif p,
+.tarif .price-container .l .l-tarif p {
+  font-family: "poppins", serif;
+  font-size: 1.3rem;
+  margin: 20px 0;
 }
-.tarif .interieur ul > li,
-.tarif .exterieur ul > li {
-  margin: 6.5px 0;
+.tarif .price-container .s .s-tarif p .price,
+.tarif .price-container .s .m-tarif p .price,
+.tarif .price-container .s .l-tarif p .price,
+.tarif .price-container .m .s-tarif p .price,
+.tarif .price-container .m .m-tarif p .price,
+.tarif .price-container .m .l-tarif p .price,
+.tarif .price-container .l .s-tarif p .price,
+.tarif .price-container .l .m-tarif p .price,
+.tarif .price-container .l .l-tarif p .price {
+  font-size: 1.5rem;
 }
-@media only screen and (max-width: 550px) {
-  .tarif .interieur ul > li,
-  .tarif .exterieur ul > li {
-    font-size: 1.1rem;
-  }
-}
-@media only screen and (max-width: 330px) {
-  .tarif .interieur ul > li,
-  .tarif .exterieur ul > li {
-    font-size: 0.9rem;
-  }
-}
-.tarif .interieur ul > li .cadeau,
-.tarif .exterieur ul > li .cadeau {
-  color: #d90429;
-}
-.tarif .interieur ul > li .tissu,
-.tarif .exterieur ul > li .tissu {
-  font-weight: bold;
-  text-decoration: underline;
-}
-.tarif .interieur .tarif-title,
-.tarif .interieur .option-title,
-.tarif .exterieur .tarif-title,
-.tarif .exterieur .option-title {
-  font-size: 1.4rem;
-  font-weight: bolder;
-}
-@media only screen and (max-width: 330px) {
-  .tarif .interieur .tarif-title,
-  .tarif .interieur .option-title,
-  .tarif .exterieur .tarif-title,
-  .tarif .exterieur .option-title {
-    font-size: 1.1rem;
-  }
-}
-.tarif .interieur ul li a,
-.tarif .exterieur ul li a {
-  cursor: pointer;
-  color: #000000;
-}
-.tarif .interieur ul li a i,
-.tarif .exterieur ul li a i {
-  font-size: 1rem;
-}
-@media only screen and (max-width: 330px) {
-  .tarif .interieur ul li a i,
-  .tarif .exterieur ul li a i {
-    font-size: 0.9rem;
-  }
-}
-.tarif .interieur ul li a:visited,
-.tarif .exterieur ul li a:visited {
-  color: #000000;
-}
-.tarif .interieur .left-ext {
-  margin: 20px;
-  padding: 25px 50px;
-  border: 1px dashed rgb(166, 114, 69);
-  transform: translateX(100px);
-  opacity: 0;
-  transition: 0.5s;
-}
-.tarif .interieur .left-ext ul li .bold {
-  font-weight: bold;
-}
-.tarif .interieur .left-ext p .start-price {
-  font-weight: bolder;
-  text-decoration: underline;
-}
-.tarif .interieur .left-ext .needed {
-  font-size: 1rem;
-}
-@media only screen and (max-width: 330px) {
-  .tarif .interieur .left-ext {
-    margin: 10px 0 10px 20px;
-    border: none;
-    padding: 0;
-  }
-}
-.tarif .interieur .right-ext {
+.tarif .explication-container {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 50% 50%;
-  transform: translateX(-100px);
-  opacity: 0;
-  transition: 0.5s;
+  border-bottom: 1px solid rgb(216, 216, 216);
+  border-right: 1px solid rgb(216, 216, 216);
+  border-left: 1px solid rgb(216, 216, 216);
+  min-width: 1160px;
 }
-.tarif .interieur .right-ext div {
-  margin: 1px;
+.tarif .explication-container .exterieur {
+  border-right: 1px solid rgb(216, 216, 216);
 }
-.tarif .interieur .right-ext .carrosserie {
-  background: url(../images/polissage.webp) center/cover;
+.tarif .explication-container .exterieur,
+.tarif .explication-container .interieur {
+  padding: 80px 80px 20px 80px;
 }
-.tarif .interieur .right-ext .pneu {
-  background: url(../images/nettoyage-pneu.webp) center/cover;
+.tarif .explication-container .exterieur h3,
+.tarif .explication-container .interieur h3 {
+  margin: 0 50px 50px 50px;
+  font-size: 2rem;
+  font-weight: 100;
+  font-family: "poppins", serif;
+  text-transform: uppercase;
+  text-align: center;
 }
-.tarif .interieur .right-ext .vitre {
-  background: url(../images/grosplan-vitre.webp) center/cover;
+.tarif .explication-container .exterieur ul,
+.tarif .explication-container .interieur ul {
+  list-style: none;
 }
-.tarif .interieur .right-ext .detail {
-  background: url(../images/grosplan-porsche.webp) center/cover;
+.tarif .explication-container .exterieur ul li,
+.tarif .explication-container .interieur ul li {
+  font-family: "poppins", serif;
+  font-size: 1.2rem;
+  margin: 20px 0;
 }
-.tarif .interieur .tarif-anim {
-  opacity: 1;
-  transform: translateX(0);
-}
-@media only screen and (max-width: 1000px) {
-  .tarif .exterieur {
-    grid-template-areas: "texte texte" "photo photo";
-    grid-template-columns: 50vw;
-    grid-template-rows: 1fr 1fr;
-  }
-}
-.tarif .exterieur .left-int {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 50% 50%;
-  transform: translateX(100px);
-  opacity: 0;
-  transition: 0.5s;
-}
-@media only screen and (max-width: 1000px) {
-  .tarif .exterieur .left-int {
-    grid-area: photo;
-  }
-}
-.tarif .exterieur .left-int div {
-  margin: 1px;
-}
-.tarif .exterieur .left-int .tableauBord {
-  background: url(../images/lavage-interieur.webp) center/cover;
-}
-.tarif .exterieur .left-int .carpette {
-  background: url(../images/close-up-car-care-dusting.webp) center/cover;
-}
-.tarif .exterieur .left-int .siege {
-  background: url(../images/interieur-karcher.webp) center/cover;
-}
-.tarif .exterieur .left-int .porte {
-  background: url(../images/interieur-chiffon.webp) center/cover;
-}
-.tarif .exterieur .right-int {
-  margin: 20px;
-  padding: 25px 50px;
-  border: 1px dashed rgb(166, 114, 69);
-  transform: translateX(-100px);
-  opacity: 0;
-  transition: 0.5s;
-}
-.tarif .exterieur .right-int ul li .bold {
-  font-weight: bold;
-}
-.tarif .exterieur .right-int p .start-price {
-  font-weight: bolder;
-  text-decoration: underline;
-}
-@media only screen and (max-width: 1000px) {
-  .tarif .exterieur .right-int {
-    grid-area: texte;
-  }
-}
-@media only screen and (max-width: 330px) {
-  .tarif .exterieur .right-int {
-    margin: 10px 0 10px 20px;
-    border: none;
-    padding: 0;
-  }
-}
-.tarif .exterieur .tarif-anim {
-  opacity: 1;
-  transform: translateX(0);
+.tarif .explication-container .exterieur ul li i,
+.tarif .explication-container .interieur ul li i {
+  margin: 0 10px 0 0;
+  font-size: 15px;
 }
 
 .abonnement {

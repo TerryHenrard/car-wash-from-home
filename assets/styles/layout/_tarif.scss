@@ -1,265 +1,90 @@
 .tarif {
-  overflow-x: hidden;
-  min-width: 1000px;
-  background-color: #dcd9d4;
-  background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%),
-    radial-gradient(
-      91% 146%,
-      rgba(255, 255, 255, 0.5) 47%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
-  background-blend-mode: screen;
-
-  @media only screen and (max-width: 1000px) {
-    min-width: 0;
-  }
-
-  .interieur,
-  .exterieur {
+  margin: 100px;
+  .price-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    font-size: 1.3rem;
-    font-family: "montserrat";
+    grid-template-columns: 33% 33% 33%;
+    text-align: center;
+    border: 1px solid rgb(216, 216, 216);
+    min-width: 1160px;
 
-    @media only screen and (max-width: 1000px) {
-      grid-template-columns: 100%;
-      grid-template-rows: 1fr 1fr;
+    .m {
+      border-right: 1px solid rgb(216, 216, 216);
+      border-left: 1px solid rgb(216, 216, 216);
     }
 
-    @media only screen and (max-width: 330px) {
-      grid-template-columns: none;
-    }
+    .s,
+    .m,
+    .l {
+      .s-title,
+      .m-title,
+      .l-title {
+        margin: 50px;
 
-    h3 {
-      text-transform: uppercase;
-      font-size: 1.6rem;
-      text-align: center;
-      margin: 0 0 20px 0;
+        img {
+          height: 50px;
+        }
 
-      @media only screen and (max-width: 550px) {
-        font-size: 1.4rem;
+        h3 {
+          font-size: 2rem;
+          font-weight: 100;
+          font-family: "poppins", serif;
+          text-transform: uppercase;
+        }
       }
 
-      @media only screen and (max-width: 330px) {
-        font-size: 1.1rem;
-      }
-    }
+      .s-tarif,
+      .m-tarif,
+      .l-tarif {
+        margin: 40px;
+        p {
+          font-family: "poppins", serif;
+          font-size: 1.3rem;
+          margin: 20px 0;
 
-    p {
-      padding: 6.5px 0;
-
-      @media only screen and (max-width: 550px) {
-        font-size: 1.1rem;
-      }
-
-      @media only screen and (max-width: 330px) {
-        font-size: 0.9rem;
-      }
-    }
-
-    ul {
-      list-style: url(../images/check-solid.svg);
-    }
-
-    ul > li {
-      margin: 6.5px 0;
-
-      @media only screen and (max-width: 550px) {
-        font-size: 1.1rem;
-      }
-
-      @media only screen and (max-width: 330px) {
-        font-size: 0.9rem;
-      }
-
-      .cadeau {
-        color: #d90429;
-      }
-      .tissu {
-        font-weight: bold;
-
-        text-decoration: underline;
+          .price {
+            font-size: 1.5rem;
+          }
+        }
       }
     }
-    .tarif-title,
-    .option-title {
-      font-size: 1.4rem;
-      font-weight: bolder;
+  }
 
-      @media only screen and (max-width: 330px) {
-        font-size: 1.1rem;
-      }
+  .explication-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-bottom: 1px solid rgb(216, 216, 216);
+    border-right: 1px solid rgb(216, 216, 216);
+    border-left: 1px solid rgb(216, 216, 216);
+    min-width: 1160px;
+
+    .exterieur {
+      border-right: 1px solid rgb(216, 216, 216);
     }
 
-    ul {
-      li {
-        a {
-          cursor: pointer;
-          color: #000000;
+    .exterieur,
+    .interieur {
+      padding: 80px 80px 20px 80px;
+      h3 {
+        margin: 0 50px 50px 50px;
+        font-size: 2rem;
+        font-weight: 100;
+        font-family: "poppins", serif;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      ul {
+        list-style: none;
+        li {
+          font-family: "poppins", serif;
+          font-size: 1.2rem;
+          margin: 20px 0;
           i {
-            font-size: 1rem;
-
-            @media only screen and (max-width: 330px) {
-              font-size: 0.9rem;
-            }
-          }
-
-          &:visited {
-            color: #000000;
+            margin: 0 10px 0 0;
+            font-size: 15px;
           }
         }
       }
-    }
-  }
-
-  .interieur {
-    .left-ext {
-      margin: 20px;
-      padding: 25px 50px;
-      border: 1px dashed rgb(166, 114, 69);
-      transform: translateX(100px);
-      opacity: 0;
-      transition: 0.5s;
-
-      ul {
-        li {
-          .bold {
-            font-weight: bold;
-          }
-        }
-      }
-
-      p {
-        .start-price {
-          font-weight: bolder;
-          text-decoration: underline;
-        }
-      }
-
-      .needed {
-        font-size: 1rem;
-      }
-
-      @media only screen and (max-width: 330px) {
-        margin: 10px 0 10px 20px;
-        border: none;
-        padding: 0;
-      }
-    }
-
-    .right-ext {
-      display: grid;
-      grid-template-columns: 50% 50%;
-      grid-template-rows: 50% 50%;
-      transform: translateX(-100px);
-      opacity: 0;
-      transition: 0.5s;
-
-      div {
-        margin: 1px;
-      }
-
-      .carrosserie {
-        background: url(../images/polissage.webp) center/cover;
-      }
-
-      .pneu {
-        background: url(../images/nettoyage-pneu.webp) center/cover;
-      }
-
-      .vitre {
-        background: url(../images/grosplan-vitre.webp) center/cover;
-      }
-
-      .detail {
-        background: url(../images/grosplan-porsche.webp) center/cover;
-      }
-    }
-
-    .tarif-anim {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .exterieur {
-    @media only screen and (max-width: 1000px) {
-      grid-template-areas:
-        "texte texte"
-        "photo photo";
-      grid-template-columns: 50vw;
-      grid-template-rows: 1fr 1fr;
-    }
-    .left-int {
-      display: grid;
-      grid-template-columns: 50% 50%;
-      grid-template-rows: 50% 50%;
-      transform: translateX(100px);
-      opacity: 0;
-      transition: 0.5s;
-
-      @media only screen and (max-width: 1000px) {
-        grid-area: photo;
-      }
-
-      div {
-        margin: 1px;
-      }
-
-      .tableauBord {
-        background: url(../images/lavage-interieur.webp) center/cover;
-      }
-
-      .carpette {
-        background: url(../images/close-up-car-care-dusting.webp) center/cover;
-      }
-
-      .siege {
-        background: url(../images/interieur-karcher.webp) center/cover;
-      }
-
-      .porte {
-        background: url(../images/interieur-chiffon.webp) center/cover;
-      }
-    }
-    .right-int {
-      margin: 20px;
-      padding: 25px 50px;
-      border: 1px dashed rgb(166, 114, 69);
-      transform: translateX(-100px);
-      opacity: 0;
-      transition: 0.5s;
-
-      ul {
-        li {
-          .bold {
-            font-weight: bold;
-          }
-        }
-      }
-
-      p {
-        .start-price {
-          font-weight: bolder;
-          text-decoration: underline;
-        }
-      }
-
-      @media only screen and (max-width: 1000px) {
-        grid-area: texte;
-      }
-
-      @media only screen and (max-width: 330px) {
-        margin: 10px 0 10px 20px;
-        border: none;
-        padding: 0;
-      }
-    }
-
-    .tarif-anim {
-      opacity: 1;
-      transform: translateX(0);
     }
   }
 }

@@ -51,14 +51,14 @@ btn.addEventListener("click", () => {
 let lastScroll = 0;
 let navbarAnimation = () => {
   if (scrollY < lastScroll) {
-    navbar.style.top = 50 + "px";
+    navbar.style.top = 0 + "px";
   } else {
-    navbar.style.top = -23 + "px";
+    navbar.style.top = -100 + "px";
   }
 
   lastScroll = scrollY;
 };
-
+/*
 let tarifAnimations = () => {
   if (scrollY === 0) {
     rightExt.classList.remove("tarif-anim");
@@ -127,15 +127,15 @@ let ecologieAnimations = () => {
     ecoP3.style.opacity = "0";
   }
 };
-
+*/
 let loadAnimations = () => {
   body.style.opacity = "1";
-  h1MainTitle.classList.add("h1-anim");
-  h2MainTitle.classList.add("h2-anim");
-  pMainTitle.classList.add("p-anim");
-  navbar.classList.add("nav-anim");
+  //h1MainTitle.classList.add("h1-anim");
+  //h2MainTitle.classList.add("h2-anim");
+  //pMainTitle.classList.add("p-anim");
+  //navbar.classList.add("nav-anim");
 };
-
+/*
 faqTitles.forEach((title) => {
   title.addEventListener("click", (e) => {
     switch (e.target.id) {
@@ -295,16 +295,16 @@ faqContainers.forEach((container) => {
   });
 });
 
-window.addEventListener("scroll", () => {
-  tarifAnimations();
-  abonnementAnimations();
-  ecologieAnimations();
+*/ window.addEventListener("scroll", () => {
+  //tarifAnimations();
+  //abonnementAnimations();
+  //ecologieAnimations();
   navbarAnimation();
 });
-
-navbar.addEventListener("mouseover", () => {
-  navbar.style.top = 50 + "px";
-});
+/*
+// navbar.addEventListener("mouseover", () => {
+//   navbar.style.top = 50 + "px";
+// });*/
 
 window.addEventListener("load", () => {
   loadAnimations();
