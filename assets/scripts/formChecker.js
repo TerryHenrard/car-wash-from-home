@@ -9,6 +9,22 @@ const inputDate = document.getElementById("date");
 const inputTime = document.getElementById("time");
 const validAnim = document.querySelector(".valid-inscription");
 const errorAnim = document.querySelector(".error-inscription");
+const ckbPolissage = document.getElementById("polissage");
+const ckbNettoyageBlocMmoteur = document.getElementById(
+  "nettoyage-bloc-moteur"
+);
+const ckbProtectionCeramique = document.getElementById("protection-ceramique");
+const ckbNettoyageCuirAlcantara = document.getElementById(
+  "nettoyage-sieges-cuir-alcantara"
+);
+const ckbShampoingSiege = document.getElementById("shampoing-siege");
+const ckbShampoingTapis = document.getElementById("shampoing-tapis");
+const ckbProtectionPlastiques = document.getElementById(
+  "protection-plastiques"
+);
+const ckbImpermeabilisantTextiles = document.getElementById(
+  "impermeabilisant-textiles"
+);
 
 let price = 0;
 let time = 0;
@@ -65,6 +81,114 @@ function errorDisplay(tag, message, valid) {
     inputErrorMessage.textContent = message;
   }
 }
+
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    switch (e.target.id) {
+      case "btPolissage":
+        if (!ckbPolissage.checked) {
+          ckbPolissage.checked = !ckbPolissage.checked;
+          price += 90;
+          time += 90;
+        } else {
+          ckbPolissage.checked = !ckbPolissage.checked;
+          price -= 90;
+          time -= 90;
+        }
+        break;
+      case "btNettoyage-bloc-moteur":
+        if (!ckbNettoyageBlocMmoteur.checked) {
+          ckbNettoyageBlocMmoteur.checked = !ckbNettoyageBlocMmoteur.checked;
+          price += 25;
+          time += 30;
+        } else {
+          ckbNettoyageBlocMmoteur.checked = !ckbNettoyageBlocMmoteur.checked;
+          price -= 25;
+          time -= 30;
+        }
+        break;
+      case "btProtection-ceramique":
+        if (!ckbProtectionCeramique.checked) {
+          ckbProtectionCeramique.checked = !ckbProtectionCeramique.checked;
+          price += 55;
+          time += 30;
+        } else {
+          ckbProtectionCeramique.checked = !ckbProtectionCeramique.checked;
+          price -= 55;
+          time -= 30;
+        }
+        break;
+      case "btNettoyage-cuir-alcantara":
+        if (!ckbNettoyageCuirAlcantara.checked) {
+          ckbNettoyageCuirAlcantara.checked =
+            !ckbNettoyageCuirAlcantara.checked;
+          price += 20;
+          time += 20;
+        } else {
+          ckbNettoyageCuirAlcantara.checked =
+            !ckbNettoyageCuirAlcantara.checked;
+          price -= 20;
+          time -= 20;
+        }
+        break;
+      case "btShampoing-siege-tissus":
+        if (!ckbShampoingSiege.checked) {
+          ckbShampoingSiege.checked = !ckbShampoingSiege.checked;
+          price += 60;
+          time += 45;
+        } else {
+          ckbShampoingSiege.checked = !ckbShampoingSiege.checked;
+          price -= 60;
+          time -= 45;
+        }
+        break;
+      case "btShampoing-tapis-coffre":
+        if (!ckbShampoingTapis.checked) {
+          ckbShampoingTapis.checked = !ckbShampoingTapis.checked;
+          price += 30;
+          time += 20;
+        } else {
+          ckbShampoingTapis.checked = !ckbShampoingTapis.checked;
+          price -= 30;
+          time -= 20;
+        }
+        break;
+      case "btProtection-plastique":
+        if (!ckbProtectionPlastiques.checked) {
+          ckbProtectionPlastiques.checked = !ckbProtectionPlastiques.checked;
+          price += 20;
+          time += 15;
+        } else {
+          ckbProtectionPlastiques.checked = !ckbProtectionPlastiques.checked;
+          price -= 20;
+          time -= 15;
+        }
+        break;
+      case "btImpermeabilisant-textiles":
+        if (!ckbImpermeabilisantTextiles.checked) {
+          ckbImpermeabilisantTextiles.checked =
+            !ckbImpermeabilisantTextiles.checked;
+          price += 25;
+          time += 20;
+        } else {
+          ckbImpermeabilisantTextiles.checked =
+            !ckbImpermeabilisantTextiles.checked;
+          price -= 25;
+          time -= 20;
+        }
+        break;
+      default:
+        break;
+    }
+    spanPrice.textContent = price + "€";
+
+    if (time >= 60) {
+      spanTime.textContent = convertMinutestoHoursMinutes(time);
+    } else {
+      spanTime.textContent = time + "min";
+    }
+  });
+});
 
 const lastNameChecker = (value) => {
   if (value.length > 47) {

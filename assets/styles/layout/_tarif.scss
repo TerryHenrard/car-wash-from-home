@@ -1,11 +1,11 @@
 .tarif {
-  margin: 75px;
+  margin: 75px 200px;
   .price-container {
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
     text-align: center;
     border: 1px solid rgb(216, 216, 216);
-    min-width: 1160px;
+    min-width: 1037px;
 
     .m {
       border-right: 1px solid rgb(216, 216, 216);
@@ -55,7 +55,7 @@
     border-bottom: 1px solid rgb(216, 216, 216);
     border-right: 1px solid rgb(216, 216, 216);
     border-left: 1px solid rgb(216, 216, 216);
-    min-width: 1160px;
+    min-width: 1037px;
 
     .exterieur {
       border-right: 1px solid rgb(216, 216, 216);

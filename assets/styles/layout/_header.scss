@@ -1,7 +1,8 @@
 header {
   height: 88vh;
   position: relative;
-  background: url(../images/bg2.webp) no-repeat center/cover;
+  background: url(../images/bg3.webp) no-repeat center;
+  background-size: 2175px;
 
   nav {
     position: fixed;
@@ -159,7 +160,7 @@ header {
         color: #000000;
         transition: 0.3s;
         // filter: drop-shadow(3px 0 3px #387dd8);
-        margin: 30px 10px;
+        margin: 20px 10px;
 
         @media only screen and (max-width: 550px) {
           font-size: 0.9rem;
@@ -171,7 +172,7 @@ header {
         font-size: 3rem;
         font-family: "poppins";
         font-weight: 100;
-        margin: 30px 10px;
+        margin: 20px 10px;
         font-weight: 500;
         transition: 0.5s;
         text-transform: uppercase;

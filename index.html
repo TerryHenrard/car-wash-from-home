@@ -23,8 +23,8 @@
       <div class="menu">
         <ul>
           <li><a href="#tarif">Tarifs</a></li>
-          <li><a href="#tarif">Options</a></li>
-          <li><a href="#tarif">Protection céramique</a></li>
+          <li><a href="#options">Options</a></li>
+          <li><a href="#options">Découvrir</a></li>
           <li><a href="#tarif">Questions fréquentes</a></li>
           <li><a href="#rdv">Réserver</a></li>
         </ul>
@@ -84,6 +84,7 @@
       <div class="exterieur">
         <h3>Extérieur</h3>
         <ul>
+          <li><i class="fa-solid fa-check"></i>Entre 30min et 1h</li>
           <li><i class="fa-solid fa-check"></i>Prélavage carroserie</li>
           <li><i class="fa-solid fa-check"></i>désincrustation insectes</li>
           <li><i class="fa-solid fa-check"></i>Shampoing carrosserie finition brillante</li>
@@ -96,6 +97,7 @@
       <div class="interieur">
         <h3>Intérieur</h3>
         <ul>
+          <li><i class="fa-solid fa-check"></i>Entre 60min et 1h30</li>
           <li><i class="fa-solid fa-check"></i>Aspiration en profondeur habitacle et tapis</li>
           <li><i class="fa-solid fa-check"></i>Nettoyage pinceau toutes surfaces</li>
           <li><i class="fa-solid fa-check"></i>Nettoyage tableau de bord à l'alcool isopropylique</li>
@@ -109,12 +111,85 @@
   </section>
 
   <section class="options" id="options">
-    <div class="option-title">
-      <h3>découvrez nos options</h3>
-    </div>
     <div class="options-container">
-      <div class="polissage">
-
+      <div class="options-title">
+        <h3>découvrez nos options</h3>
+      </div>
+      <div class="options-container-details">
+        <div class="polissage">
+          <img src="./assets/images/polissage.png" alt="polishing">
+          <p class="price">90€ - 1h30</p>
+          <h4>Polissage carrosserie</h4>
+          <p>Le polissage carrosserie redonne éclat et brillance, élimine les petites imperfections et protège la
+            peinture automobile.</p>
+          <button id="btPolissage">Ajouter au panier</button>
+        </div>
+        <div class="nettoyage-bloc-moteur">
+          <img src="./assets/images/bloc-moteur.png" alt="cleaning the engine block">
+          <p class="price">25€ - 30min</p>
+          <h4>Nettoyage bloc moteur</h4>
+          <p>Outre l'estéthique du véhicule, le nettoyage du bloc moteur prolonge la durée de vie du moteur et améliore
+            ses performances.</p>
+          <button id="btNettoyage-bloc-moteur">Ajouter au panier</button>
+        </div>
+        <div class="protection-ceramique">
+          <img src="./assets/images/ceramique2.webp" alt="ceramic protection">
+          <p class="price">55€ - 30min</p>
+          <h4>Protection céramique</h4>
+          <p>
+            La protection céramique de la carrosserie offre une barrière durable contre les éléments extérieurs, un
+            effet déperlant et une
+            brillance éclatante.</p>
+          <button id="btProtection-ceramique">Ajouter au panier</button>
+        </div>
+        <div class="nettoyage-cuir-alcantara">
+          <img src="./assets/images/sieges-cuir.png" alt="ceramic protection">
+          <p class="price">20€ - 20min</p>
+          <h4>Nettoyage cuir et alcantara</h4>
+          <p>
+            Le lavage des sièges en cuir ou en Alcantara préserve leur aspect neuf et leur durabilité.</p>
+          <button id="btNettoyage-cuir-alcantara">Ajouter au panier</button>
+        </div>
+        <div class="shampoing-siege-tissus">
+          <img src="./assets/images/shampouineuse.png" alt="shampooer">
+          <p class="price">60€ - 45min</p>
+          <h4>Shampoing sièges en tissus</h4>
+          <p>
+            Le shampoing des sièges en tissu élimine les taches, les odeurs et rafraîchit l'intérieur de votre véhicule.
+          </p>
+          <button id="btShampoing-siege-tissus">Ajouter au panier</button>
+        </div>
+        <div class="shampoing-tapis-coffre">
+          <img src="./assets/images/tapis.png" alt="carpet and boot shampoo">
+          <p class="price">30€ - 20min</p>
+          <h4>Shampoing tapis et coffre</h4>
+          <p>
+            Le shampoing des tapis et du coffre élimine la saleté, les allergènes et redonne une apparence propre à
+            l'intérieur.
+          </p>
+          <button id="btShampoing-tapis-coffre">Ajouter au panier</button>
+        </div>
+        <div class="protection-plastique">
+          <img src="./assets/images/protection-plastique.webp" alt="plastic protection">
+          <p class="price">20€ - 15min</p>
+          <h4>Protection plastique</h4>
+          <p>
+            La protection des plastiques préserve leur aspect neuf, les protège des UV et améliore l'apparence globale
+            du
+            véhicule.
+          </p>
+          <button id="btProtection-plastique">Ajouter au panier</button>
+        </div>
+        <div class="impermeabilisant-textiles">
+          <img src="./assets/images/impermeabilisant-textile.webp" alt="textile waterproofing">
+          <p class="price">25€ - 20min</p>
+          <h4>Imperméabilisant textiles</h4>
+          <p>
+            L'imperméabilisant des textiles protège contre les taches, l'humidité et prolonge la durée de vie des
+            tissus.
+          </p>
+          <button id="btImpermeabilisant-textiles">Ajouter au panier</button>
+        </div>
       </div>
     </div>
   </section>
@@ -162,7 +237,7 @@
         <div class="formule-container">
           <div class="formule-base-container">
             <div class="title-formule-base">
-              <p>Formules de base</p>
+              <p>Lavages</p>
             </div>
             <div class="exterieur1">
               <input type="checkbox" id="exterieur1" name="exterieur1" value="exterieur1">
@@ -171,39 +246,6 @@
             <div class="interieur1">
               <input type="checkbox" id="interieur1" name="interieur1" value="interieur1">
               <label for="interieur1">1 intérieur</label>
-            </div>
-          </div>
-          <div class="formule-abonnement-container">
-            <div class="title-formule-abonnement">
-              <p>Abonnements</p>
-            </div>
-            <div class="formule-abonnement-exterieur-container">
-              <div class="exterieur3">
-                <input type="checkbox" id="exterieur3" name="exterieur3" value="exterieur3">
-                <label for="exterieur3">3 extérieur</label>
-              </div>
-              <div class="exterieur5">
-                <input type="checkbox" id="exterieur5" name="exterieur5" value="exterieur5">
-                <label for="exterieur5">5 extérieur</label>
-              </div>
-              <div class="exterieur10">
-                <input type="checkbox" id="exterieur10" name="exterieur10" value="exterieur10">
-                <label for="exterieur10">10 extérieur</label>
-              </div>
-            </div>
-            <div class="formule-abonnement-interieur-container">
-              <div class="interieur3">
-                <input type="checkbox" id="interieur3" name="interieur3" value="interieur3">
-                <label for="interieur3">3 intérieur</label>
-              </div>
-              <div class="interieur5">
-                <input type="checkbox" id="interieur5" name="interieur5" value="interieur5">
-                <label for="interieur5">5 intérieur</label>
-              </div>
-              <div class="interieur10">
-                <input type="checkbox" id="interieur10" name="interieur10" value="interieur10">
-                <label for="interieur10">10 intérieur</label>
-              </div>
             </div>
           </div>
         </div>

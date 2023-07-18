@@ -1,0 +1,94 @@
+.options {
+  background: url(../images/silver-metallic-color-sport-sedan-road.jpg) center
+    no-repeat fixed;
+
+  .options-container {
+    height: 100%;
+    width: 100%;
+    background: #ffffffbe;
+    padding: 0 0 50px 0;
+
+    .options-title {
+      h3 {
+        padding: 50px;
+        font-size: 2rem;
+        font-weight: 100;
+        font-family: "poppins", serif;
+        text-transform: uppercase;
+        text-align: center;
+        color: #072136;
+      }
+    }
+
+    .options-container-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      margin: 0 15%;
+
+      .polissage,
+      .nettoyage-bloc-moteur,
+      .protection-ceramique,
+      .nettoyage-cuir-alcantara,
+      .shampoing-siege-tissus,
+      .shampoing-tapis-coffre,
+      .protection-plastique,
+      .impermeabilisant-textiles {
+        padding: 20px 20px 50px 20px;
+        text-align: center;
+        max-width: 300px;
+        min-width: 200px;
+        position: relative;
+
+        img {
+          height: 100px;
+          aspect-ratio: initial;
+          margin: 20px;
+        }
+
+        .price {
+          font-family: "poppins", serif;
+          font-size: 1.5rem;
+          font-weight: bolder;
+        }
+
+        h4 {
+          font-size: 1.8rem;
+          font-weight: bold;
+          font-family: "poppins", serif;
+          text-transform: uppercase;
+          text-align: center;
+          text-align: left;
+          margin: 10px 10px 10px 0;
+        }
+
+        p {
+          text-align: left;
+          font-size: 1.1rem;
+          line-height: 25px;
+        }
+
+        button {
+          cursor: pointer;
+          padding: 10px 20px;
+          color: #072136;
+          background: transparent;
+          border: 1px solid #072136;
+          transition: 0.3s;
+          font-family: "poppins", serif;
+          font-weight: 400;
+          min-width: 160px;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+
+          &:hover {
+            color: #ffffff;
+            background: #072136;
+          }
+        }
+      }
+    }
+  }
+}

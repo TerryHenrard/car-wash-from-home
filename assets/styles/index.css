@@ -11,7 +11,8 @@ html {
 
 body {
   font-family: "montserrat", serif;
-  transition: 0.5s;
+  transition: 0.8s;
+  opacity: 0;
 }
 
 @font-face {
@@ -37,7 +38,8 @@ body {
 header {
   height: 88vh;
   position: relative;
-  background: url(../images/bg2.webp) no-repeat center/cover;
+  background: url(../images/bg3.webp) no-repeat center;
+  background-size: 2175px;
 }
 header nav {
   position: fixed;
@@ -184,7 +186,7 @@ header .header-text div p {
   font-weight: 500;
   color: #000000;
   transition: 0.3s;
-  margin: 30px 10px;
+  margin: 20px 10px;
 }
 @media only screen and (max-width: 550px) {
   header .header-text div p {
@@ -196,7 +198,7 @@ header .header-text div h1 {
   font-size: 3rem;
   font-family: "poppins";
   font-weight: 100;
-  margin: 30px 10px;
+  margin: 20px 10px;
   font-weight: 500;
   transition: 0.5s;
   text-transform: uppercase;
@@ -225,14 +227,14 @@ header .header-text div a:hover {
 }
 
 .tarif {
-  margin: 75px;
+  margin: 75px 200px;
 }
 .tarif .price-container {
   display: grid;
   grid-template-columns: 33.33% 33.33% 33.33%;
   text-align: center;
   border: 1px solid rgb(216, 216, 216);
-  min-width: 1160px;
+  min-width: 1037px;
 }
 .tarif .price-container .m {
   border-right: 1px solid rgb(216, 216, 216);
@@ -315,7 +317,7 @@ header .header-text div a:hover {
   border-bottom: 1px solid rgb(216, 216, 216);
   border-right: 1px solid rgb(216, 216, 216);
   border-left: 1px solid rgb(216, 216, 216);
-  min-width: 1160px;
+  min-width: 1037px;
 }
 .tarif .explication-container .exterieur {
   border-right: 1px solid rgb(216, 216, 216);
@@ -1355,4 +1357,128 @@ header .header-text div a:hover {
   .rdv .form-container .estimated-time {
     width: auto;
   }
+}
+
+.options {
+  background: url(../images/silver-metallic-color-sport-sedan-road.jpg) center no-repeat fixed;
+}
+.options .options-container {
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7450980392);
+  padding: 0 0 50px 0;
+}
+.options .options-container .options-title h3 {
+  padding: 50px;
+  font-size: 2rem;
+  font-weight: 100;
+  font-family: "poppins", serif;
+  text-transform: uppercase;
+  text-align: center;
+  color: #072136;
+}
+.options .options-container .options-container-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 0 15%;
+}
+.options .options-container .options-container-details .polissage,
+.options .options-container .options-container-details .nettoyage-bloc-moteur,
+.options .options-container .options-container-details .protection-ceramique,
+.options .options-container .options-container-details .nettoyage-cuir-alcantara,
+.options .options-container .options-container-details .shampoing-siege-tissus,
+.options .options-container .options-container-details .shampoing-tapis-coffre,
+.options .options-container .options-container-details .protection-plastique,
+.options .options-container .options-container-details .impermeabilisant-textiles {
+  padding: 20px 20px 50px 20px;
+  text-align: center;
+  max-width: 300px;
+  min-width: 200px;
+  position: relative;
+}
+.options .options-container .options-container-details .polissage img,
+.options .options-container .options-container-details .nettoyage-bloc-moteur img,
+.options .options-container .options-container-details .protection-ceramique img,
+.options .options-container .options-container-details .nettoyage-cuir-alcantara img,
+.options .options-container .options-container-details .shampoing-siege-tissus img,
+.options .options-container .options-container-details .shampoing-tapis-coffre img,
+.options .options-container .options-container-details .protection-plastique img,
+.options .options-container .options-container-details .impermeabilisant-textiles img {
+  height: 100px;
+  aspect-ratio: initial;
+  margin: 20px;
+}
+.options .options-container .options-container-details .polissage .price,
+.options .options-container .options-container-details .nettoyage-bloc-moteur .price,
+.options .options-container .options-container-details .protection-ceramique .price,
+.options .options-container .options-container-details .nettoyage-cuir-alcantara .price,
+.options .options-container .options-container-details .shampoing-siege-tissus .price,
+.options .options-container .options-container-details .shampoing-tapis-coffre .price,
+.options .options-container .options-container-details .protection-plastique .price,
+.options .options-container .options-container-details .impermeabilisant-textiles .price {
+  font-family: "poppins", serif;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.options .options-container .options-container-details .polissage h4,
+.options .options-container .options-container-details .nettoyage-bloc-moteur h4,
+.options .options-container .options-container-details .protection-ceramique h4,
+.options .options-container .options-container-details .nettoyage-cuir-alcantara h4,
+.options .options-container .options-container-details .shampoing-siege-tissus h4,
+.options .options-container .options-container-details .shampoing-tapis-coffre h4,
+.options .options-container .options-container-details .protection-plastique h4,
+.options .options-container .options-container-details .impermeabilisant-textiles h4 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: "poppins", serif;
+  text-transform: uppercase;
+  text-align: center;
+  text-align: left;
+  margin: 10px 10px 10px 0;
+}
+.options .options-container .options-container-details .polissage p,
+.options .options-container .options-container-details .nettoyage-bloc-moteur p,
+.options .options-container .options-container-details .protection-ceramique p,
+.options .options-container .options-container-details .nettoyage-cuir-alcantara p,
+.options .options-container .options-container-details .shampoing-siege-tissus p,
+.options .options-container .options-container-details .shampoing-tapis-coffre p,
+.options .options-container .options-container-details .protection-plastique p,
+.options .options-container .options-container-details .impermeabilisant-textiles p {
+  text-align: left;
+  font-size: 1.1rem;
+  line-height: 25px;
+}
+.options .options-container .options-container-details .polissage button,
+.options .options-container .options-container-details .nettoyage-bloc-moteur button,
+.options .options-container .options-container-details .protection-ceramique button,
+.options .options-container .options-container-details .nettoyage-cuir-alcantara button,
+.options .options-container .options-container-details .shampoing-siege-tissus button,
+.options .options-container .options-container-details .shampoing-tapis-coffre button,
+.options .options-container .options-container-details .protection-plastique button,
+.options .options-container .options-container-details .impermeabilisant-textiles button {
+  cursor: pointer;
+  padding: 10px 20px;
+  color: #072136;
+  background: transparent;
+  border: 1px solid #072136;
+  transition: 0.3s;
+  font-family: "poppins", serif;
+  font-weight: 400;
+  min-width: 160px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.options .options-container .options-container-details .polissage button:hover,
+.options .options-container .options-container-details .nettoyage-bloc-moteur button:hover,
+.options .options-container .options-container-details .protection-ceramique button:hover,
+.options .options-container .options-container-details .nettoyage-cuir-alcantara button:hover,
+.options .options-container .options-container-details .shampoing-siege-tissus button:hover,
+.options .options-container .options-container-details .shampoing-tapis-coffre button:hover,
+.options .options-container .options-container-details .protection-plastique button:hover,
+.options .options-container .options-container-details .impermeabilisant-textiles button:hover {
+  color: #ffffff;
+  background: #072136;
 }/*# sourceMappingURL=index.css.map */
