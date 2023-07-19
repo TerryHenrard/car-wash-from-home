@@ -1,8 +1,7 @@
 header {
   height: 88vh;
   position: relative;
-  background: url(../images/bg3.webp) no-repeat center;
-  background-size: 2175px;
+  background: url(../images/bg3.webp) no-repeat center/cover;
 
   nav {
     position: fixed;
@@ -91,8 +90,8 @@ header {
     padding: 20px 40px;
     width: 400px;
     background: #12d800;
-    z-index: 5000;
     border-radius: 50px 0 0 50px;
+    z-index: 5000;
     opacity: 0;
     transition: 0.3s;
 
@@ -139,7 +138,8 @@ header {
 
   .header-text {
     position: absolute;
-    bottom: 0;
+    bottom: -75px;
+    opacity: 0;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -147,6 +147,7 @@ header {
     margin: 0 auto;
     width: 45vw;
     min-width: 650px;
+    transition: 1s ease-in-out;
 
     div {
       color: #000000;

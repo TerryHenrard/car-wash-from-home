@@ -17,6 +17,9 @@
         text-transform: uppercase;
         text-align: center;
         color: #072136;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: 1s;
       }
     }
 
@@ -39,6 +42,9 @@
         max-width: 300px;
         min-width: 200px;
         position: relative;
+        transition: 1s;
+        opacity: 0;
+        transform: translateY(50px) scale(0.75);
 
         img {
           height: 100px;
@@ -71,9 +77,9 @@
         button {
           cursor: pointer;
           padding: 10px 20px;
-          color: #072136;
+          color: #0c3c60;
           background: transparent;
-          border: 1px solid #072136;
+          border: 1px solid #0c3c60;
           transition: 0.3s;
           font-family: "poppins", serif;
           font-weight: 400;
@@ -85,7 +91,7 @@
 
           &:hover {
             color: #ffffff;
-            background: #072136;
+            background: #0c3c60;
           }
         }
       }

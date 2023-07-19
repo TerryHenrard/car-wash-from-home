@@ -19,6 +19,9 @@
       .m-title,
       .l-title {
         margin: 50px;
+        transform: translateY(50px);
+        opacity: 0;
+        transition: 1s;
 
         img {
           height: 50px;
@@ -36,6 +39,10 @@
       .m-tarif,
       .l-tarif {
         margin: 40px;
+        transform: translateY(50px);
+        opacity: 0;
+        transition: 1s;
+
         p {
           font-family: "poppins", serif;
           font-size: 1.3rem;
@@ -71,6 +78,9 @@
         font-family: "poppins", serif;
         text-transform: uppercase;
         text-align: center;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: 1s;
       }
 
       ul {
@@ -79,6 +89,9 @@
           font-family: "poppins", serif;
           font-size: 1.2rem;
           margin: 20px 0;
+          opacity: 0;
+          transition: 1s;
+
           i {
             margin: 0 10px 0 0;
             font-size: 15px;

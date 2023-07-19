@@ -31,13 +31,14 @@
       </div>
     </nav>
     <div class="valid-inscription">
-      <p><i class="fa-solid fa-circle-check fa-beat"></i>Réservation validée!</p>
+      <i class="fa-solid fa-circle-check fa-beat"></i>
+      <p></p>
     </div>
     <div class="error-inscription">
       <i class="fa-solid fa-circle-xmark fa-beat"></i>
-      <p>Veuillez remplir correctement les champs</p>
+      <p></p>
     </div>
-    <div class="header-text">
+    <div class="header-text" id="header-text">
       <div>
         <p class="p-main-title">Bien plus qu'un simple lavage!</p>
         <h1 class="h1-main-title">Lavage professionnel de voiture à domicile</h1>
@@ -49,31 +50,31 @@
   <section class="tarif" id="tarif">
     <div class="price-container">
       <div class="s">
-        <div class="s-title">
+        <div class="s-title" id="s-title">
           <img src="./assets/images/citadine.png" alt="small car">
           <h3>citadine</h3>
         </div>
-        <div class="s-tarif">
+        <div class="s-tarif" id="s-tarif">
           <p>Extérieur: <span class="price">15</span>€</p>
           <p>Intérieur: <span class="price">25</span>€</p>
         </div>
       </div>
       <div class="m">
-        <div class="m-title">
+        <div class="m-title" id="m-title">
           <img src="./assets/images/berline.png" alt="medium car">
           <h3>berline, coupé</h3>
         </div>
-        <div class="m-tarif">
+        <div class="m-tarif" id="m-tarif">
           <p>Extérieur: <span class="price">20</span>€</p>
           <p>Intérieur: <span class="price">30</span>€</p>
         </div>
       </div>
       <div class="l">
-        <div class="l-title">
+        <div class="l-title" id="l-title">
           <img src="./assets/images/suv.png" alt="large car">
           <h3>break, SUV</h3>
         </div>
-        <div class="l-tarif">
+        <div class="l-tarif" id="l-tarif">
           <p>Extérieur: <span class="price">25</span>€</p>
           <p>Intérieur: <span class="price">35</span>€</p>
         </div>
@@ -84,26 +85,26 @@
       <div class="exterieur">
         <h3>Extérieur</h3>
         <ul>
-          <li><i class="fa-solid fa-check"></i>Entre 30min et 1h</li>
           <li><i class="fa-solid fa-check"></i>Prélavage carroserie</li>
           <li><i class="fa-solid fa-check"></i>désincrustation insectes</li>
           <li><i class="fa-solid fa-check"></i>Shampoing carrosserie finition brillante</li>
           <li><i class="fa-solid fa-check"></i>Nettoyage intérieur de portes</li>
           <li><i class="fa-solid fa-check"></i>Nettoyage et décontamination ferreuse jantes et pneus</li>
           <li><i class="fa-solid fa-check"></i>protection et lustrage carrosserie</li>
+          <li><i class="fa-solid fa-check"></i>Entre 30min et 1h</li>
         </ul>
         <a href="">Plus d'infos</a>
       </div>
       <div class="interieur">
         <h3>Intérieur</h3>
         <ul>
-          <li><i class="fa-solid fa-check"></i>Entre 60min et 1h30</li>
           <li><i class="fa-solid fa-check"></i>Aspiration en profondeur habitacle et tapis</li>
           <li><i class="fa-solid fa-check"></i>Nettoyage pinceau toutes surfaces</li>
           <li><i class="fa-solid fa-check"></i>Nettoyage tableau de bord à l'alcool isopropylique</li>
           <li><i class="fa-solid fa-check"></i>Nettoyage portes</li>
           <li><i class="fa-solid fa-check"></i>nettoyage vitres et miroirs</li>
           <li><i class="fa-solid fa-check"></i>Brossage poils d'animaux</li>
+          <li><i class="fa-solid fa-check"></i>Entre 1h et 1h30</li>
         </ul>
         <a href="">Plus d'infos</a>
       </div>
@@ -116,7 +117,7 @@
         <h3>découvrez nos options</h3>
       </div>
       <div class="options-container-details">
-        <div class="polissage">
+        <div class="polissage box">
           <img src="./assets/images/polissage.png" alt="polishing">
           <p class="price">90€ - 1h30</p>
           <h4>Polissage carrosserie</h4>
@@ -124,7 +125,7 @@
             peinture automobile.</p>
           <button id="btPolissage">Ajouter au panier</button>
         </div>
-        <div class="nettoyage-bloc-moteur">
+        <div class="nettoyage-bloc-moteur box">
           <img src="./assets/images/bloc-moteur.png" alt="cleaning the engine block">
           <p class="price">25€ - 30min</p>
           <h4>Nettoyage bloc moteur</h4>
@@ -132,7 +133,7 @@
             ses performances.</p>
           <button id="btNettoyage-bloc-moteur">Ajouter au panier</button>
         </div>
-        <div class="protection-ceramique">
+        <div class="protection-ceramique box">
           <img src="./assets/images/ceramique2.webp" alt="ceramic protection">
           <p class="price">55€ - 30min</p>
           <h4>Protection céramique</h4>
@@ -142,7 +143,7 @@
             brillance éclatante.</p>
           <button id="btProtection-ceramique">Ajouter au panier</button>
         </div>
-        <div class="nettoyage-cuir-alcantara">
+        <div class="nettoyage-cuir-alcantara box">
           <img src="./assets/images/sieges-cuir.png" alt="ceramic protection">
           <p class="price">20€ - 20min</p>
           <h4>Nettoyage cuir et alcantara</h4>
@@ -150,7 +151,7 @@
             Le lavage des sièges en cuir ou en Alcantara préserve leur aspect neuf et leur durabilité.</p>
           <button id="btNettoyage-cuir-alcantara">Ajouter au panier</button>
         </div>
-        <div class="shampoing-siege-tissus">
+        <div class="shampoing-siege-tissus box">
           <img src="./assets/images/shampouineuse.png" alt="shampooer">
           <p class="price">60€ - 45min</p>
           <h4>Shampoing sièges en tissus</h4>
@@ -159,7 +160,7 @@
           </p>
           <button id="btShampoing-siege-tissus">Ajouter au panier</button>
         </div>
-        <div class="shampoing-tapis-coffre">
+        <div class="shampoing-tapis-coffre box">
           <img src="./assets/images/tapis.png" alt="carpet and boot shampoo">
           <p class="price">30€ - 20min</p>
           <h4>Shampoing tapis et coffre</h4>
@@ -169,7 +170,7 @@
           </p>
           <button id="btShampoing-tapis-coffre">Ajouter au panier</button>
         </div>
-        <div class="protection-plastique">
+        <div class="protection-plastique box">
           <img src="./assets/images/protection-plastique.webp" alt="plastic protection">
           <p class="price">20€ - 15min</p>
           <h4>Protection plastique</h4>
@@ -180,7 +181,7 @@
           </p>
           <button id="btProtection-plastique">Ajouter au panier</button>
         </div>
-        <div class="impermeabilisant-textiles">
+        <div class="impermeabilisant-textiles box">
           <img src="./assets/images/impermeabilisant-textile.webp" alt="textile waterproofing">
           <p class="price">25€ - 20min</p>
           <h4>Imperméabilisant textiles</h4>
@@ -235,6 +236,14 @@
           <p class="message-error-ville"></p>
         </div>
         <div class="formule-container">
+          <div class="taille-voiture">
+            <label for="taille">Taille</label>
+            <select name="taille" id="taille" required>
+              <option value="citadine" selected>citadine</option>
+              <option value="berline-coupe">berline - coupé</option>
+              <option value="suv-break">break - SUV</option>
+            </select>
+          </div>
           <div class="formule-base-container">
             <div class="title-formule-base">
               <p>Lavages</p>
@@ -248,6 +257,7 @@
               <label for="interieur1">1 intérieur</label>
             </div>
           </div>
+
         </div>
         <div class="options-container">
           <p>Options</p>
