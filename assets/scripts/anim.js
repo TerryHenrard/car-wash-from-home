@@ -1,8 +1,6 @@
 const body = document.querySelector("body");
-const imgHeader = document.getElementById("start");
 const navbar = document.getElementById("navbar");
 const imgOptions = document.getElementById("options");
-const buttons = document.querySelectorAll("button");
 const headerText = document.getElementById("header-text");
 const sTtitle = document.getElementById("s-title");
 const sTarif = document.getElementById("s-tarif");
@@ -16,11 +14,26 @@ const liExterieur = document.querySelectorAll(".exterieur ul li");
 const liInterieur = document.querySelectorAll(".interieur ul li");
 const h3Options = document.querySelector(".options-title h3");
 const boxesOptions = document.querySelectorAll(".box");
+const sidebar = document.getElementById("side-bar");
+const aSideBar = document.querySelectorAll(".aSideBar");
+const spanToggle = document.querySelector(".toggle-btn");
+
+btn.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+});
+
+aSideBar.forEach((a) => {
+  a.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    spanToggle.classList.toggle("active-btn");
+  });
+});
+
+spanToggle.addEventListener("click", () => {
+  spanToggle.classList.toggle("active-btn");
+});
 
 const parallaxEffects = () => {
-  if (window.scrollY < 1000) {
-    imgHeader.style.backgroundPosition = window.scrollY * 0.25 + "px";
-  }
   imgOptions.style.backgroundSize = 3000 - window.scrollY / 3 + "px";
 };
 
@@ -43,25 +56,26 @@ const headerTextAnimation = () => {
 };
 
 const tarifAnim = () => {
+  console.log(scrollY);
   if (scrollY >= 130) {
     setTimeout(() => {
       sTtitle.style.transform = "translateY(0px)";
       sTtitle.style.opacity = 1;
       sTarif.style.transform = "translateY(0px)";
       sTarif.style.opacity = 1;
-    }, 500);
+    }, 0);
     setTimeout(() => {
       mTtitle.style.transform = "translateY(0px)";
       mTtitle.style.opacity = 1;
       mTarif.style.transform = "translateY(0px)";
       mTarif.style.opacity = 1;
-    }, 750);
+    }, 250);
     setTimeout(() => {
       lTtitle.style.transform = "translateY(0px)";
       lTtitle.style.opacity = 1;
       lTarif.style.transform = "translateY(0px)";
       lTarif.style.opacity = 1;
-    }, 1000);
+    }, 500);
   }
 };
 
@@ -70,22 +84,20 @@ const explicationAnim = () => {
     setTimeout(() => {
       h3Exterieur.style.opacity = 1;
       h3Exterieur.style.transform = "translateY(0px)";
-    }, 100);
+      liExterieur.forEach((li) => {
+        li.style.opacity = 1;
+        li.style.transform = "translateY(0px)";
+      });
+    }, 750);
 
     setTimeout(() => {
       h3Interieur.style.opacity = 1;
       h3Interieur.style.transform = "translateY(0px)";
-    }, 200);
-
-    setTimeout(() => {
-      liExterieur.forEach((li) => {
-        li.style.opacity = 1;
-      });
-
       liInterieur.forEach((li) => {
         li.style.opacity = 1;
+        li.style.transform = "translateY(0px)";
       });
-    }, 500);
+    }, 1000);
   }
 };
 

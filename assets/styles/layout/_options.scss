@@ -1,5 +1,5 @@
 .options {
-  background: url(../images/bg2.webp) center no-repeat fixed;
+  background: url(../images/bg4.webp) center no-repeat fixed;
 
   .options-container {
     height: 100%;
@@ -43,7 +43,7 @@
         position: relative;
         transition: 1s;
         opacity: 0;
-        transform: translateY(50px) scale(0.75);
+        transform: translateY(50px) scale(0.5);
 
         img {
           height: 100px;
@@ -58,7 +58,7 @@
         }
 
         h4 {
-          font-size: 1.8rem;
+          font-size: 1.5rem;
           font-weight: bold;
           font-family: "poppins", serif;
           text-transform: uppercase;
@@ -69,7 +69,6 @@
 
         p {
           text-align: left;
-          font-size: 1.1rem;
           line-height: 25px;
         }
 

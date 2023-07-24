@@ -46,7 +46,6 @@ header nav {
   left: 50%;
   transform: translateX(-50%);
   width: 100vw;
-  min-width: 1000px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -62,6 +61,11 @@ header nav .logo a {
 }
 header nav .menu {
   width: 66%;
+}
+@media screen and (max-width: 800px) {
+  header nav .menu {
+    display: none;
+  }
 }
 header nav .menu ul {
   display: flex;
@@ -104,6 +108,68 @@ header nav .menu ul li:hover::after {
     opacity: 1;
     top: 100%;
   }
+}
+header .active-btn span:nth-child(1) {
+  transform: rotate(45deg) translate(9px, 5px);
+}
+header .active-btn span:nth-child(2) {
+  opacity: 0;
+}
+header .active-btn span:nth-child(3) {
+  transform: rotate(-45deg) translate(12px, -8px);
+}
+header .toggle-btn {
+  cursor: pointer;
+  display: none;
+}
+@media screen and (max-width: 800px) {
+  header .toggle-btn {
+    display: block;
+  }
+}
+header .toggle-btn span {
+  width: 45px;
+  height: 5px;
+  border-radius: 5px;
+  background: #ffffff;
+  display: block;
+  margin-top: 7px;
+  transition: 0.3s ease;
+}
+header .active {
+  visibility: visible !important;
+  opacity: 1 !important;
+  left: 0 !important;
+}
+header #side-bar {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 75px;
+  left: 500px;
+  height: 100vh;
+  width: 100vw;
+  background: #ffffff;
+  transition: 0.3s;
+}
+header #side-bar ul {
+  list-style: none;
+  width: 50%;
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+header #side-bar ul li {
+  font-size: 1rem;
+  margin: 20px 0;
+  padding: 20px;
+  border-bottom: 1px solid rgba(7, 33, 54, 0.431372549);
+}
+header #side-bar ul li a {
+  color: #072136;
+  text-decoration: none;
+}
+header #side-bar ul li a:active {
+  color: #072136;
 }
 header .valid-inscription,
 header .error-inscription {
@@ -172,9 +238,18 @@ header .header-text {
   text-align: center;
   background: #fefdfc;
   margin: 0 auto;
-  width: 45vw;
-  min-width: 650px;
+  min-width: 800px;
   transition: 1s ease-in-out;
+}
+@media screen and (max-width: 820px) {
+  header .header-text {
+    min-width: 500px;
+  }
+}
+@media screen and (max-width: 450px) {
+  header .header-text {
+    min-width: 0;
+  }
 }
 header .header-text div {
   color: #000000;
@@ -189,7 +264,7 @@ header .header-text div p {
   transition: 0.3s;
   margin: 20px 10px;
 }
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 820px) {
   header .header-text div p {
     font-size: 0.9rem;
   }
@@ -204,9 +279,9 @@ header .header-text div h1 {
   transition: 0.5s;
   text-transform: uppercase;
 }
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 820px) {
   header .header-text div h1 {
-    font-size: 4rem;
+    font-size: 2rem;
   }
 }
 header .header-text div a {
@@ -222,6 +297,14 @@ header .header-text div a {
   font-size: 0.95rem;
   transition: 0.3s ease-in-out;
 }
+@media screen and (max-width: 330px) {
+  header .header-text div a {
+    margin: 10px auto;
+    padding: 12px;
+    min-width: 180px;
+    font-size: 0.8rem;
+  }
+}
 header .header-text div a:hover {
   color: #ffffff;
   background: #0c3c60;
@@ -230,16 +313,39 @@ header .header-text div a:hover {
 .tarif {
   margin: 75px 200px;
 }
+@media screen and (max-width: 1455px) {
+  .tarif {
+    margin: 50px 68px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .tarif {
+    margin: 8.67px 23.12px;
+  }
+}
 .tarif .price-container {
   display: grid;
   grid-template-columns: 33.33% 33.33% 33.33%;
   text-align: center;
   border: 1px solid rgb(216, 216, 216);
-  min-width: 1037px;
+}
+@media screen and (max-width: 870px) {
+  .tarif .price-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
 }
 .tarif .price-container .m {
   border-right: 1px solid rgb(216, 216, 216);
   border-left: 1px solid rgb(216, 216, 216);
+}
+@media screen and (max-width: 870px) {
+  .tarif .price-container .m {
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid rgb(216, 216, 216);
+    border-top: 1px solid rgb(216, 216, 216);
+  }
 }
 .tarif .price-container .s .s-title,
 .tarif .price-container .s .m-title,
@@ -254,6 +360,19 @@ header .header-text div a:hover {
   transform: translateY(50px);
   opacity: 0;
   transition: 1s;
+}
+@media screen and (max-width: 1455px) {
+  .tarif .price-container .s .s-title,
+  .tarif .price-container .s .m-title,
+  .tarif .price-container .s .l-title,
+  .tarif .price-container .m .s-title,
+  .tarif .price-container .m .m-title,
+  .tarif .price-container .m .l-title,
+  .tarif .price-container .l .s-title,
+  .tarif .price-container .l .m-title,
+  .tarif .price-container .l .l-title {
+    margin: 20px;
+  }
 }
 .tarif .price-container .s .s-title img,
 .tarif .price-container .s .m-title img,
@@ -280,6 +399,19 @@ header .header-text div a:hover {
   font-family: "poppins", serif;
   text-transform: uppercase;
 }
+@media screen and (max-width: 1455px) {
+  .tarif .price-container .s .s-title h3,
+  .tarif .price-container .s .m-title h3,
+  .tarif .price-container .s .l-title h3,
+  .tarif .price-container .m .s-title h3,
+  .tarif .price-container .m .m-title h3,
+  .tarif .price-container .m .l-title h3,
+  .tarif .price-container .l .s-title h3,
+  .tarif .price-container .l .m-title h3,
+  .tarif .price-container .l .l-title h3 {
+    font-size: 1.6rem;
+  }
+}
 .tarif .price-container .s .s-tarif,
 .tarif .price-container .s .m-tarif,
 .tarif .price-container .s .l-tarif,
@@ -294,6 +426,19 @@ header .header-text div a:hover {
   opacity: 0;
   transition: 1s;
 }
+@media screen and (max-width: 1455px) {
+  .tarif .price-container .s .s-tarif,
+  .tarif .price-container .s .m-tarif,
+  .tarif .price-container .s .l-tarif,
+  .tarif .price-container .m .s-tarif,
+  .tarif .price-container .m .m-tarif,
+  .tarif .price-container .m .l-tarif,
+  .tarif .price-container .l .s-tarif,
+  .tarif .price-container .l .m-tarif,
+  .tarif .price-container .l .l-tarif {
+    margin: 16px;
+  }
+}
 .tarif .price-container .s .s-tarif p,
 .tarif .price-container .s .m-tarif p,
 .tarif .price-container .s .l-tarif p,
@@ -307,6 +452,19 @@ header .header-text div a:hover {
   font-size: 1.3rem;
   margin: 20px 0;
 }
+@media screen and (max-width: 1455px) {
+  .tarif .price-container .s .s-tarif p,
+  .tarif .price-container .s .m-tarif p,
+  .tarif .price-container .s .l-tarif p,
+  .tarif .price-container .m .s-tarif p,
+  .tarif .price-container .m .m-tarif p,
+  .tarif .price-container .m .l-tarif p,
+  .tarif .price-container .l .s-tarif p,
+  .tarif .price-container .l .m-tarif p,
+  .tarif .price-container .l .l-tarif p {
+    margin: 8px;
+  }
+}
 .tarif .price-container .s .s-tarif p .price,
 .tarif .price-container .s .m-tarif p .price,
 .tarif .price-container .s .l-tarif p .price,
@@ -318,6 +476,19 @@ header .header-text div a:hover {
 .tarif .price-container .l .l-tarif p .price {
   font-size: 1.5rem;
 }
+@media screen and (max-width: 1455px) {
+  .tarif .price-container .s .s-tarif p .price,
+  .tarif .price-container .s .m-tarif p .price,
+  .tarif .price-container .s .l-tarif p .price,
+  .tarif .price-container .m .s-tarif p .price,
+  .tarif .price-container .m .m-tarif p .price,
+  .tarif .price-container .m .l-tarif p .price,
+  .tarif .price-container .l .s-tarif p .price,
+  .tarif .price-container .l .m-tarif p .price,
+  .tarif .price-container .l .l-tarif p .price {
+    font-size: 1.2rem;
+  }
+}
 .tarif .explication-container {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -326,12 +497,37 @@ header .header-text div a:hover {
   border-left: 1px solid rgb(216, 216, 216);
   min-width: 1037px;
 }
+@media screen and (max-width: 1455px) {
+  .tarif .explication-container {
+    min-width: 0;
+    grid-template-columns: 1fr;
+    grid-row: auto auto;
+  }
+}
 .tarif .explication-container .exterieur {
   border-right: 1px solid rgb(216, 216, 216);
+}
+@media screen and (max-width: 1455px) {
+  .tarif .explication-container .exterieur {
+    border-right: none;
+    border-bottom: 1px solid rgb(216, 216, 216);
+  }
 }
 .tarif .explication-container .exterieur,
 .tarif .explication-container .interieur {
   padding: 60px 60px 0 60px;
+}
+@media screen and (max-width: 1455px) {
+  .tarif .explication-container .exterieur,
+  .tarif .explication-container .interieur {
+    padding: 40px 40px 0 40px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .tarif .explication-container .exterieur,
+  .tarif .explication-container .interieur {
+    padding: 5px 5px;
+  }
 }
 .tarif .explication-container .exterieur h3,
 .tarif .explication-container .interieur h3 {
@@ -345,6 +541,13 @@ header .header-text div a:hover {
   opacity: 0;
   transition: 1s;
 }
+@media screen and (max-width: 1455px) {
+  .tarif .explication-container .exterieur h3,
+  .tarif .explication-container .interieur h3 {
+    margin: 0 17px 17px 17px;
+    font-size: 1.6rem;
+  }
+}
 .tarif .explication-container .exterieur ul,
 .tarif .explication-container .interieur ul {
   list-style: none;
@@ -355,7 +558,14 @@ header .header-text div a:hover {
   font-size: 1.2rem;
   margin: 20px 0;
   opacity: 0;
+  transform: translateY(20px);
   transition: 1s;
+}
+@media screen and (max-width: 450px) {
+  .tarif .explication-container .exterieur ul li,
+  .tarif .explication-container .interieur ul li {
+    font-size: 0.9rem;
+  }
 }
 .tarif .explication-container .exterieur ul li i,
 .tarif .explication-container .interieur ul li i {
@@ -377,6 +587,22 @@ header .header-text div a:hover {
   font-weight: 600;
   font-size: 0.95rem;
   transition: 0.3s ease-in-out;
+}
+@media screen and (max-width: 1455px) {
+  .tarif .explication-container .exterieur a,
+  .tarif .explication-container .interieur a {
+    margin: 30px auto;
+    padding: 15px 7.5px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .tarif .explication-container .exterieur a,
+  .tarif .explication-container .interieur a {
+    margin: 15px auto;
+    padding: 7px 3.25px;
+    font-size: 0.7rem;
+    min-width: 150px;
+  }
 }
 .tarif .explication-container .exterieur a:hover,
 .tarif .explication-container .interieur a:hover {
@@ -955,6 +1181,8 @@ header .header-text div a:hover {
   text-align: center;
 }
 .rdv .form-container .formule-container .taille-voiture select {
+  text-align: center;
+  width: 300px;
   padding: 10px;
   font-size: 18px;
   margin: 0 0 10px 0;
@@ -963,6 +1191,7 @@ header .header-text div a:hover {
   font-weight: 400;
   font-family: "montserrat";
   cursor: pointer;
+  -webkit-apearrance: none;
 }
 .rdv .form-container .formule-container .taille-voiture select:focus {
   outline: none;
@@ -1278,7 +1507,7 @@ header .header-text div a:hover {
 }
 
 .options {
-  background: url(../images/bg2.webp) center no-repeat fixed;
+  background: url(../images/bg4.webp) center no-repeat fixed;
 }
 .options .options-container {
   height: 100%;
@@ -1319,7 +1548,7 @@ header .header-text div a:hover {
   position: relative;
   transition: 1s;
   opacity: 0;
-  transform: translateY(50px) scale(0.75);
+  transform: translateY(50px) scale(0.5);
 }
 .options .options-container .options-container-details .polissage img,
 .options .options-container .options-container-details .nettoyage-bloc-moteur img,
@@ -1353,7 +1582,7 @@ header .header-text div a:hover {
 .options .options-container .options-container-details .shampoing-tapis-coffre h4,
 .options .options-container .options-container-details .protection-plastique h4,
 .options .options-container .options-container-details .impermeabilisant-textiles h4 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: bold;
   font-family: "poppins", serif;
   text-transform: uppercase;
@@ -1370,7 +1599,6 @@ header .header-text div a:hover {
 .options .options-container .options-container-details .protection-plastique p,
 .options .options-container .options-container-details .impermeabilisant-textiles p {
   text-align: left;
-  font-size: 1.1rem;
   line-height: 25px;
 }
 .options .options-container .options-container-details .polissage button,
