@@ -39,7 +39,9 @@ const parallaxEffects = () => {
 
 let lastScroll = 0;
 const navbarAnimation = () => {
-  if (scrollY < lastScroll) {
+  if (scrollY < 400) {
+    navbar.style.top = 0 + "px";
+  } else if (scrollY < lastScroll) {
     navbar.style.top = 0 + "px";
   } else {
     navbar.style.top = -100 + "px";
@@ -56,7 +58,6 @@ const headerTextAnimation = () => {
 };
 
 const tarifAnim = () => {
-  console.log(scrollY);
   if (scrollY >= 130) {
     setTimeout(() => {
       sTtitle.style.transform = "translateY(0px)";

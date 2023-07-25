@@ -19,6 +19,14 @@
         opacity: 0;
         transform: translateY(50px);
         transition: 1s;
+
+        @media screen and (max-width: 900px) {
+          font-size: 1.65rem;
+        }
+
+        @media screen and (max-width: 600px) {
+          padding: 25px 25px 0 25px;
+        }
       }
     }
 
@@ -27,6 +35,29 @@
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       margin: 0 15%;
+
+      @media screen and (max-width: 1200px) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+      }
+
+      @media screen and (max-width: 900px) {
+        grid-template-columns: auto auto;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+      }
+
+      @media screen and (max-width: 600px) {
+        margin: 0 20px;
+      }
+
+      @media screen and (max-width: 475px) {
+        margin: 0;
+      }
+
+      @media screen and (max-width: 420px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
 
       .polissage,
       .nettoyage-bloc-moteur,
@@ -44,17 +75,31 @@
         transition: 1s;
         opacity: 0;
         transform: translateY(50px) scale(0.5);
+        @media screen and (max-width: 420px) {
+          margin: 0 auto;
+        }
 
         img {
           height: 100px;
           aspect-ratio: initial;
           margin: 20px;
+          @media screen and (max-width: 420px) {
+            height: 75px;
+          }
         }
 
         .price {
           font-family: "poppins", serif;
           font-size: 1.5rem;
           font-weight: bolder;
+
+          @media screen and (max-width: 900px) {
+            font-size: 1.2rem;
+          }
+
+          @media screen and (max-width: 420px) {
+            font-size: 1rem;
+          }
         }
 
         h4 {
@@ -65,11 +110,27 @@
           text-align: center;
           text-align: left;
           margin: 10px 10px 10px 0;
+
+          @media screen and (max-width: 900px) {
+            font-size: 1.2rem;
+          }
+
+          @media screen and (max-width: 420px) {
+            font-size: 1rem;
+          }
         }
 
         p {
           text-align: left;
           line-height: 25px;
+
+          @media screen and (max-width: 900px) {
+            font-size: 0.9rem;
+          }
+
+          @media screen and (max-width: 420px) {
+            font-size: 0.8rem;
+          }
         }
 
         button {
@@ -86,6 +147,10 @@
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
+
+          @media screen and (max-width: 900px) {
+            padding: 7.5px 15px;
+          }
 
           &:hover {
             color: #ffffff;
