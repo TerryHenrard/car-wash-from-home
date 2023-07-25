@@ -147,6 +147,7 @@ header {
           text-decoration: none;
           height: 75px;
           width: 150px;
+          margin: 0 auto;
           display: block;
           display: flex;
           align-items: center;
@@ -231,6 +232,12 @@ header {
     }
 
     @media screen and (max-width: 500px) {
+      min-width: 400px;
+    }
+    @media screen and (max-width: 400px) {
+      min-width: 300px;
+    }
+    @media screen and (max-width: 300px) {
       min-width: 275px;
     }
 

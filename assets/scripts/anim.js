@@ -34,7 +34,9 @@ spanToggle.addEventListener("click", () => {
 });
 
 const parallaxEffects = () => {
-  imgOptions.style.backgroundSize = 3000 - window.scrollY / 3 + "px";
+  if (innerWidth > 500) {
+    imgOptions.style.backgroundSize = 3000 - window.scrollY / 3 + "px";
+  }
 };
 
 let lastScroll = 0;

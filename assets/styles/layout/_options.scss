@@ -1,5 +1,7 @@
 .options {
-  background: url(../images/bg4.webp) center no-repeat fixed;
+  background: url(../images/bg4.webp) center no-repeat;
+  background-attachment: scroll;
+  background-size: 575vh;
 
   .options-container {
     height: 100%;
@@ -75,6 +77,7 @@
         transition: 1s;
         opacity: 0;
         transform: translateY(50px) scale(0.5);
+
         @media screen and (max-width: 420px) {
           margin: 0 auto;
         }

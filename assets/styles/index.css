@@ -167,6 +167,7 @@ header #side-bar ul li a {
   text-decoration: none;
   height: 75px;
   width: 150px;
+  margin: 0 auto;
   display: block;
   display: flex;
   align-items: center;
@@ -251,6 +252,16 @@ header .header-text {
   }
 }
 @media screen and (max-width: 500px) {
+  header .header-text {
+    min-width: 400px;
+  }
+}
+@media screen and (max-width: 400px) {
+  header .header-text {
+    min-width: 300px;
+  }
+}
+@media screen and (max-width: 300px) {
   header .header-text {
     min-width: 275px;
   }
@@ -838,6 +849,7 @@ header .header-text div a:hover {
   width: 100%;
   border: none;
   border-bottom: 1px solid #757575;
+  border-radius: 0;
 }
 @media only screen and (max-width: 500px) {
   .rdv .form-container .last-name-container input,
@@ -1064,7 +1076,7 @@ header .header-text div a:hover {
 }
 @media only screen and (max-width: 730px) {
   .rdv .form-container .formule-container {
-    width: 300px;
+    width: 325px;
     flex-direction: column;
   }
 }
@@ -1207,6 +1219,8 @@ header .header-text div a:hover {
   font-family: "montserrat";
   cursor: pointer;
   font-size: 1rem;
+  height: 42px;
+  border-radius: 0;
 }
 @media only screen and (max-width: 330px) {
   .rdv .form-container .formule-container .taille-voiture select {
@@ -1527,7 +1541,9 @@ header .header-text div a:hover {
 }
 
 .options {
-  background: url(../images/bg4.webp) center no-repeat fixed;
+  background: url(../images/bg4.webp) center no-repeat;
+  background-attachment: scroll;
+  background-size: 575vh;
 }
 .options .options-container {
   height: 100%;
