@@ -45,7 +45,6 @@ let lastName,
   hours,
   message;
 let formule = [];
-let abonnement = [];
 let option = [];
 let taille;
 
@@ -787,7 +786,6 @@ form.addEventListener("submit", (e) => {
       city,
       taille,
       formule,
-      abonnement,
       option,
       dateAppointement,
       hours,
@@ -805,7 +803,6 @@ form.addEventListener("submit", (e) => {
     inputsText.forEach((input) => (input.value = ""));
     inputsCkb.forEach((input) => (input.checked = false));
     formule = [];
-    abonnement = [];
     option = [];
     inputDate.value =
       annee.toString() +
