@@ -55,6 +55,25 @@ let annee = date.getFullYear();
 
 let dayDate =
   annee.toString() + "-" + mois + "-" + jour.toString().padStart(2, "0");
+if (parseInt(mois) == 12) {
+  if (jour == 30) {
+    jour = -1;
+    mois = "01";
+    annee++;
+  } else if (jour == 31) {
+    jour = 0;
+    mois = "01";
+    annee++;
+  }
+} else {
+  if (jour == 30) {
+    jour = -1;
+    mois = (parseInt(mois) + 1).toString().padStart(2, "0");
+  } else if (jour == 31) {
+    jour = 0;
+    mois = (parseInt(mois) + 1).toString().padStart(2, "0");
+  }
+}
 
 inputDate.value =
   annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
