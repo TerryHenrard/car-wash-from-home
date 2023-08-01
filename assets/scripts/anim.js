@@ -33,12 +33,6 @@ spanToggle.addEventListener("click", () => {
   spanToggle.classList.toggle("active-btn");
 });
 
-const parallaxEffects = () => {
-  if (innerWidth > 500) {
-    imgOptions.style.backgroundSize = 3000 - window.scrollY / 3 + "px";
-  }
-};
-
 let lastScroll = 0;
 const navbarAnimation = () => {
   if (scrollY < 400) {
@@ -125,7 +119,6 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("scroll", () => {
-  /*parallaxEffects();*/
   navbarAnimation();
   tarifAnim();
   explicationAnim();
