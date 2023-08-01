@@ -113,7 +113,7 @@ const optionsAnim = () => {
       const delay = index * 0.2;
 
       box.style.opacity = 1;
-      box.style.transform = "translate(0px) scale(1)";
+      box.style.transform = "translate(0px)";
       box.style.transitionDelay = `${delay}s`;
     });
   }
@@ -125,7 +125,7 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("scroll", () => {
-  parallaxEffects();
+  /*parallaxEffects();*/
   navbarAnimation();
   tarifAnim();
   explicationAnim();

@@ -331,7 +331,7 @@ header .header-text div a:hover {
 }
 
 .tarif {
-  margin: 75px 200px;
+  margin: 75px 200px 0 200px;
 }
 @media screen and (max-width: 1455px) {
   .tarif {
@@ -1061,7 +1061,7 @@ header .header-text div a:hover {
 .rdv .form-container .date-container input,
 .rdv .form-container .time-container input {
   cursor: pointer;
-  font-size: 15px;
+  font-size: 18px;
 }
 .rdv .form-container .formule-container {
   width: 300px;
@@ -1218,7 +1218,7 @@ header .header-text div a:hover {
   font-weight: 400;
   font-family: "montserrat";
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 18px;
   height: 42px;
   border-radius: 0;
 }
@@ -1541,11 +1541,17 @@ header .header-text div a:hover {
 }
 
 .options {
-  background: url(../images/bg4.webp) center/cover no-repeat fixed;
+  background: #ffffff;
+  margin: 0 200px;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1455px) {
   .options {
-    background: #ffffff;
+    margin: 50px 68px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .options {
+    margin: 8.67px 23.12px;
   }
 }
 .options .options-container {
@@ -1553,6 +1559,9 @@ header .header-text div a:hover {
   width: 100%;
   background: rgba(255, 255, 255, 0.7450980392);
   padding: 0 0 50px 0;
+}
+.options .options-container .options-title {
+  margin: 30px 0;
 }
 .options .options-container .options-title h3 {
   padding: 50px;
@@ -1580,7 +1589,6 @@ header .header-text div a:hover {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  margin: 0 15%;
 }
 @media screen and (max-width: 1200px) {
   .options .options-container .options-container-details {
@@ -1590,16 +1598,11 @@ header .header-text div a:hover {
 }
 @media screen and (max-width: 900px) {
   .options .options-container .options-container-details {
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     grid-template-rows: 1fr 1fr 1fr 1fr;
   }
 }
 @media screen and (max-width: 600px) {
-  .options .options-container .options-container-details {
-    margin: 0 20px;
-  }
-}
-@media screen and (max-width: 475px) {
   .options .options-container .options-container-details {
     margin: 0;
   }
@@ -1611,6 +1614,48 @@ header .header-text div a:hover {
   }
 }
 .options .options-container .options-container-details .polissage,
+.options .options-container .options-container-details .shampoing-siege-tissus {
+  border-left: 1px solid rgb(216, 216, 216);
+}
+.options .options-container .options-container-details .shampoing-siege-tissus,
+.options .options-container .options-container-details .shampoing-tapis-coffre,
+.options .options-container .options-container-details .protection-plastique,
+.options .options-container .options-container-details .impermeabilisant-textiles {
+  border-bottom: 1px solid rgb(216, 216, 216);
+}
+@media screen and (max-width: 1200px) {
+  .options .options-container .options-container-details .shampoing-siege-tissus {
+    border-left: none;
+    border-bottom: none;
+  }
+  .options .options-container .options-container-details .nettoyage-cuir-alcantara,
+  .options .options-container .options-container-details .protection-plastique {
+    border-left: 1px solid rgb(216, 216, 216);
+  }
+}
+@media screen and (max-width: 900px) {
+  .options .options-container .options-container-details .protection-ceramique {
+    border-left: 1px solid rgb(216, 216, 216);
+  }
+  .options .options-container .options-container-details .nettoyage-cuir-alcantara {
+    border-left: none;
+  }
+  .options .options-container .options-container-details .shampoing-siege-tissus {
+    border-left: 1px solid rgb(216, 216, 216);
+  }
+  .options .options-container .options-container-details .shampoing-tapis-coffre {
+    border-bottom: none;
+  }
+}
+@media screen and (max-width: 420px) {
+  .options .options-container .options-container-details .nettoyage-bloc-moteur,
+  .options .options-container .options-container-details .nettoyage-cuir-alcantara,
+  .options .options-container .options-container-details .shampoing-tapis-coffre,
+  .options .options-container .options-container-details .impermeabilisant-textiles {
+    border-left: 1px solid rgb(216, 216, 216);
+  }
+}
+.options .options-container .options-container-details .polissage,
 .options .options-container .options-container-details .nettoyage-bloc-moteur,
 .options .options-container .options-container-details .protection-ceramique,
 .options .options-container .options-container-details .nettoyage-cuir-alcantara,
@@ -1618,14 +1663,17 @@ header .header-text div a:hover {
 .options .options-container .options-container-details .shampoing-tapis-coffre,
 .options .options-container .options-container-details .protection-plastique,
 .options .options-container .options-container-details .impermeabilisant-textiles {
-  padding: 20px 20px 50px 20px;
+  padding: 20px 20px 80px 20px;
+  height: 100%;
+  width: 100%;
   text-align: center;
-  max-width: 300px;
-  min-width: 200px;
   position: relative;
   transition: 1s;
   opacity: 0;
-  transform: translateY(50px) scale(0.5);
+  transform: translateY(50px);
+  margin: 0 auto;
+  border-top: 1px solid rgb(216, 216, 216);
+  border-right: 1px solid rgb(216, 216, 216);
 }
 @media screen and (max-width: 420px) {
   .options .options-container .options-container-details .polissage,
@@ -1674,6 +1722,7 @@ header .header-text div a:hover {
   font-family: "poppins", serif;
   font-size: 1.5rem;
   font-weight: bolder;
+  text-align: center;
 }
 @media screen and (max-width: 900px) {
   .options .options-container .options-container-details .polissage .price,
@@ -1711,9 +1760,12 @@ header .header-text div a:hover {
   font-weight: bold;
   font-family: "poppins", serif;
   text-transform: uppercase;
+  margin: 10px 0;
   text-align: center;
-  text-align: left;
-  margin: 10px 10px 10px 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media screen and (max-width: 900px) {
   .options .options-container .options-container-details .polissage h4,
@@ -1747,7 +1799,7 @@ header .header-text div a:hover {
 .options .options-container .options-container-details .shampoing-tapis-coffre p,
 .options .options-container .options-container-details .protection-plastique p,
 .options .options-container .options-container-details .impermeabilisant-textiles p {
-  text-align: left;
+  text-align: center;
   line-height: 25px;
 }
 @media screen and (max-width: 900px) {
@@ -1795,6 +1847,7 @@ header .header-text div a:hover {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  margin: 0 0 30px 0;
 }
 @media screen and (max-width: 900px) {
   .options .options-container .options-container-details .polissage button,
@@ -1805,7 +1858,7 @@ header .header-text div a:hover {
   .options .options-container .options-container-details .shampoing-tapis-coffre button,
   .options .options-container .options-container-details .protection-plastique button,
   .options .options-container .options-container-details .impermeabilisant-textiles button {
-    padding: 7.5px 15px;
+    padding: 7.5px 12px;
   }
 }
 .options .options-container .options-container-details .polissage button:hover,
