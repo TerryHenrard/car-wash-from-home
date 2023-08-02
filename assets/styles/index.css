@@ -54,7 +54,7 @@ header nav {
   transition: 0.2s ease-in-out;
 }
 header nav .logo a {
-  background: url(../images/logo4.png) center/cover;
+  background: url(../images/logo4.avif) center/cover;
   display: block;
   height: 75px;
   width: 100px;
