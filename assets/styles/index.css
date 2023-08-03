@@ -578,10 +578,11 @@ header .header-text div a:hover {
     font-size: 0.9rem;
   }
 }
-.tarif .explication-container .exterieur ul li i,
-.tarif .explication-container .interieur ul li i {
-  margin: 0 10px 0 0;
-  font-size: 15px;
+.tarif .explication-container .exterieur ul li img,
+.tarif .explication-container .interieur ul li img {
+  height: 15px;
+  width: 15px;
+  margin: 0 7.5px 0 0;
 }
 .tarif .explication-container .exterieur a,
 .tarif .explication-container .interieur a {
