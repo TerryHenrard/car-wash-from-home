@@ -396,30 +396,30 @@ header .header-text div a:hover {
   height: 50px;
   width: 50px;
 }
-.tarif .price-container .s .s-title h3,
-.tarif .price-container .s .m-title h3,
-.tarif .price-container .s .l-title h3,
-.tarif .price-container .m .s-title h3,
-.tarif .price-container .m .m-title h3,
-.tarif .price-container .m .l-title h3,
-.tarif .price-container .l .s-title h3,
-.tarif .price-container .l .m-title h3,
-.tarif .price-container .l .l-title h3 {
+.tarif .price-container .s .s-title h2,
+.tarif .price-container .s .m-title h2,
+.tarif .price-container .s .l-title h2,
+.tarif .price-container .m .s-title h2,
+.tarif .price-container .m .m-title h2,
+.tarif .price-container .m .l-title h2,
+.tarif .price-container .l .s-title h2,
+.tarif .price-container .l .m-title h2,
+.tarif .price-container .l .l-title h2 {
   font-size: 2rem;
   font-weight: 100;
   font-family: "poppins", serif;
   text-transform: uppercase;
 }
 @media screen and (max-width: 1455px) {
-  .tarif .price-container .s .s-title h3,
-  .tarif .price-container .s .m-title h3,
-  .tarif .price-container .s .l-title h3,
-  .tarif .price-container .m .s-title h3,
-  .tarif .price-container .m .m-title h3,
-  .tarif .price-container .m .l-title h3,
-  .tarif .price-container .l .s-title h3,
-  .tarif .price-container .l .m-title h3,
-  .tarif .price-container .l .l-title h3 {
+  .tarif .price-container .s .s-title h2,
+  .tarif .price-container .s .m-title h2,
+  .tarif .price-container .s .l-title h2,
+  .tarif .price-container .m .s-title h2,
+  .tarif .price-container .m .m-title h2,
+  .tarif .price-container .m .l-title h2,
+  .tarif .price-container .l .s-title h2,
+  .tarif .price-container .l .m-title h2,
+  .tarif .price-container .l .l-title h2 {
     font-size: 1.6rem;
   }
 }
