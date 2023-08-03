@@ -18,22 +18,12 @@ body {
 @font-face {
   font-family: "poppins";
   src: url(../fonts/Poppins-Medium.ttf);
+  font-display: swap;
 }
 @font-face {
   font-family: "montserrat";
   src: url(../fonts/Montserrat-VariableFont_wght.ttf);
-}
-@font-face {
-  font-family: "mrdafoe";
-  src: url(../fonts/MrDafoe-Regular.ttf);
-}
-@font-face {
-  font-family: "parisienne";
-  src: url(../fonts/Parisienne-Regular.ttf);
-}
-@font-face {
-  font-family: "allura";
-  src: url(../fonts/Allura-Regular.ttf);
+  font-display: swap;
 }
 header {
   height: 88vh;
