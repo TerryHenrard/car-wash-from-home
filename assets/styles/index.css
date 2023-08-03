@@ -404,6 +404,7 @@ header .header-text div a:hover {
 .tarif .price-container .l .m-title img,
 .tarif .price-container .l .l-title img {
   height: 50px;
+  width: 50px;
 }
 .tarif .price-container .s .s-title h3,
 .tarif .price-container .s .m-title h3,
@@ -1696,7 +1697,6 @@ header .header-text div a:hover {
 .options .options-container .options-container-details .protection-plastique img,
 .options .options-container .options-container-details .impermeabilisant-textiles img {
   height: 100px;
-  aspect-ratio: initial;
   margin: 20px;
 }
 @media screen and (max-width: 420px) {

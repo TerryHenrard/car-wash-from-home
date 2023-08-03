@@ -1,5 +1,4 @@
 .options {
-  // background: url(../images/bg4.webp) center/cover no-repeat fixed;
   background: #ffffff;
   margin: 0 200px;
 
@@ -145,7 +144,6 @@
 
         img {
           height: 100px;
-          aspect-ratio: initial;
           margin: 20px;
           @media screen and (max-width: 420px) {
             height: 75px;
