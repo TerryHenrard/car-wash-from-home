@@ -185,6 +185,13 @@ header .error-inscription {
     width: 300px;
   }
 }
+header .valid-inscription .img-check,
+header .error-inscription .img-check {
+  display: inline-block;
+  background: url(../images/check.svg) center/cover;
+  height: 15px;
+  aspect-ratio: 1/1;
+}
 header .valid-inscription p,
 header .error-inscription p {
   font-weight: bold;
@@ -194,16 +201,6 @@ header .error-inscription p {
 @media only screen and (max-width: 500px) {
   header .valid-inscription p,
   header .error-inscription p {
-    font-size: 0.8rem;
-  }
-}
-header .valid-inscription p i,
-header .error-inscription p i {
-  margin: 0 15px 0 0;
-}
-@media only screen and (max-width: 500px) {
-  header .valid-inscription p i,
-  header .error-inscription p i {
     font-size: 0.8rem;
   }
 }
@@ -1541,7 +1538,7 @@ header .header-text div a:hover {
     margin: 50px 68px;
   }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
   .options {
     margin: 8.67px 23.12px;
   }
