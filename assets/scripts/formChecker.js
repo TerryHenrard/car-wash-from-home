@@ -494,6 +494,18 @@ inputsCkb.forEach((input) => {
             price += 25;
             time += 60;
           }
+          if (inputSelect.value === "camionette-s") {
+            price += 30;
+            time += 75;
+          }
+          if (inputSelect.value === "camionette-m") {
+            price += 35;
+            time += 90;
+          }
+          if (inputSelect.value === "camionette-l") {
+            price += 40;
+            time += 105;
+          }
           formule.push(e.target.value);
         } else {
           if (inputSelect.value === "citadine") {
@@ -507,6 +519,18 @@ inputsCkb.forEach((input) => {
           if (inputSelect.value === "suv-break") {
             price -= 25;
             time -= 60;
+          }
+          if (inputSelect.value === "camionette-s") {
+            price -= 30;
+            time -= 75;
+          }
+          if (inputSelect.value === "camionette-m") {
+            price -= 35;
+            time -= 90;
+          }
+          if (inputSelect.value === "camionette-l") {
+            price -= 40;
+            time -= 105;
           }
 
           index = formule.indexOf(e.target.value);
@@ -527,6 +551,15 @@ inputsCkb.forEach((input) => {
           } else if (inputSelect.value === "suv-break") {
             price += 35;
             time += 90;
+          } else if (inputSelect.value === "camionette-s") {
+            price += 40;
+            time += 105;
+          } else if (inputSelect.value === "camionette-m") {
+            price += 45;
+            time += 120;
+          } else if (inputSelect.value === "camionette-l") {
+            price += 50;
+            time += 135;
           }
           formule.push(e.target.value);
         } else {
@@ -539,6 +572,15 @@ inputsCkb.forEach((input) => {
           } else if (inputSelect.value === "suv-break") {
             price -= 35;
             time -= 90;
+          } else if (inputSelect.value === "camionette-s") {
+            price -= 40;
+            time -= 105;
+          } else if (inputSelect.value === "camionette-m") {
+            price -= 45;
+            time -= 120;
+          } else if (inputSelect.value === "camionette-l") {
+            price -= 50;
+            time -= 135;
           }
 
           index = formule.indexOf(e.target.value);
@@ -706,6 +748,15 @@ inputSelect.addEventListener("input", () => {
     } else if (currentSelect === "suv-break") {
       price -= 25;
       time -= 60;
+    } else if (currentSelect === "camionette-s") {
+      price -= 30;
+      time -= 75;
+    } else if (currentSelect === "camionette-m") {
+      price -= 35;
+      time -= 90;
+    } else if (currentSelect === "camionette-l") {
+      price -= 40;
+      time -= 105;
     }
   }
 
@@ -719,6 +770,15 @@ inputSelect.addEventListener("input", () => {
     } else if (currentSelect === "suv-break") {
       price -= 35;
       time -= 90;
+    } else if (currentSelect === "camionette-s") {
+      price -= 40;
+      time -= 105;
+    } else if (currentSelect === "camionette-m") {
+      price -= 45;
+      time -= 120;
+    } else if (currentSelect === "camionette-l") {
+      price -= 50;
+      time -= 135;
     }
   }
 
@@ -748,6 +808,33 @@ inputSelect.addEventListener("input", () => {
     if (ckbInt.checked) {
       price += 35;
       time += 90;
+    }
+  } else if (inputSelect.value === "camionette-s") {
+    if (ckbExt.checked) {
+      price += 30;
+      time += 75;
+    }
+    if (ckbInt.checked) {
+      price += 40;
+      time += 105;
+    }
+  } else if (inputSelect.value === "camionette-m") {
+    if (ckbExt.checked) {
+      price += 35;
+      time += 90;
+    }
+    if (ckbInt.checked) {
+      price += 45;
+      time += 120;
+    }
+  } else if (inputSelect.value === "camionette-l") {
+    if (ckbExt.checked) {
+      price += 40;
+      time += 105;
+    }
+    if (ckbInt.checked) {
+      price += 50;
+      time += 135;
     }
   }
 

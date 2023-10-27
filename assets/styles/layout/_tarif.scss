@@ -11,7 +11,8 @@
 
   .price-container {
     display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-columns: repeat(3, 33.33%);
+    grid-template-rows: repeat(2, 1fr);
     text-align: center;
     border: 1px solid rgb(216, 216, 216);
 
@@ -32,12 +33,40 @@
       }
     }
 
+    .utilitaire-medium {
+      border-top: 1px solid rgb(216, 216, 216);
+    }
+
+    .utilitaire-xl {
+      border-top: 1px solid rgb(216, 216, 216);
+    }
+
+    .utilitaire-large {
+      border-top: 1px solid rgb(216, 216, 216);
+      border-left: 1px solid rgb(216, 216, 216);
+      border-right: 1px solid rgb(216, 216, 216);
+    }
+
+    .utilitaire-xl {
+      .uti-xl-title {
+        #camionette-xl {
+          transform: scaleX(-1);
+        }
+      }
+    }
+
     .s,
     .m,
-    .l {
+    .l,
+    .utilitaire-medium,
+    .utilitaire-large,
+    .utilitaire-xl {
       .s-title,
       .m-title,
-      .l-title {
+      .l-title,
+      .uti-m-title,
+      .uti-l-title,
+      .uti-xl-title {
         margin: 50px;
         transform: translateY(50px);
         opacity: 0;
@@ -66,7 +95,10 @@
 
       .s-tarif,
       .m-tarif,
-      .l-tarif {
+      .l-tarif,
+      .uti-m-tarif,
+      .uti-l-tarif,
+      .uti-xl-tarif {
         margin: 40px;
         transform: translateY(50px);
         opacity: 0;

@@ -8,6 +8,12 @@ const mTtitle = document.getElementById("m-title");
 const mTarif = document.getElementById("m-tarif");
 const lTtitle = document.getElementById("l-title");
 const lTarif = document.getElementById("l-tarif");
+const utiLTarif = document.getElementById("uti-l-title");
+const utiLTitle = document.getElementById("uti-l-tarif");
+const utiMTarif = document.getElementById("uti-m-title");
+const utiMTitle = document.getElementById("uti-m-tarif");
+const utiXLTarif = document.getElementById("uti-xl-tarif");
+const utiXLTitle = document.getElementById("uti-xl-title");
 const h3Exterieur = document.querySelector(".exterieur h3");
 const h3Interieur = document.querySelector(".interieur h3");
 const liExterieur = document.querySelectorAll(".exterieur ul li");
@@ -73,6 +79,24 @@ const tarifAnim = () => {
       lTarif.style.transform = "translateY(0px)";
       lTarif.style.opacity = 1;
     }, 500);
+    setTimeout(() => {
+      utiMTarif.style.transform = "translateY(0px)";
+      utiMTarif.style.opacity = 1;
+      utiMTitle.style.transform = "translateY(0px)";
+      utiMTitle.style.opacity = 1;
+    }, 750);
+    setTimeout(() => {
+      utiLTarif.style.transform = "translateY(0px)";
+      utiLTarif.style.opacity = 1;
+      utiLTitle.style.transform = "translateY(0px)";
+      utiLTitle.style.opacity = 1;
+    }, 1000);
+    setTimeout(() => {
+      utiXLTarif.style.transform = "translateY(0px)";
+      utiXLTarif.style.opacity = 1;
+      utiXLTitle.style.transform = "translateY(0px)";
+      utiXLTitle.style.opacity = 1;
+    }, 1250);
   }
 };
 
