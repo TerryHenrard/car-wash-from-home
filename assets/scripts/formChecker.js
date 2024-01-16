@@ -113,9 +113,10 @@ buttons.forEach((button) => {
       case "btPolissage":
         if (!ckbPolissage.checked) {
           ckbPolissage.checked = !ckbPolissage.checked;
-          pValidAnim.textContent = '"Polissage carrosserie" ajouté au panier';
+          pValidAnim.textContent =
+            '"Polissage carrosserie" ajouté à la commande';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du panier";
+          button.textContent = "Retirer";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -123,9 +124,10 @@ buttons.forEach((button) => {
           time += 90;
         } else {
           ckbPolissage.checked = !ckbPolissage.checked;
-          pErrorAnim.textContent = '"Polissage carrosserie" retiré du panier';
+          pErrorAnim.textContent =
+            '"Polissage carrosserie" retiré de la commande';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au panier";
+          button.textContent = "Ajouter";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -136,9 +138,10 @@ buttons.forEach((button) => {
       case "btNettoyage-bloc-moteur":
         if (!ckbNettoyageBlocMmoteur.checked) {
           ckbNettoyageBlocMmoteur.checked = !ckbNettoyageBlocMmoteur.checked;
-          pValidAnim.textContent = '"nettoyage bloc moteur" ajouté au panier';
+          pValidAnim.textContent =
+            '"nettoyage bloc moteur" ajouté à la commande';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du panier";
+          button.textContent = "Retirer";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -146,9 +149,10 @@ buttons.forEach((button) => {
           time += 30;
         } else {
           ckbNettoyageBlocMmoteur.checked = !ckbNettoyageBlocMmoteur.checked;
-          pErrorAnim.textContent = '"nettoyage bloc moteur" retiré du panier';
+          pErrorAnim.textContent =
+            '"nettoyage bloc moteur" retiré de la commande';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au panier";
+          button.textContent = "Ajouter";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -159,9 +163,9 @@ buttons.forEach((button) => {
       case "btProtection-ceramique":
         if (!ckbProtectionCeramique.checked) {
           ckbProtectionCeramique.checked = !ckbProtectionCeramique.checked;
-          pValidAnim.textContent = '"protection céramique" ajouté au panier';
+          pValidAnim.textContent = '"protection céramique" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du panier";
+          button.textContent = "Retirer du nettoyage";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -169,9 +173,9 @@ buttons.forEach((button) => {
           time += 30;
         } else {
           ckbProtectionCeramique.checked = !ckbProtectionCeramique.checked;
-          pErrorAnim.textContent = '"protection céramique" retiré du panier';
+          pErrorAnim.textContent = '"protection céramique" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au panier";
+          button.textContent = "Ajouter au nettoyage";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -184,9 +188,9 @@ buttons.forEach((button) => {
           ckbNettoyageCuirAlcantara.checked =
             !ckbNettoyageCuirAlcantara.checked;
           pValidAnim.textContent =
-            '"nettoyage cuir et alcantara" ajouté au panier';
+            '"nettoyage cuir et alcantara" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du panier";
+          button.textContent = "Retirer du nettoyage";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -196,9 +200,9 @@ buttons.forEach((button) => {
           ckbNettoyageCuirAlcantara.checked =
             !ckbNettoyageCuirAlcantara.checked;
           pErrorAnim.textContent =
-            '"nettoyage cuir et alcantara" retiré du panier';
+            '"nettoyage cuir et alcantara" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au panier";
+          button.textContent = "Ajouter au nettoyage";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -210,9 +214,9 @@ buttons.forEach((button) => {
         if (!ckbShampoingSiege.checked) {
           ckbShampoingSiege.checked = !ckbShampoingSiege.checked;
           pValidAnim.textContent =
-            '"shampoing sièges en tissus" ajouté au panier';
+            '"shampoing sièges en tissus" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du panier";
+          button.textContent = "Retirer du nettoyage";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -221,9 +225,9 @@ buttons.forEach((button) => {
         } else {
           ckbShampoingSiege.checked = !ckbShampoingSiege.checked;
           pErrorAnim.textContent =
-            '"shampoing sièges en tissus" retiré du panier';
+            '"shampoing sièges en tissus" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au panier";
+          button.textContent = "Ajouter au nettoyage";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -235,9 +239,9 @@ buttons.forEach((button) => {
         if (!ckbShampoingTapis.checked) {
           ckbShampoingTapis.checked = !ckbShampoingTapis.checked;
           pValidAnim.textContent =
-            '"shampoing tapis et coffre" ajouté au panier';
+            '"shampoing tapis et coffre" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du panier";
+          button.textContent = "Retirer du nettoyage";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -246,9 +250,9 @@ buttons.forEach((button) => {
         } else {
           ckbShampoingTapis.checked = !ckbShampoingTapis.checked;
           pErrorAnim.textContent =
-            '"shampoing tapis et coffre" retiré du panier';
+            '"shampoing tapis et coffre" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au panier";
+          button.textContent = "Ajouter au nettoyage";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -259,9 +263,9 @@ buttons.forEach((button) => {
       case "btProtection-plastique":
         if (!ckbProtectionPlastiques.checked) {
           ckbProtectionPlastiques.checked = !ckbProtectionPlastiques.checked;
-          pValidAnim.textContent = '"protection plastique" ajouté au panier';
+          pValidAnim.textContent = '"protection plastique" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du panier";
+          button.textContent = "Retirer du nettoyage";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -269,9 +273,9 @@ buttons.forEach((button) => {
           time += 15;
         } else {
           ckbProtectionPlastiques.checked = !ckbProtectionPlastiques.checked;
-          pErrorAnim.textContent = '"protection plastique" retiré du panier';
+          pErrorAnim.textContent = '"protection plastique" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au panier";
+          button.textContent = "Ajouter au nettoyage";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -284,9 +288,9 @@ buttons.forEach((button) => {
           ckbImpermeabilisantTextiles.checked =
             !ckbImpermeabilisantTextiles.checked;
           pValidAnim.textContent =
-            '"imperméabilisant textiles" ajouté au panier';
+            '"imperméabilisant textiles" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du panier";
+          button.textContent = "Retirer du nettoyage";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -296,9 +300,9 @@ buttons.forEach((button) => {
           ckbImpermeabilisantTextiles.checked =
             !ckbImpermeabilisantTextiles.checked;
           pErrorAnim.textContent =
-            '"imperméabilisant textiles" retiré du panier';
+            '"imperméabilisant textiles" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au panier";
+          button.textContent = "Ajouter au nettoyage";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);

@@ -1,26 +1,25 @@
-.options {
+.options,
+.finitions {
   background: #ffffff;
   margin: 0 200px;
 
   @media screen and (max-width: 1455px) {
     margin: 50px 68px;
   }
-
   @media screen and (max-width: 480px) {
     margin: 8.67px 23.12px;
   }
 
-  @media screen and (max-width: 600px) {
-  }
-
-  .options-container {
+  .options-container,
+  .finitions-container {
     height: 100%;
     width: 100%;
     background: #ffffffbe;
-    padding: 0 0 50px 0;
 
-    .options-title {
+    .options-title,
+    .finitions-title {
       margin: 30px 0;
+
       h3 {
         padding: 50px;
         font-size: 2rem;
@@ -36,46 +35,45 @@
         @media screen and (max-width: 900px) {
           font-size: 1.65rem;
         }
-
         @media screen and (max-width: 600px) {
           padding: 25px 25px 0 25px;
         }
       }
     }
 
-    .options-container-details {
+    .options-container-details,
+    .finitions-container-details {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
 
       @media screen and (max-width: 1200px) {
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
       }
-
       @media screen and (max-width: 900px) {
         grid-template-columns: 50% 50%;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
       }
-
       @media screen and (max-width: 600px) {
         margin: 0;
       }
-
       @media screen and (max-width: 420px) {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
       }
 
       .polissage,
-      .shampoing-siege-tissus {
+      .nettoyage-bloc-moteur,
+      .protection-ceramique-jantes,
+      .renovateur-joints {
         border-left: 1px solid rgb(216, 216, 216);
       }
 
       .shampoing-siege-tissus,
       .shampoing-tapis-coffre,
-      .protection-plastique,
-      .impermeabilisant-textiles {
+      .nettoyage-bloc-moteur,
+      .nettoyage-cuir-alcantara,
+      .protection-ceramique-vitres,
+      .protection-cuir,
+      .anti-buee,
+      .renovateur-joints {
         border-bottom: 1px solid rgb(216, 216, 216);
       }
 
@@ -95,15 +93,12 @@
         .protection-ceramique {
           border-left: 1px solid rgb(216, 216, 216);
         }
-
         .nettoyage-cuir-alcantara {
           border-left: none;
         }
-
         .shampoing-siege-tissus {
           border-left: 1px solid rgb(216, 216, 216);
         }
-
         .shampoing-tapis-coffre {
           border-bottom: none;
         }
@@ -118,6 +113,10 @@
         }
       }
 
+      .rénovateur-plastique {
+        width: 100%;
+      }
+
       .polissage,
       .nettoyage-bloc-moteur,
       .protection-ceramique,
@@ -125,7 +124,13 @@
       .shampoing-siege-tissus,
       .shampoing-tapis-coffre,
       .protection-plastique,
-      .impermeabilisant-textiles {
+      .impermeabilisant-textiles,
+      .protection-ceramique-jantes,
+      .protection-ceramique-vitres,
+      .protection-cuir,
+      .anti-buee,
+      .renovateur-joints,
+      .renovateur-pneus {
         padding: 20px 20px 80px 20px;
         height: 100%;
         width: 100%;
@@ -159,7 +164,6 @@
           @media screen and (max-width: 900px) {
             font-size: 1.2rem;
           }
-
           @media screen and (max-width: 420px) {
             font-size: 1rem;
           }
@@ -180,7 +184,6 @@
           @media screen and (max-width: 900px) {
             font-size: 1.2rem;
           }
-
           @media screen and (max-width: 420px) {
             font-size: 1rem;
           }
@@ -189,12 +192,10 @@
         p {
           text-align: center;
           line-height: 25px;
-          // margin: 0 0 50px 0;
 
           @media screen and (max-width: 900px) {
             font-size: 0.9rem;
           }
-
           @media screen and (max-width: 420px) {
             font-size: 0.8rem;
           }
@@ -226,6 +227,10 @@
           }
         }
       }
+    }
+    .finitions-container-details {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 }

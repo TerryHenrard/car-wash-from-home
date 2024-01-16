@@ -19,6 +19,7 @@ const h3Interieur = document.querySelector(".interieur h3");
 const liExterieur = document.querySelectorAll(".exterieur ul li");
 const liInterieur = document.querySelectorAll(".interieur ul li");
 const h3Options = document.querySelector(".options-title h3");
+const h3Finitions = document.querySelector(".finitions-title h3");
 const boxesOptions = document.querySelectorAll(".box");
 const sidebar = document.getElementById("side-bar");
 const aSideBar = document.querySelectorAll(".aSideBar");
@@ -126,6 +127,8 @@ const optionsAnim = () => {
   if (scrollY >= 1230) {
     h3Options.style.opacity = 1;
     h3Options.style.transform = "translateY(0px)";
+    h3Finitions.style.opacity = 1;
+    h3Finitions.style.transform = "translateY(0px)";
 
     boxesOptions.forEach((box, index) => {
       const delay = index * 0.2;
