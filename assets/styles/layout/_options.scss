@@ -44,7 +44,7 @@
     .options-container-details,
     .finitions-container-details {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(5, 1fr);
 
       @media screen and (max-width: 1200px) {
         grid-template-columns: 1fr 1fr 1fr;
@@ -61,8 +61,7 @@
 
       .polissage,
       .nettoyage-bloc-moteur,
-      .protection-ceramique-jantes,
-      .renovateur-joints {
+      .impermeabilisant-textiles {
         border-left: 1px solid rgb(216, 216, 216);
       }
 
@@ -70,10 +69,12 @@
       .shampoing-tapis-coffre,
       .nettoyage-bloc-moteur,
       .nettoyage-cuir-alcantara,
-      .protection-ceramique-vitres,
       .protection-cuir,
       .anti-buee,
-      .renovateur-joints {
+      .shampoing-moquette,
+      .renovateur-joints,
+      .protection-plastique,
+      .impermeabilisant-textiles {
         border-bottom: 1px solid rgb(216, 216, 216);
       }
 
@@ -130,7 +131,8 @@
       .protection-cuir,
       .anti-buee,
       .renovateur-joints,
-      .renovateur-pneus {
+      .renovateur-pneus,
+      .shampoing-moquette {
         padding: 20px 20px 80px 20px;
         height: 100%;
         width: 100%;
@@ -215,7 +217,7 @@
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-          margin: 0 0 30px 0;
+          margin: 0 0 20px 0;
 
           @media screen and (max-width: 900px) {
             padding: 7.5px 12px;

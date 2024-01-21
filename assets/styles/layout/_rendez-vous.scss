@@ -4,7 +4,7 @@
   h3 {
     font-family: "montserrat", serif;
     font-size: 1.5rem;
-    padding: 40px 0;
+    padding: 80px 0;
 
     @media only screen and (max-width: 330px) {
       font-size: 1.3rem;
@@ -22,6 +22,64 @@
     form {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "nom prenom"
+        "email tel"
+        "adresse ville"
+        "formules finitions"
+        "options finitions"
+        "date heure"
+        "message envoyer"
+        "prix temps";
+
+      .last-name-container {
+        grid-area: nom;
+      }
+      .first-name-container {
+        grid-area: prenom;
+      }
+      .email-container {
+        grid-area: email;
+      }
+      .tel-container {
+        grid-area: tel;
+      }
+      .adresse-container {
+        grid-area: adresse;
+      }
+      .ville-container {
+        grid-area: ville;
+      }
+      .formule-container {
+        grid-area: formules;
+      }
+      .options-container {
+        grid-area: options;
+      }
+      .finitions-container {
+        grid-area: finitions;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .date-container {
+        grid-area: date;
+      }
+      .time-container {
+        grid-area: heure;
+      }
+      .textarea-container {
+        grid-area: message;
+      }
+      .submit-container {
+        grid-area: envoyer;
+      }
+      .price {
+        grid-area: prix;
+      }
+      .estimated-time {
+        grid-area: temps;
+      }
 
       @media only screen and (max-width: 1300px) {
         grid-template-columns: 1fr;
@@ -34,8 +92,9 @@
 
     .date-container,
     .time-container {
-      p {
-        font-size: 18px;
+      .title-date,
+      .title-heure {
+        font-size: 1.3rem;
         color: #000000;
 
         @media only screen and (max-width: 500px) {
@@ -178,6 +237,7 @@
         color: red;
         text-align: left;
         visibility: visible;
+        position: absolute;
       }
 
       .error-label {
@@ -202,7 +262,8 @@
 
     .formule-container {
       width: 300px;
-      margin: 0 auto 30px auto;
+      height: 225px;
+      margin: 0 auto 10px auto;
       display: flex;
       align-items: flex-start;
       justify-content: space-around;
@@ -227,7 +288,7 @@
         }
         .title-formule-base {
           p {
-            font-size: 18px;
+            font-size: 1.3rem;
             margin: 0 0 10px 0;
             text-align: center;
 
@@ -335,7 +396,7 @@
         }
         label {
           display: block;
-          font-size: 18px;
+          font-size: 1.3rem;
           margin: 0 0 10px 0;
           text-align: center;
         }
@@ -366,7 +427,8 @@
       }
     }
 
-    .options-container {
+    .options-container,
+    .finitions-container {
       width: 325px;
       margin: 0 auto 30px auto;
 
@@ -375,7 +437,7 @@
       }
 
       p {
-        font-size: 18px;
+        font-size: 1.3rem;
         margin: 0 0 10px 0;
 
         @media only screen and (max-width: 500px) {
@@ -390,7 +452,8 @@
       .protection-ceramique-container,
       .nettoyage-sieges-cuir-alcantara-container,
       .protection-plastiques-container,
-      .impermeabilisant-textiles-container {
+      .impermeabilisant-textiles-container,
+      .shampoing-moquette-container {
         text-align: left;
 
         input:not(:checked),
@@ -518,6 +581,7 @@
       justify-content: center;
       align-items: center;
       margin: 0 30px 30px 30px;
+
       input {
         cursor: pointer;
         padding: 10px 20px;
