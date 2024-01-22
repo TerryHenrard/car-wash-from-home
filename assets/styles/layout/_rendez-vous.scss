@@ -29,6 +29,7 @@
         "formules finitions"
         "options finitions"
         "date heure"
+        "cgv cgv"
         "message envoyer"
         "prix temps";
 
@@ -73,6 +74,11 @@
       }
       .submit-container {
         grid-area: envoyer;
+      }
+      .courant-eau-cgv-container {
+        grid-area: cgv;
+        margin: 0 0 30px 0;
+        width: auto;
       }
       .price {
         grid-area: prix;
@@ -428,7 +434,8 @@
     }
 
     .options-container,
-    .finitions-container {
+    .finitions-container,
+    .courant-eau-cgv-container {
       width: 325px;
       margin: 0 auto 30px auto;
 
@@ -453,7 +460,14 @@
       .nettoyage-sieges-cuir-alcantara-container,
       .protection-plastiques-container,
       .impermeabilisant-textiles-container,
-      .shampoing-moquette-container {
+      .shampoing-moquette-container,
+      .ceramique-jantes-container,
+      .ceramique-vitres,
+      .renovateur-pneus-container,
+      .protection-cuir-container,
+      .anti-buee-container,
+      .renovateur-joints-container,
+      .courant-eau-cgv-container2 {
         text-align: left;
 
         input:not(:checked),
@@ -537,6 +551,10 @@
           box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1),
             0 0 0 6px rgba(97, 94, 255, 0.2);
         }
+      }
+
+      .courant-eau-cgv-container2 {
+        text-align: center;
       }
     }
 
