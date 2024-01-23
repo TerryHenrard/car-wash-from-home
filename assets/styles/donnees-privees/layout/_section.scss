@@ -1,0 +1,25 @@
+section {
+  font-family: "poppins";
+  width: 50vw;
+  margin: 0 auto;
+  text-align: justify;
+
+  .big-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 75px 0 0 0;
+  }
+
+  .container {
+    h1,
+    h2 {
+      margin: 20px 0;
+      font-size: 1.6rem;
+    }
+    p {
+      margin: 0 0 50px 0;
+      font-size: 1.15rem;
+    }
+  }
+}

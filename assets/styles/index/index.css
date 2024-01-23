@@ -17,18 +17,18 @@ body {
 
 @font-face {
   font-family: "poppins";
-  src: url(../fonts/Poppins-Medium.ttf);
+  src: url(../../fonts/Poppins-Medium.ttf);
   font-display: swap;
 }
 @font-face {
   font-family: "montserrat";
-  src: url(../fonts/Montserrat-VariableFont_wght.ttf);
+  src: url(../../fonts/Montserrat-VariableFont_wght.ttf);
   font-display: swap;
 }
 header {
   height: 88vh;
   position: relative;
-  background: url(../images/bg3.webp) no-repeat center/cover;
+  background: url(../../images/bg3.webp) no-repeat center/cover;
 }
 header nav {
   position: fixed;
@@ -44,7 +44,7 @@ header nav {
   transition: 0.2s ease-in-out;
 }
 header nav .logo a {
-  background: url(../images/logo4.webp) center/cover;
+  background: url(../../images/logo4.webp) center/cover;
   display: block;
   height: 75px;
   width: 100px;
@@ -188,7 +188,7 @@ header .error-inscription {
 header .valid-inscription .img-check,
 header .error-inscription .img-check {
   display: inline-block;
-  background: url(../images/check.svg) center/cover;
+  background: url(../../images/check.svg) center/cover;
   height: 15px;
   aspect-ratio: 1/1;
 }
@@ -1665,6 +1665,7 @@ header .header-text div a:hover {
 .rdv .form-container .courant-eau-cgv-container .anti-buee-container,
 .rdv .form-container .courant-eau-cgv-container .renovateur-joints-container,
 .rdv .form-container .courant-eau-cgv-container .courant-eau-cgv-container2 {
+  position: relative;
   text-align: left;
 }
 .rdv .form-container .options-container .polissage-container input:not(:checked),

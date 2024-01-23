@@ -1,0 +1,267 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: poppins;
+  src: url(../../fonts/Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: montserrat;
+  src: url(../../fonts/Montserrat-VariableFont_wght.ttf);
+}
+header nav {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+  background: #0c3c60;
+  transition: 0.2s ease-in-out;
+}
+header nav .logo a {
+  background: url(../../images/logo4.webp) center/cover;
+  display: block;
+  height: 75px;
+  width: 100px;
+}
+header nav .menu {
+  width: 66%;
+}
+@media screen and (max-width: 800px) {
+  header nav .menu {
+    display: none;
+  }
+}
+header nav .menu ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style: none;
+  height: 100%;
+}
+header nav .menu ul li {
+  transition: 0.2s;
+  font-size: 0.95rem;
+  font-family: "montserrat", serif;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+}
+header nav .menu ul li a {
+  text-decoration: none;
+  color: #ffffff;
+}
+header nav .menu ul li a:visited {
+  color: #ffffff;
+}
+header nav .menu ul li:hover::after {
+  content: "";
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  width: 100%;
+  background: #ffffff;
+  animation: botToTop 0.3s ease-in-out forwards;
+}
+@keyframes botToTop {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 100%;
+  }
+}
+header .active-btn span:nth-child(1) {
+  transform: rotate(45deg) translate(9px, 5px);
+}
+header .active-btn span:nth-child(2) {
+  opacity: 0;
+}
+header .active-btn span:nth-child(3) {
+  transform: rotate(-45deg) translate(12px, -8px);
+}
+header .toggle-btn {
+  cursor: pointer;
+  display: none;
+}
+@media screen and (max-width: 800px) {
+  header .toggle-btn {
+    display: block;
+  }
+}
+header .toggle-btn span {
+  width: 45px;
+  height: 5px;
+  border-radius: 5px;
+  background: #ffffff;
+  display: block;
+  margin-top: 7px;
+  transition: 0.3s ease;
+}
+header .active {
+  visibility: visible !important;
+  opacity: 1 !important;
+  left: 0 !important;
+}
+header #side-bar {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 75px;
+  left: 500px;
+  height: 100vh;
+  width: 100vw;
+  background: #ffffff;
+  transition: 0.3s;
+}
+header #side-bar ul {
+  list-style: none;
+  width: 50%;
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+header #side-bar ul li {
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(7, 33, 54, 0.431372549);
+}
+header #side-bar ul li a {
+  color: #072136;
+  text-decoration: none;
+  height: 75px;
+  width: 150px;
+  margin: 0 auto;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header #side-bar ul li a:active {
+  color: #072136;
+}
+
+section {
+  font-family: "poppins";
+  width: 50vw;
+  margin: 0 auto;
+  text-align: justify;
+}
+section .big-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 75px 0 0 0;
+}
+section .container h1,
+section .container h2 {
+  margin: 20px 0;
+  font-size: 1.6rem;
+}
+section .container p {
+  margin: 0 0 50px 0;
+  font-size: 1.15rem;
+}
+
+.footer {
+  background: #0c3c60;
+  font-family: "poppins", serif;
+}
+.footer .footer-container {
+  padding: 30px 50px;
+  display: flex;
+  justify-content: space-around;
+}
+@media only screen and (max-width: 500px) {
+  .footer .footer-container {
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .footer .footer-container .apropos,
+  .footer .footer-container .contact {
+    margin: 10px;
+  }
+}
+.footer .footer-container .apropos h4,
+.footer .footer-container .contact h4 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #eeeeee;
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .apropos h4,
+  .footer .footer-container .contact h4 {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .apropos ul,
+  .footer .footer-container .contact ul {
+    list-style: none;
+  }
+}
+.footer .footer-container .apropos ul > li,
+.footer .footer-container .contact ul > li {
+  color: #ffffff;
+}
+.footer .footer-container .apropos ul > li a,
+.footer .footer-container .contact ul > li a {
+  color: #ffffff;
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .apropos ul > li a,
+  .footer .footer-container .contact ul > li a {
+    font-size: 0.8rem;
+    list-style: none;
+  }
+}
+.footer .footer-container .apropos ul > li a:visited,
+.footer .footer-container .contact ul > li a:visited {
+  color: #ffffff;
+}
+.footer .footer-container .contact h4 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #eeeeee;
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .contact h4 {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .contact .mail {
+    font-size: 0.8rem;
+  }
+}
+.footer .footer-container .contact p {
+  color: #ffffff;
+  display: inline;
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .contact p {
+    font-size: 0.8rem;
+  }
+}
+.footer .footer-container .contact p a {
+  color: #ffffff;
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .contact p a {
+    font-size: 0.8rem;
+  }
+}
+.footer .footer-container .contact p a:visited {
+  color: #ffffff;
+}/*# sourceMappingURL=index.css.map */

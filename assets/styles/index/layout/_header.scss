@@ -1,7 +1,7 @@
 header {
   height: 88vh;
   position: relative;
-  background: url(../images/bg3.webp) no-repeat center/cover;
+  background: url(../../images/bg3.webp) no-repeat center/cover;
 
   nav {
     position: fixed;
@@ -18,7 +18,7 @@ header {
 
     .logo {
       a {
-        background: url(../images/logo4.webp) center/cover;
+        background: url(../../images/logo4.webp) center/cover;
         display: block;
         height: 75px;
         width: 100px;
@@ -44,7 +44,6 @@ header {
           font-size: 0.95rem;
           font-family: "montserrat", serif;
           font-weight: 500;
-          // text-transform: uppercase;
           cursor: pointer;
           position: relative;
 
@@ -180,7 +179,7 @@ header {
 
     .img-check {
       display: inline-block;
-      background: url(../images/check.svg) center/cover;
+      background: url(../../images/check.svg) center/cover;
       height: 15px;
       aspect-ratio: 1/1;
     }

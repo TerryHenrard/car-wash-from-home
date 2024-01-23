@@ -1,0 +1,88 @@
+.footer {
+  background: #0c3c60;
+  font-family: "poppins", serif;
+
+  .footer-container {
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-around;
+
+    @media only screen and (max-width: 500px) {
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: start;
+    }
+
+    .apropos,
+    .contact {
+      @media only screen and (max-width: 500px) {
+        margin: 10px;
+      }
+      h4 {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: #eeeeee;
+
+        @media only screen and (max-width: 550px) {
+          font-size: 1rem;
+        }
+      }
+
+      ul {
+        @media only screen and (max-width: 550px) {
+          list-style: none;
+        }
+      }
+
+      ul > li {
+        color: #ffffff;
+        a {
+          color: #ffffff;
+
+          @media only screen and (max-width: 550px) {
+            font-size: 0.8rem;
+            list-style: none;
+          }
+
+          &:visited {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+    .contact {
+      h4 {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: #eeeeee;
+        @media only screen and (max-width: 550px) {
+          font-size: 1rem;
+        }
+      }
+
+      .mail {
+        @media only screen and (max-width: 550px) {
+          font-size: 0.8rem;
+        }
+      }
+      p {
+        color: #ffffff;
+        display: inline;
+        @media only screen and (max-width: 550px) {
+          font-size: 0.8rem;
+        }
+
+        a {
+          color: #ffffff;
+
+          @media only screen and (max-width: 550px) {
+            font-size: 0.8rem;
+          }
+          &:visited {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}
