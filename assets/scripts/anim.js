@@ -1,5 +1,4 @@
 const body = document.querySelector("body");
-const navbar = document.getElementById("navbar");
 const imgOptions = document.getElementById("options");
 const headerText = document.getElementById("header-text");
 const sTtitle = document.getElementById("s-title");
@@ -39,19 +38,6 @@ aSideBar.forEach((a) => {
 spanToggle.addEventListener("click", () => {
   spanToggle.classList.toggle("active-btn");
 });
-
-let lastScroll = 0;
-const navbarAnimation = () => {
-  if (scrollY < 400) {
-    navbar.style.top = 0 + "px";
-  } else if (scrollY < lastScroll) {
-    navbar.style.top = 0 + "px";
-  } else {
-    navbar.style.top = -100 + "px";
-  }
-
-  lastScroll = scrollY;
-};
 
 const headerTextAnimation = () => {
   setTimeout(() => {
@@ -146,7 +132,6 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("scroll", () => {
-  navbarAnimation();
   tarifAnim();
   explicationAnim();
   optionsAnim();
