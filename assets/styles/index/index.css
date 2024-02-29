@@ -1097,8 +1097,8 @@ header .header-text div a:hover {
 }
 .rdv .form-container form .courant-eau-cgv-container {
   grid-area: cgv;
-  margin: 0 0 30px 0;
-  width: auto;
+  margin: 10px auto 30px auto;
+  width: 870px;
 }
 .rdv .form-container form .price {
   grid-area: prix;
