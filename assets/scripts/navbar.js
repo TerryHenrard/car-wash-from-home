@@ -12,6 +12,4 @@ const navbarAnimation = () => {
 
   lastScroll = scrollY;
 };
-window.addEventListener("scroll", () => {
-  navbarAnimation();
-});
+window.addEventListener("scroll", () => navbarAnimation());

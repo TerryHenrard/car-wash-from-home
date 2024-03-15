@@ -120,7 +120,7 @@ buttons.forEach((button) => {
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
-          price += 120;
+          price += 250;
           time += 90;
         } else {
           ckbPolissage.checked = !ckbPolissage.checked;
@@ -131,7 +131,7 @@ buttons.forEach((button) => {
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
-          price -= 120;
+          price -= 250;
           time -= 90;
         }
         break;
@@ -145,7 +145,7 @@ buttons.forEach((button) => {
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
-          price += 25;
+          price += 30;
           time += 30;
         } else {
           ckbNettoyageBlocMmoteur.checked = !ckbNettoyageBlocMmoteur.checked;
@@ -156,7 +156,7 @@ buttons.forEach((button) => {
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
-          price -= 25;
+          price -= 30;
           time -= 30;
         }
         break;
@@ -169,8 +169,8 @@ buttons.forEach((button) => {
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
-          price += 80;
-          time += 30;
+          price += 120;
+          time += 45;
         } else {
           ckbProtectionCeramique.checked = !ckbProtectionCeramique.checked;
           pErrorAnim.textContent = '"protection céramique" retiré du nettoyage';
@@ -179,8 +179,8 @@ buttons.forEach((button) => {
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
-          price -= 80;
-          time -= 30;
+          price -= 120;
+          time -= 45;
         }
         break;
       case "btNettoyage-cuir-alcantara":
@@ -194,7 +194,7 @@ buttons.forEach((button) => {
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
-          price += 20;
+          price += 25;
           time += 20;
         } else {
           ckbNettoyageCuirAlcantara.checked =
@@ -206,7 +206,7 @@ buttons.forEach((button) => {
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
-          price -= 20;
+          price -= 25;
           time -= 20;
         }
         break;
@@ -220,7 +220,7 @@ buttons.forEach((button) => {
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
-          price += 60;
+          price += 70;
           time += 45;
         } else {
           ckbShampoingSiege.checked = !ckbShampoingSiege.checked;
@@ -231,7 +231,7 @@ buttons.forEach((button) => {
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
-          price -= 60;
+          price -= 70;
           time -= 45;
         }
         break;
@@ -269,8 +269,8 @@ buttons.forEach((button) => {
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
-          price += 20;
-          time += 15;
+          price += 25;
+          //time += 15;
         } else {
           ckbProtectionPlastiques.checked = !ckbProtectionPlastiques.checked;
           pErrorAnim.textContent = '"protection plastique" retiré du nettoyage';
@@ -279,8 +279,8 @@ buttons.forEach((button) => {
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
-          price -= 20;
-          time -= 15;
+          price -= 25;
+          //time -= 15;
         }
         break;
       case "btImpermeabilisant-textiles":
@@ -295,7 +295,7 @@ buttons.forEach((button) => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
           price += 25;
-          time += 20;
+          //time += 20;
         } else {
           ckbImpermeabilisantTextiles.checked =
             !ckbImpermeabilisantTextiles.checked;
@@ -307,7 +307,7 @@ buttons.forEach((button) => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
           price -= 25;
-          time -= 20;
+          //time -= 20;
         }
         break;
       default:
@@ -487,53 +487,53 @@ inputsCkb.forEach((input) => {
       case "exterieur1":
         if (e.target.checked) {
           if (inputSelect.value === "citadine") {
-            price += 15;
+            price += 20;
             time += 30;
           }
           if (inputSelect.value === "berline-coupe") {
-            price += 20;
+            price += 25;
             time += 45;
           }
           if (inputSelect.value === "suv-break") {
-            price += 25;
+            price += 30;
             time += 60;
           }
           if (inputSelect.value === "camionette-s") {
-            price += 30;
+            price += 45;
             time += 75;
           }
           if (inputSelect.value === "camionette-m") {
-            price += 35;
+            price += 55;
             time += 90;
           }
           if (inputSelect.value === "camionette-l") {
-            price += 40;
+            price += 65;
             time += 105;
           }
           formule.push(e.target.value);
         } else {
           if (inputSelect.value === "citadine") {
-            price -= 15;
+            price -= 20;
             time -= 30;
           }
           if (inputSelect.value === "berline-coupe") {
-            price -= 20;
+            price -= 25;
             time -= 45;
           }
           if (inputSelect.value === "suv-break") {
-            price -= 25;
+            price -= 30;
             time -= 60;
           }
           if (inputSelect.value === "camionette-s") {
-            price -= 30;
+            price -= 45;
             time -= 75;
           }
           if (inputSelect.value === "camionette-m") {
-            price -= 35;
+            price -= 55;
             time -= 90;
           }
           if (inputSelect.value === "camionette-l") {
-            price -= 40;
+            price -= 65;
             time -= 105;
           }
 
@@ -547,43 +547,43 @@ inputsCkb.forEach((input) => {
       case "interieur1":
         if (e.target.checked) {
           if (inputSelect.value === "citadine") {
-            price += 25;
+            price += 30;
             time += 60;
           } else if (inputSelect.value === "berline-coupe") {
-            price += 30;
+            price += 35;
             time += 75;
           } else if (inputSelect.value === "suv-break") {
-            price += 35;
+            price += 40;
             time += 90;
           } else if (inputSelect.value === "camionette-s") {
-            price += 40;
+            price += 35;
             time += 105;
           } else if (inputSelect.value === "camionette-m") {
-            price += 45;
+            price += 35;
             time += 120;
           } else if (inputSelect.value === "camionette-l") {
-            price += 50;
+            price += 35;
             time += 135;
           }
           formule.push(e.target.value);
         } else {
           if (inputSelect.value === "citadine") {
-            price -= 25;
+            price -= 30;
             time -= 60;
           } else if (inputSelect.value === "berline-coupe") {
-            price -= 30;
+            price -= 35;
             time -= 75;
           } else if (inputSelect.value === "suv-break") {
-            price -= 35;
+            price -= 40;
             time -= 90;
           } else if (inputSelect.value === "camionette-s") {
-            price -= 40;
+            price -= 35;
             time -= 105;
           } else if (inputSelect.value === "camionette-m") {
-            price -= 45;
+            price -= 35;
             time -= 120;
           } else if (inputSelect.value === "camionette-l") {
-            price -= 50;
+            price -= 35;
             time -= 135;
           }
 
@@ -596,11 +596,11 @@ inputsCkb.forEach((input) => {
         break;
       case "polissage":
         if (e.target.checked) {
-          price += 120;
+          price += 250;
           time += 90;
           option.push(e.target.value);
         } else {
-          price -= 120;
+          price -= 250;
           time -= 90;
 
           index = option.indexOf(e.target.value);
@@ -612,11 +612,11 @@ inputsCkb.forEach((input) => {
         break;
       case "shampoing-siege":
         if (e.target.checked) {
-          price += 60;
+          price += 70;
           time += 45;
           option.push(e.target.value);
         } else {
-          price -= 60;
+          price -= 70;
           time -= 45;
 
           index = option.indexOf(e.target.value);
@@ -644,11 +644,11 @@ inputsCkb.forEach((input) => {
         break;
       case "nettoyage-bloc-moteur":
         if (e.target.checked) {
-          price += 25;
+          price += 30;
           time += 30;
           option.push(e.target.value);
         } else {
-          price -= 25;
+          price -= 30;
           time -= 30;
 
           index = option.indexOf(e.target.value);
@@ -658,14 +658,14 @@ inputsCkb.forEach((input) => {
           }
         }
         break;
-      case "protection-ceramique":
+      case "ceramique-carrosserie":
         if (e.target.checked) {
-          price += 80;
-          time += 20;
+          price += 120;
+          time += 45;
           option.push(e.target.value);
         } else {
-          price -= 80;
-          time -= 20;
+          price -= 120;
+          time -= 45;
 
           index = option.indexOf(e.target.value);
 
@@ -674,14 +674,61 @@ inputsCkb.forEach((input) => {
           }
         }
         break;
+      case "ceramique-jantes":
+        if (e.target.checked) {
+          price += 80;
+          time += 30;
+          option.push(e.target.value);
+        } else {
+          price -= 80;
+          time -= 30;
 
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
+      case "ceramique-vitres":
+        if (e.target.checked) {
+          price += 70;
+          time += 15;
+          option.push(e.target.value);
+        } else {
+          price -= 70;
+          time -= 15;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
+      case "renovateur-pneus":
+        if (e.target.checked) {
+          price += 30;
+          //time += 15;
+          option.push(e.target.value);
+        } else {
+          price -= 30;
+          //time -= 15;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
       case "nettoyage-sieges-cuir-alcantara":
         if (e.target.checked) {
-          price += 20;
+          price += 25;
           time += 20;
           option.push(e.target.value);
         } else {
-          price -= 20;
+          price -= 25;
           time -= 20;
 
           index = option.indexOf(e.target.value);
@@ -694,11 +741,11 @@ inputsCkb.forEach((input) => {
 
       case "protection-plastiques":
         if (e.target.checked) {
-          price += 15;
+          price += 25;
           time += 10;
           option.push(e.target.value);
         } else {
-          price -= 15;
+          price -= 25;
           time -= 10;
 
           index = option.indexOf(e.target.value);
@@ -711,11 +758,11 @@ inputsCkb.forEach((input) => {
 
       case "impermeabilisant-textiles":
         if (e.target.checked) {
-          price += 20;
+          price += 25;
           time += 10;
           option.push(e.target.value);
         } else {
-          price -= 20;
+          price -= 25;
           time -= 10;
 
           index = option.indexOf(e.target.value);
@@ -744,100 +791,100 @@ let currentSelect = inputSelect.value;
 inputSelect.addEventListener("input", () => {
   if (ckbExt.checked) {
     if (currentSelect === "citadine") {
-      price -= 15;
+      price -= 20;
       time -= 30;
     } else if (currentSelect === "berline-coupe") {
-      price -= 20;
+      price -= 25;
       time -= 45;
     } else if (currentSelect === "suv-break") {
-      price -= 25;
+      price -= 30;
       time -= 60;
     } else if (currentSelect === "camionette-s") {
-      price -= 30;
+      price -= 45;
       time -= 75;
     } else if (currentSelect === "camionette-m") {
-      price -= 35;
+      price -= 55;
       time -= 90;
     } else if (currentSelect === "camionette-l") {
-      price -= 40;
+      price -= 65;
       time -= 105;
     }
   }
 
   if (ckbInt.checked) {
     if (currentSelect === "citadine") {
-      price -= 25;
+      price -= 30;
       time -= 60;
     } else if (currentSelect === "berline-coupe") {
-      price -= 30;
+      price -= 35;
       time -= 75;
     } else if (currentSelect === "suv-break") {
-      price -= 35;
+      price -= 40;
       time -= 90;
     } else if (currentSelect === "camionette-s") {
-      price -= 40;
+      price -= 35;
       time -= 105;
     } else if (currentSelect === "camionette-m") {
-      price -= 45;
+      price -= 35;
       time -= 120;
     } else if (currentSelect === "camionette-l") {
-      price -= 50;
+      price -= 35;
       time -= 135;
     }
   }
 
   if (inputSelect.value === "citadine") {
     if (ckbExt.checked) {
-      price += 15;
+      price += 20;
       time += 30;
     }
     if (ckbInt.checked) {
-      price += 25;
+      price += 30;
       time += 60;
     }
   } else if (inputSelect.value === "berline-coupe") {
     if (ckbExt.checked) {
-      price += 20;
+      price += 25;
       time += 45;
     }
     if (ckbInt.checked) {
-      price += 30;
+      price += 35;
       time += 75;
     }
   } else if (inputSelect.value === "suv-break") {
     if (ckbExt.checked) {
-      price += 25;
+      price += 30;
       time += 60;
     }
     if (ckbInt.checked) {
-      price += 35;
+      price += 40;
       time += 90;
     }
   } else if (inputSelect.value === "camionette-s") {
     if (ckbExt.checked) {
-      price += 30;
+      price += 45;
       time += 75;
     }
     if (ckbInt.checked) {
-      price += 40;
+      price += 35;
       time += 105;
     }
   } else if (inputSelect.value === "camionette-m") {
     if (ckbExt.checked) {
-      price += 35;
+      price += 55;
       time += 90;
     }
     if (ckbInt.checked) {
-      price += 45;
+      price += 35;
       time += 120;
     }
   } else if (inputSelect.value === "camionette-l") {
     if (ckbExt.checked) {
-      price += 40;
+      price += 65;
       time += 105;
     }
     if (ckbInt.checked) {
-      price += 50;
+      price += 35;
       time += 135;
     }
   }

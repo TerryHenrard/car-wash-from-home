@@ -24,9 +24,7 @@ const sidebar = document.getElementById("side-bar");
 const aSideBar = document.querySelectorAll(".aSideBar");
 const spanToggle = document.querySelector(".toggle-btn");
 
-btn.addEventListener("click", () => {
-  sidebar.classList.toggle("active");
-});
+btn.addEventListener("click", () => sidebar.classList.toggle("active"));
 
 aSideBar.forEach((a) => {
   a.addEventListener("click", () => {
@@ -35,9 +33,9 @@ aSideBar.forEach((a) => {
   });
 });
 
-spanToggle.addEventListener("click", () => {
-  spanToggle.classList.toggle("active-btn");
-});
+spanToggle.addEventListener("click", () =>
+  spanToggle.classList.toggle("active-btn")
+);
 
 const headerTextAnimation = () => {
   setTimeout(() => {
