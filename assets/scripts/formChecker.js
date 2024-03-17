@@ -742,11 +742,11 @@ inputsCkb.forEach((input) => {
       case "protection-plastiques":
         if (e.target.checked) {
           price += 25;
-          time += 10;
+          //time += 10;
           option.push(e.target.value);
         } else {
           price -= 25;
-          time -= 10;
+          //time -= 10;
 
           index = option.indexOf(e.target.value);
 
@@ -759,11 +759,62 @@ inputsCkb.forEach((input) => {
       case "impermeabilisant-textiles":
         if (e.target.checked) {
           price += 25;
-          time += 10;
+          //time += 10;
           option.push(e.target.value);
         } else {
           price -= 25;
-          time -= 10;
+          //time -= 10;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
+
+      case "protection-cuir":
+        if (e.target.checked) {
+          price += 30;
+          //time += 10;
+          option.push(e.target.value);
+        } else {
+          price -= 30;
+          //time -= 10;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
+
+      case "anti-buee":
+        if (e.target.checked) {
+          price += 20;
+          //time += 10;
+          option.push(e.target.value);
+        } else {
+          price -= 20;
+          //time -= 10;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
+
+      case "renovateur-joints":
+        if (e.target.checked) {
+          price += 30;
+          time += 30;
+          option.push(e.target.value);
+        } else {
+          price -= 30;
+          time -= 30;
 
           index = option.indexOf(e.target.value);
 
@@ -774,7 +825,7 @@ inputsCkb.forEach((input) => {
         break;
 
       default:
-        null;
+        break;
     }
 
     spanPrice.textContent = price + "€";
