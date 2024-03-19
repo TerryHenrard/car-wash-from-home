@@ -18,7 +18,7 @@ const ckbPolissage = document.getElementById("polissage");
 const ckbNettoyageBlocMmoteur = document.getElementById(
   "nettoyage-bloc-moteur"
 );
-const ckbProtectionCeramique = document.getElementById("protection-ceramique");
+const ckbProtectionCeramique = document.getElementById("ceramique-carrosserie");
 const ckbNettoyageCuirAlcantara = document.getElementById(
   "nettoyage-sieges-cuir-alcantara"
 );
@@ -165,7 +165,7 @@ buttons.forEach((button) => {
           ckbProtectionCeramique.checked = !ckbProtectionCeramique.checked;
           pValidAnim.textContent = '"protection céramique" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du nettoyage";
+          button.textContent = "Retirer";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -175,7 +175,7 @@ buttons.forEach((button) => {
           ckbProtectionCeramique.checked = !ckbProtectionCeramique.checked;
           pErrorAnim.textContent = '"protection céramique" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au nettoyage";
+          button.textContent = "Ajouter";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -190,7 +190,7 @@ buttons.forEach((button) => {
           pValidAnim.textContent =
             '"nettoyage cuir et alcantara" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du nettoyage";
+          button.textContent = "Retirer";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -202,7 +202,7 @@ buttons.forEach((button) => {
           pErrorAnim.textContent =
             '"nettoyage cuir et alcantara" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au nettoyage";
+          button.textContent = "Ajouter";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -216,7 +216,7 @@ buttons.forEach((button) => {
           pValidAnim.textContent =
             '"shampoing sièges en tissus" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du nettoyage";
+          button.textContent = "Retirer";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -227,7 +227,7 @@ buttons.forEach((button) => {
           pErrorAnim.textContent =
             '"shampoing sièges en tissus" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au nettoyage";
+          button.textContent = "Ajouter";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -241,7 +241,7 @@ buttons.forEach((button) => {
           pValidAnim.textContent =
             '"shampoing tapis et coffre" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du nettoyage";
+          button.textContent = "Retirer";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -252,7 +252,7 @@ buttons.forEach((button) => {
           pErrorAnim.textContent =
             '"shampoing tapis et coffre" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au nettoyage";
+          button.textContent = "Ajouter";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -265,7 +265,7 @@ buttons.forEach((button) => {
           ckbProtectionPlastiques.checked = !ckbProtectionPlastiques.checked;
           pValidAnim.textContent = '"protection plastique" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du nettoyage";
+          button.textContent = "Retirer";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -275,7 +275,7 @@ buttons.forEach((button) => {
           ckbProtectionPlastiques.checked = !ckbProtectionPlastiques.checked;
           pErrorAnim.textContent = '"protection plastique" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au nettoyage";
+          button.textContent = "Ajouter";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -290,7 +290,7 @@ buttons.forEach((button) => {
           pValidAnim.textContent =
             '"imperméabilisant textiles" ajouté au nettoyage';
           validAnim.classList.add("valid-inscription-anim");
-          button.textContent = "Retirer du nettoyage";
+          button.textContent = "Retirer";
           setTimeout(() => {
             validAnim.classList.remove("valid-inscription-anim");
           }, 5001);
@@ -302,7 +302,7 @@ buttons.forEach((button) => {
           pErrorAnim.textContent =
             '"imperméabilisant textiles" retiré du nettoyage';
           errorAnim.classList.add("error-inscription-anim");
-          button.textContent = "Ajouter au nettoyage";
+          button.textContent = "Ajouter";
           setTimeout(() => {
             errorAnim.classList.remove("error-inscription-anim");
           }, 5001);
@@ -444,9 +444,8 @@ const convertMinutestoHoursMinutes = (minutes) => {
   let hours = Math.floor(minutes / 60);
   let minutesRemaining = minutes % 60;
 
-  if (minutesRemaining < 10) {
+  if (minutesRemaining < 10)
     minutesRemaining = minutesRemaining.toString().padStart(2, "0");
-  }
 
   return hours + "h" + minutesRemaining;
 };
@@ -480,6 +479,7 @@ inputsText.forEach((input) => {
   });
 });
 
+let lastCarSize;
 inputsCkb.forEach((input) => {
   input.addEventListener("input", (e) => {
     let index;
@@ -489,24 +489,19 @@ inputsCkb.forEach((input) => {
           if (inputSelect.value === "citadine") {
             price += 20;
             time += 30;
-          }
-          if (inputSelect.value === "berline-coupe") {
+          } else if (inputSelect.value === "berline-coupe") {
             price += 25;
             time += 45;
-          }
-          if (inputSelect.value === "suv-break") {
+          } else if (inputSelect.value === "suv-break") {
             price += 30;
             time += 60;
-          }
-          if (inputSelect.value === "camionette-s") {
+          } else if (inputSelect.value === "camionette-s") {
             price += 45;
             time += 75;
-          }
-          if (inputSelect.value === "camionette-m") {
+          } else if (inputSelect.value === "camionette-m") {
             price += 55;
             time += 90;
-          }
-          if (inputSelect.value === "camionette-l") {
+          } else if (inputSelect.value === "camionette-l") {
             price += 65;
             time += 105;
           }
@@ -515,24 +510,19 @@ inputsCkb.forEach((input) => {
           if (inputSelect.value === "citadine") {
             price -= 20;
             time -= 30;
-          }
-          if (inputSelect.value === "berline-coupe") {
+          } else if (inputSelect.value === "berline-coupe") {
             price -= 25;
             time -= 45;
-          }
-          if (inputSelect.value === "suv-break") {
+          } else if (inputSelect.value === "suv-break") {
             price -= 30;
             time -= 60;
-          }
-          if (inputSelect.value === "camionette-s") {
+          } else if (inputSelect.value === "camionette-s") {
             price -= 45;
             time -= 75;
-          }
-          if (inputSelect.value === "camionette-m") {
+          } else if (inputSelect.value === "camionette-m") {
             price -= 55;
             time -= 90;
-          }
-          if (inputSelect.value === "camionette-l") {
+          } else if (inputSelect.value === "camionette-l") {
             price -= 65;
             time -= 105;
           }
@@ -596,12 +586,69 @@ inputsCkb.forEach((input) => {
         break;
       case "polissage":
         if (e.target.checked) {
-          price += 250;
-          time += 90;
+          let carSize = document.getElementById("taille").value;
+          lastCarSize = carSize;
+          // +50€ par taille de véhicule pour le polissage
+          switch (carSize) {
+            case "citadine":
+              price += 250;
+              time += 90;
+              break;
+            case "berline-coupe":
+              price += 300;
+              time += 105;
+              break;
+            case "suv-break":
+              price += 350;
+              time += 120;
+              break;
+            case "camionette-s":
+              price += 400;
+              time += 135;
+              break;
+            case "camionette-m":
+              price += 450;
+              time += 150;
+              break;
+            case "camionette-l":
+              price += 500;
+              time += 165;
+              break;
+            default:
+              break;
+          }
+
           option.push(e.target.value);
         } else {
-          price -= 250;
-          time -= 90;
+          // -50€ par taille de véhicule pour le polissage
+          switch (lastCarSize) {
+            case "citadine":
+              price -= 250;
+              time -= 90;
+              break;
+            case "berline-coupe":
+              price -= 300;
+              time -= 105;
+              break;
+            case "suv-break":
+              price -= 350;
+              time -= 120;
+              break;
+            case "camionette-s":
+              price -= 400;
+              time -= 135;
+              break;
+            case "camionette-m":
+              price -= 450;
+              time -= 150;
+              break;
+            case "camionette-l":
+              price -= 500;
+              time -= 165;
+              break;
+            default:
+              break;
+          }
 
           index = option.indexOf(e.target.value);
 
@@ -628,11 +675,11 @@ inputsCkb.forEach((input) => {
         break;
       case "shampoing-tapis":
         if (e.target.checked) {
-          price += 30;
+          price += 40;
           time += 20;
           option.push(e.target.value);
         } else {
-          price -= 30;
+          price -= 40;
           time -= 20;
 
           index = option.indexOf(e.target.value);
@@ -660,12 +707,67 @@ inputsCkb.forEach((input) => {
         break;
       case "ceramique-carrosserie":
         if (e.target.checked) {
-          price += 120;
-          time += 45;
+          let carSize = document.getElementById("taille").value;
+          lastCarSize = carSize;
+          // +50€ par taille de véhicule pour le polissage
+          switch (carSize) {
+            case "citadine":
+              price += 120;
+              time += 45;
+              break;
+            case "berline-coupe":
+              price += 150;
+              time += 50;
+              break;
+            case "suv-break":
+              price += 180;
+              time += 120;
+              break;
+            case "camionette-s":
+              price += 210;
+              time += 135;
+              break;
+            case "camionette-m":
+              price += 240;
+              time += 150;
+              break;
+            case "camionette-l":
+              price += 270;
+              time += 165;
+              break;
+            default:
+              break;
+          }
           option.push(e.target.value);
         } else {
-          price -= 120;
-          time -= 45;
+          switch (lastCarSize) {
+            case "citadine":
+              price -= 120;
+              time -= 45;
+              break;
+            case "berline-coupe":
+              price -= 150;
+              time -= 50;
+              break;
+            case "suv-break":
+              price -= 180;
+              time -= 120;
+              break;
+            case "camionette-s":
+              price -= 210;
+              time -= 135;
+              break;
+            case "camionette-m":
+              price -= 240;
+              time -= 150;
+              break;
+            case "camionette-l":
+              price -= 270;
+              time -= 165;
+              break;
+            default:
+              break;
+          }
 
           index = option.indexOf(e.target.value);
 
@@ -824,6 +926,23 @@ inputsCkb.forEach((input) => {
         }
         break;
 
+      case "shampoing-moquette":
+        if (e.target.checked) {
+          price += 60;
+          time += 45;
+          option.push(e.target.value);
+        } else {
+          price -= 60;
+          time -= 45;
+
+          index = option.indexOf(e.target.value);
+
+          if (index !== -1) {
+            option.splice(index, 1);
+          }
+        }
+        break;
+
       default:
         break;
     }
@@ -838,8 +957,52 @@ inputsCkb.forEach((input) => {
   });
 });
 
+//gère lorsque l'utilisateur change de taille de voiture alors que certaines checkboxs sont déjà cochées
 let currentSelect = inputSelect.value;
 inputSelect.addEventListener("input", () => {
+  if (ckbPolissage.checked) {
+    if (currentSelect === "citadine") {
+      price -= 250;
+      time -= 90;
+    } else if (currentSelect === "berline-coupe") {
+      price -= 300;
+      time -= 105;
+    } else if (currentSelect === "suv-break") {
+      price -= 350;
+      time -= 120;
+    } else if (currentSelect === "camionette-s") {
+      price -= 400;
+      time -= 135;
+    } else if (currentSelect === "camionette-m") {
+      price -= 450;
+      time -= 150;
+    } else if (currentSelect === "camionette-l") {
+      price -= 500;
+      time -= 165;
+    }
+  }
+  console.log(ckbProtectionCeramique);
+  if (ckbProtectionCeramique.checked) {
+    if (currentSelect === "citadine") {
+      price -= 120;
+      time -= 45;
+    } else if (currentSelect === "berline-coupe") {
+      price -= 150;
+      time -= 60;
+    } else if (currentSelect === "suv-break") {
+      price -= 180;
+      time -= 75;
+    } else if (currentSelect === "camionette-s") {
+      price -= 210;
+      time -= 90;
+    } else if (currentSelect === "camionette-m") {
+      price -= 240;
+      time -= 105;
+    } else if (currentSelect === "camionette-l") {
+      price -= 270;
+      time -= 120;
+    }
+  }
   if (ckbExt.checked) {
     if (currentSelect === "citadine") {
       price -= 20;
@@ -861,7 +1024,6 @@ inputSelect.addEventListener("input", () => {
       time -= 105;
     }
   }
-
   if (ckbInt.checked) {
     if (currentSelect === "citadine") {
       price -= 30;
@@ -893,6 +1055,14 @@ inputSelect.addEventListener("input", () => {
       price += 30;
       time += 60;
     }
+    if (ckbPolissage.checked) {
+      price += 250;
+      time += 90;
+    }
+    if (ckbProtectionCeramique.checked) {
+      price += 120;
+      time += 45;
+    }
   } else if (inputSelect.value === "berline-coupe") {
     if (ckbExt.checked) {
       price += 25;
@@ -901,6 +1071,14 @@ inputSelect.addEventListener("input", () => {
     if (ckbInt.checked) {
       price += 35;
       time += 75;
+    }
+    if (ckbPolissage.checked) {
+      price += 300;
+      time += 105;
+    }
+    if (ckbProtectionCeramique.checked) {
+      price += 150;
+      time += 60;
     }
   } else if (inputSelect.value === "suv-break") {
     if (ckbExt.checked) {
@@ -911,6 +1089,14 @@ inputSelect.addEventListener("input", () => {
       price += 40;
       time += 90;
     }
+    if (ckbPolissage.checked) {
+      price += 350;
+      time += 120;
+    }
+    if (ckbProtectionCeramique.checked) {
+      price += 180;
+      time += 75;
+    }
   } else if (inputSelect.value === "camionette-s") {
     if (ckbExt.checked) {
       price += 45;
@@ -919,6 +1105,14 @@ inputSelect.addEventListener("input", () => {
     if (ckbInt.checked) {
       price += 35;
       time += 105;
+    }
+    if (ckbPolissage.checked) {
+      price += 400;
+      time += 135;
+    }
+    if (ckbProtectionCeramique.checked) {
+      price += 210;
+      time += 90;
     }
   } else if (inputSelect.value === "camionette-m") {
     if (ckbExt.checked) {
@@ -929,6 +1123,14 @@ inputSelect.addEventListener("input", () => {
       price += 35;
       time += 120;
     }
+    if (ckbPolissage.checked) {
+      price += 450;
+      time += 150;
+    }
+    if (ckbProtectionCeramique.checked) {
+      price += 240;
+      time += 105;
+    }
   } else if (inputSelect.value === "camionette-l") {
     if (ckbExt.checked) {
       price += 65;
@@ -938,6 +1140,15 @@ inputSelect.addEventListener("input", () => {
       price += 35;
       time += 135;
     }
+    if (ckbPolissage.checked) {
+      price += 500;
+      time += 165;
+    }
+    if (ckbProtectionCeramique.checked) {
+      price += 270;
+      time += 120;
+    }
+    console.log(currentSelect);
   }
 
   spanPrice.textContent = price + "€";

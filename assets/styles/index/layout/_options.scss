@@ -44,7 +44,7 @@
     .options-container-details,
     .finitions-container-details {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(5, 20%);
 
       @media screen and (max-width: 1200px) {
         grid-template-columns: 1fr 1fr 1fr;
@@ -232,7 +232,7 @@
     }
     .finitions-container-details {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(5, 20%);
     }
   }
 }

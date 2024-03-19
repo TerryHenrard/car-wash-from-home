@@ -2762,7 +2762,7 @@ header .header-text div a:hover {
 .finitions .finitions-container .options-container-details,
 .finitions .finitions-container .finitions-container-details {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 20%);
 }
 @media screen and (max-width: 1200px) {
   .options .options-container .options-container-details,
@@ -5052,5 +5052,5 @@ header .header-text div a:hover {
 .finitions .options-container .finitions-container-details,
 .finitions .finitions-container .finitions-container-details {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 20%);
 }/*# sourceMappingURL=index.css.map */
