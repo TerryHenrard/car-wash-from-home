@@ -75,12 +75,14 @@ if (parseInt(mois) == 12) {
   }
 }
 
-inputDate.value =
-  annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
+inputDate.value = "2024-04-08";
+// inputDate.value =
+//   annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
 inputTime.value = "08:00";
 
-let dateMin =
-  annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
+let dateMin = "2024-04-08";
+// let dateMin =
+//   annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
 let dateMax =
   (annee + 1).toString() + "-" + mois + "-" + jour.toString().padStart(2, "0");
 

@@ -78,7 +78,7 @@
       .courant-eau-cgv-container {
         grid-area: cgv;
         margin: 10px auto 30px auto;
-        width: 870px;
+        width: 90%;
       }
       .price {
         grid-area: prix;
@@ -89,6 +89,23 @@
 
       @media only screen and (max-width: 1300px) {
         grid-template-columns: 1fr;
+        grid-template-areas:
+          "nom"
+          "prenom"
+          "email"
+          "tel"
+          "adresse"
+          "ville"
+          "formules"
+          "options"
+          "finitions"
+          "date"
+          "heure"
+          "cgv"
+          "message"
+          "envoyer"
+          "prix"
+          "temps";
       }
 
       @media only screen and (max-width: 330px) {

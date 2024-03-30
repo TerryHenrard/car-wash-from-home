@@ -1098,7 +1098,7 @@ header .header-text div a:hover {
 .rdv .form-container form .courant-eau-cgv-container {
   grid-area: cgv;
   margin: 10px auto 30px auto;
-  width: 870px;
+  width: 90%;
 }
 .rdv .form-container form .price {
   grid-area: prix;
@@ -1109,6 +1109,7 @@ header .header-text div a:hover {
 @media only screen and (max-width: 1300px) {
   .rdv .form-container form {
     grid-template-columns: 1fr;
+    grid-template-areas: "nom" "prenom" "email" "tel" "adresse" "ville" "formules" "options" "finitions" "date" "heure" "cgv" "message" "envoyer" "prix" "temps";
   }
 }
 @media only screen and (max-width: 330px) {
@@ -2773,7 +2774,7 @@ header .header-text div a:hover {
   .finitions .options-container .finitions-container-details,
   .finitions .finitions-container .options-container-details,
   .finitions .finitions-container .finitions-container-details {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 }
 @media screen and (max-width: 900px) {
@@ -2785,7 +2786,7 @@ header .header-text div a:hover {
   .finitions .options-container .finitions-container-details,
   .finitions .finitions-container .options-container-details,
   .finitions .finitions-container .finitions-container-details {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(2, 50%) !important;
   }
 }
 @media screen and (max-width: 600px) {
@@ -2797,7 +2798,7 @@ header .header-text div a:hover {
   .finitions .options-container .finitions-container-details,
   .finitions .finitions-container .options-container-details,
   .finitions .finitions-container .finitions-container-details {
-    margin: 0;
+    margin: 0 !important;
   }
 }
 @media screen and (max-width: 420px) {
@@ -2809,7 +2810,7 @@ header .header-text div a:hover {
   .finitions .options-container .finitions-container-details,
   .finitions .finitions-container .options-container-details,
   .finitions .finitions-container .finitions-container-details {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }
 .options .options-container .options-container-details .polissage,
@@ -2930,46 +2931,130 @@ header .header-text div a:hover {
   .finitions .finitions-container .options-container-details .shampoing-siege-tissus,
   .finitions .finitions-container .finitions-container-details .shampoing-siege-tissus {
     border-left: none;
+    border-bottom: 1px solid rgb(216, 216, 216);
+  }
+  .options .options-container .options-container-details .protection-plastique,
+  .options .options-container .options-container-details .shampoing-tapis-coffre,
+  .options .options-container .options-container-details .protection-ceramique-vitres,
+  .options .options-container .options-container-details .protection-cuir,
+  .options .options-container .finitions-container-details .protection-plastique,
+  .options .options-container .finitions-container-details .shampoing-tapis-coffre,
+  .options .options-container .finitions-container-details .protection-ceramique-vitres,
+  .options .options-container .finitions-container-details .protection-cuir,
+  .options .finitions-container .options-container-details .protection-plastique,
+  .options .finitions-container .options-container-details .shampoing-tapis-coffre,
+  .options .finitions-container .options-container-details .protection-ceramique-vitres,
+  .options .finitions-container .options-container-details .protection-cuir,
+  .options .finitions-container .finitions-container-details .protection-plastique,
+  .options .finitions-container .finitions-container-details .shampoing-tapis-coffre,
+  .options .finitions-container .finitions-container-details .protection-ceramique-vitres,
+  .options .finitions-container .finitions-container-details .protection-cuir,
+  .finitions .options-container .options-container-details .protection-plastique,
+  .finitions .options-container .options-container-details .shampoing-tapis-coffre,
+  .finitions .options-container .options-container-details .protection-ceramique-vitres,
+  .finitions .options-container .options-container-details .protection-cuir,
+  .finitions .options-container .finitions-container-details .protection-plastique,
+  .finitions .options-container .finitions-container-details .shampoing-tapis-coffre,
+  .finitions .options-container .finitions-container-details .protection-ceramique-vitres,
+  .finitions .options-container .finitions-container-details .protection-cuir,
+  .finitions .finitions-container .options-container-details .protection-plastique,
+  .finitions .finitions-container .options-container-details .shampoing-tapis-coffre,
+  .finitions .finitions-container .options-container-details .protection-ceramique-vitres,
+  .finitions .finitions-container .options-container-details .protection-cuir,
+  .finitions .finitions-container .finitions-container-details .protection-plastique,
+  .finitions .finitions-container .finitions-container-details .shampoing-tapis-coffre,
+  .finitions .finitions-container .finitions-container-details .protection-ceramique-vitres,
+  .finitions .finitions-container .finitions-container-details .protection-cuir {
+    border-left: 1px solid rgb(216, 216, 216);
+  }
+  .options .options-container .options-container-details .nettoyage-bloc-moteur,
+  .options .options-container .options-container-details .nettoyage-cuir-alcantara,
+  .options .options-container .options-container-details .protection-cuir,
+  .options .options-container .options-container-details .impermeabilisant-textiles,
+  .options .options-container .finitions-container-details .nettoyage-bloc-moteur,
+  .options .options-container .finitions-container-details .nettoyage-cuir-alcantara,
+  .options .options-container .finitions-container-details .protection-cuir,
+  .options .options-container .finitions-container-details .impermeabilisant-textiles,
+  .options .finitions-container .options-container-details .nettoyage-bloc-moteur,
+  .options .finitions-container .options-container-details .nettoyage-cuir-alcantara,
+  .options .finitions-container .options-container-details .protection-cuir,
+  .options .finitions-container .options-container-details .impermeabilisant-textiles,
+  .options .finitions-container .finitions-container-details .nettoyage-bloc-moteur,
+  .options .finitions-container .finitions-container-details .nettoyage-cuir-alcantara,
+  .options .finitions-container .finitions-container-details .protection-cuir,
+  .options .finitions-container .finitions-container-details .impermeabilisant-textiles,
+  .finitions .options-container .options-container-details .nettoyage-bloc-moteur,
+  .finitions .options-container .options-container-details .nettoyage-cuir-alcantara,
+  .finitions .options-container .options-container-details .protection-cuir,
+  .finitions .options-container .options-container-details .impermeabilisant-textiles,
+  .finitions .options-container .finitions-container-details .nettoyage-bloc-moteur,
+  .finitions .options-container .finitions-container-details .nettoyage-cuir-alcantara,
+  .finitions .options-container .finitions-container-details .protection-cuir,
+  .finitions .options-container .finitions-container-details .impermeabilisant-textiles,
+  .finitions .finitions-container .options-container-details .nettoyage-bloc-moteur,
+  .finitions .finitions-container .options-container-details .nettoyage-cuir-alcantara,
+  .finitions .finitions-container .options-container-details .protection-cuir,
+  .finitions .finitions-container .options-container-details .impermeabilisant-textiles,
+  .finitions .finitions-container .finitions-container-details .nettoyage-bloc-moteur,
+  .finitions .finitions-container .finitions-container-details .nettoyage-cuir-alcantara,
+  .finitions .finitions-container .finitions-container-details .protection-cuir,
+  .finitions .finitions-container .finitions-container-details .impermeabilisant-textiles {
     border-bottom: none;
   }
-  .options .options-container .options-container-details .nettoyage-cuir-alcantara,
-  .options .options-container .options-container-details .protection-plastique,
-  .options .options-container .finitions-container-details .nettoyage-cuir-alcantara,
-  .options .options-container .finitions-container-details .protection-plastique,
-  .options .finitions-container .options-container-details .nettoyage-cuir-alcantara,
-  .options .finitions-container .options-container-details .protection-plastique,
-  .options .finitions-container .finitions-container-details .nettoyage-cuir-alcantara,
-  .options .finitions-container .finitions-container-details .protection-plastique,
-  .finitions .options-container .options-container-details .nettoyage-cuir-alcantara,
-  .finitions .options-container .options-container-details .protection-plastique,
-  .finitions .options-container .finitions-container-details .nettoyage-cuir-alcantara,
-  .finitions .options-container .finitions-container-details .protection-plastique,
-  .finitions .finitions-container .options-container-details .nettoyage-cuir-alcantara,
-  .finitions .finitions-container .options-container-details .protection-plastique,
-  .finitions .finitions-container .finitions-container-details .nettoyage-cuir-alcantara,
-  .finitions .finitions-container .finitions-container-details .protection-plastique {
-    border-left: 1px solid rgb(216, 216, 216);
+  .options .options-container .options-container-details .impermeabilisant-textiles,
+  .options .options-container .finitions-container-details .impermeabilisant-textiles,
+  .options .finitions-container .options-container-details .impermeabilisant-textiles,
+  .options .finitions-container .finitions-container-details .impermeabilisant-textiles,
+  .finitions .options-container .options-container-details .impermeabilisant-textiles,
+  .finitions .options-container .finitions-container-details .impermeabilisant-textiles,
+  .finitions .finitions-container .options-container-details .impermeabilisant-textiles,
+  .finitions .finitions-container .finitions-container-details .impermeabilisant-textiles {
+    border-left: none;
   }
 }
 @media screen and (max-width: 900px) {
   .options .options-container .options-container-details .protection-ceramique,
+  .options .options-container .options-container-details .renovateur-pneus,
+  .options .options-container .options-container-details .renovateur-joints,
   .options .options-container .finitions-container-details .protection-ceramique,
+  .options .options-container .finitions-container-details .renovateur-pneus,
+  .options .options-container .finitions-container-details .renovateur-joints,
   .options .finitions-container .options-container-details .protection-ceramique,
+  .options .finitions-container .options-container-details .renovateur-pneus,
+  .options .finitions-container .options-container-details .renovateur-joints,
   .options .finitions-container .finitions-container-details .protection-ceramique,
+  .options .finitions-container .finitions-container-details .renovateur-pneus,
+  .options .finitions-container .finitions-container-details .renovateur-joints,
   .finitions .options-container .options-container-details .protection-ceramique,
+  .finitions .options-container .options-container-details .renovateur-pneus,
+  .finitions .options-container .options-container-details .renovateur-joints,
   .finitions .options-container .finitions-container-details .protection-ceramique,
+  .finitions .options-container .finitions-container-details .renovateur-pneus,
+  .finitions .options-container .finitions-container-details .renovateur-joints,
   .finitions .finitions-container .options-container-details .protection-ceramique,
-  .finitions .finitions-container .finitions-container-details .protection-ceramique {
+  .finitions .finitions-container .options-container-details .renovateur-pneus,
+  .finitions .finitions-container .options-container-details .renovateur-joints,
+  .finitions .finitions-container .finitions-container-details .protection-ceramique,
+  .finitions .finitions-container .finitions-container-details .renovateur-pneus,
+  .finitions .finitions-container .finitions-container-details .renovateur-joints {
     border-left: 1px solid rgb(216, 216, 216);
   }
   .options .options-container .options-container-details .nettoyage-cuir-alcantara,
+  .options .options-container .options-container-details .protection-ceramique,
   .options .options-container .finitions-container-details .nettoyage-cuir-alcantara,
+  .options .options-container .finitions-container-details .protection-ceramique,
   .options .finitions-container .options-container-details .nettoyage-cuir-alcantara,
+  .options .finitions-container .options-container-details .protection-ceramique,
   .options .finitions-container .finitions-container-details .nettoyage-cuir-alcantara,
+  .options .finitions-container .finitions-container-details .protection-ceramique,
   .finitions .options-container .options-container-details .nettoyage-cuir-alcantara,
+  .finitions .options-container .options-container-details .protection-ceramique,
   .finitions .options-container .finitions-container-details .nettoyage-cuir-alcantara,
+  .finitions .options-container .finitions-container-details .protection-ceramique,
   .finitions .finitions-container .options-container-details .nettoyage-cuir-alcantara,
-  .finitions .finitions-container .finitions-container-details .nettoyage-cuir-alcantara {
+  .finitions .finitions-container .options-container-details .protection-ceramique,
+  .finitions .finitions-container .finitions-container-details .nettoyage-cuir-alcantara,
+  .finitions .finitions-container .finitions-container-details .protection-ceramique {
     border-left: none;
   }
   .options .options-container .options-container-details .shampoing-siege-tissus,
@@ -2981,6 +3066,7 @@ header .header-text div a:hover {
   .finitions .finitions-container .options-container-details .shampoing-siege-tissus,
   .finitions .finitions-container .finitions-container-details .shampoing-siege-tissus {
     border-left: 1px solid rgb(216, 216, 216);
+    border-bottom: none;
   }
   .options .options-container .options-container-details .shampoing-tapis-coffre,
   .options .options-container .finitions-container-details .shampoing-tapis-coffre,
@@ -2991,6 +3077,39 @@ header .header-text div a:hover {
   .finitions .finitions-container .options-container-details .shampoing-tapis-coffre,
   .finitions .finitions-container .finitions-container-details .shampoing-tapis-coffre {
     border-bottom: none;
+    border-left: none;
+    border-bottom: 1px solid rgb(216, 216, 216);
+  }
+  .options .options-container .options-container-details .shampoing-moquette,
+  .options .options-container .finitions-container-details .shampoing-moquette,
+  .options .finitions-container .options-container-details .shampoing-moquette,
+  .options .finitions-container .finitions-container-details .shampoing-moquette,
+  .finitions .options-container .options-container-details .shampoing-moquette,
+  .finitions .options-container .finitions-container-details .shampoing-moquette,
+  .finitions .finitions-container .options-container-details .shampoing-moquette,
+  .finitions .finitions-container .finitions-container-details .shampoing-moquette {
+    border-left: 1px solid rgb(216, 216, 216);
+  }
+  .options .options-container .options-container-details .protection-ceramique-jantes,
+  .options .options-container .finitions-container-details .protection-ceramique-jantes,
+  .options .finitions-container .options-container-details .protection-ceramique-jantes,
+  .options .finitions-container .finitions-container-details .protection-ceramique-jantes,
+  .finitions .options-container .options-container-details .protection-ceramique-jantes,
+  .finitions .options-container .finitions-container-details .protection-ceramique-jantes,
+  .finitions .finitions-container .options-container-details .protection-ceramique-jantes,
+  .finitions .finitions-container .finitions-container-details .protection-ceramique-jantes {
+    border-left: 1px solid rgb(216, 216, 216);
+    border-right: none !important;
+  }
+  .options .options-container .options-container-details .renovateur-joints,
+  .options .options-container .finitions-container-details .renovateur-joints,
+  .options .finitions-container .options-container-details .renovateur-joints,
+  .options .finitions-container .finitions-container-details .renovateur-joints,
+  .finitions .options-container .options-container-details .renovateur-joints,
+  .finitions .options-container .finitions-container-details .renovateur-joints,
+  .finitions .finitions-container .options-container-details .renovateur-joints,
+  .finitions .finitions-container .finitions-container-details .renovateur-joints {
+    border-right: none !important;
   }
 }
 @media screen and (max-width: 420px) {
@@ -2998,35 +3117,80 @@ header .header-text div a:hover {
   .options .options-container .options-container-details .nettoyage-cuir-alcantara,
   .options .options-container .options-container-details .shampoing-tapis-coffre,
   .options .options-container .options-container-details .impermeabilisant-textiles,
+  .options .options-container .options-container-details .protection-ceramique,
+  .options .options-container .options-container-details .anti-buee,
   .options .options-container .finitions-container-details .nettoyage-bloc-moteur,
   .options .options-container .finitions-container-details .nettoyage-cuir-alcantara,
   .options .options-container .finitions-container-details .shampoing-tapis-coffre,
   .options .options-container .finitions-container-details .impermeabilisant-textiles,
+  .options .options-container .finitions-container-details .protection-ceramique,
+  .options .options-container .finitions-container-details .anti-buee,
   .options .finitions-container .options-container-details .nettoyage-bloc-moteur,
   .options .finitions-container .options-container-details .nettoyage-cuir-alcantara,
   .options .finitions-container .options-container-details .shampoing-tapis-coffre,
   .options .finitions-container .options-container-details .impermeabilisant-textiles,
+  .options .finitions-container .options-container-details .protection-ceramique,
+  .options .finitions-container .options-container-details .anti-buee,
   .options .finitions-container .finitions-container-details .nettoyage-bloc-moteur,
   .options .finitions-container .finitions-container-details .nettoyage-cuir-alcantara,
   .options .finitions-container .finitions-container-details .shampoing-tapis-coffre,
   .options .finitions-container .finitions-container-details .impermeabilisant-textiles,
+  .options .finitions-container .finitions-container-details .protection-ceramique,
+  .options .finitions-container .finitions-container-details .anti-buee,
   .finitions .options-container .options-container-details .nettoyage-bloc-moteur,
   .finitions .options-container .options-container-details .nettoyage-cuir-alcantara,
   .finitions .options-container .options-container-details .shampoing-tapis-coffre,
   .finitions .options-container .options-container-details .impermeabilisant-textiles,
+  .finitions .options-container .options-container-details .protection-ceramique,
+  .finitions .options-container .options-container-details .anti-buee,
   .finitions .options-container .finitions-container-details .nettoyage-bloc-moteur,
   .finitions .options-container .finitions-container-details .nettoyage-cuir-alcantara,
   .finitions .options-container .finitions-container-details .shampoing-tapis-coffre,
   .finitions .options-container .finitions-container-details .impermeabilisant-textiles,
+  .finitions .options-container .finitions-container-details .protection-ceramique,
+  .finitions .options-container .finitions-container-details .anti-buee,
   .finitions .finitions-container .options-container-details .nettoyage-bloc-moteur,
   .finitions .finitions-container .options-container-details .nettoyage-cuir-alcantara,
   .finitions .finitions-container .options-container-details .shampoing-tapis-coffre,
   .finitions .finitions-container .options-container-details .impermeabilisant-textiles,
+  .finitions .finitions-container .options-container-details .protection-ceramique,
+  .finitions .finitions-container .options-container-details .anti-buee,
   .finitions .finitions-container .finitions-container-details .nettoyage-bloc-moteur,
   .finitions .finitions-container .finitions-container-details .nettoyage-cuir-alcantara,
   .finitions .finitions-container .finitions-container-details .shampoing-tapis-coffre,
-  .finitions .finitions-container .finitions-container-details .impermeabilisant-textiles {
+  .finitions .finitions-container .finitions-container-details .impermeabilisant-textiles,
+  .finitions .finitions-container .finitions-container-details .protection-ceramique,
+  .finitions .finitions-container .finitions-container-details .anti-buee {
     border-left: 1px solid rgb(216, 216, 216);
+  }
+  .options .options-container .options-container-details .protection-ceramique-jantes,
+  .options .options-container .options-container-details .renovateur-joints,
+  .options .options-container .finitions-container-details .protection-ceramique-jantes,
+  .options .options-container .finitions-container-details .renovateur-joints,
+  .options .finitions-container .options-container-details .protection-ceramique-jantes,
+  .options .finitions-container .options-container-details .renovateur-joints,
+  .options .finitions-container .finitions-container-details .protection-ceramique-jantes,
+  .options .finitions-container .finitions-container-details .renovateur-joints,
+  .finitions .options-container .options-container-details .protection-ceramique-jantes,
+  .finitions .options-container .options-container-details .renovateur-joints,
+  .finitions .options-container .finitions-container-details .protection-ceramique-jantes,
+  .finitions .options-container .finitions-container-details .renovateur-joints,
+  .finitions .finitions-container .options-container-details .protection-ceramique-jantes,
+  .finitions .finitions-container .options-container-details .renovateur-joints,
+  .finitions .finitions-container .finitions-container-details .protection-ceramique-jantes,
+  .finitions .finitions-container .finitions-container-details .renovateur-joints {
+    border-right: 1px solid rgb(216, 216, 216) !important;
+  }
+  .options .options-container .options-container-details .renovateur-joints,
+  .options .options-container .finitions-container-details .renovateur-joints,
+  .options .finitions-container .options-container-details .renovateur-joints,
+  .options .finitions-container .finitions-container-details .renovateur-joints,
+  .finitions .options-container .options-container-details .renovateur-joints,
+  .finitions .options-container .finitions-container-details .renovateur-joints,
+  .finitions .finitions-container .options-container-details .renovateur-joints,
+  .finitions .finitions-container .finitions-container-details .renovateur-joints {
+    border-top: none !important;
+    border-bottom: none;
   }
 }
 .options .options-container .options-container-details .rénovateur-plastique,

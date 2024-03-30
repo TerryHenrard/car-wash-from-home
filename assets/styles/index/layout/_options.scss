@@ -47,16 +47,16 @@
       grid-template-columns: repeat(5, 20%);
 
       @media screen and (max-width: 1200px) {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr) !important;
       }
       @media screen and (max-width: 900px) {
-        grid-template-columns: 50% 50%;
+        grid-template-columns: repeat(2, 50%) !important;
       }
       @media screen and (max-width: 600px) {
-        margin: 0;
+        margin: 0 !important;
       }
       @media screen and (max-width: 420px) {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
       }
 
       .polissage,
@@ -81,27 +81,53 @@
       @media screen and (max-width: 1200px) {
         .shampoing-siege-tissus {
           border-left: none;
+          border-bottom: 1px solid rgb(216, 216, 216);
+        }
+        .protection-plastique,
+        .shampoing-tapis-coffre,
+        .protection-ceramique-vitres,
+        .protection-cuir {
+          border-left: 1px solid rgb(216, 216, 216);
+        }
+        .nettoyage-bloc-moteur,
+        .nettoyage-cuir-alcantara,
+        .protection-cuir,
+        .impermeabilisant-textiles {
           border-bottom: none;
         }
-
-        .nettoyage-cuir-alcantara,
-        .protection-plastique {
-          border-left: 1px solid rgb(216, 216, 216);
+        .impermeabilisant-textiles {
+          border-left: none;
         }
       }
 
       @media screen and (max-width: 900px) {
-        .protection-ceramique {
+        .protection-ceramique,
+        .renovateur-pneus,
+        .renovateur-joints {
           border-left: 1px solid rgb(216, 216, 216);
         }
-        .nettoyage-cuir-alcantara {
+        .nettoyage-cuir-alcantara,
+        .protection-ceramique {
           border-left: none;
         }
         .shampoing-siege-tissus {
           border-left: 1px solid rgb(216, 216, 216);
+          border-bottom: none;
         }
         .shampoing-tapis-coffre {
           border-bottom: none;
+          border-left: none;
+          border-bottom: 1px solid rgb(216, 216, 216);
+        }
+        .shampoing-moquette {
+          border-left: 1px solid rgb(216, 216, 216);
+        }
+        .protection-ceramique-jantes {
+          border-left: 1px solid rgb(216, 216, 216);
+          border-right: none !important;
+        }
+        .renovateur-joints {
+          border-right: none !important;
         }
       }
 
@@ -109,8 +135,20 @@
         .nettoyage-bloc-moteur,
         .nettoyage-cuir-alcantara,
         .shampoing-tapis-coffre,
-        .impermeabilisant-textiles {
+        .impermeabilisant-textiles,
+        .protection-ceramique,
+        .anti-buee {
           border-left: 1px solid rgb(216, 216, 216);
+        }
+
+        .protection-ceramique-jantes,
+        .renovateur-joints {
+          border-right: 1px solid rgb(216, 216, 216) !important;
+        }
+
+        .renovateur-joints {
+          border-top: none !important;
+          border-bottom: none;
         }
       }
 
