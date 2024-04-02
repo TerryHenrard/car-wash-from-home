@@ -405,15 +405,10 @@ const cityChecker = (value) => {
 };
 
 const dateChecher = (value) => {
-  if (value < dateMin) {
+  if (value < "2024-04-08") {
     errorDisplay(
       "date",
-      "Veuillez sélectionner une date supérieur au " +
-        (jour + 1).toString().padStart(2, "0") +
-        "-" +
-        mois +
-        "-" +
-        annee.toString()
+      "Veuillez sélectionner une date supérieur au 08-04-2024"
     );
     date = null;
   } else {
@@ -421,6 +416,23 @@ const dateChecher = (value) => {
     date = value;
   }
 };
+// const dateChecher = (value) => {
+//   if (value < dateMin) {
+//     errorDisplay(
+//       "date",
+//       "Veuillez sélectionner une date supérieur au " +
+//         (jour + 1).toString().padStart(2, "0") +
+//         "-" +
+//         mois +
+//         "-" +
+//         annee.toString()
+//     );
+//     date = null;
+//   } else {
+//     errorDisplay("date", "", true);
+//     date = value;
+//   }
+// };
 
 const timeChecker = (value) => {
   if (value < "08:00" || value > "17:00") {
@@ -1225,12 +1237,13 @@ form.addEventListener("submit", (e) => {
     inputsCkb.forEach((input) => (input.checked = false));
     formule = [];
     option = [];
-    inputDate.value =
-      annee.toString() +
-      "-" +
-      mois +
-      "-" +
-      (jour + 2).toString().padStart(2, "0");
+    inputDate.value = "2024-04-08";
+    // inputDate.value =
+    //   annee.toString() +
+    //   "-" +
+    //   mois +
+    //   "-" +
+    //   (jour + 2).toString().padStart(2, "0");
     inputTime.value = "08:00";
     price = 0;
     time = 0;
