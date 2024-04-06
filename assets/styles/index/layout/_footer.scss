@@ -22,10 +22,6 @@
         font-size: 1.2rem;
         text-transform: uppercase;
         color: #eeeeee;
-
-        @media only screen and (max-width: 550px) {
-          font-size: 1rem;
-        }
       }
 
       ul {
@@ -39,14 +35,14 @@
         a {
           color: #ffffff;
 
-          @media only screen and (max-width: 550px) {
-            font-size: 0.8rem;
-            list-style: none;
-          }
-
           &:visited {
             color: #ffffff;
           }
+        }
+
+        @media only screen and (max-width: 550px) {
+          font-size: 0.8rem;
+          list-style: none;
         }
       }
     }
@@ -55,9 +51,6 @@
         font-size: 1.2rem;
         text-transform: uppercase;
         color: #eeeeee;
-        @media only screen and (max-width: 550px) {
-          font-size: 1rem;
-        }
       }
 
       .mail {

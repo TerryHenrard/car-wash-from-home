@@ -960,12 +960,6 @@ header .header-text div a:hover {
   color: #eeeeee;
 }
 @media only screen and (max-width: 550px) {
-  .footer .footer-container .apropos h4,
-  .footer .footer-container .contact h4 {
-    font-size: 1rem;
-  }
-}
-@media only screen and (max-width: 550px) {
   .footer .footer-container .apropos ul,
   .footer .footer-container .contact ul {
     list-style: none;
@@ -979,26 +973,21 @@ header .header-text div a:hover {
 .footer .footer-container .contact ul > li a {
   color: #ffffff;
 }
-@media only screen and (max-width: 550px) {
-  .footer .footer-container .apropos ul > li a,
-  .footer .footer-container .contact ul > li a {
-    font-size: 0.8rem;
-    list-style: none;
-  }
-}
 .footer .footer-container .apropos ul > li a:visited,
 .footer .footer-container .contact ul > li a:visited {
   color: #ffffff;
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .apropos ul > li,
+  .footer .footer-container .contact ul > li {
+    font-size: 0.8rem;
+    list-style: none;
+  }
 }
 .footer .footer-container .contact h4 {
   font-size: 1.2rem;
   text-transform: uppercase;
   color: #eeeeee;
-}
-@media only screen and (max-width: 550px) {
-  .footer .footer-container .contact h4 {
-    font-size: 1rem;
-  }
 }
 @media only screen and (max-width: 550px) {
   .footer .footer-container .contact .mail {
@@ -1425,9 +1414,9 @@ header .header-text div a:hover {
   font-size: 18px;
 }
 .rdv .form-container .formule-container {
-  width: 300px;
+  width: 325px;
   height: 225px;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 30px auto;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
@@ -1435,6 +1424,9 @@ header .header-text div a:hover {
   align-items: center;
   flex-wrap: wrap;
   text-align: left;
+}
+.rdv .form-container .formule-container .formule-base-container {
+  width: 100%;
 }
 @media only screen and (max-width: 730px) {
   .rdv .form-container .formule-container {

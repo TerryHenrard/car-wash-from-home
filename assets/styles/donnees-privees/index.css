@@ -151,15 +151,20 @@ header #side-bar ul li a:active {
 
 section {
   font-family: "poppins";
-  width: 50vw;
+  width: 66vw;
+  max-width: 960px;
   margin: 0 auto;
-  text-align: justify;
 }
 section .big-logo {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 75px 0 0 0;
+  background: url(../../images/logo1.png) center/contain;
+  background-repeat: no-repeat;
+  height: 50vw;
+  max-height: 500px;
+  min-height: 250px;
 }
 section .container h1,
 section .container h2 {
@@ -169,6 +174,11 @@ section .container h2 {
 section .container p {
   margin: 0 0 50px 0;
   font-size: 1.15rem;
+}
+@media screen and (max-width: 400px) {
+  section {
+    width: 90vw;
+  }
 }
 
 .footer {
@@ -200,12 +210,6 @@ section .container p {
   color: #eeeeee;
 }
 @media only screen and (max-width: 550px) {
-  .footer .footer-container .apropos h4,
-  .footer .footer-container .contact h4 {
-    font-size: 1rem;
-  }
-}
-@media only screen and (max-width: 550px) {
   .footer .footer-container .apropos ul,
   .footer .footer-container .contact ul {
     list-style: none;
@@ -219,26 +223,21 @@ section .container p {
 .footer .footer-container .contact ul > li a {
   color: #ffffff;
 }
-@media only screen and (max-width: 550px) {
-  .footer .footer-container .apropos ul > li a,
-  .footer .footer-container .contact ul > li a {
-    font-size: 0.8rem;
-    list-style: none;
-  }
-}
 .footer .footer-container .apropos ul > li a:visited,
 .footer .footer-container .contact ul > li a:visited {
   color: #ffffff;
+}
+@media only screen and (max-width: 550px) {
+  .footer .footer-container .apropos ul > li,
+  .footer .footer-container .contact ul > li {
+    font-size: 0.8rem;
+    list-style: none;
+  }
 }
 .footer .footer-container .contact h4 {
   font-size: 1.2rem;
   text-transform: uppercase;
   color: #eeeeee;
-}
-@media only screen and (max-width: 550px) {
-  .footer .footer-container .contact h4 {
-    font-size: 1rem;
-  }
 }
 @media only screen and (max-width: 550px) {
   .footer .footer-container .contact .mail {

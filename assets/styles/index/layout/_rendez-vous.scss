@@ -284,9 +284,9 @@
     }
 
     .formule-container {
-      width: 300px;
+      width: 325px;
       height: 225px;
-      margin: 0 auto 10px auto;
+      margin: 0 auto 30px auto;
       display: flex;
       align-items: flex-start;
       justify-content: space-around;
@@ -294,6 +294,10 @@
       align-items: center;
       flex-wrap: wrap;
       text-align: left;
+
+      .formule-base-container {
+        width: 100%;
+      }
 
       @media only screen and (max-width: 730px) {
         width: 325px;
