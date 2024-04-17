@@ -102,7 +102,7 @@ const handleScrollPartners = () => {
     const visibleWidth = partners.clientWidth;
     const scrollAmount = 375;
 
-    if (partners.scrollLeft + visibleWidth + scrollAmount > totalWidth) {
+    if (partners.scrollLeft + visibleWidth + scrollAmount >= totalWidth) {
       partners.scrollLeft = 0;
     } else {
       partners.scrollLeft += scrollAmount;
