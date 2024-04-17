@@ -1,0 +1,39 @@
+.partners {
+  .partners-title {
+    h3 {
+      padding: 50px;
+      margin: 30px 0;
+      font-size: 2rem;
+      font-weight: 100;
+      font-family: "poppins", serif;
+      text-transform: uppercase;
+      text-align: center;
+      color: #072136;
+    }
+  }
+
+  .partners-container {
+    overflow: auto;
+    padding: 50px;
+    margin: 30px 0;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 75px;
+      list-style: none;
+
+      li {
+        img {
+          width: 300px;
+          aspect-ratio: 2/1;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+  }
+}

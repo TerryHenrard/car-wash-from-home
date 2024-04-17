@@ -23,6 +23,8 @@ const boxesOptions = document.querySelectorAll(".box");
 const sidebar = document.getElementById("side-bar");
 const aSideBar = document.querySelectorAll(".aSideBar");
 const spanToggle = document.querySelector(".toggle-btn");
+const partners = document.getElementById("partners-container");
+const partnersSection = document.getElementById("partners");
 
 btn.addEventListener("click", () => sidebar.classList.toggle("active"));
 
@@ -44,75 +46,43 @@ const headerTextAnimation = () => {
   }, 1250);
 };
 
+const fadeInTitleAndTarif = (el1, el2) => {
+  el1.style.transform = "translateY(0px)";
+  el1.style.opacity = 1;
+  el2.style.transform = "translateY(0px)";
+  el2.style.opacity = 1;
+};
+
 const tarifAnim = () => {
   if (scrollY >= 130) {
-    setTimeout(() => {
-      sTtitle.style.transform = "translateY(0px)";
-      sTtitle.style.opacity = 1;
-      sTarif.style.transform = "translateY(0px)";
-      sTarif.style.opacity = 1;
-    }, 0);
-    setTimeout(() => {
-      mTtitle.style.transform = "translateY(0px)";
-      mTtitle.style.opacity = 1;
-      mTarif.style.transform = "translateY(0px)";
-      mTarif.style.opacity = 1;
-    }, 250);
-    setTimeout(() => {
-      lTtitle.style.transform = "translateY(0px)";
-      lTtitle.style.opacity = 1;
-      lTarif.style.transform = "translateY(0px)";
-      lTarif.style.opacity = 1;
-    }, 500);
-    setTimeout(() => {
-      utiMTarif.style.transform = "translateY(0px)";
-      utiMTarif.style.opacity = 1;
-      utiMTitle.style.transform = "translateY(0px)";
-      utiMTitle.style.opacity = 1;
-    }, 750);
-    setTimeout(() => {
-      utiLTarif.style.transform = "translateY(0px)";
-      utiLTarif.style.opacity = 1;
-      utiLTitle.style.transform = "translateY(0px)";
-      utiLTitle.style.opacity = 1;
-    }, 1000);
-    setTimeout(() => {
-      utiXLTarif.style.transform = "translateY(0px)";
-      utiXLTarif.style.opacity = 1;
-      utiXLTitle.style.transform = "translateY(0px)";
-      utiXLTitle.style.opacity = 1;
-    }, 1250);
+    setTimeout(() => fadeInTitleAndTarif(sTtitle, sTarif), 0);
+    setTimeout(() => fadeInTitleAndTarif(mTtitle, mTarif), 250);
+    setTimeout(() => fadeInTitleAndTarif(lTtitle, lTarif), 500);
+    setTimeout(() => fadeInTitleAndTarif(utiMTarif, utiMTitle), 750);
+    setTimeout(() => fadeInTitleAndTarif(utiLTarif, utiLTitle), 1000);
+    setTimeout(() => fadeInTitleAndTarif(utiXLTarif, utiXLTitle), 1250);
   }
+};
+
+const fadeInTitleAndExplication = (el, lis) => {
+  el.style.opacity = 1;
+  el.style.transform = "translateY(0px)";
+  lis.forEach((li) => {
+    li.style.opacity = 1;
+    li.style.transform = "translateY(0px)";
+  });
 };
 
 const explicationAnim = () => {
   if (scrollY >= 500) {
-    setTimeout(() => {
-      h3Exterieur.style.opacity = 1;
-      h3Exterieur.style.transform = "translateY(0px)";
-      liExterieur.forEach((li) => {
-        li.style.opacity = 1;
-        li.style.transform = "translateY(0px)";
-      });
-    }, 750);
-
-    setTimeout(() => {
-      h3Interieur.style.opacity = 1;
-      h3Interieur.style.transform = "translateY(0px)";
-      liInterieur.forEach((li) => {
-        li.style.opacity = 1;
-        li.style.transform = "translateY(0px)";
-      });
-    }, 1000);
+    setTimeout(() => fadeInTitleAndExplication(h3Exterieur, liExterieur), 750);
+    setTimeout(() => fadeInTitleAndExplication(h3Interieur, liInterieur), 1000);
   }
 };
 
 const optionsAnim = () => {
   if (scrollY >= 1230) {
-    h3Options.style.opacity = 1;
-    h3Options.style.transform = "translateY(0px)";
-    h3Finitions.style.opacity = 1;
-    h3Finitions.style.transform = "translateY(0px)";
+    fadeInTitleAndTarif(h3Options, h3Finitions);
 
     boxesOptions.forEach((box, index) => {
       const delay = index * 0.2;
@@ -124,9 +94,49 @@ const optionsAnim = () => {
   }
 };
 
+const handleScrollPartners = () => {
+  let id;
+
+  const scrollPartners = () => {
+    const totalWidth = partners.scrollWidth;
+    const visibleWidth = partners.clientWidth;
+    const scrollAmount = 375;
+
+    if (partners.scrollLeft + visibleWidth + scrollAmount > totalWidth) {
+      partners.scrollLeft = 0;
+    } else {
+      partners.scrollLeft += scrollAmount;
+    }
+  };
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          id = setInterval(scrollPartners, 3000);
+          observer.unobserve(entry.target);
+        } else {
+          clearInterval(id);
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    }
+  );
+
+  observer.observe(partnersSection);
+};
+
 window.addEventListener("load", () => {
   body.style.opacity = "1";
   headerTextAnimation();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  handleScrollPartners();
 });
 
 window.addEventListener("scroll", () => {

@@ -408,7 +408,7 @@ const dateChecher = (value) => {
   if (value < "2024-04-29") {
     errorDisplay(
       "date",
-      "Veuillez sélectionner une date supérieur au 08-04-2024"
+      "Veuillez sélectionner une date supérieur au 29-04-2024"
     );
     date = null;
   } else {
