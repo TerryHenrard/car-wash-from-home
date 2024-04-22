@@ -136,7 +136,7 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  handleScrollPartners();
+  //handleScrollPartners();
 });
 
 window.addEventListener("scroll", () => {

@@ -995,7 +995,6 @@ inputSelect.addEventListener("input", () => {
       time -= 165;
     }
   }
-  console.log(ckbProtectionCeramique);
   if (ckbProtectionCeramique.checked) {
     if (currentSelect === "citadine") {
       price -= 120;
@@ -1162,7 +1161,6 @@ inputSelect.addEventListener("input", () => {
       price += 270;
       time += 120;
     }
-    console.log(currentSelect);
   }
 
   spanPrice.textContent = price + "€";
@@ -1210,6 +1208,23 @@ form.addEventListener("submit", (e) => {
     hours &&
     taille
   ) {
+    const data = {
+      lastName,
+      firstName,
+      email,
+      phoneNumber,
+      address,
+      city,
+      taille,
+      formule,
+      option,
+      dateAppointement,
+      hours,
+      price,
+      time,
+      message,
+    };
+
     pValidAnim.textContent = "rendez-vous validé";
     validAnim.classList.add("valid-inscription-anim");
     setTimeout(() => {
@@ -1239,28 +1254,13 @@ form.addEventListener("submit", (e) => {
 
     xhr.setRequestHeader("Content-Type", "application/json");
 
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-      console.log(xhr.responseText);
-    }
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.responseText);
+      }
+    };
 
-    xhr.send(
-      JSON.stringify({
-        lastName,
-        firstName,
-        email,
-        phoneNumber,
-        address,
-        city,
-        taille,
-        formule,
-        option,
-        dateAppointement,
-        hours,
-        price,
-        time,
-        message,
-      })
-    );
+    xhr.send(JSON.stringify(data));
   } else {
     pErrorAnim.textContent = "veuillez remplir correctement les champs";
     errorAnim.classList.add("error-inscription-anim");
