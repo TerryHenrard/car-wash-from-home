@@ -501,43 +501,43 @@ inputsCkb.forEach((input) => {
       case "exterieur1":
         if (e.target.checked) {
           if (inputSelect.value === "citadine") {
-            price += 20;
+            price += 25;
             time += 30;
           } else if (inputSelect.value === "berline-coupe") {
-            price += 25;
+            price += 30;
             time += 45;
           } else if (inputSelect.value === "suv-break") {
-            price += 30;
+            price += 35;
             time += 60;
           } else if (inputSelect.value === "camionette-s") {
-            price += 45;
+            price += 50;
             time += 75;
           } else if (inputSelect.value === "camionette-m") {
-            price += 55;
+            price += 60;
             time += 90;
           } else if (inputSelect.value === "camionette-l") {
-            price += 65;
+            price += 70;
             time += 105;
           }
           formule.push(e.target.value);
         } else {
           if (inputSelect.value === "citadine") {
-            price -= 20;
+            price -= 25;
             time -= 30;
           } else if (inputSelect.value === "berline-coupe") {
-            price -= 25;
+            price -= 30;
             time -= 45;
           } else if (inputSelect.value === "suv-break") {
-            price -= 30;
+            price -= 35;
             time -= 60;
           } else if (inputSelect.value === "camionette-s") {
-            price -= 45;
+            price -= 50;
             time -= 75;
           } else if (inputSelect.value === "camionette-m") {
-            price -= 55;
+            price -= 60;
             time -= 90;
           } else if (inputSelect.value === "camionette-l") {
-            price -= 65;
+            price -= 70;
             time -= 105;
           }
 
@@ -551,43 +551,43 @@ inputsCkb.forEach((input) => {
       case "interieur1":
         if (e.target.checked) {
           if (inputSelect.value === "citadine") {
-            price += 30;
+            price += 35;
             time += 60;
           } else if (inputSelect.value === "berline-coupe") {
-            price += 35;
+            price += 40;
             time += 75;
           } else if (inputSelect.value === "suv-break") {
-            price += 40;
+            price += 45;
             time += 90;
           } else if (inputSelect.value === "camionette-s") {
-            price += 35;
+            price += 40;
             time += 105;
           } else if (inputSelect.value === "camionette-m") {
-            price += 35;
+            price += 40;
             time += 120;
           } else if (inputSelect.value === "camionette-l") {
-            price += 35;
+            price += 40;
             time += 135;
           }
           formule.push(e.target.value);
         } else {
           if (inputSelect.value === "citadine") {
-            price -= 30;
+            price -= 35;
             time -= 60;
           } else if (inputSelect.value === "berline-coupe") {
-            price -= 35;
+            price -= 40;
             time -= 75;
           } else if (inputSelect.value === "suv-break") {
-            price -= 40;
+            price -= 45;
             time -= 90;
           } else if (inputSelect.value === "camionette-s") {
-            price -= 35;
+            price -= 40;
             time -= 105;
           } else if (inputSelect.value === "camionette-m") {
-            price -= 35;
+            price -= 40;
             time -= 120;
           } else if (inputSelect.value === "camionette-l") {
-            price -= 35;
+            price -= 40;
             time -= 135;
           }
 
@@ -1018,54 +1018,54 @@ inputSelect.addEventListener("input", () => {
   }
   if (ckbExt.checked) {
     if (currentSelect === "citadine") {
-      price -= 20;
+      price -= 25;
       time -= 30;
     } else if (currentSelect === "berline-coupe") {
-      price -= 25;
+      price -= 30;
       time -= 45;
     } else if (currentSelect === "suv-break") {
-      price -= 30;
+      price -= 35;
       time -= 60;
     } else if (currentSelect === "camionette-s") {
-      price -= 45;
+      price -= 50;
       time -= 75;
     } else if (currentSelect === "camionette-m") {
-      price -= 55;
+      price -= 60;
       time -= 90;
     } else if (currentSelect === "camionette-l") {
-      price -= 65;
+      price -= 70;
       time -= 105;
     }
   }
   if (ckbInt.checked) {
     if (currentSelect === "citadine") {
-      price -= 30;
+      price -= 35;
       time -= 60;
     } else if (currentSelect === "berline-coupe") {
-      price -= 35;
+      price -= 40;
       time -= 75;
     } else if (currentSelect === "suv-break") {
-      price -= 40;
+      price -= 45;
       time -= 90;
     } else if (currentSelect === "camionette-s") {
-      price -= 35;
+      price -= 40;
       time -= 105;
     } else if (currentSelect === "camionette-m") {
-      price -= 35;
+      price -= 40;
       time -= 120;
     } else if (currentSelect === "camionette-l") {
-      price -= 35;
+      price -= 40;
       time -= 135;
     }
   }
 
   if (inputSelect.value === "citadine") {
     if (ckbExt.checked) {
-      price += 20;
+      price += 25;
       time += 30;
     }
     if (ckbInt.checked) {
-      price += 30;
+      price += 35;
       time += 60;
     }
     if (ckbPolissage.checked) {
@@ -1078,11 +1078,11 @@ inputSelect.addEventListener("input", () => {
     }
   } else if (inputSelect.value === "berline-coupe") {
     if (ckbExt.checked) {
-      price += 25;
+      price += 30;
       time += 45;
     }
     if (ckbInt.checked) {
-      price += 35;
+      price += 40;
       time += 75;
     }
     if (ckbPolissage.checked) {
@@ -1095,11 +1095,11 @@ inputSelect.addEventListener("input", () => {
     }
   } else if (inputSelect.value === "suv-break") {
     if (ckbExt.checked) {
-      price += 30;
+      price += 35;
       time += 60;
     }
     if (ckbInt.checked) {
-      price += 40;
+      price += 45;
       time += 90;
     }
     if (ckbPolissage.checked) {
@@ -1112,11 +1112,11 @@ inputSelect.addEventListener("input", () => {
     }
   } else if (inputSelect.value === "camionette-s") {
     if (ckbExt.checked) {
-      price += 45;
+      price += 50;
       time += 75;
     }
     if (ckbInt.checked) {
-      price += 35;
+      price += 40;
       time += 105;
     }
     if (ckbPolissage.checked) {
@@ -1129,11 +1129,11 @@ inputSelect.addEventListener("input", () => {
     }
   } else if (inputSelect.value === "camionette-m") {
     if (ckbExt.checked) {
-      price += 55;
+      price += 60;
       time += 90;
     }
     if (ckbInt.checked) {
-      price += 35;
+      price += 40;
       time += 120;
     }
     if (ckbPolissage.checked) {
@@ -1146,11 +1146,11 @@ inputSelect.addEventListener("input", () => {
     }
   } else if (inputSelect.value === "camionette-l") {
     if (ckbExt.checked) {
-      price += 65;
+      price += 70;
       time += 105;
     }
     if (ckbInt.checked) {
-      price += 35;
+      price += 40;
       time += 135;
     }
     if (ckbPolissage.checked) {
