@@ -26,6 +26,7 @@
     form {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 25px 0;
       grid-template-areas:
         "nom prenom"
         "email tel"
