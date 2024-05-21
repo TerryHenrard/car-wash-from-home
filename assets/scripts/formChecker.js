@@ -435,8 +435,8 @@ const dateChecher = (value) => {
 // };
 
 const timeChecker = (value) => {
-  if (value < "08:00" || value > "17:00") {
-    errorDisplay("time", "nous somme disponibles de 08:00 à 17:00");
+  if (value < "08:00" || value > "15:00") {
+    errorDisplay("time", "nous somme disponibles de 08:00 à 15:00");
     hours = null;
   } else {
     errorDisplay("time", "", true);
