@@ -75,12 +75,12 @@ if (parseInt(mois) == 12) {
   }
 }
 
-inputDate.value = "2024-06-03";
+inputDate.value = "2024-06-17";
 // inputDate.value =
 //   annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
 inputTime.value = "08:00";
 
-let dateMin = "2024-06-03";
+let dateMin = "2024-06-17";
 // let dateMin =
 //   annee.toString() + "-" + mois + "-" + (jour + 2).toString().padStart(2, "0");
 let dateMax =
@@ -405,10 +405,10 @@ const cityChecker = (value) => {
 };
 
 const dateChecher = (value) => {
-  if (value < "2024-06-03") {
+  if (value < "2024-06-17") {
     errorDisplay(
       "date",
-      "Veuillez sélectionner une date supérieur au 2024-06-03" //<<<<<<<<<<<<<<<<<
+      "Veuillez sélectionner une date supérieur au 17-06-2024" //<<<<<<<<<<<<<<<<<
     );
     date = null;
   } else {
@@ -1235,7 +1235,7 @@ form.addEventListener("submit", (e) => {
     inputsCkb.forEach((input) => (input.checked = false));
     formule = [];
     option = [];
-    inputDate.value = "2024-06-03";
+    inputDate.value = "2024-06-17";
     // inputDate.value =
     //   annee.toString() +
     //   "-" +
