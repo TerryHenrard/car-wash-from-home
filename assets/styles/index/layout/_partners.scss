@@ -13,18 +13,27 @@
   }
 
   .partners-container {
-    overflow: auto;
+    // overflow: auto;
     padding: 50px;
     margin: 30px 0;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
+    // scrollbar-width: none;
+    // scroll-behavior: smooth;
+
+    @media only screen and (max-width: 792px) {
+      padding: 20px;
+    }
 
     ul {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       gap: 75px;
       list-style: none;
+
+      @media only screen and (max-width: 792px) {
+        gap: 50px;
+      }
 
       li {
         img {
@@ -32,6 +41,10 @@
           aspect-ratio: 2/1;
           object-fit: contain;
           object-position: center;
+
+          @media only screen and (max-width: 792px) {
+            width: 200px;
+          }
         }
       }
     }
