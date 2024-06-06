@@ -26,11 +26,11 @@ As you can see, I love JavaScript
 
 ```js
 const TerryHenrard = {
-    firstName: "Terry",
-    lastName: "Henrard",
-    languages: ["JavaScript"]
-    frameworks: ["Next", "React", "Express", "Tailwind"]
-}
+  firstName: "Terry",
+  lastName: "Henrard",
+  languages: ["JavaScript"],
+  frameworks: ["Next", "React", "Express", "Tailwind"],
+};
 ```
 
 ## License
