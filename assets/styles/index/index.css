@@ -3485,18 +3485,26 @@ header .header-text div a:hover {
   color: #072136;
 }
 .partners .partners-container {
-  overflow: auto;
   padding: 50px;
   margin: 30px 0;
-  scrollbar-width: none;
-  scroll-behavior: smooth;
+}
+@media only screen and (max-width: 792px) {
+  .partners .partners-container {
+    padding: 20px;
+  }
 }
 .partners .partners-container ul {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 75px;
   list-style: none;
+}
+@media only screen and (max-width: 792px) {
+  .partners .partners-container ul {
+    gap: 50px;
+  }
 }
 .partners .partners-container ul li img {
   width: 300px;
@@ -3505,6 +3513,11 @@ header .header-text div a:hover {
      object-fit: contain;
   -o-object-position: center;
      object-position: center;
+}
+@media only screen and (max-width: 792px) {
+  .partners .partners-container ul li img {
+    width: 200px;
+  }
 }
 
 .rdv {
@@ -5155,7 +5168,7 @@ header .header-text div a:hover {
 @media only screen and (max-width: 500px) {
   .rdv .form-container .price,
   .rdv .form-container .estimated-time {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 }
 @media only screen and (max-width: 330px) {

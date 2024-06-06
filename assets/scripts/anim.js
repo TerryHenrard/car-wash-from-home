@@ -23,8 +23,6 @@ const boxesOptions = document.querySelectorAll(".box");
 const sidebar = document.getElementById("side-bar");
 const aSideBar = document.querySelectorAll(".aSideBar");
 const spanToggle = document.querySelector(".toggle-btn");
-const partners = document.getElementById("partners-container");
-const partnersSection = document.getElementById("partners");
 
 btn.addEventListener("click", () => sidebar.classList.toggle("active"));
 
@@ -94,49 +92,9 @@ const optionsAnim = () => {
   }
 };
 
-const handleScrollPartners = () => {
-  let id;
-
-  const scrollPartners = () => {
-    const totalWidth = partners.scrollWidth;
-    const visibleWidth = partners.clientWidth;
-    const scrollAmount = 375;
-
-    if (partners.scrollLeft + visibleWidth + scrollAmount >= totalWidth) {
-      partners.scrollLeft = 0;
-    } else {
-      partners.scrollLeft += scrollAmount;
-    }
-  };
-
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          id = setInterval(scrollPartners, 3000);
-          observer.unobserve(entry.target);
-        } else {
-          clearInterval(id);
-        }
-      });
-    },
-    {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    }
-  );
-
-  observer.observe(partnersSection);
-};
-
 window.addEventListener("load", () => {
   body.style.opacity = "1";
   headerTextAnimation();
-});
-
-window.addEventListener("DOMContentLoaded", () => {
-  //handleScrollPartners();
 });
 
 window.addEventListener("scroll", () => {
