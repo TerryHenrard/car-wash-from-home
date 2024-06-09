@@ -3474,6 +3474,10 @@ header .header-text div a:hover {
   grid-template-columns: repeat(5, 20%);
 }
 
+.partners {
+  background: #ffffff;
+  margin: 0 200px;
+}
 .partners .partners-title h3 {
   padding: 50px;
   margin: 30px 0;
