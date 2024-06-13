@@ -1,4 +1,4 @@
-const form = document.getElementById("contact-form");
+/*const form = document.getElementById("contact-form");
 const inputsCkb = document.querySelectorAll("input[type='checkbox']");
 const inputsText = document.querySelectorAll(
   "input[type='text'], input[type='email'], textarea"
@@ -1268,4 +1268,16 @@ form.addEventListener("submit", (e) => {
       errorAnim.classList.remove("error-inscription-anim");
     }, 5001);
   }
-});
+});*/
+
+import services from "./services.js";
+console.log(services);
+
+const getElement = (id) => document.getElementById(id);
+const getElements = (selector) => [...document.querySelectorAll(selector)];
+
+const formCheckboxes = getElements(
+  '.finitions-container > div > input[type="checkbox"]'
+);
+
+console.log(formCheckboxes);
