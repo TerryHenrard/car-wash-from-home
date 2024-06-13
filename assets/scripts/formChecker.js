@@ -1281,3 +1281,4 @@ const formCheckboxes = getElements(
 );
 
 console.log(formCheckboxes);
+console.log("test2");
