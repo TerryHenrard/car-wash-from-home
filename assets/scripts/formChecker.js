@@ -1276,9 +1276,47 @@ console.log(services);
 const getElement = (id) => document.getElementById(id);
 const getElements = (selector) => [...document.querySelectorAll(selector)];
 
-const formCheckboxes = getElements(
-  '.finitions-container > div > input[type="checkbox"]'
-);
+const classicWashes = getElements(".classicWash");
+const termesAndConditions = getElement("courant-eau");
+const carSize = getElement("taille");
+const priceSpan = getElement("price_value");
+const timeSpan = getElement("time_value");
 
-console.log(formCheckboxes);
-console.log("test2");
+let order = [];
+let price = 0;
+let time = 0;
+
+const updatePriceAndTimeAndDisplay = (_price, _time) => {
+  price += _price;
+  time += _time;
+  priceSpan.textContent = price + " €";
+  timeSpan.textContent = formatTime(time); //TODO: convertir minute en heure minute (90 => 01h30)
+};
+
+const formatTime = (minutes) => {
+  const formattedHours = Math.floor(minutes / 60)
+    .toString()
+    .padStart(2, "0");
+  const formattedMins = (minutes % 60).toString().padStart(2, "0");
+  return `${formattedHours}h${formattedMins}`;
+};
+
+//TODO: gérer le faite de changer de taille de voiture alors que intérieur et extérieur sont déjà sélectionné
+function handleClassicWash() {
+  classicWashes.forEach((wash) => {
+    wash.addEventListener("input", (ev) => {
+      const { id, checked } = ev.target;
+      const { price, time } =
+        services[id === "exterieur" ? "exteriors" : "interiors"][carSize.value];
+
+      updatePriceAndTimeAndDisplay(
+        checked ? price : -price,
+        checked ? time : -time
+      );
+
+      checked ? order.push(id) : order.splice(order.indexOf(id), 1);
+    });
+  });
+}
+
+handleClassicWash();

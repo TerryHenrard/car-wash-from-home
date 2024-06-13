@@ -404,11 +404,11 @@
             <label for="taille">Taille</label>
             <select name="taille" id="taille" required>
               <option value="citadine" selected>citadine</option>
-              <option value="berline-coupe">berline - coupé</option>
-              <option value="suv-break">break - SUV</option>
-              <option value="camionette-s">camionnette S</option>
-              <option value="camionette-m">camionnette M</option>
-              <option value="camionette-l">camionnette L</option>
+              <option value="berline_coupe">berline - coupé</option>
+              <option value="break_suv">break - SUV</option>
+              <option value="camionnette_s">camionnette S</option>
+              <option value="camionnette_m">camionnette M</option>
+              <option value="camionnette_l">camionnette L</option>
             </select>
           </div>
           <div class="formule-base-container">
@@ -416,12 +416,12 @@
               <p>Lavages</p>
             </div>
             <div class="exterieur1">
-              <input type="checkbox" id="exterieur1" name="exterieur1" value="exterieur1">
-              <label for="exterieur1">Extérieur</label>
+              <input type="checkbox" id="exterieur" name="exterieur1" value="exterieur1" class="classicWash">
+              <label for="exterieur">Extérieur</label>
             </div>
             <div class="interieur1">
-              <input type="checkbox" id="interieur1" name="interieur1" value="interieur1">
-              <label for="interieur1">Intérieur</label>
+              <input type="checkbox" id="interieur" name="interieur1" value="interieur1" class="classicWash">
+              <label for="interieur">Intérieur</label>
             </div>
           </div>
 
@@ -531,10 +531,10 @@
           <input type="submit" value="Réserver">
         </div>
         <div class="price">
-          <p>Total: <span></span></p>
+          <p>Total: <span id="price_value"></span></p>
         </div>
         <div class="estimated-time">
-          <p>Temps estimé: <span></span></p>
+          <p>Temps estimé: <span id="time_value"></span></p>
         </div>
       </form>
     </div>
