@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="./assets/styles/index/index.css">
   <link rel="shortcut icon" href="./assets/images/logo4.webp">
   <script src="./assets/scripts/anim.js" defer></script>
-  <script src="./assets/scripts/formChecker.js" type="module"></script>
+  <script src="./assets/scripts/formChecker.js" type="module" defer></script>
   <script src="./assets/scripts/navbar.js" defer></script>
   <title>Car wash à domicile sur Charleroi | Lavage à la main intérieur et extérieur</title>
 </head>
@@ -341,6 +341,9 @@
           <img src="./assets/images/rbfa.png" alt="Logo de la fédération belge de football">
         </li>
         <li>
+          <img src="./assets/images/visit-me.png" alt="Logo de l'entreprise Visit me">
+        </li>
+        <li>
           <img src="./assets/images/apkiosk.png" alt="Logo de l'entreprise Apkiosk">
         </li>
         <li>
@@ -429,72 +432,78 @@
         <div class="options-container">
           <p>Options</p>
           <div class="nettoyage-bloc-moteur">
-            <input type="checkbox" id="nettoyage-bloc-moteur" name="nettoyage-bloc-moteur"
-              value="nettoyage-bloc-moteur">
-            <label for="nettoyage-bloc-moteur">Nettoyage bloc moteur</label>
+            <input type="checkbox" id="nettoyage_bloc_moteur" name="nettoyage-bloc-moteur" value="nettoyage-bloc-moteur"
+              class="option">
+            <label for="nettoyage_bloc_moteur">Nettoyage bloc moteur</label>
           </div>
           <div class="nettoyage-sieges-cuir-alcantara-container">
-            <input type="checkbox" id="nettoyage-sieges-cuir-alcantara" name="nettoyage-sieges-cuir-alcantara"
-              value="nettoyage-sieges-cuir-alcantara">
-            <label for="nettoyage-sieges-cuir-alcantara">Nettoyage cuir et alcantara</label>
+            <input type="checkbox" id="nettoyage_sieges_cuir_alcantara" name="nettoyage-sieges-cuir-alcantara"
+              value="nettoyage-sieges-cuir-alcantara" class="option">
+            <label for="nettoyage_sieges_cuir_alcantara">Nettoyage cuir et alcantara</label>
           </div>
           <div class="shampoing-siege-container">
-            <input type="checkbox" id="shampoing-siege" name="shampoing-siege" value="shampoing-siege">
-            <label for="shampoing-siege">Shampoing sièges en tissus</label>
+            <input type="checkbox" id="shampoing_siege" name="shampoing-siege" value="shampoing-siege" class="option">
+            <label for="shampoing_siege">Shampoing sièges en tissus</label>
           </div>
           <div class="shampoing-tapis-container">
-            <input type="checkbox" id="shampoing-tapis" name="shampoing-tapis" value="shampoing-tapis">
-            <label for="shampoing-tapis">Shampoing tapis et coffre</label>
+            <input type="checkbox" id="shampoing_tapis" name="shampoing-tapis" value="shampoing-tapis" class="option">
+            <label for="shampoing_tapis">Shampoing tapis et coffre</label>
           </div>
           <div class="shampoing-moquette-container">
-            <input type="checkbox" id="shampoing-moquette" name="shampoing-moquette" value="shampoing-moquette">
-            <label for="shampoing-moquette">Shampoing moquette</label>
+            <input type="checkbox" id="shampoing_moquette" name="shampoing-moquette" value="shampoing-moquette"
+              class="option">
+            <label for="shampoing_moquette">Shampoing moquette</label>
           </div>
         </div>
         <div class="finitions-container">
           <p>Finitions</p>
           <div class="polissage-container">
-            <input type="checkbox" id="polissage" name="polissage" value="polissage">
+            <input type="checkbox" id="polissage" name="polissage" value="polissage" class="finishing">
             <label for="polissage">Polissage carrosserie</label>
           </div>
           <div class="protection-ceramique-container">
-            <input type="checkbox" id="ceramique-carrosserie" name="ceramique-carrosserie"
-              value="ceramique-carrosserie">
-            <label for="ceramique-carrosserie">Céramique carrosserie</label>
+            <input type="checkbox" id="ceramique_carrosserie" name="ceramique-carrosserie" value="ceramique-carrosserie"
+              class="finishing">
+            <label for="ceramique_carrosserie">Céramique carrosserie</label>
           </div>
           <div class="ceramique-jantes-container">
-            <input type="checkbox" id="ceramique-jantes" name="ceramique-jantes" value="ceramique-jantes">
-            <label for="ceramique-jantes">Céramique jantes</label>
+            <input type="checkbox" id="ceramique_jantes" name="ceramique-jantes" value="ceramique-jantes"
+              class="finishing">
+            <label for="ceramique_jantes">Céramique jantes</label>
           </div>
           <div class="ceramique-vitres">
-            <input type="checkbox" id="ceramique-vitres" name="ceramique-vitres" value="ceramique-vitres">
-            <label for="ceramique-vitres">Céramique vitres</label>
+            <input type="checkbox" id="ceramique_vitres" name="ceramique-vitres" value="ceramique-vitres"
+              class="finishing">
+            <label for="ceramique_vitres">Céramique vitres</label>
           </div>
           <div class="renovateur-pneus-container">
-            <input type="checkbox" id="renovateur-pneus" name="renovateur-pneus" value="renovateur-pneus">
-            <label for="renovateur-pneus">Rénovateur pneus</label>
+            <input type="checkbox" id="renovateur_pneus" name="renovateur-pneus" value="renovateur-pneus"
+              class="finishing">
+            <label for="renovateur_pneus">Rénovateur pneus</label>
           </div>
           <div class="impermeabilisant-textiles-container">
-            <input type="checkbox" id="impermeabilisant-textiles" name="impermeabilisant-textiles"
-              value="impermeabilisant-textiles">
-            <label for="impermeabilisant-textiles">Imperméabilisant textiles</label>
+            <input type="checkbox" id="impermeabilisant_textiles" name="impermeabilisant-textiles"
+              value="impermeabilisant-textiles" class="finishing">
+            <label for="impermeabilisant_textiles">Imperméabilisant textiles</label>
           </div>
           <div class="protection-cuir-container">
-            <input type="checkbox" id="protection-cuir" name="protection-cuir" value="protection-cuir">
-            <label for="protection-cuir">Protection cuir</label>
+            <input type="checkbox" id="protection_cuir" name="protection-cuir" value="protection-cuir"
+              class="finishing">
+            <label for="protection_cuir">Protection cuir</label>
           </div>
           <div class="anti-buee-container">
-            <input type="checkbox" id="anti-buee" name="anti-buee" value="anti-buee">
-            <label for="anti-buee">Anti buée</label>
+            <input type="checkbox" id="anti_buee" name="anti-buee" value="anti-buee" class="finishing">
+            <label for="anti_buee">Anti buée</label>
           </div>
           <div class="renovateur-joints-container">
-            <input type="checkbox" id="renovateur-joints" name="renovateur-joints" value="renovateur-joints">
-            <label for="renovateur-joints">Rénovateur joints</label>
+            <input type="checkbox" id="renovateur_joints" name="renovateur-joints" value="renovateur-joints"
+              class="finishing">
+            <label for="renovateur_joints">Rénovateur joints</label>
           </div>
           <div class="protection-plastiques-container">
-            <input type="checkbox" id="protection-plastiques" name="protection-plastiques"
-              value="protection-plastiques">
-            <label for="protection-plastiques">Protection plastiques</label>
+            <input type="checkbox" id="protection_plastiques" name="protection-plastiques" value="protection-plastiques"
+              class="finishing">
+            <label for="protection_plastiques">Protection plastiques</label>
           </div>
         </div>
         <div class="date-container">

@@ -1273,50 +1273,103 @@ form.addEventListener("submit", (e) => {
 import services from "./services.js";
 console.log(services);
 
-const getElement = (id) => document.getElementById(id);
-const getElements = (selector) => [...document.querySelectorAll(selector)];
+const [classicWashes, washOptions, washFinishing] = [
+  ".classicWash",
+  ".option",
+  ".finishing",
+].map((selector) => [...document.querySelectorAll(selector)]);
 
-const classicWashes = getElements(".classicWash");
-const termesAndConditions = getElement("courant-eau");
-const carSize = getElement("taille");
-const priceSpan = getElement("price_value");
-const timeSpan = getElement("time_value");
+const [termesAndConditions, carSize, priceSpan, timeSpan] = [
+  "courant-eau",
+  "taille",
+  "price_value",
+  "time_value",
+].map((id) => document.getElementById(id));
 
-let order = [];
-let price = 0;
-let time = 0;
-
-const updatePriceAndTimeAndDisplay = (_price, _time) => {
-  price += _price;
-  time += _time;
-  priceSpan.textContent = price + " €";
-  timeSpan.textContent = formatTime(time); //TODO: convertir minute en heure minute (90 => 01h30)
+const polishSupplement = {
+  price: 50,
+  time: 30,
 };
 
-const formatTime = (minutes) => {
-  const formattedHours = Math.floor(minutes / 60)
-    .toString()
-    .padStart(2, "0");
-  const formattedMins = (minutes % 60).toString().padStart(2, "0");
-  return `${formattedHours}h${formattedMins}`;
+const ceramicSupplement = {
+  price: 30,
+  time: 15,
+};
+
+let order = {
+  classic: [],
+  options: [],
+  finishing: [],
+  price: 0,
+  time: 0,
+};
+
+const updatePriceAndTimeAndDisplay = (price, time) => {
+  order.price += price;
+  order.time += time;
+  priceSpan.textContent = `${order.price}€`;
+  timeSpan.textContent =
+    order.time > 60 ? formatTime(order.time) : `${order.time}min`;
+};
+
+const formatTime = (minutes) =>
+  `${String(Math.floor(minutes / 60)).padStart(2, "0")}h${String(
+    minutes % 60
+  ).padStart(2, "0")}`;
+
+const getWashServiceDetails = (type, id) =>
+  type === "classic"
+    ? services[id === "exterieur" ? "exteriors" : "interiors"][carSize.value]
+    : services.options[id] || services.finishing[id];
+
+const addSupplementForPolishAndCeramicAccordingToCarSize = (id, checked) => {
+  const carSizes = [
+    "citadine",
+    "berline_coupe",
+    "break_suv",
+    "camionnette_s",
+    "camionnette_m",
+    "camionnette_l",
+  ];
+
+  const priceSupplement =
+    id === "polissage" ? polishSupplement.price : ceramicSupplement.price;
+  const timeSupplement =
+    id === "polissage" ? polishSupplement.time : ceramicSupplement.time;
+
+  const newPrice = carSizes.indexOf(carSize.value) * priceSupplement;
+  const newTime = carSizes.indexOf(carSize.value) * timeSupplement;
+
+  updatePriceAndTimeAndDisplay(
+    checked ? newPrice : -newPrice,
+    checked ? newTime : -newTime
+  );
 };
 
 //TODO: gérer le faite de changer de taille de voiture alors que intérieur et extérieur sont déjà sélectionné
-function handleClassicWash() {
-  classicWashes.forEach((wash) => {
-    wash.addEventListener("input", (ev) => {
+function handleCheckboxEvents(checkboxs, type) {
+  checkboxs.forEach((checkbox) => {
+    checkbox.addEventListener("input", (ev) => {
       const { id, checked } = ev.target;
-      const { price, time } =
-        services[id === "exterieur" ? "exteriors" : "interiors"][carSize.value];
+      const { price, time } = getWashServiceDetails(type, id);
+
+      if (id === "polissage" || id === "ceramique_carrosserie") {
+        addSupplementForPolishAndCeramicAccordingToCarSize(id, checked);
+      }
 
       updatePriceAndTimeAndDisplay(
         checked ? price : -price,
         checked ? time : -time
       );
 
-      checked ? order.push(id) : order.splice(order.indexOf(id), 1);
+      checked
+        ? order[type].push(id)
+        : order[type].splice(order[type].indexOf(id), 1);
+
+      console.log(order);
     });
   });
 }
-
-handleClassicWash();
+handleCheckboxEvents(classicWashes, "classic");
+handleCheckboxEvents(washOptions, "options");
+handleCheckboxEvents(washFinishing, "finishing");

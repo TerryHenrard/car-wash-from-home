@@ -1,3 +1,11 @@
+/*
+const servives = {
+  service:[
+    [type | size, price, time]
+  ]
+}
+*/
+
 const services = {
   interiors: [
     ["citadine", 35, 90],
@@ -35,6 +43,12 @@ const services = {
     ["protection_plastiques", 25, 5],
   ],
 };
+
+/**
+ * @param {Object} object - The object to transform.
+ * @returns {Object} The transformed object.
+ * @description loops over the object keys and reduces each array of arrays to an object containing a 'price' property and a 'time' property. The final object is an object of objects of objects containing 2 properties.
+ */
 
 export default ((object) => {
   for (const key in object) {
