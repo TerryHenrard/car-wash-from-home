@@ -1273,27 +1273,35 @@ form.addEventListener("submit", (e) => {
 import services from "./services.js";
 console.log(services);
 
-const [classicWashes, washOptions, washFinishing] = [
-  ".classicWash",
-  ".option",
-  ".finishing",
-].map((selector) => [...document.querySelectorAll(selector)]);
+const getElement = (id) => document.getElementById(id);
+const getElements = (selector) => [...document.querySelectorAll(selector)];
 
-const [termesAndConditions, carSize, priceSpan, timeSpan] = [
-  "courant-eau",
-  "taille",
-  "price_value",
-  "time_value",
-].map((id) => document.getElementById(id));
-
-const polishSupplement = {
-  price: 50,
-  time: 30,
+const elements = {
+  classicWashes: getElements(".classicWash"),
+  washOptions: getElements(".option"),
+  washFinishing: getElements(".finishing"),
+  termesAndConditions: getElement("courant-eau"),
+  selectCarSize: getElement("taille"),
+  priceSpan: getElement("price_value"),
+  timeSpan: getElement("time_value"),
 };
 
-const ceramicSupplement = {
-  price: 30,
-  time: 15,
+const carSizes = [
+  "citadine",
+  "berline_coupe",
+  "break_suv",
+  "camionnette_s",
+  "camionnette_m",
+  "camionnette_l",
+];
+
+const supplements = {
+  polissage: { element: getElement("polissage"), price: 50, time: 30 },
+  ceramique_carrosserie: {
+    element: getElement("ceramique_carrosserie"),
+    price: 30,
+    time: 15,
+  },
 };
 
 let order = {
@@ -1307,8 +1315,8 @@ let order = {
 const updatePriceAndTimeAndDisplay = (price, time) => {
   order.price += price;
   order.time += time;
-  priceSpan.textContent = `${order.price}€`;
-  timeSpan.textContent =
+  elements.priceSpan.textContent = `${order.price}€`;
+  elements.timeSpan.textContent =
     order.time > 60 ? formatTime(order.time) : `${order.time}min`;
 };
 
@@ -1319,26 +1327,14 @@ const formatTime = (minutes) =>
 
 const getWashServiceDetails = (type, id) =>
   type === "classic"
-    ? services[id === "exterieur" ? "exteriors" : "interiors"][carSize.value]
+    ? services[id][elements.selectCarSize.value]
     : services.options[id] || services.finishing[id];
 
 const addSupplementForPolishAndCeramicAccordingToCarSize = (id, checked) => {
-  const carSizes = [
-    "citadine",
-    "berline_coupe",
-    "break_suv",
-    "camionnette_s",
-    "camionnette_m",
-    "camionnette_l",
-  ];
-
-  const priceSupplement =
-    id === "polissage" ? polishSupplement.price : ceramicSupplement.price;
-  const timeSupplement =
-    id === "polissage" ? polishSupplement.time : ceramicSupplement.time;
-
-  const newPrice = carSizes.indexOf(carSize.value) * priceSupplement;
-  const newTime = carSizes.indexOf(carSize.value) * timeSupplement;
+  const newPrice =
+    carSizes.indexOf(elements.selectCarSize.value) * supplements[id].price;
+  const newTime =
+    carSizes.indexOf(elements.selectCarSize.value) * supplements[id].time;
 
   updatePriceAndTimeAndDisplay(
     checked ? newPrice : -newPrice,
@@ -1346,11 +1342,9 @@ const addSupplementForPolishAndCeramicAccordingToCarSize = (id, checked) => {
   );
 };
 
-//TODO: gérer le faite de changer de taille de voiture alors que intérieur et extérieur sont déjà sélectionné
-function handleCheckboxEvents(checkboxs, type) {
-  checkboxs.forEach((checkbox) => {
-    checkbox.addEventListener("input", (ev) => {
-      const { id, checked } = ev.target;
+const handleCheckboxEvents = (checkboxes, type) => {
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("input", ({ target: { id, checked } }) => {
       const { price, time } = getWashServiceDetails(type, id);
 
       if (id === "polissage" || id === "ceramique_carrosserie") {
@@ -1369,7 +1363,59 @@ function handleCheckboxEvents(checkboxs, type) {
       console.log(order);
     });
   });
-}
-handleCheckboxEvents(classicWashes, "classic");
-handleCheckboxEvents(washOptions, "options");
-handleCheckboxEvents(washFinishing, "finishing");
+};
+
+const handleChangingCarSizeEvent = () => {
+  let lastCarSize = elements.selectCarSize.value;
+
+  elements.selectCarSize.addEventListener("input", () => {
+    const updateService = (oldPrice, newPrice, oldTime, newTime) =>
+      updatePriceAndTimeAndDisplay(newPrice - oldPrice, newTime - oldTime);
+
+    const getPriceTime = (service, carSize, isFinishing) => {
+      if (isFinishing) {
+        const supplement = supplements[service.id];
+        const basePriceTime = services.finishing[service.id];
+        const index = carSizes.indexOf(carSize);
+
+        return {
+          price: basePriceTime.price + index * supplement.price,
+          time: basePriceTime.time + index * supplement.time,
+        };
+      }
+      return services[service.id][carSize];
+    };
+
+    [
+      ...elements.classicWashes,
+      supplements.polissage.element,
+      supplements.ceramique_carrosserie.element,
+    ].forEach((service) => {
+      if (service.checked) {
+        const oldValues = getPriceTime(
+          service,
+          lastCarSize,
+          service.id !== "interiors" && service.id !== "exteriors"
+        );
+        const newValues = getPriceTime(
+          service,
+          elements.selectCarSize.value,
+          service.id !== "interiors" && service.id !== "exteriors"
+        );
+        updateService(
+          oldValues.price,
+          newValues.price,
+          oldValues.time,
+          newValues.time
+        );
+      }
+    });
+
+    lastCarSize = elements.selectCarSize.value;
+  });
+};
+
+handleChangingCarSizeEvent();
+handleCheckboxEvents(elements.classicWashes, "classic");
+handleCheckboxEvents(elements.washOptions, "options");
+handleCheckboxEvents(elements.washFinishing, "finishing");

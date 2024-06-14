@@ -19,9 +19,9 @@ const services = {
     ["citadine", 25, 60],
     ["berline_coupe", 30, 75],
     ["break_suv", 35, 90],
-    ["camionnette_s", 50, 105],
-    ["camionnette_m", 60, 120],
-    ["camionnette_l", 70, 135],
+    ["camionnette_s", 60, 105],
+    ["camionnette_m", 70, 120],
+    ["camionnette_l", 80, 135],
   ],
   options: [
     ["nettoyage_bloc_moteur", 30, 30],
