@@ -1373,8 +1373,7 @@ const supplements = {
 
 const appointment = {
   date: {
-    element: getElement("date"),
-    minDayBefore: 2,
+    element: getElement("datepicker"),
   },
   hour: {
     element: getElement("time"),
@@ -1511,15 +1510,68 @@ const setDatepicker = () => {
   const minDate = date.setDate(date.getDate() + 1);
   const maxDate = date.setDate(date.getDate() + 60);
 
+  const formatDate = (date) => {
+    const day = ("0" + date.getDate()).slice(-2);
+    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  };
+
+  const getSpecificWeekdayBetweenDates = (startDate, endDate, weekday) => {
+    let result = [];
+    let currentDate = new Date(startDate);
+    let end = new Date(endDate);
+
+    currentDate.setDate(
+      currentDate.getDate() + ((weekday - currentDate.getDay() + 7) % 7)
+    );
+
+    while (currentDate <= end) {
+      result.push(new Date(currentDate));
+      currentDate.setDate(currentDate.getDate() + 7);
+    }
+
+    return result;
+  };
+
+  //TODO: corriger le problème
+  const findFirstAvailableDate = (minDate, excludedDates) => {
+    minDate = new Date(minDate);
+
+    excludedDates.sort((a, b) => a - b);
+
+    const isDateExcluded = (date) =>
+      excludedDates.some(
+        (excludedDate) => date.getTime() === excludedDate.getTime()
+      );
+
+    let currentDate = new Date(minDate);
+    while (isDateExcluded(currentDate)) {
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    return currentDate;
+  };
+
+  const unavailableDates = [
+    new Date(2024, 5, 20),
+    new Date(2024, 5, 21),
+    ...getSpecificWeekdayBetweenDates(minDate, maxDate, 1),
+    ...getSpecificWeekdayBetweenDates(minDate, maxDate, 6),
+  ];
+
   const options = {
     min: minDate,
     max: maxDate,
-    without: ["2024/06/22"], //TODO: implémenter la logique pour bannir tous les dimanches et mardis
+    without: unavailableDates,
   };
 
-  const constraints = {};
-
-  new Datepicker("#datepicker", options);
+  appointment.date.element.setAttribute(
+    "placeholder",
+    formatDate(findFirstAvailableDate(new Date(minDate), unavailableDates))
+  );
+  new Datepicker(appointment.date.element, options);
 };
 
 const setTimeSlots = () => {
