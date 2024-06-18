@@ -2,6 +2,8 @@
 <html lang="fr">
 
 <head>
+  <link rel="stylesheet" href="./assets/librairies/datepicker/datepicker.material.css">
+  <script src="./assets/librairies/datepicker/datepicker.js" defer></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-42059HQN9E"></script>
   <script>
@@ -24,7 +26,7 @@
 </head>
 
 <body>
-  <header id="start">
+  <header class="header" id="start">
     <nav id="navbar">
       <div class="logo">
         <a href="#start"></a>
@@ -509,7 +511,8 @@
         <div class="date-container">
           <p class="title-date">Date</p>
           <label for="date"></label>
-          <input type="date" id="date" name="date">
+          <input type="text" id="datepicker" autocomplete="off">
+
           <p class="message-error-date"></p>
           <!-- <p class="message-error-date"></p> -->
         </div>
@@ -517,9 +520,7 @@
           <p class="title-heure">Heure</p>
           <label for="time"></label>
           <select type="time" id="time" name="time">
-            <option value="1">test</option>
-            <option value="1">test</option>
-            <option value="1">test</option>
+
           </select>
           <p class="message-error-time"></p>
         </div>
@@ -552,7 +553,6 @@
       </form>
     </div>
   </section>
-
   <footer class="footer" id="footer">
     <div class="footer-container">
       <div class="apropos">

@@ -1274,10 +1274,18 @@ import services from "./services.js";
 
 const getElement = (id) => document.getElementById(id);
 const getElements = (selector) => [...document.querySelectorAll(selector)];
-const createElement = (element, attributes) => {
-  const element = document.createElement(element);
+const createElement = (_element, _textContent = null, attributes = null) => {
+  const element = document.createElement(_element);
 
-  //TODO: ajouter les attributs de l'élément HTML
+  if (_textContent != null || _textContent != undefined) {
+    element.textContent = _textContent;
+  }
+
+  if (attributes != null || attributes != undefined) {
+    for (const [key, value] of Object.entries(attributes)) {
+      element.setAttribute(key, value);
+    }
+  }
 
   return element;
 };
@@ -1370,7 +1378,7 @@ const appointment = {
   },
   hour: {
     element: getElement("time"),
-    availableSlots: ["08:30", "13:00"],
+    slots: ["08:30", "13:00"],
   },
 };
 
@@ -1498,10 +1506,26 @@ const handleRegexEvents = () => {
   );
 };
 
-const handleDateAndTimeEvent = () => {
-  appointment.hour.availableSlots.forEach((slot) => {
-    const option = createElement("option");
-    //TODO: terminer
+const setDatepicker = () => {
+  const date = new Date();
+  const minDate = date.setDate(date.getDate() + 1);
+  const maxDate = date.setDate(date.getDate() + 60);
+
+  const options = {
+    min: minDate,
+    max: maxDate,
+    without: ["2024/06/22"], //TODO: implémenter la logique pour bannir tous les dimanches et mardis
+  };
+
+  const constraints = {};
+
+  new Datepicker("#datepicker", options);
+};
+
+const setTimeSlots = () => {
+  appointment.hour.slots.forEach((slot) => {
+    const option = createElement("option", slot, { value: slot });
+    appointment.hour.element.appendChild(option);
   });
 };
 
@@ -1510,3 +1534,5 @@ handleCheckboxEvents(elements.classicWashes, "classic");
 handleCheckboxEvents(elements.washOptions, "options");
 handleCheckboxEvents(elements.washFinishing, "finishing");
 handleRegexEvents();
+setTimeSlots();
+setDatepicker();
