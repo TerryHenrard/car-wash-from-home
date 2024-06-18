@@ -1271,10 +1271,16 @@ form.addEventListener("submit", (e) => {
 });*/
 
 import services from "./services.js";
-console.log(services);
 
 const getElement = (id) => document.getElementById(id);
 const getElements = (selector) => [...document.querySelectorAll(selector)];
+const createElement = (element, attributes) => {
+  const element = document.createElement(element);
+
+  //TODO: ajouter les attributs de l'élément HTML
+
+  return element;
+};
 
 const elements = {
   classicWashes: getElements(".classicWash"),
@@ -1295,6 +1301,59 @@ const carSizes = [
   "camionnette_l",
 ];
 
+const customerInfos = {
+  lastName: {
+    input: getElement("lastName"),
+    label: getElement("label_lastName"),
+    errorElement: getElement("message-error-lastName"),
+    errorMsg: "le format du nom de famille est incorrect.",
+    regex: /^[\p{L}\s\-.']{2,100}$/u,
+  },
+  firstName: {
+    input: getElement("firstName"),
+    label: getElement("label_firstName"),
+    errorElement: getElement("message-error-firstName"),
+    errorMsg: "le format du prénom est incorrect.",
+    regex: /^[\p{L}\s\-.']{2,100}$/u,
+  },
+  email: {
+    input: getElement("email"),
+    label: getElement("label_email"),
+    errorElement: getElement("message-error-email"),
+    errorMsg: "le format de l'email est incorrect.",
+    regex: /^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$/,
+  },
+  tel: {
+    input: getElement("tel"),
+    label: getElement("label_tel"),
+    errorElement: getElement("message-error-tel"),
+    errorMsg: "le format du numéro de téléphone est incorrect.",
+    regex:
+      /^(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})$/,
+  },
+  address: {
+    input: getElement("adresse"),
+    label: getElement("label_adresse"),
+    errorElement: getElement("message-error-adresse"),
+    errorMsg: "le format de l'adresse est incorrect.",
+    regex: /^[\p{L}\d\s\.,#‘’'\-]{2,100}$/u,
+  },
+  city: {
+    input: getElement("ville"),
+    label: getElement("label_ville"),
+    errorElement: getElement("message-error-ville"),
+    errorMsg: "le format de la ville est incorrect.",
+    regex: /^[\p{L}][\p{L}\d\s\.,#‘’'\-]{2,100}$/u,
+  },
+  message: {
+    input: getElement("message"),
+    label: getElement("label_message"),
+    errorElement: getElement("message-error-message"),
+    errorMsg: "Le texte est trop long ou contient des caractères interdits.",
+    regex: /^[\p{L}a-zA-Z\d\s/,#‘’'"+:;?!+=$€*/@().-]{0,250}$/u,
+  },
+};
+
 const supplements = {
   polissage: { element: getElement("polissage"), price: 50, time: 30 },
   ceramique_carrosserie: {
@@ -1304,12 +1363,25 @@ const supplements = {
   },
 };
 
+const appointment = {
+  date: {
+    element: getElement("date"),
+    minDayBefore: 2,
+  },
+  hour: {
+    element: getElement("time"),
+    availableSlots: ["08:30", "13:00"],
+  },
+};
+
 let order = {
   classic: [],
   options: [],
   finishing: [],
   price: 0,
   time: 0,
+  date: null,
+  hour: null,
 };
 
 const updatePriceAndTimeAndDisplay = (price, time) => {
@@ -1331,14 +1403,12 @@ const getWashServiceDetails = (type, id) =>
     : services.options[id] || services.finishing[id];
 
 const addSupplementForPolishAndCeramicAccordingToCarSize = (id, checked) => {
-  const newPrice =
-    carSizes.indexOf(elements.selectCarSize.value) * supplements[id].price;
-  const newTime =
-    carSizes.indexOf(elements.selectCarSize.value) * supplements[id].time;
+  const index = carSizes.indexOf(elements.selectCarSize.value);
+  const { price, time } = supplements[id];
 
   updatePriceAndTimeAndDisplay(
-    checked ? newPrice : -newPrice,
-    checked ? newTime : -newTime
+    checked ? price * index : -price * index,
+    checked ? time * index : -time * index
   );
 };
 
@@ -1359,8 +1429,6 @@ const handleCheckboxEvents = (checkboxes, type) => {
       checked
         ? order[type].push(id)
         : order[type].splice(order[type].indexOf(id), 1);
-
-      console.log(order);
     });
   });
 };
@@ -1415,7 +1483,30 @@ const handleChangingCarSizeEvent = () => {
   });
 };
 
+const handleRegexEvents = () => {
+  Object.values(customerInfos).forEach(
+    ({ input, regex, label, errorElement, errorMsg }) => {
+      input.addEventListener("input", ({ target: { value } }) => {
+        const isValid = regex.test(value);
+        const hasValue = value !== "";
+        input.classList.toggle("error-input", !isValid && hasValue);
+        label.classList.toggle("error-label", !isValid && hasValue);
+        errorElement.classList.toggle("message-error", !isValid && hasValue);
+        errorElement.textContent = hasValue && !isValid ? errorMsg : "";
+      });
+    }
+  );
+};
+
+const handleDateAndTimeEvent = () => {
+  appointment.hour.availableSlots.forEach((slot) => {
+    const option = createElement("option");
+    //TODO: terminer
+  });
+};
+
 handleChangingCarSizeEvent();
 handleCheckboxEvents(elements.classicWashes, "classic");
 handleCheckboxEvents(elements.washOptions, "options");
 handleCheckboxEvents(elements.washFinishing, "finishing");
+handleRegexEvents();

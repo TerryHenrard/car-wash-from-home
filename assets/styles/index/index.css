@@ -3478,6 +3478,16 @@ header .header-text div a:hover {
   background: #ffffff;
   margin: 0 200px;
 }
+@media screen and (max-width: 1455px) {
+  .partners {
+    margin: 50px 68px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .partners {
+    margin: 8.67px 23.12px;
+  }
+}
 .partners .partners-title h3 {
   padding: 50px;
   margin: 30px 0;
@@ -3488,9 +3498,20 @@ header .header-text div a:hover {
   text-align: center;
   color: #072136;
 }
+@media screen and (max-width: 900px) {
+  .partners .partners-title h3 {
+    font-size: 1.65rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .partners .partners-title h3 {
+    padding: 25px 25px 0 25px;
+  }
+}
 .partners .partners-container {
   padding: 50px;
-  margin: 30px 0;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 @media only screen and (max-width: 792px) {
   .partners .partners-container {
@@ -3502,16 +3523,17 @@ header .header-text div a:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 75px;
+  gap: 100px;
   list-style: none;
 }
-@media only screen and (max-width: 792px) {
+@media only screen and (max-width: 1217px) {
   .partners .partners-container ul {
     gap: 50px;
   }
 }
 .partners .partners-container ul li img {
-  width: 300px;
+  width: 25vw;
+  max-width: 300px;
   aspect-ratio: 2/1;
   -o-object-fit: contain;
      object-fit: contain;
@@ -3536,9 +3558,14 @@ header .header-text div a:hover {
   text-align: center;
   color: #072136;
 }
-@media only screen and (max-width: 330px) {
+@media screen and (max-width: 900px) {
   .rdv h3 {
-    font-size: 1.3rem;
+    font-size: 1.65rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .rdv h3 {
+    padding: 25px;
   }
 }
 .rdv .form-container {
@@ -3619,6 +3646,49 @@ header .header-text div a:hover {
   .rdv .form-container form {
     display: inline;
   }
+}
+.rdv .form-container .date-container,
+.rdv .form-container .time-container {
+  margin: 0 0 -25px 0;
+}
+@media screen and (max-width: 1300px) {
+  .rdv .form-container .date-container,
+  .rdv .form-container .time-container {
+    margin: 0 0 30px 0;
+  }
+}
+.rdv .form-container .date-container label,
+.rdv .form-container .time-container label {
+  display: block;
+  font-size: 1.3rem;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+.rdv .form-container .date-container select,
+.rdv .form-container .time-container select {
+  text-align: center;
+  width: 300px;
+  padding: 10px;
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  border: none;
+  border-bottom: 1px solid #757575;
+  font-weight: 400;
+  font-family: "montserrat";
+  cursor: pointer;
+  font-size: 18px;
+  height: 42px;
+  border-radius: 0;
+}
+@media only screen and (max-width: 330px) {
+  .rdv .form-container .date-container select,
+  .rdv .form-container .time-container select {
+    width: 220px;
+  }
+}
+.rdv .form-container .date-container select:focus,
+.rdv .form-container .time-container select:focus {
+  outline: none;
 }
 .rdv .form-container .date-container .title-date,
 .rdv .form-container .date-container .title-heure,
@@ -3933,7 +4003,7 @@ header .header-text div a:hover {
   margin: 0 auto 30px auto;
   display: flex;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;

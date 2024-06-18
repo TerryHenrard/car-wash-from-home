@@ -344,6 +344,9 @@
           <img src="./assets/images/visit-me.png" alt="Logo de l'entreprise Visit me">
         </li>
         <li>
+          <img src="./assets/images/binome.webp" alt="Logo de l'entreprise Binome">
+        </li>
+        <li>
           <img src="./assets/images/apkiosk.png" alt="Logo de l'entreprise Apkiosk">
         </li>
         <li>
@@ -355,9 +358,6 @@
         <li>
           <img src="./assets/images/sainatchpng.png" alt="Logo de l'entreprise Sainatech">
         </li>
-        <!-- <li>
-          <img src="./assets/images/binome.webp" alt="Logo de l'entreprise Binome">
-        </li> -->
       </ul>
     </div>
   </section>
@@ -369,38 +369,38 @@
         <div class="last-name-container">
           <input type="text" id="lastName" name="lastName" required>
           <span class="bar"></span>
-          <label for="lastName">Nom</label>
-          <p class="message-error-lastName"></p>
+          <label for="lastName" id="label_lastName">Nom</label>
+          <p class="message-error-lastName" id="message-error-lastName"></p>
         </div>
         <div class="first-name-container">
           <input type="text" id="firstName" name="firsNname" required>
           <span class="bar"></span>
-          <label for="firstName">Prénom</label>
-          <p class="message-error-firstName"></p>
+          <label for="firstName" id="label_firstName">Prénom</label>
+          <p class="message-error-firstName" id="message-error-firstName"></p>
         </div>
         <div class="email-container">
-          <input type="email" id="email" name="email" required>
+          <input type="text" id="email" name="email" autocomplete="email" required>
           <span class="bar"></span>
-          <label for="email">Email</label>
-          <p class="message-error-email"></p>
+          <label for="email" id="label_email">Email</label>
+          <p class="message-error-email" id="message-error-email"></p>
         </div>
         <div class="tel-container">
           <input type="text" id="tel" name="tel" required>
           <span class="bar"></span>
-          <label for="tel">Téléphone</label>
-          <p class="message-error-tel"></p>
+          <label for="tel" id="label_tel">Téléphone</label>
+          <p class="message-error-tel" id="message-error-tel"></p>
         </div>
         <div class="adresse-container">
           <input type="text" id="adresse" name="adresse" required>
           <span class="bar"></span>
-          <label for="adresse">Adresse</label>
-          <p class="message-error-adresse"></p>
+          <label for="adresse" id="label_adresse">Adresse</label>
+          <p class="message-error-adresse" id="message-error-adresse"></p>
         </div>
         <div class="ville-container">
           <input type="text" id="ville" name="ville" required>
           <span class="bar"></span>
-          <label for="ville">Ville</label>
-          <p class="message-error-ville"></p>
+          <label for="ville" id="label_ville">Ville</label>
+          <p class="message-error-ville" id="message-error-ville"></p>
         </div>
         <div class="formule-container">
           <div class="taille-voiture">
@@ -516,7 +516,11 @@
         <div class="time-container">
           <p class="title-heure">Heure</p>
           <label for="time"></label>
-          <input type="time" id="time" name="time">
+          <select type="time" id="time" name="time">
+            <option value="1">test</option>
+            <option value="1">test</option>
+            <option value="1">test</option>
+          </select>
           <p class="message-error-time"></p>
         </div>
         <div class="courant-eau-cgv-container">
@@ -531,10 +535,10 @@
           </div>
         </div>
         <div class="textarea-container">
-          <label for="message"></label>
-          <textarea id="message" maxlength="250" spellcheck="true"
-            placeholder="Message: (J'ai une VW Golf et j'aimerais...)" name="message"></textarea>
-          <p class="message-error-message"></p>
+          <label for="message" id="label_message"></label>
+          <textarea id="message" spellcheck="true" placeholder="Message: (J'ai une VW Golf et j'aimerais...)"
+            name="message"></textarea>
+          <p class="message-error-message" id="message-error-message"></p>
         </div>
         <div class="submit-container">
           <input type="submit" value="Réserver">
