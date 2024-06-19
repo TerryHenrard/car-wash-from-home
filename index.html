@@ -2,8 +2,8 @@
 <html lang="fr">
 
 <head>
-  <link rel="stylesheet" href="./assets/librairies/datepicker/datepicker.material.css">
-  <script src="./assets/librairies/datepicker/datepicker.js" defer></script>
+  <link rel="stylesheet" href="./assets/libraries/datepicker/datepicker.material.css">
+  <script src="./assets/libraries/datepicker/datepicker.js" defer></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-42059HQN9E"></script>
   <script>
@@ -364,7 +364,16 @@
     </div>
   </section>
 
+
   <section class="rdv" id="rdv">
+    <dialog id="modal_overlay" class="modal_overlay">
+      <div id="modal_content" class="modal_content">
+        <div class="modal_title">
+          <h3>Résumé de la commande</h3>
+        </div>
+      </div>
+    </dialog>
+
     <h3>Réservez votre lavage à domicile!</h3>
     <div class="form-container">
       <form action="" id="contact-form">

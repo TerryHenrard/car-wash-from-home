@@ -4,19 +4,19 @@ $jsonData = file_get_contents('php://input');
 
 $objet = json_decode($jsonData, false, 512, JSON_THROW_ON_ERROR);
 
-$formule = "";
-foreach ($objet->formule as $element) {
-  $formule .= $element . " ";
+$wash = "";
+foreach ($objet->classic as $element) {
+  $wash .= $element . " ";
 }
 
-$abonnement = "";
-foreach ($objet->abonnement as $element) {
-  $abonnement .= $element . " ";
+$options = "";
+foreach ($objet->options as $element) {
+  $options .= $element . " ";
 }
 
-$option = "";
-foreach ($objet->option as $element) {
-  $option .= $element . " ";
+$finishing = "";
+foreach ($objet->finishing as $element) {
+  $finishing .= $element . " ";
 }
 
 $to = "contact@carwashfromhome.com";
@@ -24,15 +24,15 @@ $subject = "rendez-vous";
 $body = "nom : " . $objet->lastName . "
 prenom : " . $objet->firstName . "
 email : " . $objet->email . "
-telephone : " . $objet->phoneNumber . "
+telephone : " . $objet->tel . "
 adresse : " . $objet->address . "
 ville : " . $objet->city . "
-taille : " . $objet->taille . "
-formule : " . $formule . "
-abonnement : " . $abonnement . "
-option : " . $option . "
-date : " . $objet->dateAppointement . "
-heure : " . $objet->hours . "
+taille : " . $objet->carSize . "
+formule : " . $wash . "
+options : " . $options . "
+finitions : " . $finishing . "
+date : " . $objet->date . "
+heure : " . $objet->hour . "
 prix : " . $objet->price . "euros
 temps : " . $objet->time . "min
 message : " . $objet->message;

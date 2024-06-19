@@ -15,6 +15,10 @@ body {
   opacity: 0;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 @font-face {
   font-family: "poppins";
   src: url(../../fonts/Poppins-Medium.ttf);
@@ -3548,6 +3552,7 @@ body {
 
 .rdv {
   text-align: center;
+  position: relative;
 }
 .rdv h3 {
   padding: 50px;
@@ -5334,4 +5339,44 @@ body {
 }
 .footer .footer-container .contact p a:visited {
   color: #ffffff;
+}
+
+.modal_overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  display: none;
+  border: none;
+  height: 110vh;
+  width: 110vw;
+  background: rgba(0, 0, 0, 0.1647058824);
+}
+.modal_overlay .modal_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f8f8f8;
+  padding: 0 50px 50px 50px;
+  border-radius: 10px;
+}
+.modal_overlay .modal_content .modal_recap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: left;
+}
+.modal_overlay .modal_content .modal_recap .modal_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 15px;
+}
+.modal_overlay .modal_content .modal_recap .modal_row .modal_header {
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 1.15rem;
 }/*# sourceMappingURL=index.css.map */
