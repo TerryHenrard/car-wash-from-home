@@ -20,12 +20,14 @@ const createElement = (tag, textContent = null, attributes = null) => {
 };
 
 let order = {
-  lastName: "",
-  firstName: "",
-  email: "",
-  tel: "",
-  address: "",
-  city: "",
+  personnalInfos: {
+    lastName: "",
+    firstName: "",
+    email: "",
+    tel: "",
+    address: "",
+    city: "",
+  },
   carSize: "",
   message: "",
   classic: [],
@@ -38,8 +40,12 @@ let order = {
 };
 
 const form = getElement("contact-form");
-const modal_overlay = getElement("modal_overlay");
-const modal_content = getElement("modal_content");
+
+const modal = {
+  overlay: getElement("modal_overlay"),
+  content: getElement("modal_content"),
+  recap: getElement("modal_recap"),
+};
 
 const checkboxes = {
   classicWashes: getElements(".classicWash"),
@@ -259,7 +265,7 @@ const handleRegexEvents = () => {
       errorElement.textContent = hasValue && !isValid ? errorMsg : "";
 
       if (isValid && hasValue) {
-        order[key] = value;
+        order.personnalInfos[key] = value;
       }
     });
   });
@@ -353,49 +359,36 @@ const handleHourEvent = () => {
 };
 
 const checkEmptyfieldOrder = () =>
-  order.lastName === "" ||
-  order.firstName === "" ||
-  order.email === "" ||
-  order.tel === "" ||
-  order.address === "" ||
-  order.city === ""
+  order.personnalInfos.lastName === "" ||
+  order.personnalInfos.firstName === "" ||
+  order.personnalInfos.email === "" ||
+  order.personnalInfos.tel === "" ||
+  order.personnalInfos.address === "" ||
+  order.personnalInfos.city === ""
     ? true
     : false;
 
 const openModal = () => {
-  modal_overlay.style.display = "block";
+  modal.overlay.style.display = "block";
   document.body.classList.add("no-scroll");
 };
 
 const closeModal = () => {
-  modal_overlay.style.display = "none";
+  modal.overlay.style.display = "none";
   document.body.classList.remove("no-scroll");
 };
 
-const buildModal = () => {
-  const headers = [
-    "Nom",
-    "Prénom",
-    "Email",
-    "Téléphone",
-    "Adresse",
-    "Ville",
-    "Taille",
-    "Message",
-    "Lavage",
-    "Options",
-    "Finitions",
-    "Prix",
-    "Temps",
-    "Date",
-    "Heure",
-  ];
+//TODO: faire une fonction générique
+const AddPersonnalInfoToModal = () => {
+  const headers = ["Nom", "Prénom", "Email", "Téléphone", "Adresse", "Ville"];
+  const container = createElement("div", null, {
+    class: "modal_recap_personnal_infos",
+  });
+  container.appendChild(createElement("h4", "Informations personnelles"));
 
-  const modalRecap = createElement("div", null, { class: "modal_recap" });
-
-  Object.values(order).forEach((value, index) => {
+  Object.values(order.personnalInfos).forEach((value, index) => {
     const modalRow = createElement("div", null, { class: "modal_row" });
-    const modalHeader = createElement("p", headers[index] + " :", {
+    const modalHeader = createElement("p", `${headers[index]} :`, {
       class: "modal_header",
     });
     const modalValue = createElement("p", value, { class: "modal_value" });
@@ -403,10 +396,14 @@ const buildModal = () => {
     modalRow.appendChild(modalHeader);
     modalRow.appendChild(modalValue);
 
-    modalRecap.appendChild(modalRow);
+    container.appendChild(modalRow);
   });
 
-  modal_content.appendChild(modalRecap);
+  modal.recap.appendChild(container);
+};
+
+const buildModal = () => {
+  AddPersonnalInfoToModal();
 };
 
 const handleSubmitEvent = () => {

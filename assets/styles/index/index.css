@@ -5362,21 +5362,24 @@ body {
   padding: 0 50px 50px 50px;
   border-radius: 10px;
 }
-.modal_overlay .modal_content .modal_recap {
+.modal_overlay .modal_content .modal_recap .modal_recap_personnal_infos {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 10px;
   text-align: left;
 }
-.modal_overlay .modal_content .modal_recap .modal_row {
+.modal_overlay .modal_content .modal_recap .modal_recap_personnal_infos h4 {
+  font-size: 1.2rem;
+}
+.modal_overlay .modal_content .modal_recap .modal_recap_personnal_infos .modal_row {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: flex-start;
   gap: 15px;
 }
-.modal_overlay .modal_content .modal_recap .modal_row .modal_header {
+.modal_overlay .modal_content .modal_recap .modal_recap_personnal_infos .modal_row .modal_header {
   white-space: nowrap;
   font-weight: bold;
-  font-size: 1.15rem;
+  min-width: 93px;
+  width: 20%;
 }/*# sourceMappingURL=index.css.map */

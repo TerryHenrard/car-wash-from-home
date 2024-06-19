@@ -20,22 +20,29 @@
     border-radius: 10px;
 
     .modal_recap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      text-align: left;
+      .modal_recap_personnal_infos {
+        display: grid;
+        gap: 10px;
+        text-align: left;
 
-      .modal_row {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: baseline;
-        justify-content: flex-start;
-        gap: 15px;
+        h4 {
+          font-size: 1.2rem;
+        }
 
-        .modal_header {
-          white-space: nowrap;
-          font-weight: bold;
-          font-size: 1.15rem;
+        .modal_row {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: baseline;
+          justify-content: flex-start;
+          gap: 15px;
+
+          .modal_header {
+            white-space: nowrap;
+            font-weight: bold;
+            min-width: 93px;
+            width: 20%;
+            // font-size: 1.15rem;
+          }
         }
       }
     }
