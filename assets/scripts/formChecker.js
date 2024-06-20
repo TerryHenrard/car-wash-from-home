@@ -28,15 +28,19 @@ let order = {
     address: "",
     city: "",
   },
-  carSize: "",
-  message: "",
-  classic: [],
-  options: [],
-  finishing: [],
-  price: 0,
-  time: 0,
-  date: null,
-  hour: null,
+  washingInfos: {
+    carSize: "",
+    classic: [],
+    options: [],
+    finishing: [],
+    message: "",
+    time: 0,
+    price: 0,
+  },
+  appoitmentInfos: {
+    date: null,
+    hour: null,
+  },
 };
 
 const form = getElement("contact-form");
@@ -45,6 +49,11 @@ const modal = {
   overlay: getElement("modal_overlay"),
   content: getElement("modal_content"),
   recap: getElement("modal_recap"),
+  infoLeft: getElement("modal_info_left"),
+  infoRight: getElement("modal_info_right"),
+  closeButton: getElement("modal_close_button"),
+  cancelButton: getElement("modal_button_cancel"),
+  confirmButton: getElement("modal_button_confirm"),
 };
 
 const checkboxes = {
@@ -142,20 +151,26 @@ const postData = async (url = "", data = {}) => {
   const response = await fetch(url, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json; charset=utf-8",
     },
     body: JSON.stringify(data),
   });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
 
   return response.json();
 };
 
 const updatePriceAndTimeAndDisplay = (price, time) => {
-  order.price += price;
-  order.time += time;
-  checkboxes.priceSpan.textContent = `${order.price}€`;
+  order.washingInfos.price += price;
+  order.washingInfos.time += time;
+  checkboxes.priceSpan.textContent = `${order.washingInfos.price}€`;
   checkboxes.timeSpan.textContent =
-    order.time > 60 ? formatTime(order.time) : `${order.time}min`;
+    order.washingInfos.time > 60
+      ? formatTime(order.washingInfos.time)
+      : `${order.washingInfos.time}min`;
 };
 
 const formatTime = (minutes) =>
@@ -180,7 +195,8 @@ const addSupplementForPolishAndCeramicAccordingToCarSize = (id, checked) => {
 
 const handleCheckboxEvents = (checkboxes, type) => {
   checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener("input", ({ target: { id, checked } }) => {
+    checkbox.addEventListener("input", ({ target }) => {
+      const { id, checked } = target;
       const { price, time } = getWashServiceDetails(type, id);
 
       if (id === "polissage" || id === "ceramique_carrosserie") {
@@ -192,16 +208,21 @@ const handleCheckboxEvents = (checkboxes, type) => {
         checked ? time : -time
       );
 
+      const dataName = target.getAttribute("data-name");
+
       checked
-        ? order[type].push(id)
-        : order[type].splice(order[type].indexOf(id), 1);
+        ? order.washingInfos[type].push(dataName)
+        : order.washingInfos[type].splice(
+            order.washingInfos[type].indexOf(dataName),
+            1
+          );
     });
   });
 };
 
 const handleChangingCarSizeEvent = () => {
   let lastCarSize = checkboxes.selectCarSize.value;
-  order.carSize = lastCarSize;
+  order.washingInfos.carSize = lastCarSize;
 
   checkboxes.selectCarSize.addEventListener("input", () => {
     const updateService = (oldPrice, newPrice, oldTime, newTime) =>
@@ -247,7 +268,7 @@ const handleChangingCarSizeEvent = () => {
     });
 
     lastCarSize = checkboxes.selectCarSize.value;
-    order.carSize = lastCarSize;
+    order.washingInfos.carSize = lastCarSize;
   });
 };
 
@@ -255,32 +276,42 @@ const handleRegexEvents = () => {
   Object.keys(customerInfos).forEach((key) => {
     const { input, regex, label, errorElement, errorMsg } = customerInfos[key];
 
-    input.addEventListener("input", ({ target: { value } }) => {
-      const isValid = regex.test(value);
-      const hasValue = value !== "";
+    input.addEventListener("input", ({ target }) => {
+      const isValid = regex.test(target.value);
+      const hasValue = target.value !== "";
+      const showError = !isValid && hasValue;
 
-      input.classList.toggle("error-input", !isValid && hasValue);
-      label.classList.toggle("error-label", !isValid && hasValue);
-      errorElement.classList.toggle("message-error", !isValid && hasValue);
-      errorElement.textContent = hasValue && !isValid ? errorMsg : "";
+      [input, label, errorElement].forEach((el) =>
+        el.classList.toggle("error-input", showError)
+      );
+      errorElement.textContent = showError ? errorMsg : "";
 
       if (isValid && hasValue) {
-        order.personnalInfos[key] = value;
+        const targetKey =
+          target.tagName.toLowerCase() === "textarea"
+            ? "washingInfos"
+            : "personnalInfos";
+        order[targetKey][key] = target.value;
       }
     });
   });
 };
 
-handleRegexEvents();
-
 const setDatepicker = () => {
   const date = new Date();
-  const minDate = new Date(date.setDate(date.getDate() + 1));
+  const minDate = new Date(date.setDate(date.getDate() + 2));
   const maxDate = new Date(date.setDate(date.getDate() + 60));
 
-  const formatDate = (date) => date.toISOString().split("T")[0];
+  const pad = (number) => (number < 10 ? `0${number}` : number);
   const reverseDate = (date) => date.split("-").reverse().join("/");
   const addDays = (date, days) => new Date(date.setDate(date.getDate() + days));
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+    return `${year}-${month}-${day}`;
+  };
 
   const getSpecificWeekdaysBetweenDates = (startDate, endDate, weekdays) => {
     const result = [];
@@ -322,9 +353,8 @@ const setDatepicker = () => {
   const unavailableDates = getSpecificWeekdaysBetweenDates(
     minDate,
     maxDate,
-    [1, 6]
+    [2, 7]
   );
-
   const firstNonExcludedDate = reverseDate(
     findFirstNonExcludedDate(
       formatDate(minDate),
@@ -348,13 +378,13 @@ const setTimeSlots = () => {
     appointment.hour.element.appendChild(option);
   });
 
-  order.hour = appointment.hour.element.value;
+  order.appoitmentInfos.hour = appointment.hour.element.value;
 };
 
 const handleHourEvent = () => {
   appointment.hour.element.addEventListener(
     "input",
-    ({ target: { value } }) => (order.hour = value)
+    ({ target: { value } }) => (order.appoitmentInfos.hour = value)
   );
 };
 
@@ -368,49 +398,128 @@ const checkEmptyfieldOrder = () =>
     ? true
     : false;
 
-const openModal = () => {
-  modal.overlay.style.display = "block";
-  document.body.classList.add("no-scroll");
-};
-
+const openModal = () => toggleModalDisplay(true);
 const closeModal = () => {
-  modal.overlay.style.display = "none";
-  document.body.classList.remove("no-scroll");
+  toggleModalDisplay(false);
+  clearModal();
 };
 
-//TODO: faire une fonction générique
-const AddPersonnalInfoToModal = () => {
-  const headers = ["Nom", "Prénom", "Email", "Téléphone", "Adresse", "Ville"];
-  const container = createElement("div", null, {
-    class: "modal_recap_personnal_infos",
-  });
-  container.appendChild(createElement("h4", "Informations personnelles"));
+const clearModal = () => {
+  modal.infoLeft.innerHTML = "";
+  modal.infoRight.innerHTML = "";
+};
 
-  Object.values(order.personnalInfos).forEach((value, index) => {
+const toggleModalDisplay = (show) => {
+  modal.overlay.style.display = show ? "block" : "none";
+  document.body.classList.toggle("no-scroll", show);
+};
+
+const addInfosToModal = (objectKey, title, headers) => {
+  const container = createModalContainer(objectKey);
+  container.appendChild(createElement("h4", title));
+
+  Object.values(order[objectKey]).forEach((value, index) => {
     const modalRow = createElement("div", null, { class: "modal_row" });
     const modalHeader = createElement("p", `${headers[index]} :`, {
       class: "modal_header",
     });
-    const modalValue = createElement("p", value, { class: "modal_value" });
+    const modalValue = createElement(
+      "p",
+      headers[index] === "Prix" ? `${value}€` : value,
+      { class: "modal_value" }
+    );
 
     modalRow.appendChild(modalHeader);
     modalRow.appendChild(modalValue);
-
     container.appendChild(modalRow);
   });
 
-  modal.recap.appendChild(container);
+  modal.infoLeft.appendChild(container);
 };
 
+const addWashingInfosToModal = () => {
+  const headers = [
+    "Taille",
+    "Lavage",
+    "Options",
+    "Finitions",
+    "Message",
+    "Durée",
+    "Prix",
+  ];
+  const container = createModalContainer("washingInfos");
+  container.appendChild(createElement("h4", "Information sur le nettoyage"));
+
+  Object.values(order.washingInfos).forEach((value, index) => {
+    const modalRow = createElement("div", null, { class: "modal_row" });
+    const modalHeader = createElement("p", `${headers[index]} :`, {
+      class: "modal_header",
+    });
+    const modalValue = createElement("div", null, { class: "modal_value" });
+
+    if (Array.isArray(value)) {
+      value.forEach((val, idx) => {
+        modalValue.appendChild(createElement("p", `${idx + 1}. ${val}`));
+      });
+    } else if (headers[index] === "Durée") {
+      modalValue.appendChild(createElement("p", formatTime(value)));
+    } else if (headers[index] === "Prix") {
+      modalValue.appendChild(createElement("p", `${value}€`));
+    } else {
+      modalValue.appendChild(createElement("p", value));
+    }
+
+    modalRow.appendChild(modalHeader);
+    modalRow.appendChild(modalValue);
+    container.appendChild(modalRow);
+  });
+
+  modal.infoRight.appendChild(container);
+};
+
+const createModalContainer = (className) =>
+  createElement("div", null, { class: `modal_recap_${className}` });
+
 const buildModal = () => {
-  AddPersonnalInfoToModal();
+  addInfosToModal("personnalInfos", "Informations personnelles", [
+    "Nom",
+    "Prénom",
+    "Email",
+    "Téléphone",
+    "Adresse",
+    "Ville",
+  ]);
+  addWashingInfosToModal();
+  addInfosToModal("appoitmentInfos", "Informations sur le rendez-vous", [
+    "Date",
+    "Heure",
+  ]);
+};
+
+const handleCloseModalEvent = () => {
+  [modal.cancelButton, modal.closeButton, modal.overlay].forEach((button) =>
+    button.addEventListener("click", () => closeModal())
+  );
+  modal.content.addEventListener("click", (ev) => ev.stopPropagation());
+};
+
+const handleConfirmModalEvent = () => {
+  modal.confirmButton.addEventListener("click", () => {
+    postData("./assets/scripts/mail.php", order)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log("Error handling submission:", error);
+      });
+  });
 };
 
 const handleSubmitEvent = () => {
   form.addEventListener("submit", (ev) => {
     ev.preventDefault();
 
-    order.date = appointment.date.element.value
+    order.appoitmentInfos.date = appointment.date.element.value
       ? appointment.date.element.value
       : appointment.date.element.getAttribute("placeholder");
 
@@ -418,13 +527,10 @@ const handleSubmitEvent = () => {
       buildModal();
       openModal();
     }
-
-    /*postData("./assets/scripts/mail.php", order).then((data) => {
-      console.log(data);
-    });*/
   });
 };
 
+handleRegexEvents();
 handleChangingCarSizeEvent();
 handleCheckboxEvents(checkboxes.classicWashes, "classic");
 handleCheckboxEvents(checkboxes.washOptions, "options");
@@ -433,4 +539,6 @@ handleRegexEvents();
 setTimeSlots();
 setDatepicker();
 handleHourEvent();
+handleCloseModalEvent();
+handleConfirmModalEvent();
 handleSubmitEvent();

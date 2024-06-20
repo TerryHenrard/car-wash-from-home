@@ -196,7 +196,7 @@
     within: !1,
     without: !1,
     yearRange: 5,
-    weekStart: 0,
+    weekStart: 1,
     defaultTime: { start: [0, 0], end: [12, 0] },
     separator: ",",
     serialize: function (e) {

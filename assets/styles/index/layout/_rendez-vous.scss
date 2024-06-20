@@ -129,6 +129,17 @@
       @media screen and (max-width: 1300px) {
         margin: 0 0 30px 0;
       }
+
+      .datepicker {
+        text-align: center;
+        font-family: "montserrat", serif;
+
+        &::placeholder {
+          color: #000000;
+          font-family: "montserrat", serif;
+        }
+      }
+
       label {
         display: block;
         font-size: 1.3rem;

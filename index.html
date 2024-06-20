@@ -149,7 +149,7 @@
           <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage et décontamination ferreuse jantes et
             pneus</li>
           <li><img src="./assets/images/check.svg" alt="check logo">protection et lustrage carrosserie</li>
-          <li><img src="./assets/images/right-arrow_9383963.png" alt="check logo">Entre 30min et 1h</li>
+          <li><img src="./assets/images/right-arrow_9383963.png" alt="check logo">Entre 1h et 1h30</li>
         </ul>
         <a href="./pages/decouvrir.html">Plus d'infos</a>
       </div>
@@ -163,7 +163,7 @@
           <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage portes</li>
           <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage vitres et miroirs</li>
           <li><img src="./assets/images/check.svg" alt="check logo">Retrait poils d'animaux</li>
-          <li><img src="./assets/images/right-arrow_9383963.png" alt="check logo">Entre 1h et 1h30</li>
+          <li><img src="./assets/images/right-arrow_9383963.png" alt="check logo">Entre 1h30 et 2h</li>
         </ul>
         <a href="./pages/decouvrir.html">Plus d'infos</a>
       </div>
@@ -367,12 +367,20 @@
 
   <section class="rdv" id="rdv">
     <dialog id="modal_overlay" class="modal_overlay">
-      <div id="modal_content" class="modal_content">
+      <section id="modal_content" class="modal_content">
+        <img src="./assets/images/croix.png" alt="close button" class="modal_close_button" id="modal_close_button">
         <div class="modal_title">
           <h3>Résumé de la commande</h3>
         </div>
-        <div id="modal_recap" class="modal_recap"></div>
-      </div>
+        <div id="modal_recap" class="modal_recap">
+          <aside id="modal_info_left"></aside>
+          <aside id="modal_info_right"></aside>
+        </div>
+        <div class="modal_buttons">
+          <button id="modal_button_cancel" class="modal_button_cancel">Annuler</button>
+          <button id="modal_button_confirm" class="modal_button_confirm">Confirmer</button>
+        </div>
+      </section>
     </dialog>
 
     <h3>Réservez votre lavage à domicile!</h3>
@@ -431,11 +439,13 @@
               <p>Lavages</p>
             </div>
             <div class="exterieur1">
-              <input type="checkbox" id="exteriors" name="exterieur1" value="exterieur1" class="classicWash">
+              <input type="checkbox" id="exteriors" name="exterieur1" value="exterieur1" class="classicWash"
+                data-name="Extérieur">
               <label for="exteriors">Extérieur</label>
             </div>
             <div class="interieur1">
-              <input type="checkbox" id="interiors" name="interieur1" value="interieur1" class="classicWash">
+              <input type="checkbox" id="interiors" name="interieur1" value="interieur1" class="classicWash"
+                data-name="Intérieur">
               <label for="interiors">Intérieur</label>
             </div>
           </div>
@@ -445,83 +455,88 @@
           <p>Options</p>
           <div class="nettoyage-bloc-moteur">
             <input type="checkbox" id="nettoyage_bloc_moteur" name="nettoyage-bloc-moteur" value="nettoyage-bloc-moteur"
-              class="option">
+              class="option" data-name="Nettoyage du bloc moteur">
             <label for="nettoyage_bloc_moteur">Nettoyage bloc moteur</label>
           </div>
           <div class="nettoyage-sieges-cuir-alcantara-container">
             <input type="checkbox" id="nettoyage_sieges_cuir_alcantara" name="nettoyage-sieges-cuir-alcantara"
-              value="nettoyage-sieges-cuir-alcantara" class="option">
+              value="nettoyage-sieges-cuir-alcantara" class="option"
+              data-name="Nettoyage des sièges en cuir et en alcantara">
             <label for="nettoyage_sieges_cuir_alcantara">Nettoyage cuir et alcantara</label>
           </div>
           <div class="shampoing-siege-container">
-            <input type="checkbox" id="shampoing_siege" name="shampoing-siege" value="shampoing-siege" class="option">
+            <input type="checkbox" id="shampoing_siege" name="shampoing-siege" value="shampoing-siege" class="option"
+              data-name="Shampoing des sièges en tissus">
             <label for="shampoing_siege">Shampoing sièges en tissus</label>
           </div>
           <div class="shampoing-tapis-container">
-            <input type="checkbox" id="shampoing_tapis" name="shampoing-tapis" value="shampoing-tapis" class="option">
+            <input type="checkbox" id="shampoing_tapis" name="shampoing-tapis" value="shampoing-tapis" class="option"
+              data-name="Shampoing des tapis et du coffre">
             <label for="shampoing_tapis">Shampoing tapis et coffre</label>
           </div>
           <div class="shampoing-moquette-container">
             <input type="checkbox" id="shampoing_moquette" name="shampoing-moquette" value="shampoing-moquette"
-              class="option">
+              class="option" data-name="Shampoing de la moquette">
             <label for="shampoing_moquette">Shampoing moquette</label>
           </div>
         </div>
         <div class="finitions-container">
           <p>Finitions</p>
           <div class="polissage-container">
-            <input type="checkbox" id="polissage" name="polissage" value="polissage" class="finishing">
+            <input type="checkbox" id="polissage" name="polissage" value="polissage" class="finishing"
+              data-name="Polissage carrosserie">
             <label for="polissage">Polissage carrosserie</label>
           </div>
           <div class="protection-ceramique-container">
             <input type="checkbox" id="ceramique_carrosserie" name="ceramique-carrosserie" value="ceramique-carrosserie"
-              class="finishing">
+              class="finishing" data-name="Céramique carrosserie">
             <label for="ceramique_carrosserie">Céramique carrosserie</label>
           </div>
           <div class="ceramique-jantes-container">
             <input type="checkbox" id="ceramique_jantes" name="ceramique-jantes" value="ceramique-jantes"
-              class="finishing">
+              class="finishing" data-name="Céramique jantes">
             <label for="ceramique_jantes">Céramique jantes</label>
           </div>
           <div class="ceramique-vitres">
             <input type="checkbox" id="ceramique_vitres" name="ceramique-vitres" value="ceramique-vitres"
-              class="finishing">
+              class="finishing" data-name="Céramique vitres">
             <label for="ceramique_vitres">Céramique vitres</label>
           </div>
           <div class="renovateur-pneus-container">
             <input type="checkbox" id="renovateur_pneus" name="renovateur-pneus" value="renovateur-pneus"
-              class="finishing">
+              class="finishing" data-name="Rénovateur pneus">
             <label for="renovateur_pneus">Rénovateur pneus</label>
           </div>
           <div class="impermeabilisant-textiles-container">
             <input type="checkbox" id="impermeabilisant_textiles" name="impermeabilisant-textiles"
-              value="impermeabilisant-textiles" class="finishing">
+              value="impermeabilisant-textiles" class="finishing" data-name="Imperméabilisant textiles">
             <label for="impermeabilisant_textiles">Imperméabilisant textiles</label>
           </div>
           <div class="protection-cuir-container">
-            <input type="checkbox" id="protection_cuir" name="protection-cuir" value="protection-cuir"
-              class="finishing">
+            <input type="checkbox" id="protection_cuir" name="protection-cuir" value="protection-cuir" class="finishing"
+              data-name="Protection cuir">
             <label for="protection_cuir">Protection cuir</label>
           </div>
           <div class="anti-buee-container">
-            <input type="checkbox" id="anti_buee" name="anti-buee" value="anti-buee" class="finishing">
+            <input type="checkbox" id="anti_buee" name="anti-buee" value="anti-buee" class="finishing"
+              data-name="Anti buée">
             <label for="anti_buee">Anti buée</label>
           </div>
           <div class="renovateur-joints-container">
             <input type="checkbox" id="renovateur_joints" name="renovateur-joints" value="renovateur-joints"
-              class="finishing">
+              class="finishing" data-name="Rénovateur joints">
             <label for="renovateur_joints">Rénovateur joints</label>
           </div>
           <div class="protection-plastiques-container">
             <input type="checkbox" id="protection_plastiques" name="protection-plastiques" value="protection-plastiques"
-              class="finishing">
+              class="finishing" data-name="Protection plastiques">
             <label for="protection_plastiques">Protection plastiques</label>
           </div>
         </div>
         <div class="date-container">
           <p class="title-date">Date</p>
           <label for="date"></label>
-          <input type="text" id="datepicker" autocomplete="off">
+          <input type="text" id="datepicker" class="datepicker" autocomplete="off">
 
           <p class="message-error-date"></p>
           <!-- <p class="message-error-date"></p> -->
