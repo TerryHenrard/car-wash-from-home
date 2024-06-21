@@ -15,6 +15,10 @@ body {
   opacity: 0;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 @font-face {
   font-family: "poppins";
   src: url(../../fonts/Poppins-Medium.ttf);
@@ -25,12 +29,12 @@ body {
   src: url(../../fonts/Montserrat-VariableFont_wght.ttf);
   font-display: swap;
 }
-header {
+.header {
   height: 88vh;
   position: relative;
   background: url(../../images/bg3.webp) no-repeat center/cover;
 }
-header nav {
+.header nav {
   position: fixed;
   top: 0;
   left: 50%;
@@ -43,28 +47,28 @@ header nav {
   background: #0c3c60;
   transition: 0.2s ease-in-out;
 }
-header nav .logo a {
+.header nav .logo a {
   background: url(../../images/logo4.webp) center/cover;
   display: block;
   height: 75px;
   width: 100px;
 }
-header nav .menu {
+.header nav .menu {
   width: 66%;
 }
 @media screen and (max-width: 800px) {
-  header nav .menu {
+  .header nav .menu {
     display: none;
   }
 }
-header nav .menu ul {
+.header nav .menu ul {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   list-style: none;
   height: 100%;
 }
-header nav .menu ul li {
+.header nav .menu ul li {
   transition: 0.2s;
   font-size: 0.95rem;
   font-family: "montserrat", serif;
@@ -72,14 +76,14 @@ header nav .menu ul li {
   cursor: pointer;
   position: relative;
 }
-header nav .menu ul li a {
+.header nav .menu ul li a {
   text-decoration: none;
   color: #ffffff;
 }
-header nav .menu ul li a:visited {
+.header nav .menu ul li a:visited {
   color: #ffffff;
 }
-header nav .menu ul li:hover::after {
+.header nav .menu ul li:hover::after {
   content: "";
   position: absolute;
   top: 150%;
@@ -99,25 +103,25 @@ header nav .menu ul li:hover::after {
     top: 100%;
   }
 }
-header .active-btn span:nth-child(1) {
+.header .active-btn span:nth-child(1) {
   transform: rotate(45deg) translate(9px, 5px);
 }
-header .active-btn span:nth-child(2) {
+.header .active-btn span:nth-child(2) {
   opacity: 0;
 }
-header .active-btn span:nth-child(3) {
+.header .active-btn span:nth-child(3) {
   transform: rotate(-45deg) translate(12px, -8px);
 }
-header .toggle-btn {
+.header .toggle-btn {
   cursor: pointer;
   display: none;
 }
 @media screen and (max-width: 800px) {
-  header .toggle-btn {
+  .header .toggle-btn {
     display: block;
   }
 }
-header .toggle-btn span {
+.header .toggle-btn span {
   width: 45px;
   height: 5px;
   border-radius: 5px;
@@ -126,12 +130,12 @@ header .toggle-btn span {
   margin-top: 7px;
   transition: 0.3s ease;
 }
-header .active {
+.header .active {
   visibility: visible !important;
   opacity: 1 !important;
   left: 0 !important;
 }
-header #side-bar {
+.header #side-bar {
   visibility: hidden;
   opacity: 0;
   position: fixed;
@@ -142,17 +146,17 @@ header #side-bar {
   background: #ffffff;
   transition: 0.3s;
 }
-header #side-bar ul {
+.header #side-bar ul {
   list-style: none;
   width: 50%;
   margin: 50px auto 0 auto;
   text-align: center;
 }
-header #side-bar ul li {
+.header #side-bar ul li {
   font-size: 1rem;
   border-bottom: 1px solid rgba(7, 33, 54, 0.431372549);
 }
-header #side-bar ul li a {
+.header #side-bar ul li a {
   color: #072136;
   text-decoration: none;
   height: 75px;
@@ -163,11 +167,11 @@ header #side-bar ul li a {
   align-items: center;
   justify-content: center;
 }
-header #side-bar ul li a:active {
+.header #side-bar ul li a:active {
   color: #072136;
 }
-header .valid-inscription,
-header .error-inscription {
+.header .valid-inscription,
+.header .error-inscription {
   top: 10px;
   right: -600px;
   position: fixed;
@@ -180,35 +184,35 @@ header .error-inscription {
   transition: 0.3s;
 }
 @media only screen and (max-width: 500px) {
-  header .valid-inscription,
-  header .error-inscription {
+  .header .valid-inscription,
+  .header .error-inscription {
     width: 300px;
   }
 }
-header .valid-inscription .img-check,
-header .error-inscription .img-check {
+.header .valid-inscription .img-check,
+.header .error-inscription .img-check {
   display: inline-block;
   background: url(../../images/check.svg) center/cover;
   height: 15px;
   aspect-ratio: 1/1;
 }
-header .valid-inscription p,
-header .error-inscription p {
+.header .valid-inscription p,
+.header .error-inscription p {
   font-weight: bold;
   text-transform: uppercase;
   display: inline;
 }
 @media only screen and (max-width: 500px) {
-  header .valid-inscription p,
-  header .error-inscription p {
+  .header .valid-inscription p,
+  .header .error-inscription p {
     font-size: 0.8rem;
   }
 }
-header .error-inscription-anim {
+.header .error-inscription-anim {
   background: red;
   animation: inscription-anim 5s;
 }
-header .valid-inscription-anim {
+.header .valid-inscription-anim {
   animation: inscription-anim 5s;
 }
 @keyframes inscription-anim {
@@ -221,7 +225,7 @@ header .valid-inscription-anim {
     opacity: 1;
   }
 }
-header .header-text {
+.header .header-text {
   position: absolute;
   bottom: -75px;
   opacity: 0;
@@ -234,29 +238,29 @@ header .header-text {
   transition: 1s ease-in-out;
 }
 @media screen and (max-width: 820px) {
-  header .header-text {
+  .header .header-text {
     min-width: 500px;
   }
 }
 @media screen and (max-width: 500px) {
-  header .header-text {
+  .header .header-text {
     min-width: 400px;
   }
 }
 @media screen and (max-width: 400px) {
-  header .header-text {
+  .header .header-text {
     min-width: 300px;
   }
 }
 @media screen and (max-width: 300px) {
-  header .header-text {
+  .header .header-text {
     min-width: 275px;
   }
 }
-header .header-text div {
+.header .header-text div {
   color: #000000;
 }
-header .header-text div p {
+.header .header-text div p {
   font-size: 1.1rem;
   font-family: "poppins", serif;
   font-weight: 500;
@@ -267,11 +271,11 @@ header .header-text div p {
   margin: 20px 10px;
 }
 @media only screen and (max-width: 820px) {
-  header .header-text div p {
+  .header .header-text div p {
     font-size: 0.9rem;
   }
 }
-header .header-text div h1 {
+.header .header-text div h1 {
   color: #072136;
   font-size: 3rem;
   font-family: "poppins";
@@ -282,16 +286,16 @@ header .header-text div h1 {
   text-transform: uppercase;
 }
 @media only screen and (max-width: 820px) {
-  header .header-text div h1 {
+  .header .header-text div h1 {
     font-size: 2rem;
   }
 }
 @media only screen and (max-width: 400px) {
-  header .header-text div h1 {
+  .header .header-text div h1 {
     font-size: 1.5rem;
   }
 }
-header .header-text div a {
+.header .header-text div a {
   display: block;
   color: #0c3c60;
   padding: 20px;
@@ -305,14 +309,14 @@ header .header-text div a {
   transition: 0.3s ease-in-out;
 }
 @media screen and (max-width: 400px) {
-  header .header-text div a {
+  .header .header-text div a {
     margin: 10px auto;
     padding: 12px;
     min-width: 180px;
     font-size: 0.8rem;
   }
 }
-header .header-text div a:hover {
+.header .header-text div a:hover {
   color: #ffffff;
   background: #0c3c60;
 }
@@ -3478,6 +3482,16 @@ header .header-text div a:hover {
   background: #ffffff;
   margin: 0 200px;
 }
+@media screen and (max-width: 1455px) {
+  .partners {
+    margin: 50px 68px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .partners {
+    margin: 8.67px 23.12px;
+  }
+}
 .partners .partners-title h3 {
   padding: 50px;
   margin: 30px 0;
@@ -3488,9 +3502,20 @@ header .header-text div a:hover {
   text-align: center;
   color: #072136;
 }
+@media screen and (max-width: 900px) {
+  .partners .partners-title h3 {
+    font-size: 1.65rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .partners .partners-title h3 {
+    padding: 25px 25px 0 25px;
+  }
+}
 .partners .partners-container {
   padding: 50px;
-  margin: 30px 0;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 @media only screen and (max-width: 792px) {
   .partners .partners-container {
@@ -3502,16 +3527,17 @@ header .header-text div a:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 75px;
+  gap: 100px;
   list-style: none;
 }
-@media only screen and (max-width: 792px) {
+@media only screen and (max-width: 1217px) {
   .partners .partners-container ul {
     gap: 50px;
   }
 }
 .partners .partners-container ul li img {
-  width: 300px;
+  width: 25vw;
+  max-width: 300px;
   aspect-ratio: 2/1;
   -o-object-fit: contain;
      object-fit: contain;
@@ -3526,6 +3552,7 @@ header .header-text div a:hover {
 
 .rdv {
   text-align: center;
+  position: relative;
 }
 .rdv h3 {
   padding: 50px;
@@ -3536,9 +3563,14 @@ header .header-text div a:hover {
   text-align: center;
   color: #072136;
 }
-@media only screen and (max-width: 330px) {
+@media screen and (max-width: 900px) {
   .rdv h3 {
-    font-size: 1.3rem;
+    font-size: 1.65rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .rdv h3 {
+    padding: 25px;
   }
 }
 .rdv .form-container {
@@ -3619,6 +3651,63 @@ header .header-text div a:hover {
   .rdv .form-container form {
     display: inline;
   }
+}
+.rdv .form-container .date-container,
+.rdv .form-container .time-container {
+  margin: 0 0 -25px 0;
+}
+@media screen and (max-width: 1300px) {
+  .rdv .form-container .date-container,
+  .rdv .form-container .time-container {
+    margin: 0 0 30px 0;
+  }
+}
+.rdv .form-container .date-container .datepicker,
+.rdv .form-container .time-container .datepicker {
+  text-align: center;
+  font-family: "montserrat", serif;
+}
+.rdv .form-container .date-container .datepicker::-moz-placeholder, .rdv .form-container .time-container .datepicker::-moz-placeholder {
+  color: #000000;
+  font-family: "montserrat", serif;
+}
+.rdv .form-container .date-container .datepicker::placeholder,
+.rdv .form-container .time-container .datepicker::placeholder {
+  color: #000000;
+  font-family: "montserrat", serif;
+}
+.rdv .form-container .date-container label,
+.rdv .form-container .time-container label {
+  display: block;
+  font-size: 1.3rem;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+.rdv .form-container .date-container select,
+.rdv .form-container .time-container select {
+  text-align: center;
+  width: 300px;
+  padding: 10px;
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  border: none;
+  border-bottom: 1px solid #757575;
+  font-weight: 400;
+  font-family: "montserrat";
+  cursor: pointer;
+  font-size: 18px;
+  height: 42px;
+  border-radius: 0;
+}
+@media only screen and (max-width: 330px) {
+  .rdv .form-container .date-container select,
+  .rdv .form-container .time-container select {
+    width: 220px;
+  }
+}
+.rdv .form-container .date-container select:focus,
+.rdv .form-container .time-container select:focus {
+  outline: none;
 }
 .rdv .form-container .date-container .title-date,
 .rdv .form-container .date-container .title-heure,
@@ -3933,7 +4022,7 @@ header .header-text div a:hover {
   margin: 0 auto 30px auto;
   display: flex;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
@@ -5264,4 +5353,102 @@ header .header-text div a:hover {
 }
 .footer .footer-container .contact p a:visited {
   color: #ffffff;
+}
+
+.modal_overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  display: none;
+  border: none;
+  height: 110vh;
+  width: 110vw;
+  background: rgba(0, 0, 0, 0.3607843137);
+}
+.modal_overlay .modal_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f8f8f8;
+  padding: 0 50px 30px 50px;
+  border-radius: 10px;
+}
+.modal_overlay .modal_content .modal_close_button {
+  position: absolute;
+  left: 98%;
+  top: 3.3%;
+  transform: translateX(-100%);
+  cursor: pointer;
+}
+.modal_overlay .modal_content .modal_recap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+.modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos,
+.modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos,
+.modal_overlay .modal_content .modal_recap .modal_recap_washingInfos {
+  display: grid;
+  gap: 10px;
+  text-align: left;
+  margin: 0 0 20px 0;
+}
+.modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos h4,
+.modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos h4,
+.modal_overlay .modal_content .modal_recap .modal_recap_washingInfos h4 {
+  font-size: 1.2rem;
+}
+.modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos .modal_row,
+.modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos .modal_row,
+.modal_overlay .modal_content .modal_recap .modal_recap_washingInfos .modal_row {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 7.5px 15px;
+}
+.modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos .modal_row .modal_header,
+.modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos .modal_row .modal_header,
+.modal_overlay .modal_content .modal_recap .modal_recap_washingInfos .modal_row .modal_header {
+  white-space: nowrap;
+  font-weight: bold;
+  min-width: 100px;
+}
+.modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos .modal_row .modal_value,
+.modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos .modal_row .modal_value,
+.modal_overlay .modal_content .modal_recap .modal_recap_washingInfos .modal_row .modal_value {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.modal_overlay .modal_content .modal_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin: 20px 20px 0 20px;
+}
+.modal_overlay .modal_content .modal_buttons button {
+  cursor: pointer;
+  padding: 10px 20px;
+  color: #ffffff;
+  background: #0c3c60;
+  border: 1px solid #0c3c60;
+  transition: 0.3s;
+  font-family: "poppins", serif;
+  font-weight: 400;
+  min-width: 160px;
+}
+.modal_overlay .modal_content .modal_buttons button:hover {
+  color: #0c3c60;
+  background: #ffffff;
+}
+.modal_overlay .modal_content .modal_buttons .modal_button_cancel {
+  border: 1px solid #bd2929;
+  background: #bd2929;
+}
+.modal_overlay .modal_content .modal_buttons .modal_button_cancel:hover {
+  color: #bd2929;
 }/*# sourceMappingURL=index.css.map */

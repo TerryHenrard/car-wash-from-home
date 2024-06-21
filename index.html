@@ -2,6 +2,8 @@
 <html lang="fr">
 
 <head>
+  <link rel="stylesheet" href="./assets/libraries/datepicker/datepicker.material.css">
+  <script src="./assets/libraries/datepicker/datepicker.js" defer></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-42059HQN9E"></script>
   <script>
@@ -18,13 +20,13 @@
   <link rel="stylesheet" href="./assets/styles/index/index.css">
   <link rel="shortcut icon" href="./assets/images/logo4.webp">
   <script src="./assets/scripts/anim.js" defer></script>
-  <script src="./assets/scripts/formChecker.js" type="module"></script>
+  <script src="./assets/scripts/formChecker.js" type="module" defer></script>
   <script src="./assets/scripts/navbar.js" defer></script>
   <title>Car wash à domicile sur Charleroi | Lavage à la main intérieur et extérieur</title>
 </head>
 
 <body>
-  <header id="start">
+  <header class="header" id="start">
     <nav id="navbar">
       <div class="logo">
         <a href="#start"></a>
@@ -111,7 +113,7 @@
         </div>
         <div class="uti-m-tarif" id="uti-m-tarif">
           <p>Extérieur: <span class="price">50</span>€</p>
-          <p>Intérieur: <span class="price">40</span>€</p>
+          <p>Intérieur: <span class="price">60</span>€</p>
         </div>
       </div>
       <div class="utilitaire-large">
@@ -120,8 +122,8 @@
           <h2>Camionnette m</h2>
         </div>
         <div class="uti-l-tarif" id="uti-l-tarif">
-          <p>Extérieur: <span class="price">60</span>€</p>
-          <p>Intérieur: <span class="price">40</span>€</p>
+          <p>Extérieur: <span class="price">55</span>€</p>
+          <p>Intérieur: <span class="price">60</span>€</p>
         </div>
       </div>
       <div class="utilitaire-xl">
@@ -130,8 +132,8 @@
           <h2>Camionnette l</h2>
         </div>
         <div class="uti-xl-tarif" id="uti-xl-tarif">
-          <p>Extérieur: <span class="price">70</span>€</p>
-          <p>Intérieur: <span class="price">40</span>€</p>
+          <p>Extérieur: <span class="price">60</span>€</p>
+          <p>Intérieur: <span class="price">60</span>€</p>
         </div>
       </div>
     </div>
@@ -147,7 +149,7 @@
           <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage et décontamination ferreuse jantes et
             pneus</li>
           <li><img src="./assets/images/check.svg" alt="check logo">protection et lustrage carrosserie</li>
-          <li><img src="./assets/images/right-arrow_9383963.png" alt="check logo">Entre 30min et 1h</li>
+          <li><img src="./assets/images/right-arrow_9383963.png" alt="check logo">Entre 1h et 1h30</li>
         </ul>
         <a href="./pages/decouvrir.html">Plus d'infos</a>
       </div>
@@ -161,7 +163,7 @@
           <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage portes</li>
           <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage vitres et miroirs</li>
           <li><img src="./assets/images/check.svg" alt="check logo">Retrait poils d'animaux</li>
-          <li><img src="./assets/images/right-arrow_9383963.png" alt="check logo">Entre 1h et 1h30</li>
+          <li><img src="./assets/images/right-arrow_9383963.png" alt="check logo">Entre 1h30 et 2h</li>
         </ul>
         <a href="./pages/decouvrir.html">Plus d'infos</a>
       </div>
@@ -341,6 +343,12 @@
           <img src="./assets/images/rbfa.png" alt="Logo de la fédération belge de football">
         </li>
         <li>
+          <img src="./assets/images/visit-me.png" alt="Logo de l'entreprise Visit me">
+        </li>
+        <li>
+          <img src="./assets/images/binome.webp" alt="Logo de l'entreprise Binome">
+        </li>
+        <li>
           <img src="./assets/images/apkiosk.png" alt="Logo de l'entreprise Apkiosk">
         </li>
         <li>
@@ -352,63 +360,78 @@
         <li>
           <img src="./assets/images/sainatchpng.png" alt="Logo de l'entreprise Sainatech">
         </li>
-        <!-- <li>
-          <img src="./assets/images/binome.webp" alt="Logo de l'entreprise Binome">
-        </li> -->
       </ul>
     </div>
   </section>
 
+
   <section class="rdv" id="rdv">
+    <dialog id="modal_overlay" class="modal_overlay">
+      <section id="modal_content" class="modal_content">
+        <img src="./assets/images/croix.png" alt="close button" class="modal_close_button" id="modal_close_button">
+        <div class="modal_title">
+          <h3>Résumé de la commande</h3>
+        </div>
+        <div id="modal_recap" class="modal_recap">
+          <aside id="modal_info_left"></aside>
+          <aside id="modal_info_right"></aside>
+        </div>
+        <div class="modal_buttons">
+          <button id="modal_button_cancel" class="modal_button_cancel">Annuler</button>
+          <button id="modal_button_confirm" class="modal_button_confirm">Confirmer</button>
+        </div>
+      </section>
+    </dialog>
+
     <h3>Réservez votre lavage à domicile!</h3>
     <div class="form-container">
       <form action="" id="contact-form">
         <div class="last-name-container">
           <input type="text" id="lastName" name="lastName" required>
           <span class="bar"></span>
-          <label for="lastName">Nom</label>
-          <p class="message-error-lastName"></p>
+          <label for="lastName" id="label_lastName">Nom</label>
+          <p class="message-error-lastName" id="message-error-lastName"></p>
         </div>
         <div class="first-name-container">
           <input type="text" id="firstName" name="firsNname" required>
           <span class="bar"></span>
-          <label for="firstName">Prénom</label>
-          <p class="message-error-firstName"></p>
+          <label for="firstName" id="label_firstName">Prénom</label>
+          <p class="message-error-firstName" id="message-error-firstName"></p>
         </div>
         <div class="email-container">
-          <input type="email" id="email" name="email" required>
+          <input type="text" id="email" name="email" autocomplete="email" required>
           <span class="bar"></span>
-          <label for="email">Email</label>
-          <p class="message-error-email"></p>
+          <label for="email" id="label_email">Email</label>
+          <p class="message-error-email" id="message-error-email"></p>
         </div>
         <div class="tel-container">
           <input type="text" id="tel" name="tel" required>
           <span class="bar"></span>
-          <label for="tel">Téléphone</label>
-          <p class="message-error-tel"></p>
+          <label for="tel" id="label_tel">Téléphone</label>
+          <p class="message-error-tel" id="message-error-tel"></p>
         </div>
         <div class="adresse-container">
           <input type="text" id="adresse" name="adresse" required>
           <span class="bar"></span>
-          <label for="adresse">Adresse</label>
-          <p class="message-error-adresse"></p>
+          <label for="adresse" id="label_adresse">Adresse</label>
+          <p class="message-error-adresse" id="message-error-adresse"></p>
         </div>
         <div class="ville-container">
           <input type="text" id="ville" name="ville" required>
           <span class="bar"></span>
-          <label for="ville">Ville</label>
-          <p class="message-error-ville"></p>
+          <label for="ville" id="label_ville">Ville</label>
+          <p class="message-error-ville" id="message-error-ville"></p>
         </div>
         <div class="formule-container">
           <div class="taille-voiture">
             <label for="taille">Taille</label>
             <select name="taille" id="taille" required>
               <option value="citadine" selected>citadine</option>
-              <option value="berline-coupe">berline - coupé</option>
-              <option value="suv-break">break - SUV</option>
-              <option value="camionette-s">camionnette S</option>
-              <option value="camionette-m">camionnette M</option>
-              <option value="camionette-l">camionnette L</option>
+              <option value="berline_coupe">berline - coupé</option>
+              <option value="break_suv">break - SUV</option>
+              <option value="camionnette_s">camionnette S</option>
+              <option value="camionnette_m">camionnette M</option>
+              <option value="camionnette_l">camionnette L</option>
             </select>
           </div>
           <div class="formule-base-container">
@@ -416,12 +439,14 @@
               <p>Lavages</p>
             </div>
             <div class="exterieur1">
-              <input type="checkbox" id="exterieur1" name="exterieur1" value="exterieur1">
-              <label for="exterieur1">Extérieur</label>
+              <input type="checkbox" id="exteriors" name="exterieur1" value="exterieur1" class="classicWash"
+                data-name="Extérieur">
+              <label for="exteriors">Extérieur</label>
             </div>
             <div class="interieur1">
-              <input type="checkbox" id="interieur1" name="interieur1" value="interieur1">
-              <label for="interieur1">Intérieur</label>
+              <input type="checkbox" id="interiors" name="interieur1" value="interieur1" class="classicWash"
+                data-name="Intérieur">
+              <label for="interiors">Intérieur</label>
             </div>
           </div>
 
@@ -429,85 +454,99 @@
         <div class="options-container">
           <p>Options</p>
           <div class="nettoyage-bloc-moteur">
-            <input type="checkbox" id="nettoyage-bloc-moteur" name="nettoyage-bloc-moteur"
-              value="nettoyage-bloc-moteur">
-            <label for="nettoyage-bloc-moteur">Nettoyage bloc moteur</label>
+            <input type="checkbox" id="nettoyage_bloc_moteur" name="nettoyage-bloc-moteur" value="nettoyage-bloc-moteur"
+              class="option" data-name="Nettoyage du bloc moteur">
+            <label for="nettoyage_bloc_moteur">Nettoyage bloc moteur</label>
           </div>
           <div class="nettoyage-sieges-cuir-alcantara-container">
-            <input type="checkbox" id="nettoyage-sieges-cuir-alcantara" name="nettoyage-sieges-cuir-alcantara"
-              value="nettoyage-sieges-cuir-alcantara">
-            <label for="nettoyage-sieges-cuir-alcantara">Nettoyage cuir et alcantara</label>
+            <input type="checkbox" id="nettoyage_sieges_cuir_alcantara" name="nettoyage-sieges-cuir-alcantara"
+              value="nettoyage-sieges-cuir-alcantara" class="option"
+              data-name="Nettoyage des sièges en cuir et en alcantara">
+            <label for="nettoyage_sieges_cuir_alcantara">Nettoyage cuir et alcantara</label>
           </div>
           <div class="shampoing-siege-container">
-            <input type="checkbox" id="shampoing-siege" name="shampoing-siege" value="shampoing-siege">
-            <label for="shampoing-siege">Shampoing sièges en tissus</label>
+            <input type="checkbox" id="shampoing_siege" name="shampoing-siege" value="shampoing-siege" class="option"
+              data-name="Shampoing des sièges en tissus">
+            <label for="shampoing_siege">Shampoing sièges en tissus</label>
           </div>
           <div class="shampoing-tapis-container">
-            <input type="checkbox" id="shampoing-tapis" name="shampoing-tapis" value="shampoing-tapis">
-            <label for="shampoing-tapis">Shampoing tapis et coffre</label>
+            <input type="checkbox" id="shampoing_tapis" name="shampoing-tapis" value="shampoing-tapis" class="option"
+              data-name="Shampoing des tapis et du coffre">
+            <label for="shampoing_tapis">Shampoing tapis et coffre</label>
           </div>
           <div class="shampoing-moquette-container">
-            <input type="checkbox" id="shampoing-moquette" name="shampoing-moquette" value="shampoing-moquette">
-            <label for="shampoing-moquette">Shampoing moquette</label>
+            <input type="checkbox" id="shampoing_moquette" name="shampoing-moquette" value="shampoing-moquette"
+              class="option" data-name="Shampoing de la moquette">
+            <label for="shampoing_moquette">Shampoing moquette</label>
           </div>
         </div>
         <div class="finitions-container">
           <p>Finitions</p>
           <div class="polissage-container">
-            <input type="checkbox" id="polissage" name="polissage" value="polissage">
+            <input type="checkbox" id="polissage" name="polissage" value="polissage" class="finishing"
+              data-name="Polissage carrosserie">
             <label for="polissage">Polissage carrosserie</label>
           </div>
           <div class="protection-ceramique-container">
-            <input type="checkbox" id="ceramique-carrosserie" name="ceramique-carrosserie"
-              value="ceramique-carrosserie">
-            <label for="ceramique-carrosserie">Céramique carrosserie</label>
+            <input type="checkbox" id="ceramique_carrosserie" name="ceramique-carrosserie" value="ceramique-carrosserie"
+              class="finishing" data-name="Céramique carrosserie">
+            <label for="ceramique_carrosserie">Céramique carrosserie</label>
           </div>
           <div class="ceramique-jantes-container">
-            <input type="checkbox" id="ceramique-jantes" name="ceramique-jantes" value="ceramique-jantes">
-            <label for="ceramique-jantes">Céramique jantes</label>
+            <input type="checkbox" id="ceramique_jantes" name="ceramique-jantes" value="ceramique-jantes"
+              class="finishing" data-name="Céramique jantes">
+            <label for="ceramique_jantes">Céramique jantes</label>
           </div>
           <div class="ceramique-vitres">
-            <input type="checkbox" id="ceramique-vitres" name="ceramique-vitres" value="ceramique-vitres">
-            <label for="ceramique-vitres">Céramique vitres</label>
+            <input type="checkbox" id="ceramique_vitres" name="ceramique-vitres" value="ceramique-vitres"
+              class="finishing" data-name="Céramique vitres">
+            <label for="ceramique_vitres">Céramique vitres</label>
           </div>
           <div class="renovateur-pneus-container">
-            <input type="checkbox" id="renovateur-pneus" name="renovateur-pneus" value="renovateur-pneus">
-            <label for="renovateur-pneus">Rénovateur pneus</label>
+            <input type="checkbox" id="renovateur_pneus" name="renovateur-pneus" value="renovateur-pneus"
+              class="finishing" data-name="Rénovateur pneus">
+            <label for="renovateur_pneus">Rénovateur pneus</label>
           </div>
           <div class="impermeabilisant-textiles-container">
-            <input type="checkbox" id="impermeabilisant-textiles" name="impermeabilisant-textiles"
-              value="impermeabilisant-textiles">
-            <label for="impermeabilisant-textiles">Imperméabilisant textiles</label>
+            <input type="checkbox" id="impermeabilisant_textiles" name="impermeabilisant-textiles"
+              value="impermeabilisant-textiles" class="finishing" data-name="Imperméabilisant textiles">
+            <label for="impermeabilisant_textiles">Imperméabilisant textiles</label>
           </div>
           <div class="protection-cuir-container">
-            <input type="checkbox" id="protection-cuir" name="protection-cuir" value="protection-cuir">
-            <label for="protection-cuir">Protection cuir</label>
+            <input type="checkbox" id="protection_cuir" name="protection-cuir" value="protection-cuir" class="finishing"
+              data-name="Protection cuir">
+            <label for="protection_cuir">Protection cuir</label>
           </div>
           <div class="anti-buee-container">
-            <input type="checkbox" id="anti-buee" name="anti-buee" value="anti-buee">
-            <label for="anti-buee">Anti buée</label>
+            <input type="checkbox" id="anti_buee" name="anti-buee" value="anti-buee" class="finishing"
+              data-name="Anti buée">
+            <label for="anti_buee">Anti buée</label>
           </div>
           <div class="renovateur-joints-container">
-            <input type="checkbox" id="renovateur-joints" name="renovateur-joints" value="renovateur-joints">
-            <label for="renovateur-joints">Rénovateur joints</label>
+            <input type="checkbox" id="renovateur_joints" name="renovateur-joints" value="renovateur-joints"
+              class="finishing" data-name="Rénovateur joints">
+            <label for="renovateur_joints">Rénovateur joints</label>
           </div>
           <div class="protection-plastiques-container">
-            <input type="checkbox" id="protection-plastiques" name="protection-plastiques"
-              value="protection-plastiques">
-            <label for="protection-plastiques">Protection plastiques</label>
+            <input type="checkbox" id="protection_plastiques" name="protection-plastiques" value="protection-plastiques"
+              class="finishing" data-name="Protection plastiques">
+            <label for="protection_plastiques">Protection plastiques</label>
           </div>
         </div>
         <div class="date-container">
           <p class="title-date">Date</p>
           <label for="date"></label>
-          <input type="date" id="date" name="date">
+          <input type="text" id="datepicker" class="datepicker" autocomplete="off">
+
           <p class="message-error-date"></p>
           <!-- <p class="message-error-date"></p> -->
         </div>
         <div class="time-container">
           <p class="title-heure">Heure</p>
           <label for="time"></label>
-          <input type="time" id="time" name="time">
+          <select type="time" id="time" name="time">
+
+          </select>
           <p class="message-error-time"></p>
         </div>
         <div class="courant-eau-cgv-container">
@@ -522,24 +561,23 @@
           </div>
         </div>
         <div class="textarea-container">
-          <label for="message"></label>
-          <textarea id="message" maxlength="250" spellcheck="true"
-            placeholder="Message: (J'ai une VW Golf et j'aimerais...)" name="message"></textarea>
-          <p class="message-error-message"></p>
+          <label for="message" id="label_message"></label>
+          <textarea id="message" spellcheck="true" placeholder="Message: (J'ai une VW Golf et j'aimerais...)"
+            name="message"></textarea>
+          <p class="message-error-message" id="message-error-message"></p>
         </div>
         <div class="submit-container">
           <input type="submit" value="Réserver">
         </div>
         <div class="price">
-          <p>Total: <span></span></p>
+          <p>Total: <span id="price_value"></span></p>
         </div>
         <div class="estimated-time">
-          <p>Temps estimé: <span></span></p>
+          <p>Temps estimé: <span id="time_value"></span></p>
         </div>
       </form>
     </div>
   </section>
-
   <footer class="footer" id="footer">
     <div class="footer-container">
       <div class="apropos">

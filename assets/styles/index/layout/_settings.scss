@@ -12,6 +12,10 @@ body {
   opacity: 0;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 @font-face {
   font-family: "poppins";
   src: url(../../fonts/Poppins-Medium.ttf);
