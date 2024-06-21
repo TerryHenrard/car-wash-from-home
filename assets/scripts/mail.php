@@ -1,11 +1,16 @@
 <?php
-if (!isset($_POST) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
+session_start();
+if (!isset($_POST/*, $_SESSION['csrf_token']*/) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
   exit();
 }
+/*
+if ($_POST["csrf_token"] !== $_SESSION['csrf_token']) {
+  exit();
+}*/
 
 function sanitizeString($str)
 {
-  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8')/* && preg_match("/<script/i", $str)*/;
 }
 
 function validateDate($date, $format = 'd/m/Y')
@@ -125,5 +130,43 @@ if (
   exit();
 }
 
-// If arrived here 
-echo json_encode(["success" => true /*send mail to customer and me*/]);
+// If arrived here data are secure
+
+// Prepare email content
+$subject = "Nouveau rendez-vous de lavage de voiture";
+$body = "
+<b>Informations personnelles:</b><br>
+Nom: $personalLastName<br>
+Prénom: $personalFirstName<br>
+Adresse: $personalAddress<br>
+Ville: $personalCity<br>
+Email: $personalEmail<br>
+Téléphone: $personalTel<br><br>
+
+<b>Informations de rendez-vous:</b><br>
+Date: $appointmentDate<br>
+Heure: $appointmentTime<br><br>
+
+<b>Informations sur le lavage:</b><br>
+Taille de la voiture: $washingCarSize<br>
+Classique: " . implode(', ', $washingClassic) . "<br>
+Finition: " . implode(', ', $washingFinishing) . "<br>
+Options: " . implode(', ', $washingOptions) . "<br>
+Message: $washingMessage<br>
+Prix: $washingPrice €<br>
+Durée: $washingTime minutes<br>
+";
+
+// Headers
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+$headers .= "From: <contact@carwashfromhome.com>" . "\r\n";
+
+// Send email
+$mailSent = mail("contact@carwashfromhome.com", $subject, $body, $headers);
+
+if ($mailSent) {
+  echo json_encode(["success" => true, "message" => "Email envoyé avec succès."]);
+} else {
+  echo json_encode(["success" => false, "message" => "Erreur lors de l'envoi de l'email."]);
+}

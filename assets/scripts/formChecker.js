@@ -147,14 +147,21 @@ const appointment = {
   },
 };
 
-const postData = async (url = "", data = {}) => {
-  const response = await fetch(url, {
-    method: "POST",
+const fetchData = async (method = "GET", url = "", data = {}) => {
+  const options = {
+    method,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
-    body: JSON.stringify(data),
-  });
+  };
+
+  if (method === "POST") {
+    options.body = JSON.stringify(data);
+  } else if (method === "GET") {
+    url += `?${new URLSearchParams(data).toString()}`;
+  }
+
+  const response = await fetch(url, options);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -505,9 +512,11 @@ const handleCloseModalEvent = () => {
 
 const handleConfirmModalEvent = () => {
   modal.confirmButton.addEventListener("click", () => {
-    postData("./assets/scripts/mail.php", order)
+    fetchData("POST", "./assets/scripts/mail.php", order)
       .then((response) => {
-        console.log(response);
+        if (response.success) {
+          location.reload();
+        }
       })
       .catch((error) => {
         console.log("Error handling submission:", error);
@@ -529,6 +538,22 @@ const handleSubmitEvent = () => {
     }
   });
 };
+
+const addCSRFToForm = () => {
+  fetchData("GET", "./assets/scripts/generateCSRF.php")
+    .then((csrf) => {
+      form.appendChild(
+        createElement("input", null, {
+          type: "hidden",
+          name: "csrf_token",
+          value: csrf.csrf_token,
+        })
+      );
+    })
+    .catch((error) => console.log(error));
+};
+
+//document.addEventListener("DOMContentLoaded", () => addCSRFToForm());
 
 handleRegexEvents();
 handleChangingCarSizeEvent();
