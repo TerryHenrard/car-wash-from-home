@@ -1,28 +1,41 @@
 <?php
 session_start();
-if (!isset($_POST/*, $_SESSION['csrf_token']*/) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
+if (!isset($_POST, $_SESSION['csrf_token']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
   exit();
 }
-/*
-if ($_POST["csrf_token"] !== $_SESSION['csrf_token']) {
-  exit();
-}*/
 
-function sanitizeString($str)
+// Decode JSON input
+$data = json_decode(file_get_contents("php://input"), true);
+
+if ($data["csrf_token"] !== $_SESSION['csrf_token']) {
+  exit();
+}
+
+function preventScriptTag($str)
 {
-  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8')/* && preg_match("/<script/i", $str)*/;
+  return preg_replace("/<script>|<\/script>/i", ">ptircs<", $str);
 }
 
 function validateDate($date, $format = 'd/m/Y')
 {
   $d = DateTime::createFromFormat($format, $date);
-  return $d && $d->format($format) === $date;
+  return $d && $d->format($format) === $date && checkdate($d->format('m'), $d->format('d'), $d->format('Y'));
 }
 
 function validateTime($time, $format = 'H:i')
 {
   $d = DateTime::createFromFormat($format, $time);
-  return $d && $d->format($format) === $time;
+
+  if ($d && $d->format($format) === $time) {
+    $hour = $d->format('H');
+    $minute = $d->format('i');
+
+    if ($hour >= 0 && $hour <= 23 && $minute >= 0 && $minute <= 59) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function validateWithRegex($value, $regex)
@@ -30,24 +43,19 @@ function validateWithRegex($value, $regex)
   return preg_match($regex, $value);
 }
 
-function validateEmail($email)
-{
-  return filter_var($email, FILTER_VALIDATE_EMAIL);
-}
-
-function validateArray($array, $validArray)
+function validateArrayInArray($array, $validArray)
 {
   return is_array($array) && empty(array_diff($array, $validArray));
 }
 
-function validateCarSize($carSize, $validCarSizes)
+function validateValueInArray($value, $validArray)
 {
-  return in_array($carSize, $validCarSizes);
+  return in_array($value, $validArray);
 }
 
 function validateInt($value)
 {
-  return filter_var($value, FILTER_VALIDATE_INT);
+  return is_numeric($value);
 }
 
 $regexs = [
@@ -89,41 +97,36 @@ $validCarSizes = [
   'camionnette_l'
 ];
 
-
-// Decode JSON input
-$requestData = json_decode(file_get_contents("php://input"), true);
-
 // Extract data from JSON and sanitize
-$appointmentDate = sanitizeString($requestData['appoitmentInfos']['date'] ?? null);
-$appointmentTime = sanitizeString($requestData['appoitmentInfos']['hour'] ?? null);
-$personalAddress = sanitizeString($requestData['personnalInfos']['address'] ?? null);
-$personalCity = sanitizeString($requestData['personnalInfos']['city'] ?? null);
-$personalEmail = sanitizeString($requestData['personnalInfos']['email'] ?? null);
-$personalFirstName = sanitizeString($requestData['personnalInfos']['firstName'] ?? null);
-$personalLastName = sanitizeString($requestData['personnalInfos']['lastName'] ?? null);
-$personalTel = sanitizeString($requestData['personnalInfos']['tel'] ?? null);
-$washingCarSize = sanitizeString($requestData['washingInfos']['carSize'] ?? null);
-$washingClassic = array_map('sanitizeString', $requestData['washingInfos']['classic'] ?? []);
-$washingFinishing = array_map('sanitizeString', $requestData['washingInfos']['finishing'] ?? []);
-$washingMessage = sanitizeString($requestData['washingInfos']['message'] ?? null);
-$washingOptions = array_map('sanitizeString', $requestData['washingInfos']['options'] ?? []);
-$washingPrice = (int)($requestData['washingInfos']['price'] ?? 0);
-$washingTime = (int)($requestData['washingInfos']['time'] ?? 0);
+$appointmentDate = preventScriptTag($data['appoitmentInfos']['date'] ?? null);
+$appointmentTime = preventScriptTag($data['appoitmentInfos']['hour'] ?? null);
+$personalAddress = preventScriptTag($data['personnalInfos']['address'] ?? null);
+$personalCity = preventScriptTag($data['personnalInfos']['city'] ?? null);
+$personalEmail = preventScriptTag($data['personnalInfos']['email'] ?? null);
+$personalFirstName = preventScriptTag($data['personnalInfos']['firstName'] ?? null);
+$personalLastName = preventScriptTag($data['personnalInfos']['lastName'] ?? null);
+$personalTel = preventScriptTag($data['personnalInfos']['tel'] ?? null);
+$washingCarSize = preventScriptTag($data['washingInfos']['carSize'] ?? null);
+$washingClassic = array_map('preventScriptTag', $data['washingInfos']['classic'] ?? []);
+$washingFinishing = array_map('preventScriptTag', $data['washingInfos']['finishing'] ?? []);
+$washingMessage = preventScriptTag($data['washingInfos']['message'] ?? null);
+$washingOptions = array_map('preventScriptTag', $data['washingInfos']['options'] ?? []);
+$washingPrice = (int)($data['washingInfos']['price'] ?? 0);
+$washingTime = (int)($data['washingInfos']['time'] ?? 0);
 
 if (
   !validateDate($appointmentDate) ||
   !validateTime($appointmentTime) ||
   !validateWithRegex($personalAddress, $regexs["address"]) ||
   !validateWithRegex($personalCity, $regexs["city"]) ||
-  !validateEmail($personalEmail) ||
   !validateWithRegex($personalEmail, $regexs["email"]) ||
   !validateWithRegex($personalFirstName, $regexs["firstName"]) ||
   !validateWithRegex($personalLastName, $regexs["lastName"]) ||
   !validateWithRegex($personalTel, $regexs["tel"]) ||
-  !validateArray($washingClassic, $validClassicWashes) ||
-  !validateArray($washingFinishing, $validFinishing) ||
+  !validateArrayInArray($washingClassic, $validClassicWashes) ||
+  !validateArrayInArray($washingFinishing, $validFinishing) ||
   !validateWithRegex($washingMessage, $regexs["message"]) ||
-  !validateArray($washingOptions, $validOptions) ||
+  !validateArrayInArray($washingOptions, $validOptions) ||
   !validateInt($washingPrice) ||
   !validateInt($washingTime)
 ) {

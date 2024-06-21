@@ -512,6 +512,8 @@ const handleCloseModalEvent = () => {
 
 const handleConfirmModalEvent = () => {
   modal.confirmButton.addEventListener("click", () => {
+    order.csrf_token = getElement("csrf_token").value;
+
     fetchData("POST", "./assets/scripts/mail.php", order)
       .then((response) => {
         if (response.success) {
@@ -547,13 +549,14 @@ const addCSRFToForm = () => {
           type: "hidden",
           name: "csrf_token",
           value: csrf.csrf_token,
+          id: "csrf_token",
         })
       );
     })
     .catch((error) => console.log(error));
 };
 
-//document.addEventListener("DOMContentLoaded", () => addCSRFToForm());
+document.addEventListener("DOMContentLoaded", () => addCSRFToForm());
 
 handleRegexEvents();
 handleChangingCarSizeEvent();
