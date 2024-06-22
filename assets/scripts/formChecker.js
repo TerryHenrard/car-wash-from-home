@@ -200,7 +200,7 @@ const addSupplementForPolishAndCeramicAccordingToCarSize = (id, checked) => {
   );
 };
 
-const handleCheckboxEvents = (checkboxes, type) => {
+const handleCheckboxEvents = (checkboxes, type) =>
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("input", ({ target }) => {
       const { id, checked } = target;
@@ -225,7 +225,6 @@ const handleCheckboxEvents = (checkboxes, type) => {
           );
     });
   });
-};
 
 const handleChangingCarSizeEvent = () => {
   let lastCarSize = checkboxes.selectCarSize.value;
@@ -388,12 +387,11 @@ const setTimeSlots = () => {
   order.appoitmentInfos.hour = appointment.hour.element.value;
 };
 
-const handleHourEvent = () => {
+const handleHourEvent = () =>
   appointment.hour.element.addEventListener(
     "input",
     ({ target: { value } }) => (order.appoitmentInfos.hour = value)
   );
-};
 
 const checkEmptyfieldOrder = () =>
   order.personnalInfos.lastName === "" ||
@@ -503,30 +501,31 @@ const buildModal = () => {
   ]);
 };
 
-const handleCloseModalEvent = () => {
+const handleCloseModalEvent = () =>
   [modal.cancelButton, modal.closeButton, modal.overlay].forEach((button) =>
     button.addEventListener("click", () => closeModal())
   );
-  modal.content.addEventListener("click", (ev) => ev.stopPropagation());
-};
+modal.content.addEventListener("click", (ev) => ev.stopPropagation());
 
-const handleConfirmModalEvent = () => {
+const handleConfirmModalEvent = () =>
   modal.confirmButton.addEventListener("click", () => {
     order.csrf_token = getElement("csrf_token").value;
 
     fetchData("POST", "./assets/scripts/mail.php", order)
       .then((response) => {
         if (response.success) {
-          location.reload();
+          alert(
+            "Commande envoyée avec succès, vous allez recevoir un email de confirmation incessamment sous peu"
+          );
+          closeModal();
         }
       })
       .catch((error) => {
         console.log("Error handling submission:", error);
       });
   });
-};
 
-const handleSubmitEvent = () => {
+const handleSubmitEvent = () =>
   form.addEventListener("submit", (ev) => {
     ev.preventDefault();
 
@@ -539,22 +538,19 @@ const handleSubmitEvent = () => {
       openModal();
     }
   });
-};
 
-const addCSRFToForm = () => {
+const addCSRFToForm = () =>
   fetchData("GET", "./assets/scripts/generateCSRF.php")
     .then((csrf) => {
       form.appendChild(
         createElement("input", null, {
           type: "hidden",
-          name: "csrf_token",
           value: csrf.csrf_token,
           id: "csrf_token",
         })
       );
     })
     .catch((error) => console.log(error));
-};
 
 document.addEventListener("DOMContentLoaded", () => addCSRFToForm());
 
