@@ -18,27 +18,61 @@
     background: #f8f8f8;
     padding: 0 50px 30px 50px;
     border-radius: 10px;
-    // min-width: 800px;
-    // width: 80vw;
-    // max-width: 1200px;
+    min-width: 900px;
+    width: 80vw;
+    max-width: 1100px;
+
+    @media only screen and (max-width: 1300px) {
+      padding: 0 35px 15px 35px;
+    }
+    @media only screen and (max-width: 850px) {
+      min-width: auto;
+      height: 100vh;
+      width: 100vw;
+      overflow: auto;
+    }
+    @media only screen and (max-width: 600px) {
+      font-size: 0.85rem;
+      padding: 0 20px 10px 20px;
+      border-radius: 0;
+    }
+
+    .modal_title {
+      h3 {
+        @media only screen and (max-width: 1300px) {
+          padding: 30px;
+        }
+        @media only screen and (max-width: 850px) {
+          padding: 20px 0;
+        }
+        @media only screen and (max-width: 600px) {
+          font-size: 1.6rem;
+          padding: 5px 0;
+        }
+      }
+    }
 
     .modal_close_button {
       position: absolute;
-      left: 98%;
-      top: 3.3%;
-      transform: translateX(-100%);
+      right: 0;
+      top: 0;
+      padding: 10px;
       cursor: pointer;
+
+      @media only screen and (max-width: 600px) {
+        display: none;
+      }
     }
 
     .modal_recap {
-      // display: flex;
-      // align-items: flex-start;
-      // justify-content: center;
-      // gap: 30px;
-
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 50px;
+
+      @media only screen and (max-width: 850px) {
+        grid-template-columns: none;
+        gap: 5px;
+      }
 
       .modal_recap_personnalInfos,
       .modal_recap_appoitmentInfos,
@@ -48,8 +82,19 @@
         text-align: left;
         margin: 0 0 20px 0;
 
+        @media only screen and (max-width: 1300px) {
+          gap: 5px;
+          margin: 0 0 15px 0;
+        }
+        @media only screen and (max-width: 600px) {
+        }
+
         h4 {
           font-size: 1.2rem;
+
+          @media only screen and (max-width: 600px) {
+            font-size: 0.95rem;
+          }
         }
 
         .modal_row {
@@ -82,6 +127,13 @@
       gap: 50px;
       margin: 20px 20px 0 20px;
 
+      @media only screen and (max-width: 1300px) {
+        margin: 15px 15px 0 15px;
+      }
+      @media only screen and (max-width: 600px) {
+        gap: 15px;
+      }
+
       button {
         cursor: pointer;
         padding: 10px 20px;
@@ -96,6 +148,10 @@
         &:hover {
           color: #0c3c60;
           background: #ffffff;
+        }
+
+        @media only screen and (max-width: 600px) {
+          padding: 7.5px 15px;
         }
       }
 
