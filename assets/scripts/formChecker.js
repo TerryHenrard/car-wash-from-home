@@ -45,6 +45,21 @@ let order = {
 
 const form = getElement("contact-form");
 
+const checkboxes = {
+  classicWashes: getElements(".classicWash"),
+  washOptions: getElements(".option"),
+  washFinishing: getElements(".finishing"),
+  termesAndConditions: getElement("courant-eau"),
+  selectCarSize: getElement("taille"),
+  priceSpan: getElement("price_value"),
+  timeSpan: getElement("time_value"),
+};
+
+const addInOrderButtons = {
+  option: getElements(".add_btn_option"),
+  finishing: getElements(".add_btn_finishing"),
+};
+
 const modal = {
   overlay: getElement("modal_overlay"),
   content: getElement("modal_content"),
@@ -54,16 +69,6 @@ const modal = {
   closeButton: getElement("modal_close_button"),
   cancelButton: getElement("modal_button_cancel"),
   confirmButton: getElement("modal_button_confirm"),
-};
-
-const checkboxes = {
-  classicWashes: getElements(".classicWash"),
-  washOptions: getElements(".option"),
-  washFinishing: getElements(".finishing"),
-  termesAndConditions: getElement("courant-eau"),
-  selectCarSize: getElement("taille"),
-  priceSpan: getElement("price_value"),
-  timeSpan: getElement("time_value"),
 };
 
 const carSizes = [
@@ -201,7 +206,7 @@ const addSupplementForPolishAndCeramicAccordingToCarSize = (id, checked) => {
 };
 
 const handleCheckboxEvents = (checkboxes, type) =>
-  checkboxes.forEach((checkbox) => {
+  checkboxes.forEach((checkbox) =>
     checkbox.addEventListener("input", ({ target }) => {
       const { id, checked } = target;
       const { price, time } = getWashServiceDetails(type, id);
@@ -223,8 +228,8 @@ const handleCheckboxEvents = (checkboxes, type) =>
             order.washingInfos[type].indexOf(dataName),
             1
           );
-    });
-  });
+    })
+  );
 
 const handleChangingCarSizeEvent = () => {
   let lastCarSize = checkboxes.selectCarSize.value;
@@ -539,6 +544,20 @@ const handleSubmitEvent = () =>
     }
   });
 
+const handleAddBtnInOrderEvents = () =>
+  Object.values(addInOrderButtons).forEach((buttons) =>
+    buttons.forEach((button) =>
+      button.addEventListener("click", ({ target }) => {
+        const checkbox = getElement(target.getAttribute("data-checkbox-id"));
+
+        checkbox.click();
+        const isClicked = checkbox.checked ? true : false;
+        target.textContent = isClicked ? "Retirer" : "Ajouter";
+        target.classList.toggle("clicked-btn", isClicked);
+      })
+    )
+  );
+
 const addCSRFToForm = () =>
   fetchData("GET", "./assets/scripts/generateCSRF.php")
     .then((csrf) => {
@@ -552,8 +571,8 @@ const addCSRFToForm = () =>
     })
     .catch((error) => console.log(error));
 
-document.addEventListener("DOMContentLoaded", () => addCSRFToForm());
-
+addCSRFToForm();
+handleAddBtnInOrderEvents();
 handleRegexEvents();
 handleChangingCarSizeEvent();
 handleCheckboxEvents(checkboxes.classicWashes, "classic");

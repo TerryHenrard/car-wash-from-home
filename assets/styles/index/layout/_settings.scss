@@ -7,9 +7,10 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: "montserrat", serif;
   transition: 0.8s;
   opacity: 0;
+  font-family: "opensans", serif;
+  font-weight: 500;
 }
 
 .no-scroll {
@@ -19,11 +20,12 @@ body {
 @font-face {
   font-family: "poppins";
   src: url(../../fonts/Poppins-Medium.ttf);
-  font-display: swap;
 }
-
 @font-face {
   font-family: "montserrat";
   src: url(../../fonts/Montserrat-VariableFont_wght.ttf);
-  font-display: swap;
+}
+@font-face {
+  font-family: "opensans";
+  src: url(../../fonts/OpenSans-VariableFont_wdth.ttf);
 }

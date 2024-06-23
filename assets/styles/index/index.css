@@ -10,9 +10,10 @@ html {
 }
 
 body {
-  font-family: "montserrat", serif;
   transition: 0.8s;
   opacity: 0;
+  font-family: "opensans", serif;
+  font-weight: 500;
 }
 
 .no-scroll {
@@ -22,12 +23,14 @@ body {
 @font-face {
   font-family: "poppins";
   src: url(../../fonts/Poppins-Medium.ttf);
-  font-display: swap;
 }
 @font-face {
   font-family: "montserrat";
   src: url(../../fonts/Montserrat-VariableFont_wght.ttf);
-  font-display: swap;
+}
+@font-face {
+  font-family: "opensans";
+  src: url(../../fonts/OpenSans-VariableFont_wdth.ttf);
 }
 .header {
   height: 88vh;
@@ -71,7 +74,6 @@ body {
 .header nav .menu ul li {
   transition: 0.2s;
   font-size: 0.95rem;
-  font-family: "montserrat", serif;
   font-weight: 500;
   cursor: pointer;
   position: relative;
@@ -262,7 +264,6 @@ body {
 }
 .header .header-text div p {
   font-size: 1.1rem;
-  font-family: "poppins", serif;
   font-weight: 500;
   letter-spacing: 2px;
   font-weight: 500;
@@ -278,10 +279,8 @@ body {
 .header .header-text div h1 {
   color: #072136;
   font-size: 3rem;
-  font-family: "poppins";
-  font-weight: 100;
-  margin: 20px 10px;
   font-weight: 500;
+  margin: 20px 10px;
   transition: 0.5s;
   text-transform: uppercase;
 }
@@ -530,8 +529,7 @@ body {
 .tarif .price-container .utilitaire-xl .uti-l-title h2,
 .tarif .price-container .utilitaire-xl .uti-xl-title h2 {
   font-size: 2rem;
-  font-weight: 100;
-  font-family: "poppins", serif;
+  font-weight: 500;
   text-transform: uppercase;
 }
 @media screen and (max-width: 1455px) {
@@ -691,8 +689,8 @@ body {
 .tarif .price-container .utilitaire-xl .uti-m-tarif p,
 .tarif .price-container .utilitaire-xl .uti-l-tarif p,
 .tarif .price-container .utilitaire-xl .uti-xl-tarif p {
-  font-family: "poppins", serif;
   font-size: 1.3rem;
+  font-weight: 400;
   margin: 20px 0;
 }
 @media screen and (max-width: 1455px) {
@@ -857,8 +855,7 @@ body {
 .tarif .explication-container .interieur h3 {
   margin: 0 50px 50px 50px;
   font-size: 2rem;
-  font-weight: 100;
-  font-family: "poppins", serif;
+  font-weight: 400;
   text-transform: uppercase;
   text-align: center;
   transform: translateY(20px);
@@ -878,8 +875,8 @@ body {
 }
 .tarif .explication-container .exterieur ul li,
 .tarif .explication-container .interieur ul li {
-  font-family: "poppins", serif;
   font-size: 1.2rem;
+  font-weight: 400;
   margin: 20px 10px;
   opacity: 0;
   transform: translateY(20px);
@@ -980,8 +977,7 @@ body {
 .finitions .finitions-container .finitions-title h3 {
   padding: 50px;
   font-size: 2rem;
-  font-weight: 100;
-  font-family: "poppins", serif;
+  font-weight: 500;
   text-transform: uppercase;
   text-align: center;
   color: #072136;
@@ -2085,7 +2081,6 @@ body {
 .finitions .finitions-container .finitions-container-details .renovateur-joints .price,
 .finitions .finitions-container .finitions-container-details .renovateur-pneus .price,
 .finitions .finitions-container .finitions-container-details .shampoing-moquette .price {
-  font-family: "poppins", serif;
   font-size: 1.5rem;
   font-weight: bolder;
   text-align: center;
@@ -2460,7 +2455,6 @@ body {
 .finitions .finitions-container .finitions-container-details .shampoing-moquette h4 {
   font-size: 1.5rem;
   font-weight: bold;
-  font-family: "poppins", serif;
   text-transform: uppercase;
   margin: 10px 0;
   text-align: center;
@@ -3214,7 +3208,6 @@ body {
   background: transparent;
   border: 1px solid #0c3c60;
   transition: 0.3s;
-  font-family: "poppins", serif;
   font-weight: 400;
   min-width: 160px;
   position: absolute;
@@ -3470,6 +3463,253 @@ body {
   color: #ffffff;
   background: #0c3c60;
 }
+.options .options-container .options-container-details .polissage .clicked-btn,
+.options .options-container .options-container-details .nettoyage-bloc-moteur .clicked-btn,
+.options .options-container .options-container-details .protection-ceramique .clicked-btn,
+.options .options-container .options-container-details .nettoyage-cuir-alcantara .clicked-btn,
+.options .options-container .options-container-details .shampoing-siege-tissus .clicked-btn,
+.options .options-container .options-container-details .shampoing-tapis-coffre .clicked-btn,
+.options .options-container .options-container-details .protection-plastique .clicked-btn,
+.options .options-container .options-container-details .impermeabilisant-textiles .clicked-btn,
+.options .options-container .options-container-details .protection-ceramique-jantes .clicked-btn,
+.options .options-container .options-container-details .protection-ceramique-vitres .clicked-btn,
+.options .options-container .options-container-details .protection-cuir .clicked-btn,
+.options .options-container .options-container-details .anti-buee .clicked-btn,
+.options .options-container .options-container-details .renovateur-joints .clicked-btn,
+.options .options-container .options-container-details .renovateur-pneus .clicked-btn,
+.options .options-container .options-container-details .shampoing-moquette .clicked-btn,
+.options .options-container .finitions-container-details .polissage .clicked-btn,
+.options .options-container .finitions-container-details .nettoyage-bloc-moteur .clicked-btn,
+.options .options-container .finitions-container-details .protection-ceramique .clicked-btn,
+.options .options-container .finitions-container-details .nettoyage-cuir-alcantara .clicked-btn,
+.options .options-container .finitions-container-details .shampoing-siege-tissus .clicked-btn,
+.options .options-container .finitions-container-details .shampoing-tapis-coffre .clicked-btn,
+.options .options-container .finitions-container-details .protection-plastique .clicked-btn,
+.options .options-container .finitions-container-details .impermeabilisant-textiles .clicked-btn,
+.options .options-container .finitions-container-details .protection-ceramique-jantes .clicked-btn,
+.options .options-container .finitions-container-details .protection-ceramique-vitres .clicked-btn,
+.options .options-container .finitions-container-details .protection-cuir .clicked-btn,
+.options .options-container .finitions-container-details .anti-buee .clicked-btn,
+.options .options-container .finitions-container-details .renovateur-joints .clicked-btn,
+.options .options-container .finitions-container-details .renovateur-pneus .clicked-btn,
+.options .options-container .finitions-container-details .shampoing-moquette .clicked-btn,
+.options .finitions-container .options-container-details .polissage .clicked-btn,
+.options .finitions-container .options-container-details .nettoyage-bloc-moteur .clicked-btn,
+.options .finitions-container .options-container-details .protection-ceramique .clicked-btn,
+.options .finitions-container .options-container-details .nettoyage-cuir-alcantara .clicked-btn,
+.options .finitions-container .options-container-details .shampoing-siege-tissus .clicked-btn,
+.options .finitions-container .options-container-details .shampoing-tapis-coffre .clicked-btn,
+.options .finitions-container .options-container-details .protection-plastique .clicked-btn,
+.options .finitions-container .options-container-details .impermeabilisant-textiles .clicked-btn,
+.options .finitions-container .options-container-details .protection-ceramique-jantes .clicked-btn,
+.options .finitions-container .options-container-details .protection-ceramique-vitres .clicked-btn,
+.options .finitions-container .options-container-details .protection-cuir .clicked-btn,
+.options .finitions-container .options-container-details .anti-buee .clicked-btn,
+.options .finitions-container .options-container-details .renovateur-joints .clicked-btn,
+.options .finitions-container .options-container-details .renovateur-pneus .clicked-btn,
+.options .finitions-container .options-container-details .shampoing-moquette .clicked-btn,
+.options .finitions-container .finitions-container-details .polissage .clicked-btn,
+.options .finitions-container .finitions-container-details .nettoyage-bloc-moteur .clicked-btn,
+.options .finitions-container .finitions-container-details .protection-ceramique .clicked-btn,
+.options .finitions-container .finitions-container-details .nettoyage-cuir-alcantara .clicked-btn,
+.options .finitions-container .finitions-container-details .shampoing-siege-tissus .clicked-btn,
+.options .finitions-container .finitions-container-details .shampoing-tapis-coffre .clicked-btn,
+.options .finitions-container .finitions-container-details .protection-plastique .clicked-btn,
+.options .finitions-container .finitions-container-details .impermeabilisant-textiles .clicked-btn,
+.options .finitions-container .finitions-container-details .protection-ceramique-jantes .clicked-btn,
+.options .finitions-container .finitions-container-details .protection-ceramique-vitres .clicked-btn,
+.options .finitions-container .finitions-container-details .protection-cuir .clicked-btn,
+.options .finitions-container .finitions-container-details .anti-buee .clicked-btn,
+.options .finitions-container .finitions-container-details .renovateur-joints .clicked-btn,
+.options .finitions-container .finitions-container-details .renovateur-pneus .clicked-btn,
+.options .finitions-container .finitions-container-details .shampoing-moquette .clicked-btn,
+.finitions .options-container .options-container-details .polissage .clicked-btn,
+.finitions .options-container .options-container-details .nettoyage-bloc-moteur .clicked-btn,
+.finitions .options-container .options-container-details .protection-ceramique .clicked-btn,
+.finitions .options-container .options-container-details .nettoyage-cuir-alcantara .clicked-btn,
+.finitions .options-container .options-container-details .shampoing-siege-tissus .clicked-btn,
+.finitions .options-container .options-container-details .shampoing-tapis-coffre .clicked-btn,
+.finitions .options-container .options-container-details .protection-plastique .clicked-btn,
+.finitions .options-container .options-container-details .impermeabilisant-textiles .clicked-btn,
+.finitions .options-container .options-container-details .protection-ceramique-jantes .clicked-btn,
+.finitions .options-container .options-container-details .protection-ceramique-vitres .clicked-btn,
+.finitions .options-container .options-container-details .protection-cuir .clicked-btn,
+.finitions .options-container .options-container-details .anti-buee .clicked-btn,
+.finitions .options-container .options-container-details .renovateur-joints .clicked-btn,
+.finitions .options-container .options-container-details .renovateur-pneus .clicked-btn,
+.finitions .options-container .options-container-details .shampoing-moquette .clicked-btn,
+.finitions .options-container .finitions-container-details .polissage .clicked-btn,
+.finitions .options-container .finitions-container-details .nettoyage-bloc-moteur .clicked-btn,
+.finitions .options-container .finitions-container-details .protection-ceramique .clicked-btn,
+.finitions .options-container .finitions-container-details .nettoyage-cuir-alcantara .clicked-btn,
+.finitions .options-container .finitions-container-details .shampoing-siege-tissus .clicked-btn,
+.finitions .options-container .finitions-container-details .shampoing-tapis-coffre .clicked-btn,
+.finitions .options-container .finitions-container-details .protection-plastique .clicked-btn,
+.finitions .options-container .finitions-container-details .impermeabilisant-textiles .clicked-btn,
+.finitions .options-container .finitions-container-details .protection-ceramique-jantes .clicked-btn,
+.finitions .options-container .finitions-container-details .protection-ceramique-vitres .clicked-btn,
+.finitions .options-container .finitions-container-details .protection-cuir .clicked-btn,
+.finitions .options-container .finitions-container-details .anti-buee .clicked-btn,
+.finitions .options-container .finitions-container-details .renovateur-joints .clicked-btn,
+.finitions .options-container .finitions-container-details .renovateur-pneus .clicked-btn,
+.finitions .options-container .finitions-container-details .shampoing-moquette .clicked-btn,
+.finitions .finitions-container .options-container-details .polissage .clicked-btn,
+.finitions .finitions-container .options-container-details .nettoyage-bloc-moteur .clicked-btn,
+.finitions .finitions-container .options-container-details .protection-ceramique .clicked-btn,
+.finitions .finitions-container .options-container-details .nettoyage-cuir-alcantara .clicked-btn,
+.finitions .finitions-container .options-container-details .shampoing-siege-tissus .clicked-btn,
+.finitions .finitions-container .options-container-details .shampoing-tapis-coffre .clicked-btn,
+.finitions .finitions-container .options-container-details .protection-plastique .clicked-btn,
+.finitions .finitions-container .options-container-details .impermeabilisant-textiles .clicked-btn,
+.finitions .finitions-container .options-container-details .protection-ceramique-jantes .clicked-btn,
+.finitions .finitions-container .options-container-details .protection-ceramique-vitres .clicked-btn,
+.finitions .finitions-container .options-container-details .protection-cuir .clicked-btn,
+.finitions .finitions-container .options-container-details .anti-buee .clicked-btn,
+.finitions .finitions-container .options-container-details .renovateur-joints .clicked-btn,
+.finitions .finitions-container .options-container-details .renovateur-pneus .clicked-btn,
+.finitions .finitions-container .options-container-details .shampoing-moquette .clicked-btn,
+.finitions .finitions-container .finitions-container-details .polissage .clicked-btn,
+.finitions .finitions-container .finitions-container-details .nettoyage-bloc-moteur .clicked-btn,
+.finitions .finitions-container .finitions-container-details .protection-ceramique .clicked-btn,
+.finitions .finitions-container .finitions-container-details .nettoyage-cuir-alcantara .clicked-btn,
+.finitions .finitions-container .finitions-container-details .shampoing-siege-tissus .clicked-btn,
+.finitions .finitions-container .finitions-container-details .shampoing-tapis-coffre .clicked-btn,
+.finitions .finitions-container .finitions-container-details .protection-plastique .clicked-btn,
+.finitions .finitions-container .finitions-container-details .impermeabilisant-textiles .clicked-btn,
+.finitions .finitions-container .finitions-container-details .protection-ceramique-jantes .clicked-btn,
+.finitions .finitions-container .finitions-container-details .protection-ceramique-vitres .clicked-btn,
+.finitions .finitions-container .finitions-container-details .protection-cuir .clicked-btn,
+.finitions .finitions-container .finitions-container-details .anti-buee .clicked-btn,
+.finitions .finitions-container .finitions-container-details .renovateur-joints .clicked-btn,
+.finitions .finitions-container .finitions-container-details .renovateur-pneus .clicked-btn,
+.finitions .finitions-container .finitions-container-details .shampoing-moquette .clicked-btn {
+  border: 1px solid red;
+  color: #ffffff;
+  background: red;
+}
+.options .options-container .options-container-details .polissage .clicked-btn:hover,
+.options .options-container .options-container-details .nettoyage-bloc-moteur .clicked-btn:hover,
+.options .options-container .options-container-details .protection-ceramique .clicked-btn:hover,
+.options .options-container .options-container-details .nettoyage-cuir-alcantara .clicked-btn:hover,
+.options .options-container .options-container-details .shampoing-siege-tissus .clicked-btn:hover,
+.options .options-container .options-container-details .shampoing-tapis-coffre .clicked-btn:hover,
+.options .options-container .options-container-details .protection-plastique .clicked-btn:hover,
+.options .options-container .options-container-details .impermeabilisant-textiles .clicked-btn:hover,
+.options .options-container .options-container-details .protection-ceramique-jantes .clicked-btn:hover,
+.options .options-container .options-container-details .protection-ceramique-vitres .clicked-btn:hover,
+.options .options-container .options-container-details .protection-cuir .clicked-btn:hover,
+.options .options-container .options-container-details .anti-buee .clicked-btn:hover,
+.options .options-container .options-container-details .renovateur-joints .clicked-btn:hover,
+.options .options-container .options-container-details .renovateur-pneus .clicked-btn:hover,
+.options .options-container .options-container-details .shampoing-moquette .clicked-btn:hover,
+.options .options-container .finitions-container-details .polissage .clicked-btn:hover,
+.options .options-container .finitions-container-details .nettoyage-bloc-moteur .clicked-btn:hover,
+.options .options-container .finitions-container-details .protection-ceramique .clicked-btn:hover,
+.options .options-container .finitions-container-details .nettoyage-cuir-alcantara .clicked-btn:hover,
+.options .options-container .finitions-container-details .shampoing-siege-tissus .clicked-btn:hover,
+.options .options-container .finitions-container-details .shampoing-tapis-coffre .clicked-btn:hover,
+.options .options-container .finitions-container-details .protection-plastique .clicked-btn:hover,
+.options .options-container .finitions-container-details .impermeabilisant-textiles .clicked-btn:hover,
+.options .options-container .finitions-container-details .protection-ceramique-jantes .clicked-btn:hover,
+.options .options-container .finitions-container-details .protection-ceramique-vitres .clicked-btn:hover,
+.options .options-container .finitions-container-details .protection-cuir .clicked-btn:hover,
+.options .options-container .finitions-container-details .anti-buee .clicked-btn:hover,
+.options .options-container .finitions-container-details .renovateur-joints .clicked-btn:hover,
+.options .options-container .finitions-container-details .renovateur-pneus .clicked-btn:hover,
+.options .options-container .finitions-container-details .shampoing-moquette .clicked-btn:hover,
+.options .finitions-container .options-container-details .polissage .clicked-btn:hover,
+.options .finitions-container .options-container-details .nettoyage-bloc-moteur .clicked-btn:hover,
+.options .finitions-container .options-container-details .protection-ceramique .clicked-btn:hover,
+.options .finitions-container .options-container-details .nettoyage-cuir-alcantara .clicked-btn:hover,
+.options .finitions-container .options-container-details .shampoing-siege-tissus .clicked-btn:hover,
+.options .finitions-container .options-container-details .shampoing-tapis-coffre .clicked-btn:hover,
+.options .finitions-container .options-container-details .protection-plastique .clicked-btn:hover,
+.options .finitions-container .options-container-details .impermeabilisant-textiles .clicked-btn:hover,
+.options .finitions-container .options-container-details .protection-ceramique-jantes .clicked-btn:hover,
+.options .finitions-container .options-container-details .protection-ceramique-vitres .clicked-btn:hover,
+.options .finitions-container .options-container-details .protection-cuir .clicked-btn:hover,
+.options .finitions-container .options-container-details .anti-buee .clicked-btn:hover,
+.options .finitions-container .options-container-details .renovateur-joints .clicked-btn:hover,
+.options .finitions-container .options-container-details .renovateur-pneus .clicked-btn:hover,
+.options .finitions-container .options-container-details .shampoing-moquette .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .polissage .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .nettoyage-bloc-moteur .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .protection-ceramique .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .nettoyage-cuir-alcantara .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .shampoing-siege-tissus .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .shampoing-tapis-coffre .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .protection-plastique .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .impermeabilisant-textiles .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .protection-ceramique-jantes .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .protection-ceramique-vitres .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .protection-cuir .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .anti-buee .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .renovateur-joints .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .renovateur-pneus .clicked-btn:hover,
+.options .finitions-container .finitions-container-details .shampoing-moquette .clicked-btn:hover,
+.finitions .options-container .options-container-details .polissage .clicked-btn:hover,
+.finitions .options-container .options-container-details .nettoyage-bloc-moteur .clicked-btn:hover,
+.finitions .options-container .options-container-details .protection-ceramique .clicked-btn:hover,
+.finitions .options-container .options-container-details .nettoyage-cuir-alcantara .clicked-btn:hover,
+.finitions .options-container .options-container-details .shampoing-siege-tissus .clicked-btn:hover,
+.finitions .options-container .options-container-details .shampoing-tapis-coffre .clicked-btn:hover,
+.finitions .options-container .options-container-details .protection-plastique .clicked-btn:hover,
+.finitions .options-container .options-container-details .impermeabilisant-textiles .clicked-btn:hover,
+.finitions .options-container .options-container-details .protection-ceramique-jantes .clicked-btn:hover,
+.finitions .options-container .options-container-details .protection-ceramique-vitres .clicked-btn:hover,
+.finitions .options-container .options-container-details .protection-cuir .clicked-btn:hover,
+.finitions .options-container .options-container-details .anti-buee .clicked-btn:hover,
+.finitions .options-container .options-container-details .renovateur-joints .clicked-btn:hover,
+.finitions .options-container .options-container-details .renovateur-pneus .clicked-btn:hover,
+.finitions .options-container .options-container-details .shampoing-moquette .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .polissage .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .nettoyage-bloc-moteur .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .protection-ceramique .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .nettoyage-cuir-alcantara .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .shampoing-siege-tissus .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .shampoing-tapis-coffre .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .protection-plastique .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .impermeabilisant-textiles .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .protection-ceramique-jantes .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .protection-ceramique-vitres .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .protection-cuir .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .anti-buee .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .renovateur-joints .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .renovateur-pneus .clicked-btn:hover,
+.finitions .options-container .finitions-container-details .shampoing-moquette .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .polissage .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .nettoyage-bloc-moteur .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .protection-ceramique .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .nettoyage-cuir-alcantara .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .shampoing-siege-tissus .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .shampoing-tapis-coffre .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .protection-plastique .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .impermeabilisant-textiles .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .protection-ceramique-jantes .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .protection-ceramique-vitres .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .protection-cuir .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .anti-buee .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .renovateur-joints .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .renovateur-pneus .clicked-btn:hover,
+.finitions .finitions-container .options-container-details .shampoing-moquette .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .polissage .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .nettoyage-bloc-moteur .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .protection-ceramique .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .nettoyage-cuir-alcantara .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .shampoing-siege-tissus .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .shampoing-tapis-coffre .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .protection-plastique .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .impermeabilisant-textiles .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .protection-ceramique-jantes .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .protection-ceramique-vitres .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .protection-cuir .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .anti-buee .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .renovateur-joints .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .renovateur-pneus .clicked-btn:hover,
+.finitions .finitions-container .finitions-container-details .shampoing-moquette .clicked-btn:hover {
+  color: red;
+  background: #ffffff;
+}
 .options .options-container .finitions-container-details,
 .options .finitions-container .finitions-container-details,
 .finitions .options-container .finitions-container-details,
@@ -3496,8 +3736,7 @@ body {
   padding: 50px;
   margin: 30px 0;
   font-size: 2rem;
-  font-weight: 100;
-  font-family: "poppins", serif;
+  font-weight: 500;
   text-transform: uppercase;
   text-align: center;
   color: #072136;
@@ -3557,8 +3796,7 @@ body {
 .rdv h3 {
   padding: 50px;
   font-size: 2rem;
-  font-weight: 100;
-  font-family: "poppins", serif;
+  font-weight: 500;
   text-transform: uppercase;
   text-align: center;
   color: #072136;
@@ -3665,16 +3903,13 @@ body {
 .rdv .form-container .date-container .datepicker,
 .rdv .form-container .time-container .datepicker {
   text-align: center;
-  font-family: "montserrat", serif;
 }
 .rdv .form-container .date-container .datepicker::-moz-placeholder, .rdv .form-container .time-container .datepicker::-moz-placeholder {
   color: #000000;
-  font-family: "montserrat", serif;
 }
 .rdv .form-container .date-container .datepicker::placeholder,
 .rdv .form-container .time-container .datepicker::placeholder {
   color: #000000;
-  font-family: "montserrat", serif;
 }
 .rdv .form-container .date-container label,
 .rdv .form-container .time-container label {
@@ -3693,7 +3928,6 @@ body {
   border: none;
   border-bottom: 1px solid #757575;
   font-weight: 400;
-  font-family: "montserrat";
   cursor: pointer;
   font-size: 18px;
   height: 42px;
@@ -4173,7 +4407,6 @@ body {
   border: none;
   border-bottom: 1px solid #757575;
   font-weight: 400;
-  font-family: "montserrat";
   cursor: pointer;
   font-size: 18px;
   height: 42px;
@@ -5200,8 +5433,9 @@ body {
   width: 100%;
   resize: none;
   height: 150px;
-  font-family: "arial", serif;
   padding: 5px;
+  font-family: "opensans";
+  font-weight: 500;
 }
 @media only screen and (max-width: 500px) {
   .rdv .form-container .textarea-container textarea {
@@ -5211,16 +5445,16 @@ body {
 .rdv .form-container .textarea-container textarea::-moz-placeholder {
   color: #999;
   font-size: 18px;
-  font-weight: lighter;
   padding: 3px 0 0 5px;
-  font-family: "arial", serif;
+  font-family: "opensans";
+  font-weight: 500;
 }
 .rdv .form-container .textarea-container textarea::placeholder {
   color: #999;
   font-size: 18px;
-  font-weight: lighter;
   padding: 3px 0 0 5px;
-  font-family: "arial", serif;
+  font-family: "opensans";
+  font-weight: 500;
 }
 @media only screen and (max-width: 500px) {
   .rdv .form-container .textarea-container textarea::-moz-placeholder {
@@ -5243,7 +5477,6 @@ body {
   background: #0c3c60;
   border: 1px solid #0c3c60;
   transition: 0.3s;
-  font-family: "poppins", serif;
   font-weight: 400;
   min-width: 160px;
 }
@@ -5273,7 +5506,6 @@ body {
 
 .footer {
   background: #0c3c60;
-  font-family: "poppins", serif;
 }
 .footer .footer-container {
   padding: 30px 50px;
@@ -5512,7 +5744,6 @@ body {
   background: #0c3c60;
   border: 1px solid #0c3c60;
   transition: 0.3s;
-  font-family: "poppins", serif;
   font-weight: 400;
   min-width: 160px;
 }

@@ -83,8 +83,7 @@
 
         h2 {
           font-size: 2rem;
-          font-weight: 100;
-          font-family: "poppins", serif;
+          font-weight: 500;
           text-transform: uppercase;
 
           @media screen and (max-width: 1455px) {
@@ -109,8 +108,8 @@
         }
 
         p {
-          font-family: "poppins", serif;
           font-size: 1.3rem;
+          font-weight: 400;
           margin: 20px 0;
 
           @media screen and (max-width: 1455px) {
@@ -167,8 +166,7 @@
       h3 {
         margin: 0 50px 50px 50px;
         font-size: 2rem;
-        font-weight: 100;
-        font-family: "poppins", serif;
+        font-weight: 400;
         text-transform: uppercase;
         text-align: center;
         transform: translateY(20px);
@@ -184,8 +182,8 @@
       ul {
         list-style: none;
         li {
-          font-family: "poppins", serif;
           font-size: 1.2rem;
+          font-weight: 400;
           margin: 20px 10px;
           opacity: 0;
           transform: translateY(20px);
