@@ -7,21 +7,21 @@ const servives = {
 */
 
 const services = {
-  interiors: [
-    ["citadine", 35, 90],
-    ["berline_coupe", 40, 105],
-    ["break_suv", 45, 120],
-    ["camionnette_s", 50, 120],
-    ["camionnette_m", 55, 120],
-    ["camionnette_l", 60, 120],
-  ],
   exteriors: [
-    ["citadine", 25, 60],
-    ["berline_coupe", 30, 75],
-    ["break_suv", 35, 90],
-    ["camionnette_s", 60, 105],
-    ["camionnette_m", 70, 120],
-    ["camionnette_l", 80, 135],
+    ["citadine", 50, 60],
+    ["berline_coupe", 55, 75],
+    ["break_suv", 60, 90],
+    ["camionnette_s", 70, 105],
+    ["camionnette_m", 80, 120],
+    ["camionnette_l", 90, 135],
+  ],
+  interiors: [
+    ["citadine", 80, 90],
+    ["berline_coupe", 90, 105],
+    ["break_suv", 100, 120],
+    ["camionnette_s", 100, 120],
+    ["camionnette_m", 100, 120],
+    ["camionnette_l", 100, 120],
   ],
   options: [
     ["nettoyage_bloc_moteur", 30, 30],
@@ -31,16 +31,16 @@ const services = {
     ["shampoing_moquette", 60, 45],
   ],
   finishing: [
-    ["polissage", 250, 120],
-    ["ceramique_carrosserie", 120, 60],
-    ["ceramique_jantes", 80, 30],
-    ["ceramique_vitres", 70, 15],
-    ["renovateur_pneus", 30, 5],
-    ["impermeabilisant_textiles", 25, 5],
-    ["protection_cuir", 30, 5],
-    ["anti_buee", 20, 5],
-    ["renovateur_joints", 30, 15],
-    ["protection_plastiques", 25, 5],
+    ["polissage", 600, 180],
+    ["ceramique_carrosserie", 200, 60],
+    ["ceramique_jantes", 90, 30],
+    ["ceramique_vitres", 75, 15],
+    ["renovateur_pneus", 15, 5],
+    ["impermeabilisant_textiles", 15, 5],
+    ["protection_cuir", 20, 5],
+    ["anti_buee", 10, 5],
+    ["renovateur_joints", 40, 30],
+    ["protection_plastiques", 20, 5],
   ],
 };
 

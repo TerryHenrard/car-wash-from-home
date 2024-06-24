@@ -205,7 +205,12 @@ const addSupplementForPolishAndCeramicAccordingToCarSize = (id, checked) => {
   );
 };
 
-const handleCheckboxEvents = (checkboxes, type) =>
+const updateButton = (button, bool) => {
+  button.classList.toggle("clicked-btn", bool);
+  button.textContent = bool ? "Retirer" : "Ajouter";
+};
+
+const handleCheckboxEvent = (checkboxes, type) =>
   checkboxes.forEach((checkbox) =>
     checkbox.addEventListener("input", ({ target }) => {
       const { id, checked } = target;
@@ -213,6 +218,10 @@ const handleCheckboxEvents = (checkboxes, type) =>
 
       if (id === "polissage" || id === "ceramique_carrosserie") {
         addSupplementForPolishAndCeramicAccordingToCarSize(id, checked);
+      }
+
+      if (id !== "exteriors" && id !== "interiors") {
+        updateButton(getElement(target.getAttribute("data-btn-id")), checked);
       }
 
       updatePriceAndTimeAndDisplay(
@@ -230,6 +239,12 @@ const handleCheckboxEvents = (checkboxes, type) =>
           );
     })
   );
+
+const handleCheckboxEvents = () => {
+  handleCheckboxEvent(checkboxes.classicWashes, "classic");
+  handleCheckboxEvent(checkboxes.washOptions, "options");
+  handleCheckboxEvent(checkboxes.washFinishing, "finishing");
+};
 
 const handleChangingCarSizeEvent = () => {
   let lastCarSize = checkboxes.selectCarSize.value;
@@ -575,9 +590,7 @@ addCSRFToForm();
 handleAddBtnInOrderEvents();
 handleRegexEvents();
 handleChangingCarSizeEvent();
-handleCheckboxEvents(checkboxes.classicWashes, "classic");
-handleCheckboxEvents(checkboxes.washOptions, "options");
-handleCheckboxEvents(checkboxes.washFinishing, "finishing");
+handleCheckboxEvents();
 handleRegexEvents();
 setTimeSlots();
 setDatepicker();
