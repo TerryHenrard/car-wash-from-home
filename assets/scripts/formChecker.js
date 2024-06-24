@@ -1,3 +1,5 @@
+alert("test");
+
 import services from "./services.js";
 
 const getElement = (id) => document.getElementById(id);
