@@ -29,8 +29,21 @@ const TerryHenrard = {
   firstName: "Terry",
   lastName: "Henrard",
   languages: ["JavaScript"],
-  frameworks: ["Next", "React", "Express", "Tailwind"],
+  frameworks: ["Next.js", "React", "Express", "Tailwind CSS"],
+  aboutMe: `
+    Passionné par le développement web et les nouvelles technologies, 
+    je m'efforce continuellement d'améliorer mes compétences et de rester 
+    à jour avec les dernières tendances. J'ai une forte expérience dans 
+    la création d'applications web dynamiques et réactives en utilisant 
+    JavaScript et des frameworks modernes tels que Next.js, React, et Express. 
+    J'accorde également une grande importance au design et à l'expérience utilisateur, 
+    ce qui me conduit à utiliser Tailwind CSS pour créer des interfaces attrayantes 
+    et intuitives.
+  `,
 };
+
+export default TerryHenrard;
+
 ```
 
 ## License
