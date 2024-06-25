@@ -38,7 +38,7 @@ export default {
     JavaScript et des frameworks modernes tels que Next.js, React, et Express. 
     J'accorde également une grande importance au design et à l'expérience utilisateur, 
     ce qui me conduit à utiliser Tailwind CSS pour créer des interfaces attrayantes 
-    et intuitives.
+    et intuitives...
   `,
 };
 
