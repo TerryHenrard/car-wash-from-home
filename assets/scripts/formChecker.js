@@ -326,7 +326,7 @@ const handleRegexEvents = () => {
 const setDatepicker = () => {
   const date = new Date();
   const minDate = new Date(date.setDate(date.getDate() + 2));
-  const maxDate = new Date(date.setDate(date.getDate() + 60));
+  const maxDate = new Date(date.setDate(date.getDate() + 90));
 
   const pad = (number) => (number < 10 ? `0${number}` : number);
   const reverseDate = (date) => date.split("-").reverse().join("/");
@@ -369,6 +369,19 @@ const setDatepicker = () => {
     return formatDate(currentDate);
   };
 
+  const getAllDatesBetween = (startDate, endDate) => {
+    let dates = [];
+    let currentDate = new Date(startDate);
+    endDate = new Date(endDate);
+
+    while (currentDate <= endDate) {
+      dates.push(formatDate(currentDate));
+      currentDate = addDays(currentDate, 1);
+    }
+
+    return dates;
+  };
+
   //TODO: not working
   /*const disableKeayboardOnFocus = () => {
     appointment.date.element.addEventListener("focus", (ev) =>
@@ -381,6 +394,7 @@ const setDatepicker = () => {
     maxDate,
     [2, 7]
   );
+
   const firstNonExcludedDate = reverseDate(
     findFirstNonExcludedDate(
       formatDate(minDate),
@@ -391,7 +405,12 @@ const setDatepicker = () => {
   const options = {
     min: minDate,
     max: maxDate,
-    without: unavailableDates,
+    without: [
+      ...unavailableDates,
+      "2024-06-29", // week end papa
+      "2024-07-17", // rdv client chauvier
+      ...getAllDatesBetween("2024-07-18", "2024-07-29"),
+    ],
   };
 
   appointment.date.element.setAttribute("placeholder", firstNonExcludedDate);
