@@ -25,8 +25,8 @@ To deploy this project
 As you can see, I love JavaScript
 
 ```js
-const TerryHenrard = {
-  firstName: "Terry test develop test",
+export default {
+  firstName: "Terry",
   lastName: "Henrard",
   languages: ["JavaScript"],
   frameworks: ["Next.js", "React", "Express", "Tailwind CSS"],
@@ -41,8 +41,6 @@ const TerryHenrard = {
     et intuitives.
   `,
 };
-
-export default TerryHenrard;
 
 ```
 
