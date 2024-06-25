@@ -26,7 +26,7 @@ As you can see, I love JavaScript
 
 ```js
 const TerryHenrard = {
-  firstName: "Terry test",
+  firstName: "Terry test develop test",
   lastName: "Henrard",
   languages: ["JavaScript"],
   frameworks: ["Next.js", "React", "Express", "Tailwind CSS"],
