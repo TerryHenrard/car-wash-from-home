@@ -172,44 +172,6 @@ body {
 .header #side-bar ul li a:active {
   color: #072136;
 }
-.header .valid-inscription,
-.header .error-inscription {
-  top: 10px;
-  right: -600px;
-  position: fixed;
-  padding: 20px 40px;
-  width: 400px;
-  background: #12d800;
-  border-radius: 50px 0 0 50px;
-  z-index: 5000;
-  opacity: 0;
-  transition: 0.3s;
-}
-@media only screen and (max-width: 500px) {
-  .header .valid-inscription,
-  .header .error-inscription {
-    width: 300px;
-  }
-}
-.header .valid-inscription .img-check,
-.header .error-inscription .img-check {
-  display: inline-block;
-  background: url(../../images/check.svg) center/cover;
-  height: 15px;
-  aspect-ratio: 1/1;
-}
-.header .valid-inscription p,
-.header .error-inscription p {
-  font-weight: bold;
-  text-transform: uppercase;
-  display: inline;
-}
-@media only screen and (max-width: 500px) {
-  .header .valid-inscription p,
-  .header .error-inscription p {
-    font-size: 0.8rem;
-  }
-}
 .header .error-inscription-anim {
   background: red;
   animation: inscription-anim 5s;
@@ -5762,4 +5724,64 @@ body {
 }
 .modal_overlay .modal_content .modal_buttons .modal_button_cancel:hover {
   color: #bd2929;
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 100%;
+  width: 350px;
+  z-index: 1000;
+  display: flex;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+  padding: 15px;
+  border-radius: 15px 0 0 15px;
+  transform: translateX(0);
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+}
+.toast .icon {
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  filter: drop-shadow(0 0 10px #000000);
+}
+
+.success-toast {
+  background: #00ba00;
+}
+
+.warning-toast {
+  background: #ff1f1f;
+}
+
+.show-toast {
+  animation: show-toast 0.5s forwards;
+}
+
+.hide-toast {
+  animation: hide-toast 0.5s forwards;
+}
+
+@keyframes show-toast {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-350px);
+    opacity: 1;
+  }
+}
+@keyframes hide-toast {
+  from {
+    transform: translateX(-350px);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }/*# sourceMappingURL=index.css.map */

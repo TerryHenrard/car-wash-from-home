@@ -553,14 +553,27 @@ const handleConfirmModalEvent = () =>
     fetchData("POST", "./assets/scripts/mail.php", order)
       .then((response) => {
         if (response.success) {
-          alert(
-            "Commande envoyée avec succès, vous allez recevoir un email de confirmation incessamment sous peu"
-          );
           closeModal();
+          swal({
+            title: "Votre rendez-vous à bien été pris en compte!",
+            text: "Vous allez bientôt recevoir un email de confirmation",
+            icon: "success",
+          });
+        } else {
+          swal({
+            title: "Une error s'est produite...",
+            text: "Si le problème persiste merci de prendre contact avec nous à contact@carwashfromhome.com",
+            icon: "error",
+          });
         }
       })
       .catch((error) => {
         console.log("Error handling submission:", error);
+        swal({
+          title: "Une error s'est produite...",
+          text: "Si le problème persiste merci de prendre contact avec nous à contact@carwashfromhome.com",
+          icon: "error",
+        });
       });
   });
 
@@ -578,19 +591,42 @@ const handleSubmitEvent = () =>
     }
   });
 
-const handleAddBtnInOrderEvents = () =>
+const handleAddBtnInOrderEvents = () => {
+  let toastCount = 0;
+
   Object.values(addInOrderButtons).forEach((buttons) =>
     buttons.forEach((button) =>
       button.addEventListener("click", ({ target }) => {
         const checkbox = getElement(target.getAttribute("data-checkbox-id"));
 
         checkbox.click();
-        const isClicked = checkbox.checked ? true : false;
-        target.textContent = isClicked ? "Retirer" : "Ajouter";
-        target.classList.toggle("clicked-btn", isClicked);
+        const isAdded = checkbox.checked ? true : false;
+        target.textContent = isAdded ? "Retirer" : "Ajouter";
+        target.classList.toggle("clicked-btn", isAdded);
+
+        const dataName = getElement(
+          target.getAttribute("data-checkbox-id")
+        ).getAttribute("data-name");
+
+        isAdded
+          ? createToast(
+              "success-toast",
+              toastCount++,
+              " a été ajouté à votre commande!",
+              `"${dataName}"`,
+              "./assets/images/check-icon.png"
+            )
+          : createToast(
+              "warning-toast",
+              toastCount++,
+              " a été supprimé de votre commande!",
+              `"${dataName}"`,
+              "./assets/images/warning-icon.png"
+            );
       })
     )
   );
+};
 
 const addCSRFToForm = () =>
   fetchData("GET", "./assets/scripts/generateCSRF.php")
@@ -604,6 +640,38 @@ const addCSRFToForm = () =>
       );
     })
     .catch((error) => console.log(error));
+
+const createToast = (
+  toastClass,
+  nbToasts,
+  text,
+  optionOrFinishing,
+  imagePath
+) => {
+  const toast = createElement("figure", null, {
+    class: `toast show-toast ${toastClass}`,
+    style: `z-index: ${1000 + nbToasts};`,
+  });
+  const img = createElement("img", null, {
+    src: imagePath,
+    alt: "icon",
+    class: "icon",
+  });
+  const p = createElement("p", text);
+  const span = createElement("span", optionOrFinishing, {
+    style: "font-weight: bold",
+  });
+
+  p.prepend(span);
+  toast.appendChild(img);
+  toast.appendChild(p);
+  document.body.prepend(toast);
+
+  setTimeout(() => {
+    toast.classList.add("hide-toast");
+    setTimeout(() => toast.remove(), 500);
+  }, 3000);
+};
 
 addCSRFToForm();
 handleAddBtnInOrderEvents();

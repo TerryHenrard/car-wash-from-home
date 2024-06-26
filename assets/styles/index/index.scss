@@ -1,8 +1,11 @@
-@import "./layout/settings";
+@import "./settings";
+
 @import "./layout/header";
 @import "./layout/tarif";
 @import "./layout/options";
 @import "./layout/partners";
 @import "./layout/rendez-vous";
 @import "./layout/footer";
-@import "./layout/modal";
+
+@import "./components/modal";
+@import "./components/toast";
