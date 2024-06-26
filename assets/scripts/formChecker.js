@@ -331,13 +331,9 @@ const setDatepicker = () => {
   const pad = (number) => (number < 10 ? `0${number}` : number);
   const reverseDate = (date) => date.split("-").reverse().join("/");
   const addDays = (date, days) => new Date(date.setDate(date.getDate() + days));
-
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = pad(date.getMonth() + 1);
-    const day = pad(date.getDate());
-    return `${year}-${month}-${day}`;
-  };
+  const convertToDate = (dateString) => new Date(dateString);
+  const formatDate = (date) =>
+    `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 
   const getSpecificWeekdaysBetweenDates = (startDate, endDate, weekdays) => {
     const result = [];
@@ -389,11 +385,13 @@ const setDatepicker = () => {
     );
   };*/
 
-  const unavailableDates = getSpecificWeekdaysBetweenDates(
-    minDate,
-    maxDate,
-    [2, 7]
-  );
+  const unavailableDates = [
+    ...getSpecificWeekdaysBetweenDates(minDate, maxDate, [2, 7]),
+    convertToDate("2024-06-29"), // week end papa
+    convertToDate("2024-07-1"), // week end papa
+    convertToDate("2024-07-17"), // rdv client chauvier
+    ...getAllDatesBetween("2024-07-18", "2024-07-29").map(convertToDate),
+  ];
 
   const firstNonExcludedDate = reverseDate(
     findFirstNonExcludedDate(
@@ -405,12 +403,14 @@ const setDatepicker = () => {
   const options = {
     min: minDate,
     max: maxDate,
-    without: [
-      ...unavailableDates,
-      "2024-06-29", // week end papa
-      "2024-07-17", // rdv client chauvier
-      ...getAllDatesBetween("2024-07-18", "2024-07-29"),
-    ],
+    without: unavailableDates,
+    // without: [
+    //   ...unavailableDates,
+    //   "2024-06-29", // week end papa
+    //   "2024-07-1", // week end papa
+    //   "2024-07-17", // rdv client chauvier
+    //   ...getAllDatesBetween("2024-07-18", "2024-07-29"),
+    // ],
   };
 
   appointment.date.element.setAttribute("placeholder", firstNonExcludedDate);
