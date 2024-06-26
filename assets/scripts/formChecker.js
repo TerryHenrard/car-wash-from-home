@@ -335,6 +335,11 @@ const setDatepicker = () => {
   const formatDate = (date) =>
     `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 
+  const convertToCorrectDate = (dateString) => {
+    const [day, month, year] = dateString.split("/").map(Number);
+    return new Date(year, month - 1, day);
+  };
+
   const getSpecificWeekdaysBetweenDates = (startDate, endDate, weekdays) => {
     const result = [];
     let currentDate = new Date(startDate);
@@ -404,13 +409,9 @@ const setDatepicker = () => {
     min: minDate,
     max: maxDate,
     without: unavailableDates,
-    // without: [
-    //   ...unavailableDates,
-    //   "2024-06-29", // week end papa
-    //   "2024-07-1", // week end papa
-    //   "2024-07-17", // rdv client chauvier
-    //   ...getAllDatesBetween("2024-07-18", "2024-07-29"),
-    // ],
+    openOn: convertToCorrectDate(firstNonExcludedDate),
+    yearRange: 0,
+    weekStart: 1,
   };
 
   appointment.date.element.setAttribute("placeholder", firstNonExcludedDate);
