@@ -169,7 +169,7 @@ $headers .= "From: <contact@carwashfromhome.com>" . "\r\n";
 $mailSent = mail("contact@carwashfromhome.com", $subject, $body, $headers);
 
 if ($mailSent) {
-  echo json_encode(["success" => true, "message" => "Email envoyé avec succès."]);
+  echo json_encode(["success" => true, "message" => "Email sent with success"]);
 } else {
-  echo json_encode(["success" => false, "message" => "Erreur lors de l'envoi de l'email."]);
+  echo json_encode(["success" => false, "message" => "Error while sending email"]);
 }
