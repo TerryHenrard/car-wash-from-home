@@ -5730,7 +5730,7 @@ body {
   position: fixed;
   top: 20px;
   left: 100%;
-  width: 350px;
+  width: 325px;
   z-index: 1000;
   display: flex;
   -moz-column-gap: 15px;
@@ -5740,6 +5740,7 @@ body {
   transform: translateX(0);
   transition: transform 0.5s ease-out, opacity 0.5s ease-out;
   opacity: 0;
+  white-space: pre-line;
 }
 .toast .icon {
   -o-object-fit: contain;
@@ -5753,8 +5754,12 @@ body {
   background: #00ba00;
 }
 
-.warning-toast {
+.error-toast {
   background: #ff1f1f;
+}
+
+.warning-toast {
+  background: #ffbb33;
 }
 
 .show-toast {
@@ -5771,13 +5776,13 @@ body {
     opacity: 0;
   }
   to {
-    transform: translateX(-350px);
+    transform: translateX(-325px);
     opacity: 1;
   }
 }
 @keyframes hide-toast {
   from {
-    transform: translateX(-350px);
+    transform: translateX(-325px);
     opacity: 1;
   }
   to {

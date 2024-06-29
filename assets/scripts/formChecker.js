@@ -1,8 +1,9 @@
 import services from "./services.js";
 
+let toastCount = 0;
+
 const getElement = (id) => document.getElementById(id);
 const getElements = (selector) => [...document.querySelectorAll(selector)];
-
 const createElement = (tag, textContent = null, attributes = null) => {
   const element = document.createElement(tag);
 
@@ -85,7 +86,7 @@ const customerInfos = {
     input: getElement("lastName"),
     label: getElement("label_lastName"),
     errorElement: getElement("message-error-lastName"),
-    errorMsg: "le format du nom de famille est incorrect.",
+    errorMsg: "le format du nom est incorrect.",
     regex: /^[\p{L}\s\-.']{2,100}$/u,
   },
   firstName: {
@@ -433,16 +434,6 @@ const handleHourEvent = () =>
     ({ target: { value } }) => (order.appoitmentInfos.hour = value)
   );
 
-const checkEmptyfieldOrder = () =>
-  order.personnalInfos.lastName === "" ||
-  order.personnalInfos.firstName === "" ||
-  order.personnalInfos.email === "" ||
-  order.personnalInfos.tel === "" ||
-  order.personnalInfos.address === "" ||
-  order.personnalInfos.city === ""
-    ? true
-    : false;
-
 const openModal = () => toggleModalDisplay(true);
 const closeModal = () => {
   toggleModalDisplay(false);
@@ -582,19 +573,161 @@ const handleSubmitEvent = () =>
   form.addEventListener("submit", (ev) => {
     ev.preventDefault();
 
-    order.appoitmentInfos.date = appointment.date.element.value
-      ? appointment.date.element.value
-      : appointment.date.element.getAttribute("placeholder");
+    order.appoitmentInfos.date =
+      appointment.date.element.value ||
+      appointment.date.element.getAttribute("placeholder");
 
-    if (!checkEmptyfieldOrder() && checkboxes.termesAndConditions.checked) {
+    if (handleFormErrorPossibilities()) {
       buildModal();
       openModal();
     }
   });
 
-const handleAddBtnInOrderEvents = () => {
-  let toastCount = 0;
+const handleFormErrorPossibilities = () => {
+  const { washingInfos } = order;
+  const { classic, finishing, options, price, time } = washingInfos;
+  const warningIcon = "./assets/images/warning-icon.png";
 
+  const showError = (message) => {
+    createToast("warning-toast", message, "", warningIcon);
+    return false;
+  };
+
+  const checkEmptyfieldOrder = () =>
+    order.personnalInfos.lastName === "" ||
+    order.personnalInfos.firstName === "" ||
+    order.personnalInfos.email === "" ||
+    order.personnalInfos.tel === "" ||
+    order.personnalInfos.address === "" ||
+    order.personnalInfos.city === "";
+
+  const checkRequiredClassicWash = (services, requiredClassicWash) => {
+    const invalidOptions = services.filter(
+      (service) =>
+        (options.includes(service) || finishing.includes(service)) &&
+        !classic.includes(requiredClassicWash)
+    );
+    return invalidOptions.length > 0 ? invalidOptions : null;
+  };
+
+  const formatInvalidOptions = (invalidOptions) => {
+    return invalidOptions.map((option) => `- ${option}`).join("\n");
+  };
+
+  const getErrorMessage = (invalidOptions, requiredClassicWash) => {
+    const isOptionSelected = options.length > 0;
+    const isFinishingSelected = finishing.length > 0;
+    const isBothSelected = isOptionSelected && isFinishingSelected;
+    const optionCount = options.length;
+    const finishingCount = finishing.length;
+
+    let selectionText = "";
+
+    if (isBothSelected) {
+      selectionText =
+        optionCount > 1 && finishingCount > 1
+          ? "les options et les finitions sélectionnées"
+          : optionCount > 1
+          ? "les options et la finition sélectionnée"
+          : finishingCount > 1
+          ? "l'option et les finitions sélectionnées"
+          : "l'option et la finition sélectionnée";
+    } else if (isOptionSelected) {
+      selectionText =
+        optionCount > 1 ? "les options sélectionnées" : "l'option sélectionnée";
+    } else if (isFinishingSelected) {
+      selectionText =
+        finishingCount > 1
+          ? "les finitions sélectionnées"
+          : "la finition sélectionnée";
+    }
+
+    const requiredText =
+      requiredClassicWash === "Extérieur"
+        ? "Le lavage extérieur"
+        : "Le lavage intérieur";
+
+    return `${requiredText} est nécessaire pour ${selectionText} :\n${formatInvalidOptions(
+      invalidOptions
+    )}`;
+  };
+
+  const conditions = [
+    {
+      condition: checkEmptyfieldOrder(),
+      message: "Veuillez remplir tous les champs",
+    },
+    {
+      condition: price <= 0 && time <= 0,
+      message: "Veuillez sélectionner au moins une prestation",
+    },
+    {
+      condition: classic.length === 0,
+      message: "Veuillez sélectionner au moins un lavage classique",
+    },
+    {
+      condition:
+        finishing.includes("Céramique carrosserie") &&
+        (!finishing.includes("Polissage carrosserie") ||
+          !classic.includes("Extérieur")),
+      message:
+        "Nettoyage extérieur et polissage carrosserie nécessaires avant une céramique",
+    },
+    {
+      condition: checkRequiredClassicWash(
+        [
+          "Nettoyage bloc moteur",
+          "Polissage carrosserie",
+          "Céramique jantes",
+          "Céramique vitres",
+          "Rénovateur pneus",
+          "Rénovateur joints",
+        ],
+        "Extérieur"
+      ),
+      message: (invalidOptions) => {
+        return getErrorMessage(invalidOptions, "Extérieur");
+      },
+    },
+    {
+      condition: checkRequiredClassicWash(
+        [
+          "Nettoyage cuir et alcantara",
+          "Shampoing sièges en tissus",
+          "Shampoing tapis et coffre",
+          "Shampoing moquette",
+          "Imperméabilisant textiles",
+          "Protection cuir",
+          "Anti buée",
+          "Protection plastiques",
+        ],
+        "Intérieur"
+      ),
+      message: (invalidOptions) => {
+        return getErrorMessage(invalidOptions, "Intérieur");
+      },
+    },
+    {
+      condition: !checkboxes.termesAndConditions.checked,
+      message:
+        "Veuillez confirmer avoir lu et accepté les conditions générales de ventes et la politique de confidentialité",
+    },
+  ];
+
+  for (const { condition, message } of conditions) {
+    const invalidOptions =
+      typeof condition === "function" ? condition() : condition;
+    if (invalidOptions) {
+      return showError(
+        typeof message === "function" ? message(invalidOptions) : message
+      );
+    }
+  }
+
+  return true;
+};
+
+const handleAddBtnInOrderEvents = () => {
   Object.values(addInOrderButtons).forEach((buttons) =>
     buttons.forEach((button) =>
       button.addEventListener("click", ({ target }) => {
@@ -612,17 +745,15 @@ const handleAddBtnInOrderEvents = () => {
         isAdded
           ? createToast(
               "success-toast",
-              toastCount++,
               " a été ajouté à votre commande!",
               `"${dataName}"`,
               "./assets/images/check-icon.png"
             )
           : createToast(
-              "warning-toast",
-              toastCount++,
+              "error-toast",
               " a été supprimé de votre commande!",
               `"${dataName}"`,
-              "./assets/images/warning-icon.png"
+              "./assets/images/error-icon.png"
             );
       })
     )
@@ -642,16 +773,10 @@ const addCSRFToForm = () =>
     })
     .catch((error) => console.log(error));
 
-const createToast = (
-  toastClass,
-  nbToasts,
-  text,
-  optionOrFinishing,
-  imagePath
-) => {
+const createToast = (toastClass, text, optionOrFinishing, imagePath) => {
   const toast = createElement("figure", null, {
     class: `toast show-toast ${toastClass}`,
-    style: `z-index: ${1000 + nbToasts};`,
+    style: `z-index: ${1000 + toastCount++};`,
   });
   const img = createElement("img", null, {
     src: imagePath,
@@ -671,7 +796,7 @@ const createToast = (
   setTimeout(() => {
     toast.classList.add("hide-toast");
     setTimeout(() => toast.remove(), 500);
-  }, 3000);
+  }, 5000);
 };
 
 addCSRFToForm();
