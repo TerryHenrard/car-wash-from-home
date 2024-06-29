@@ -3,7 +3,6 @@ session_start();
 if (!isset($_POST, $_SESSION['csrf_token']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
   exit();
 }
-
 // Decode JSON input
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -70,11 +69,11 @@ $regexs = [
 
 $validClassicWashes = ['Intérieur', 'Extérieur'];
 $validOptions = [
-  'Nettoyage du bloc moteur',
-  'Nettoyage des sièges en cuir et en alcantara',
-  'Shampoing des sièges en tissus',
-  'Shampoing des tapis et du coffre',
-  'Shampoing de la moquette'
+  'Nettoyage bloc moteur',
+  'Nettoyage cuir et alcantara',
+  'Shampoing sièges en tissus',
+  'Shampoing tapis et coffre',
+  'Shampoing moquette'
 ];
 $validFinishing = [
   'Polissage carrosserie',
@@ -113,6 +112,10 @@ $washingMessage = preventScriptTag($data['washingInfos']['message'] ?? null);
 $washingOptions = array_map('preventScriptTag', $data['washingInfos']['options'] ?? []);
 $washingPrice = (int)($data['washingInfos']['price'] ?? 0);
 $washingTime = (int)($data['washingInfos']['time'] ?? 0);
+
+if (!validateArrayInArray($washingOptions, $validOptions)) {
+  echo "babab";
+}
 
 if (
   !validateDate($appointmentDate) ||
