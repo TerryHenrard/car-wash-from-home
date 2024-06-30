@@ -45,6 +45,7 @@ let order = {
 };
 
 const form = getElement("contact-form");
+const loadingHamsterOverlay = getElement("loading-hamster-overlay");
 
 const checkboxes = {
   classicWashes: getElements(".classicWash"),
@@ -532,40 +533,52 @@ const buildModal = () => {
   ]);
 };
 
+const toggleLoadingHamsterDisplay = (show) =>
+  (loadingHamsterOverlay.style.display = show ? "block" : "none");
+
 const handleCloseModalEvent = () =>
   [modal.cancelButton, modal.closeButton, modal.overlay].forEach((button) =>
     button.addEventListener("click", () => closeModal())
   );
 modal.content.addEventListener("click", (ev) => ev.stopPropagation());
 
+const displayErrorSwal = () => {
+  swal({
+    title: "Une error s'est produite...",
+    text: "Si le problème persiste merci de prendre contact avec nous à contact@carwashfromhome.com",
+    icon: "error",
+  });
+};
+
+const displaySuccessSwal = () => {
+  swal({
+    title: "Votre rendez-vous à bien été pris en compte!",
+    text: "Vous allez bientôt recevoir un email de confirmation",
+    icon: "success",
+  });
+};
+
 const handleConfirmModalEvent = () =>
   modal.confirmButton.addEventListener("click", () => {
     order.csrf_token = getElement("csrf_token").value;
 
-    fetchData("POST", "./assets/scripts/mail.php", order)
+    toggleLoadingHamsterDisplay(true);
+
+    fetchData("POST", "./assets/scripts/sendAppointmentEmail.php", order)
       .then((response) => {
         if (response.success) {
+          toggleLoadingHamsterDisplay(false);
           closeModal();
-          swal({
-            title: "Votre rendez-vous à bien été pris en compte!",
-            text: "Vous allez bientôt recevoir un email de confirmation",
-            icon: "success",
-          });
+          displaySuccessSwal();
         } else {
-          swal({
-            title: "Une error s'est produite...",
-            text: "Si le problème persiste merci de prendre contact avec nous à contact@carwashfromhome.com",
-            icon: "error",
-          });
+          toggleLoadingHamsterDisplay(false);
+          displayErrorSwal();
         }
       })
       .catch((error) => {
         console.log("Error handling submission:", error);
-        swal({
-          title: "Une error s'est produite...",
-          text: "Si le problème persiste merci de prendre contact avec nous à contact@carwashfromhome.com",
-          icon: "error",
-        });
+        toggleLoadingHamsterDisplay(false);
+        displayErrorSwal();
       });
   });
 

@@ -5,7 +5,6 @@ if (!isset($_POST, $_SESSION['csrf_token']) || $_SERVER['REQUEST_METHOD'] !== 'P
 }
 // Decode JSON input
 $data = json_decode(file_get_contents("php://input"), true);
-
 if ($data["csrf_token"] !== $_SESSION['csrf_token']) {
   exit();
 }
@@ -129,46 +128,48 @@ if (
   !validateInt($washingPrice) ||
   !validateInt($washingTime)
 ) {
+  echo json_encode(["success" => false, "message" => "Invalid input data"]);
   exit();
 }
 
 // If arrived here data are secure
 
-// Prepare email content
-$subject = "Nouveau rendez-vous de lavage de voiture";
-$body = "
-<b>Informations personnelles:</b><br>
-Nom: $personalLastName<br>
-Prénom: $personalFirstName<br>
-Adresse: $personalAddress<br>
-Ville: $personalCity<br>
-Email: $personalEmail<br>
-Téléphone: $personalTel<br><br>
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
-<b>Informations de rendez-vous:</b><br>
-Date: $appointmentDate<br>
-Heure: $appointmentTime<br><br>
+require '../libraries/phpmailer/Exception.php';
+require '../libraries/phpmailer/PHPMailer.php';
+require '../libraries/phpmailer/SMTP.php';
+require '../../../../config.php';
 
-<b>Informations sur le lavage:</b><br>
-Taille de la voiture: $washingCarSize<br>
-Classique: " . implode(', ', $washingClassic) . "<br>
-Finition: " . implode(', ', $washingFinishing) . "<br>
-Options: " . implode(', ', $washingOptions) . "<br>
-Message: $washingMessage<br>
-Prix: $washingPrice €<br>
-Durée: $washingTime minutes<br>
-";
+$mail = new PHPMailer(true);
 
-// Headers
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-$headers .= "From: <contact@carwashfromhome.com>" . "\r\n";
 
-// Send email
-$mailSent = mail("contact@carwashfromhome.com", $subject, $body, $headers);
+try {
+  //Server settings
+  $mail->SMTPDebug = SMTP::DEBUG_OFF;                         //Enable verbose debug output
+  $mail->isSMTP();                                            //Send using SMTP
+  $mail->Host       = $email_host;                            //Set the SMTP server to send through
+  $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+  $mail->Username   = $email_name;                            //SMTP username
+  $mail->Password   = $email_pass;                            //SMTP password
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+  $mail->Port       = $email_port;                            //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-if ($mailSent) {
-  echo json_encode(["success" => true, "message" => "Email sent with success"]);
-} else {
-  echo json_encode(["success" => false, "message" => "Error while sending email"]);
+  //Recipients
+  $mail->setFrom('contact@carwashfromhome.com', 'Car Wash From Home');
+  $mail->addAddress('henrardterry2203@hotmail.com', 'Terry Henrard');           //Add a recipient
+  $mail->addReplyTo('contact@carwashfromhome.com', 'Car Wash From Home');
+
+  //Content
+  $mail->isHTML(true);                                        //Set email format to HTML
+  $mail->Subject = 'Here is the subject';
+  $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+  $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+  $mail->send();
+  echo json_encode(["success" => true, "message" => "Email has been sent"]);
+} catch (Exception $e) {
+  echo json_encode(["success" => false, "message" => "Email hasn't been sent: $mail->ErrorInfo", "exception" => $e->getMessage()]);
 }
