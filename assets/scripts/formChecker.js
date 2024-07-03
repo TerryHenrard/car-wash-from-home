@@ -38,7 +38,7 @@ let order = {
     time: 0,
     price: 0,
   },
-  appoitmentInfos: {
+  appointmentInfos: {
     date: null,
     hour: null,
   },
@@ -154,7 +154,7 @@ const appointment = {
   },
 };
 
-const fetchData = async (method = "GET", url = "", data = {}) => {
+const fetchData = async (method, url, data = {}) => {
   const options = {
     method,
     headers: {
@@ -200,11 +200,18 @@ const getWashServiceDetails = (type, id) =>
 const addSupplementForPolishAndCeramicAccordingToCarSize = (id, checked) => {
   const index = carSizes.indexOf(checkboxes.selectCarSize.value);
   const { price, time } = supplements[id];
+  const priceSupplement = price * index;
+  const timeSupplement = time * index;
 
   updatePriceAndTimeAndDisplay(
-    checked ? price * index : -price * index,
-    checked ? time * index : -time * index
+    checked ? priceSupplement : -priceSupplement,
+    checked ? timeSupplement : -timeSupplement
   );
+
+  return {
+    priceSupplement,
+    timeSupplement,
+  };
 };
 
 const updateButton = (button, bool) => {
@@ -217,9 +224,13 @@ const handleCheckboxEvent = (checkboxes, type) =>
     checkbox.addEventListener("input", ({ target }) => {
       const { id, checked } = target;
       const { price, time } = getWashServiceDetails(type, id);
+      const name = target.getAttribute("data-name");
+      let priceSupplement = 0;
+      let timeSupplement = 0;
 
       if (id === "polissage" || id === "ceramique_carrosserie") {
-        addSupplementForPolishAndCeramicAccordingToCarSize(id, checked);
+        ({ priceSupplement, timeSupplement } =
+          addSupplementForPolishAndCeramicAccordingToCarSize(id, checked));
       }
 
       if (id !== "exteriors" && id !== "interiors") {
@@ -231,12 +242,16 @@ const handleCheckboxEvent = (checkboxes, type) =>
         checked ? time : -time
       );
 
-      const dataName = target.getAttribute("data-name");
+      const service = {
+        name,
+        price: price + priceSupplement,
+        time: time + timeSupplement,
+      };
 
       checked
-        ? order.washingInfos[type].push(dataName)
+        ? order.washingInfos[type].push(service)
         : order.washingInfos[type].splice(
-            order.washingInfos[type].indexOf(dataName),
+            order.washingInfos[type].indexOf(service),
             1
           );
     })
@@ -270,6 +285,17 @@ const handleChangingCarSizeEvent = () => {
       return services[service.id][carSize];
     };
 
+    const updateServiceWithSupplement = (dataName, newValues) => {
+      const serviceType =
+        dataName === "Extérieur" || dataName === "Intérieur"
+          ? order.washingInfos.classic
+          : order.washingInfos.finishing;
+      const index = serviceType.findIndex(({ name }) => name === dataName);
+
+      serviceType[index].price = newValues.price;
+      serviceType[index].time = newValues.time;
+    };
+
     [
       ...checkboxes.classicWashes,
       supplements.polissage.element,
@@ -291,6 +317,11 @@ const handleChangingCarSizeEvent = () => {
           newValues.price,
           oldValues.time,
           newValues.time
+        );
+
+        updateServiceWithSupplement(
+          service.getAttribute("data-name"),
+          newValues
         );
       }
     });
@@ -426,13 +457,13 @@ const setTimeSlots = () => {
     appointment.hour.element.appendChild(option);
   });
 
-  order.appoitmentInfos.hour = appointment.hour.element.value;
+  order.appointmentInfos.hour = appointment.hour.element.value;
 };
 
 const handleHourEvent = () =>
   appointment.hour.element.addEventListener(
     "input",
-    ({ target: { value } }) => (order.appoitmentInfos.hour = value)
+    ({ target: { value } }) => (order.appointmentInfos.hour = value)
   );
 
 const openModal = () => toggleModalDisplay(true);
@@ -488,6 +519,7 @@ const addWashingInfosToModal = () => {
   container.appendChild(createElement("h4", "Information sur le nettoyage"));
 
   Object.values(order.washingInfos).forEach((value, index) => {
+    console.log(value);
     const modalRow = createElement("div", null, { class: "modal_row" });
     const modalHeader = createElement("p", `${headers[index]} :`, {
       class: "modal_header",
@@ -496,7 +528,9 @@ const addWashingInfosToModal = () => {
 
     if (Array.isArray(value)) {
       value.forEach((val, idx) => {
-        modalValue.appendChild(createElement("p", `${idx + 1}. ${val}`));
+        modalValue.appendChild(
+          createElement("p", `${idx + 1}. ${val.name} (${val.price}€)`)
+        );
       });
     } else if (headers[index] === "Durée") {
       modalValue.appendChild(createElement("p", formatTime(value)));
@@ -527,7 +561,7 @@ const buildModal = () => {
     "Ville",
   ]);
   addWashingInfosToModal();
-  addInfosToModal("appoitmentInfos", "Informations sur le rendez-vous", [
+  addInfosToModal("appointmentInfos", "Informations sur le rendez-vous", [
     "Date",
     "Heure",
   ]);
@@ -536,11 +570,12 @@ const buildModal = () => {
 const toggleLoadingHamsterDisplay = (show) =>
   (loadingHamsterOverlay.style.display = show ? "block" : "none");
 
-const handleCloseModalEvent = () =>
+const handleCloseModalEvent = () => {
   [modal.cancelButton, modal.closeButton, modal.overlay].forEach((button) =>
     button.addEventListener("click", () => closeModal())
   );
-modal.content.addEventListener("click", (ev) => ev.stopPropagation());
+  modal.content.addEventListener("click", (ev) => ev.stopPropagation());
+};
 
 const displayErrorSwal = () => {
   swal({
@@ -552,8 +587,8 @@ const displayErrorSwal = () => {
 
 const displaySuccessSwal = () => {
   swal({
-    title: "Votre rendez-vous à bien été pris en compte!",
-    text: "Vous allez bientôt recevoir un email de confirmation",
+    title: "Votre réservation à bien été prise en compte!",
+    text: "Vous avez reçu un email de confirmation.",
     icon: "success",
   });
 };
@@ -564,7 +599,7 @@ const handleConfirmModalEvent = () =>
 
     toggleLoadingHamsterDisplay(true);
 
-    fetchData("POST", "./assets/scripts/sendAppointmentEmail.php", order)
+    fetchData("POST", "./assets/scripts/sendConfirmationMail.php", order)
       .then((response) => {
         if (response.success) {
           toggleLoadingHamsterDisplay(false);
@@ -586,7 +621,7 @@ const handleSubmitEvent = () =>
   form.addEventListener("submit", (ev) => {
     ev.preventDefault();
 
-    order.appoitmentInfos.date =
+    order.appointmentInfos.date =
       appointment.date.element.value ||
       appointment.date.element.getAttribute("placeholder");
 

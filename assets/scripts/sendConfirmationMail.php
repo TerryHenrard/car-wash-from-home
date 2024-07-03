@@ -41,9 +41,17 @@ function validateWithRegex($value, $regex)
   return preg_match($regex, $value);
 }
 
+function extractNames($array)
+{
+  return array_map(function ($item) {
+    return $item['name'];
+  }, $array);
+}
+
 function validateArrayInArray($array, $validArray)
 {
-  return is_array($array) && empty(array_diff($array, $validArray));
+  $names = extractNames($array);
+  return is_array($names) && empty(array_diff($names, $validArray));
 }
 
 function validateValueInArray($value, $validArray)
@@ -54,6 +62,19 @@ function validateValueInArray($value, $validArray)
 function validateInt($value)
 {
   return is_numeric($value);
+}
+
+function validateItems($items, $validNames)
+{
+  foreach ($items as $item) {
+    if (!isset($item['name'], $item['price'], $item['time'])) {
+      return false;
+    }
+    if (!validateValueInArray($item['name'], $validNames) || !validateInt($item['price']) || !validateInt($item['time'])) {
+      return false;
+    }
+  }
+  return true;
 }
 
 $regexs = [
@@ -96,8 +117,8 @@ $validCarSizes = [
 ];
 
 // Extract data from JSON and sanitize
-$appointmentDate = preventScriptTag($data['appoitmentInfos']['date'] ?? null);
-$appointmentTime = preventScriptTag($data['appoitmentInfos']['hour'] ?? null);
+$appointmentDate = preventScriptTag($data['appointmentInfos']['date'] ?? null);
+$appointmentHour = preventScriptTag($data['appointmentInfos']['hour'] ?? null);
 $personalAddress = preventScriptTag($data['personnalInfos']['address'] ?? null);
 $personalCity = preventScriptTag($data['personnalInfos']['city'] ?? null);
 $personalEmail = preventScriptTag($data['personnalInfos']['email'] ?? null);
@@ -105,26 +126,26 @@ $personalFirstName = preventScriptTag($data['personnalInfos']['firstName'] ?? nu
 $personalLastName = preventScriptTag($data['personnalInfos']['lastName'] ?? null);
 $personalTel = preventScriptTag($data['personnalInfos']['tel'] ?? null);
 $washingCarSize = preventScriptTag($data['washingInfos']['carSize'] ?? null);
-$washingClassic = array_map('preventScriptTag', $data['washingInfos']['classic'] ?? []);
-$washingFinishing = array_map('preventScriptTag', $data['washingInfos']['finishing'] ?? []);
+$washingClassic = $data['washingInfos']['classic'] ?? [];
+$washingFinishing = $data['washingInfos']['finishing'] ?? [];
 $washingMessage = preventScriptTag($data['washingInfos']['message'] ?? null);
-$washingOptions = array_map('preventScriptTag', $data['washingInfos']['options'] ?? []);
+$washingOptions = $data['washingInfos']['options'] ?? [];
 $washingPrice = (int)($data['washingInfos']['price'] ?? 0);
 $washingTime = (int)($data['washingInfos']['time'] ?? 0);
 
 if (
   !validateDate($appointmentDate) ||
-  !validateTime($appointmentTime) ||
+  !validateTime($appointmentHour) ||
   !validateWithRegex($personalAddress, $regexs["address"]) ||
   !validateWithRegex($personalCity, $regexs["city"]) ||
   !validateWithRegex($personalEmail, $regexs["email"]) ||
   !validateWithRegex($personalFirstName, $regexs["firstName"]) ||
   !validateWithRegex($personalLastName, $regexs["lastName"]) ||
   !validateWithRegex($personalTel, $regexs["tel"]) ||
-  !validateArrayInArray($washingClassic, $validClassicWashes) ||
-  !validateArrayInArray($washingFinishing, $validFinishing) ||
+  !validateItems($washingClassic, $validClassicWashes) ||
+  !validateItems($washingFinishing, $validFinishing) ||
   !validateWithRegex($washingMessage, $regexs["message"]) ||
-  !validateArrayInArray($washingOptions, $validOptions) ||
+  !validateItems($washingOptions, $validOptions) ||
   !validateInt($washingPrice) ||
   !validateInt($washingTime)
 ) {
@@ -143,8 +164,43 @@ require '../libraries/phpmailer/PHPMailer.php';
 require '../libraries/phpmailer/SMTP.php';
 require '../../../../config.php';
 
-$mail = new PHPMailer(true);
+function formatTime($minutes)
+{
+  $hours = floor($minutes / 60);
+  $remainingMinutes = $minutes % 60;
 
+  $formattedHours = str_pad($hours, 2, '0', STR_PAD_LEFT);
+  $formattedMinutes = str_pad($remainingMinutes, 2, '0', STR_PAD_LEFT);
+
+  return "{$formattedHours}h{$formattedMinutes}";
+}
+
+function loadTemplate($filePath, $variables = [])
+{
+  if (file_exists($filePath)) {
+    $template = file_get_contents($filePath);
+    foreach ($variables as $key => $value) {
+      $template = str_replace("{{" . $key . "}}", $value, $template);
+    }
+    return $template;
+  }
+  return false;
+}
+
+$templatePath = "../templates/orderConfirmation.html";
+$variables = [
+  "logo_cwfh_path" => "../images/logo4.webp",
+  "order_id" => 1,
+  "appointment_date" => $appointmentDate,
+  "appointment_hour" => $appointmentHour,
+  "order_total" => $washingPrice . '€',
+  "order_time" => formatTime($washingTime),
+  "client_email" => $personalEmail,
+  "client_address" => $personalAddress . ', ' . ucfirst($personalCity),
+];
+$emailBody = loadTemplate($templatePath, $variables);
+
+$mail = new PHPMailer(true);
 
 try {
   //Server settings
@@ -159,14 +215,15 @@ try {
 
   //Recipients
   $mail->setFrom('contact@carwashfromhome.com', 'Car Wash From Home');
-  $mail->addAddress('henrardterry2203@hotmail.com', 'Terry Henrard');           //Add a recipient
+  $mail->addAddress($personalEmail, $personalFirstName . ' ' . $personalLastName); //Add a recipient
   $mail->addReplyTo('contact@carwashfromhome.com', 'Car Wash From Home');
 
   //Content
-  $mail->isHTML(true);                                        //Set email format to HTML
-  $mail->Subject = 'Here is the subject';
-  $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-  $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+  $mail->CharSet = "UTF-8";
+  $mail->isHTML(true);                                          //Set email format to HTML
+  $mail->Subject = 'Confirmation du rendez-vous du ' . $appointmentDate . ' au ' . $personalAddress . ' ' . $personalCity;
+  $mail->addEmbeddedImage("../images/logo1.png", "logo_cwfh_path");
+  $mail->Body    = $emailBody;
 
   $mail->send();
   echo json_encode(["success" => true, "message" => "Email has been sent"]);
