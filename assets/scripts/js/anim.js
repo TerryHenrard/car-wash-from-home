@@ -23,6 +23,20 @@ const boxesOptions = document.querySelectorAll(".box");
 const sidebar = document.getElementById("side-bar");
 const aSideBar = document.querySelectorAll(".aSideBar");
 const spanToggle = document.querySelector(".toggle-btn");
+const navbar = document.getElementById("navbar");
+
+let lastScroll = 0;
+const navbarAnimation = () => {
+  if (scrollY < 400) {
+    navbar.style.top = 0 + "px";
+  } else if (scrollY < lastScroll) {
+    navbar.style.top = 0 + "px";
+  } else {
+    navbar.style.top = -100 + "px";
+  }
+
+  lastScroll = scrollY;
+};
 
 btn.addEventListener("click", () => sidebar.classList.toggle("active"));
 
@@ -98,6 +112,7 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("scroll", () => {
+  navbarAnimation();
   tarifAnim();
   explicationAnim();
   optionsAnim();
