@@ -519,7 +519,6 @@ const addWashingInfosToModal = () => {
   container.appendChild(createElement("h4", "Information sur le nettoyage"));
 
   Object.values(order.washingInfos).forEach((value, index) => {
-    console.log(value);
     const modalRow = createElement("div", null, { class: "modal_row" });
     const modalHeader = createElement("p", `${headers[index]} :`, {
       class: "modal_header",
@@ -599,7 +598,7 @@ const handleConfirmModalEvent = () =>
 
     toggleLoadingHamsterDisplay(true);
 
-    fetchData("POST", "./assets/scripts/sendConfirmationMail.php", order)
+    fetchData("POST", "./assets/scripts/php/main.php", order)
       .then((response) => {
         if (response.success) {
           toggleLoadingHamsterDisplay(false);
@@ -809,7 +808,7 @@ const handleAddBtnInOrderEvents = () => {
 };
 
 const addCSRFToForm = () =>
-  fetchData("GET", "./assets/scripts/generateCSRF.php")
+  fetchData("GET", "./assets/scripts/php/generateCSRF.php")
     .then((csrf) => {
       form.appendChild(
         createElement("input", null, {

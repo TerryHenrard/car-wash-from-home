@@ -35,7 +35,7 @@ body {
 .header {
   height: 88vh;
   position: relative;
-  background: url(../../images/bg3.webp) no-repeat center/cover;
+  background: url(../../images/bg3.jpg) no-repeat center/cover;
 }
 .header nav {
   position: fixed;
@@ -5633,7 +5633,7 @@ body {
   }
 }
 .modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos,
-.modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos,
+.modal_overlay .modal_content .modal_recap .modal_recap_appointmentInfos,
 .modal_overlay .modal_content .modal_recap .modal_recap_washingInfos {
   display: grid;
   gap: 10px;
@@ -5642,26 +5642,26 @@ body {
 }
 @media only screen and (max-width: 1300px) {
   .modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos,
-  .modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos,
+  .modal_overlay .modal_content .modal_recap .modal_recap_appointmentInfos,
   .modal_overlay .modal_content .modal_recap .modal_recap_washingInfos {
     gap: 5px;
     margin: 0 0 15px 0;
   }
 }
 .modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos h4,
-.modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos h4,
+.modal_overlay .modal_content .modal_recap .modal_recap_appointmentInfos h4,
 .modal_overlay .modal_content .modal_recap .modal_recap_washingInfos h4 {
   font-size: 1.2rem;
 }
 @media only screen and (max-width: 600px) {
   .modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos h4,
-  .modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos h4,
+  .modal_overlay .modal_content .modal_recap .modal_recap_appointmentInfos h4,
   .modal_overlay .modal_content .modal_recap .modal_recap_washingInfos h4 {
     font-size: 0.95rem;
   }
 }
 .modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos .modal_row,
-.modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos .modal_row,
+.modal_overlay .modal_content .modal_recap .modal_recap_appointmentInfos .modal_row,
 .modal_overlay .modal_content .modal_recap .modal_recap_washingInfos .modal_row {
   display: flex;
   align-items: baseline;
@@ -5669,14 +5669,14 @@ body {
   gap: 7.5px 15px;
 }
 .modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos .modal_row .modal_header,
-.modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos .modal_row .modal_header,
+.modal_overlay .modal_content .modal_recap .modal_recap_appointmentInfos .modal_row .modal_header,
 .modal_overlay .modal_content .modal_recap .modal_recap_washingInfos .modal_row .modal_header {
   white-space: nowrap;
   font-weight: bold;
   min-width: 100px;
 }
 .modal_overlay .modal_content .modal_recap .modal_recap_personnalInfos .modal_row .modal_value,
-.modal_overlay .modal_content .modal_recap .modal_recap_appoitmentInfos .modal_row .modal_value,
+.modal_overlay .modal_content .modal_recap .modal_recap_appointmentInfos .modal_row .modal_value,
 .modal_overlay .modal_content .modal_recap .modal_recap_washingInfos .modal_row .modal_value {
   display: flex;
   flex-direction: column;

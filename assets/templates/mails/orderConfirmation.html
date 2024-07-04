@@ -229,6 +229,10 @@
         text-align: center !important
       }
 
+      .text-align-left {
+        text-align: left !important;
+      }
+
       .es-m-txt-r,
       .es-m-txt-r h1,
       .es-m-txt-r h2,
@@ -396,7 +400,7 @@
               <td align="center" style="padding:0;Margin:0">
                 <table bgcolor="#ffffff" class="es-content-body" align="center" cellpadding="0" cellspacing="0"
                   role="none"
-                  style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
+                  style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px;border-radius:15px 15px 0 0;margin-top: 15px;">
                   <tr>
                     <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-right:20px;padding-left:20px">
                       <table cellpadding="0" cellspacing="0" width="100%" role="none"
@@ -416,7 +420,28 @@
                                 <td align="center" class="es-m-txt-c" style="padding:0;Margin:0;padding-bottom:10px">
                                   <h1
                                     style="Margin:0;font-family:arial, 'helvetica neue', helvetica, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:46px;font-style:normal;font-weight:bold;line-height:46px;color:#333333">
-                                    Confirmation du rendez-vous</h1>
+                                    Votre rendez-vous est confirmé!</h1>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" class="es-m-txt-c text-align-left"
+                                  style="padding:0;Margin:0;padding-bottom:10px">
+                                  <p
+                                    style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
+                                    <br>Bonjour {{client_firstName}}, nous avons le plaisir de vous confirmer le
+                                    rendez-vous
+                                    du <strong>{{appointment_date}}</strong> à <strong>{{appointment_hour}}</strong>, à
+                                    l'adresse: <strong>{{client_address}}</strong>.
+                                    <br><br>Afin de garantir un service optimal lors de notre
+                                    venue, nous vous prions de bien vouloir prévoir :
+                                    <br>&bull; Un espace suffisant pour que notre équipe puisse travailler dans de
+                                    bonnes conditions.
+                                    <br>&bull; Une prise de courant située à moins de 50 mètres du véhicule.
+                                    <br>&bull; Un accès à l'eau, un raccordement à un robinet de jardin est préférable
+                                    mais pas indispensable.
+                                    <br>&bull; Un emplacement à l'ombre pour éviter que la carrosserie ne soit brûlante
+                                    en cas de forte chaleur.<br>
+                                  </p>
                                 </td>
                               </tr>
                             </table>
@@ -435,124 +460,8 @@
               <td align="center" style="padding:0;Margin:0">
                 <table bgcolor="#ffffff" class="es-content-body" align="center" cellpadding="0" cellspacing="0"
                   role="none"
-                  style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
-                  <tr>
-                    <td align="left" style="padding:20px;Margin:0">
-                      <table cellpadding="0" cellspacing="0" width="100%" role="none"
-                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr>
-                          <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
-                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
-                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr>
-                                <td align="center" class="es-m-txt-c" style="padding:0;Margin:0">
-                                  <h2
-                                    style="Margin:0;font-family:arial, 'helvetica neue', helvetica, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:26px;font-style:normal;font-weight:bold;line-height:31px;color:#333333">
-                                    N°<a target="_blank" href=""
-                                      style="mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:26px">{{order_id}}</a>
-                                  </h2>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
+                  style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px;border-radius: 0 0 15px 15px;">
                   {{order_details}}
-                  <!-- <tr>
-                    <td class="esdev-adapt-off" align="left"
-                      style="Margin:0;padding-right:20px;padding-left:20px;padding-top:10px;padding-bottom:10px">
-                      <table cellpadding="0" cellspacing="0" class="esdev-mso-table" role="none"
-                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:560px">
-                        <tr>
-                          <td class="esdev-mso-td" valign="top" style="padding:0;Margin:0">
-                            <table cellpadding="0" cellspacing="0" class="es-left" align="left" role="none"
-                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
-                              <tr>
-                                <td class="es-m-p0r" align="center" style="padding:0;Margin:0;width:85px">
-                                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
-                                    style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr>
-                                      <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img"
-                                          src="https://eiqsewh.stripocdn.email/content/guids/CABINET_c67048fd0acf81b47e18129166337c05/images/43961618299486640.png"
-                                          alt=""
-                                          style="display:block;font-size:14px;border:0;outline:none;text-decoration:none"
-                                          width="70" height="70"></td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                          <td style="padding:0;Margin:0;width:20px"></td>
-                          <td class="esdev-mso-td" valign="top" style="padding:0;Margin:0">
-                            <table cellpadding="0" cellspacing="0" class="es-left" align="left" role="none"
-                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
-                              <tr>
-                                <td align="center" style="padding:0;Margin:0;width:260px">
-                                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
-                                    style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr>
-                                      <td align="left" style="padding:0;Margin:0">
-                                        <p
-                                          style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                          <strong>T-shirt</strong>
-                                        </p>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td align="left" style="padding:0;Margin:0;padding-top:5px">
-                                        <p
-                                          style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                          Size: M<br>Color: White</p>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                          <td style="padding:0;Margin:0;width:20px"></td>
-                          <td class="esdev-mso-td" valign="top" style="padding:0;Margin:0">
-                            <table cellpadding="0" cellspacing="0" class="es-left" align="left" role="none"
-                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
-                              <tr>
-                                <td align="left" style="padding:0;Margin:0;width:75px">
-                                  <table cellpadding="0" cellspacing="0" width="100%" role="none"
-                                    style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr>
-                                      <td align="center" style="padding:0;Margin:0;display:none"></td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                          <td style="padding:0;Margin:0;width:20px"></td>
-                          <td class="esdev-mso-td" valign="top" style="padding:0;Margin:0">
-                            <table cellpadding="0" cellspacing="0" class="es-right" align="right" role="none"
-                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
-                              <tr>
-                                <td align="left" style="padding:0;Margin:0;width:80px">
-                                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
-                                    style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr>
-                                      <td align="right" style="padding:0;Margin:0">
-                                        <p
-                                          style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                          $20</p>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr> -->
                   <tr>
                     <td align="left" style="padding:0;Margin:0;padding-right:20px;padding-left:20px;padding-top:10px">
                       <table cellpadding="0" cellspacing="0" width="100%" role="none"
@@ -592,16 +501,16 @@
                                 <td align="left" style="padding:0;Margin:0">
                                   <p
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                    Email: <strong>{{client_email}}</strong></p>
-                                  <p
-                                    style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
                                     Numéro de réservation:&nbsp;<strong>{{order_id}}</strong></p>
                                   <p
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                    Date:&nbsp;<strong>{{appointment_date}}</strong></p>
+                                    Email: <strong>{{client_email}}</strong></p>
                                   <p
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                    Heure&nbsp;<strong>{{appointment_hour}}</strong></p>
+                                    Téléphone: <strong>{{client_tel}}</strong></p>
+                                  <p
+                                    style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
+                                    Prénom: <strong>{{client_firstName}}</strong></p>
                                 </td>
                               </tr>
                             </table>
@@ -618,11 +527,16 @@
                                 <td align="left" class="es-m-txt-l" style="padding:0;Margin:0">
                                   <p
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                    Adresse:</p>
+                                    Adresse: <strong>{{client_address}}</strong></p>
                                   <p
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                    <strong>{{client_address}}</strong>
-                                  </p>
+                                    Date:&nbsp;<strong>{{appointment_date}}</strong></p>
+                                  <p
+                                    style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
+                                    Heure&nbsp;<strong>{{appointment_hour}}</strong></p>
+                                  <p
+                                    style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
+                                    Nom&nbsp;<strong>{{client_lastName}}</strong></p>
                                 </td>
                               </tr>
                             </table>
@@ -644,9 +558,12 @@
                                 <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px">
                                   <p
                                     style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">
-                                    Vous avez une question? Envoyez nous un email à <a target="_blank" href=""
+                                    Vous avez une question? Envoyez nous un
+                                    email à <a target="_blank" href="mailto:contact@carwashfromhome.com"
                                       style="mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">contact@carwashfromhome.com</a>
-                                    ou appelez nous au &nbsp;498/14.66.51.</p>
+                                    ou appelez nous au&nbsp;<a target="_blank" href="tel:498/14.66.51."
+                                      style="mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">498/14.66.51.</a>
+                                  </p>
                                 </td>
                               </tr>
                             </table>
@@ -684,19 +601,19 @@
                                       <td align="center" valign="top" width="33.33%"
                                         style="Margin:0;border:0;padding-top:5px;padding-bottom:5px;padding-right:5px;padding-left:5px">
                                         <a target="_blank" href="https://carwashfromhome.com/index.html"
-                                          style="mso-line-height-rule:exactly;text-decoration:none;font-family:arial, 'helvetica neue', helvetica, sans-serif;display:block;color:#999999;font-size:12px">Visitez
+                                          style="mso-line-height-rule:exactly;text-decoration:none;font-family:arial, 'helvetica neue', helvetica, sans-serif;display:block;color:#ffffff;font-size:12px">Visitez
                                           notre site</a>
                                       </td>
                                       <td align="center" valign="top" width="33.33%"
                                         style="Margin:0;border:0;padding-top:5px;padding-bottom:5px;padding-right:5px;padding-left:5px;border-left:1px solid #cccccc">
                                         <a target="_blank" href="https://carwashfromhome.com/pages/donnees-privees.html"
-                                          style="mso-line-height-rule:exactly;text-decoration:none;font-family:arial, 'helvetica neue', helvetica, sans-serif;display:block;color:#999999;font-size:12px">Politique
+                                          style="mso-line-height-rule:exactly;text-decoration:none;font-family:arial, 'helvetica neue', helvetica, sans-serif;display:block;color:#ffffff;font-size:12px">Politique
                                           de confidentialité</a>
                                       </td>
                                       <td align="center" valign="top" width="33.33%"
                                         style="Margin:0;border:0;padding-top:5px;padding-bottom:5px;padding-right:5px;padding-left:5px;border-left:1px solid #cccccc">
                                         <a target="_blank" href="https://carwashfromhome.com/pages/cgv.html"
-                                          style="mso-line-height-rule:exactly;text-decoration:none;font-family:arial, 'helvetica neue', helvetica, sans-serif;display:block;color:#999999;font-size:12px">Conditions
+                                          style="mso-line-height-rule:exactly;text-decoration:none;font-family:arial, 'helvetica neue', helvetica, sans-serif;display:block;color:#ffffff;font-size:12px">Conditions
                                           générales de vente</a>
                                       </td>
                                     </tr>
