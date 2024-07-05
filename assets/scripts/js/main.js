@@ -248,12 +248,19 @@ const handleCheckboxEvent = (checkboxes, type) =>
         time: time + timeSupplement,
       };
 
-      checked
-        ? order.washingInfos[type].push(service)
-        : order.washingInfos[type].splice(
-            order.washingInfos[type].indexOf(service),
-            1
-          );
+      if (checked) {
+        order.washingInfos[type].push(service);
+      } else {
+        // Trouver l'index du service à supprimer en comparant par `name`
+        const indexToRemove = order.washingInfos[type].findIndex(
+          (s) => s.name === service.name
+        );
+        if (indexToRemove !== -1) {
+          order.washingInfos[type].splice(indexToRemove, 1);
+        }
+      }
+
+      console.log(order.washingInfos);
     })
   );
 
@@ -610,7 +617,7 @@ const handleConfirmModalEvent = () =>
         }
       })
       .catch((error) => {
-        console.log("Error handling submission:", error);
+        console.error("Error handling submission:", error);
         toggleLoadingHamsterDisplay(false);
         displayErrorSwal();
       });
@@ -633,33 +640,134 @@ const handleSubmitEvent = () =>
 const handleFormErrorPossibilities = () => {
   const { washingInfos } = order;
   const { classic, finishing, options, price, time } = washingInfos;
-  const warningIcon = "./assets/images/warning-icon.png";
 
   const showError = (message) => {
-    createToast("warning-toast", message, "", warningIcon);
+    let messageCopy = message;
+    let match = messageCopy.match(/^Le lavage (intérieur|extérieur)\b/);
+    if (match) {
+      match = match[1];
+    }
+    let configs;
+
+    if (match === "extérieur" || match === "intérieur") {
+      message = match;
+      configs = {
+        extérieur: {
+          text: messageCopy,
+          icon: "warning",
+          title: "Attention...",
+          buttons: {
+            confirm: {
+              text: "Ajouter!",
+              value: "add",
+              closeModal: false,
+            },
+            ok: "ok",
+          },
+          action: () => {
+            checkboxes.classicWashes[0].click();
+          },
+        },
+        intérieur: {
+          text: messageCopy,
+          icon: "warning",
+          title: "Attention...",
+          buttons: {
+            confirm: {
+              text: "Ajouter!",
+              value: "add",
+              closeModal: false,
+            },
+            ok: "ok",
+          },
+          action: () => {
+            checkboxes.classicWashes[1].click();
+          },
+        },
+      };
+    } else {
+      configs = {
+        "Veuillez confirmer avoir lu et accepté les conditions générales de ventes et la politique de confidentialité":
+          {
+            text: messageCopy,
+            icon: "warning",
+            title: "Attention...",
+            buttons: {
+              confirm: {
+                text: "Confirmer!",
+                value: "confirm",
+                closeModal: false,
+              },
+              ok: "ok",
+            },
+            action: () => {
+              checkboxes.termesAndConditions.click();
+            },
+          },
+        "Nettoyage extérieur et polissage carrosserie nécessaires avant une céramique":
+          {
+            text: messageCopy,
+            icon: "warning",
+            title: "Attention...",
+            buttons: {
+              confirm: {
+                text: "Ajouter!",
+                value: "add",
+                closeModal: false,
+              },
+              ok: "ok",
+            },
+            action: () => {
+              if (!checkboxes.classicWashes[0].checked) {
+                checkboxes.classicWashes[0].click();
+              }
+              if (!checkboxes.washFinishing[0].checked) {
+                checkboxes.washFinishing[0].click();
+              }
+            },
+          },
+      };
+    }
+
+    console.log(message);
+
+    const config = configs[message] || {
+      text: messageCopy,
+      icon: "warning",
+      title: "Attention...",
+    };
+
+    swal(config).then((value) => {
+      if (value === "confirm" || value === "add") {
+        config.action?.();
+        swal.stopLoading();
+        swal.close();
+      }
+    });
+
     return false;
   };
 
   const checkEmptyfieldOrder = () =>
-    order.personnalInfos.lastName === "" ||
-    order.personnalInfos.firstName === "" ||
-    order.personnalInfos.email === "" ||
-    order.personnalInfos.tel === "" ||
-    order.personnalInfos.address === "" ||
-    order.personnalInfos.city === "";
+    !order.personnalInfos.lastName ||
+    !order.personnalInfos.firstName ||
+    !order.personnalInfos.email ||
+    !order.personnalInfos.tel ||
+    !order.personnalInfos.address ||
+    !order.personnalInfos.city;
 
   const checkRequiredClassicWash = (services, requiredClassicWash) => {
     const invalidOptions = services.filter(
       (service) =>
-        (options.includes(service) || finishing.includes(service)) &&
-        !classic.includes(requiredClassicWash)
+        (options.some((option) => option.name === service) ||
+          finishing.some((finishing) => finishing.name === service)) &&
+        !classic.some((classic) => classic.name === requiredClassicWash)
     );
     return invalidOptions.length > 0 ? invalidOptions : null;
   };
 
-  const formatInvalidOptions = (invalidOptions) => {
-    return invalidOptions.map((option) => `- ${option}`).join("\n");
-  };
+  const formatInvalidOptions = (invalidOptions) =>
+    invalidOptions.map((option) => `- ${option}`).join("\n");
 
   const getErrorMessage = (invalidOptions, requiredClassicWash) => {
     const isOptionSelected = options.length > 0;
@@ -714,9 +822,9 @@ const handleFormErrorPossibilities = () => {
     },
     {
       condition:
-        finishing.includes("Céramique carrosserie") &&
-        (!finishing.includes("Polissage carrosserie") ||
-          !classic.includes("Extérieur")),
+        finishing.some((fin) => fin.name === "Céramique carrosserie") &&
+        (!finishing.some((fin) => fin.name === "Polissage carrosserie") ||
+          !classic.some((cl) => cl.name === "Extérieur")),
       message:
         "Nettoyage extérieur et polissage carrosserie nécessaires avant une céramique",
     },
@@ -732,9 +840,7 @@ const handleFormErrorPossibilities = () => {
         ],
         "Extérieur"
       ),
-      message: (invalidOptions) => {
-        return getErrorMessage(invalidOptions, "Extérieur");
-      },
+      message: (invalidOptions) => getErrorMessage(invalidOptions, "Extérieur"),
     },
     {
       condition: checkRequiredClassicWash(
@@ -750,9 +856,7 @@ const handleFormErrorPossibilities = () => {
         ],
         "Intérieur"
       ),
-      message: (invalidOptions) => {
-        return getErrorMessage(invalidOptions, "Intérieur");
-      },
+      message: (invalidOptions) => getErrorMessage(invalidOptions, "Intérieur"),
     },
     {
       condition: !checkboxes.termesAndConditions.checked,
