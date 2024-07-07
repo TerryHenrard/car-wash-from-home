@@ -7,9 +7,8 @@ use PHPMailer\PHPMailer\SMTP;
 require '../../libraries/phpmailer/Exception.php';
 require '../../libraries/phpmailer/PHPMailer.php';
 require '../../libraries/phpmailer/SMTP.php';
-require '../../../../../config.php'; // Modify when switching to the development environment
 
-function sendEmail($to, $subject, $body, $replyTo = null, $embededdImages = [])
+function sendEmail($email_host, $email_name, $email_pass, $email_port, $to, $subject, $body, $replyTo = null, $embededdImages = [])
 {
   global $email_host, $email_name, $email_pass, $email_port;
 
@@ -17,7 +16,7 @@ function sendEmail($to, $subject, $body, $replyTo = null, $embededdImages = [])
 
   try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_OFF;
+    $mail->SMTPDebug  = SMTP::DEBUG_OFF;
     $mail->isSMTP();
     $mail->Host       = $email_host;
     $mail->SMTPAuth   = true;

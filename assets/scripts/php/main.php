@@ -11,10 +11,12 @@ if ($data["csrf_token"] !== $_SESSION['csrf_token']) {
   exit();
 }
 
+// require '../../../../config.php';
+require '../../../../../config.php'; // Modify when switching to the development environment
 require 'validation.php';
 require 'data.php';
 require 'email.php';
-// require 'database.php'; TODO: add order in database
+require '../../classes/Database.php';
 
 // Get and sanitize data
 $appointmentDate = preventScriptTag($data['appointmentInfos']['date'] ?? null);
@@ -54,48 +56,102 @@ if (
 }
 
 // Here data are secure
+date_default_timezone_set('Europe/Brussels');
 
-$variables = [
-  "logo_cwfh_path" => "../images/logo4.webp",
-  "client_firstName" => ucfirst($personalFirstName),
-  "appointment_date" => $appointmentDate,
-  "appointment_hour" => $appointmentHour,
-  "client_address" => $personalAddress . ', ' . ucfirst($personalCity),
-  "order_details" =>
-  buildOrderDetails($washingClassic, $orderDetailTemplatePath, $classicImagePath) .
-    buildOrderDetails($washingOptions, $orderDetailTemplatePath, $optionImagePaths) .
-    buildOrderDetails($washingFinishing, $orderDetailTemplatePath, $finishingImagePaths),
-  "order_total" => $washingPrice . '€',
-  "order_time" => formatTime($washingTime),
-  "order_id" => "",
-  "client_email" => $personalEmail,
-  "client_tel" => $personalTel,
-  "client_lastName" => ucfirst($personalLastName),
-];
-// Build the dynamic email
-$emailBody = loadTemplate($templatePath, $variables);
+// Add into database
+$order_id;
+try {
+  $db = new Database($db_host, $db_name, $db_user, $db_pass);
 
-// Send email to client
-$clientEmailResponse = sendEmail(
-  $personalEmail,
-  'Confirmation du rendez-vous du ' . $appointmentDate . ' à ' . $personalAddress . ' ' . $personalCity,
-  $emailBody,
-  null,
-  $embededdImages
-);
+  $db->GetPDO()->beginTransaction();
 
-if ($clientEmailResponse['success']) {
-  $to = 'contact@carwashfromhome.com';
-  $subject = 'Nouveau rendez-vous de lavage de voiture';
-  $replyTo = ['email' => $personalEmail, 'name' => $personalFirstName . ' ' . $personalLastName];
-  $body =
-    "<b>Informations personnelles:</b><br>
+  $statement = "INSERT INTO 
+                  order_client(
+                    last_name, 
+                    first_name, 
+                    email, 
+                    phone_number, 
+                    address, 
+                    city, 
+                    message, 
+                    appointment_date, 
+                    appointment_hour, 
+                    order_date) 
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+  $parameters = [
+    $personalLastName,
+    $personalFirstName,
+    $personalEmail,
+    $personalTel,
+    $personalAddress,
+    $personalCity,
+    $washingMessage,
+    $db->convertDateFormat($appointmentDate),
+    $appointmentHour,
+    date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME'])
+  ];
+
+  $order_id = $db->Insert($statement, $parameters);
+
+  $db->GetPDO()->commit();
+} catch (PDOException $ex) {
+  $db->GetPDO()->rollBack();
+  $db = null;
+  echo json_encode(["success" => false, "message" => $ex->getMessage()]);
+  exit();
+}
+
+if ($order_id > 0) {
+  $subject = 'Confirmation du rendez-vous du ' . $appointmentDate . ' à ' . $personalAddress . ' ' . $personalCity;
+  $replyto = ['email' => 'contact@carwashfromhome.com', 'name' => 'Car Wash From Home'];
+  $variables = [
+    "logo_cwfh_path" => "../images/logo4.webp",
+    "client_firstName" => ucfirst($personalFirstName),
+    "appointment_date" => $appointmentDate,
+    "appointment_hour" => $appointmentHour,
+    "client_address" => $personalAddress . ', ' . ucfirst($personalCity),
+    "order_details" =>
+    buildOrderDetails($washingClassic, $orderDetailTemplatePath, $classicImagePath) .
+      buildOrderDetails($washingOptions, $orderDetailTemplatePath, $optionImagePaths) .
+      buildOrderDetails($washingFinishing, $orderDetailTemplatePath, $finishingImagePaths),
+    "order_total" => $washingPrice . '€',
+    "order_time" => formatTime($washingTime),
+    "order_id" => $order_id,
+    "client_email" => $personalEmail,
+    "client_tel" => $personalTel,
+    "client_lastName" => ucfirst($personalLastName),
+  ];
+
+  // Build the dynamic email
+  $emailBody = loadTemplate($templatePath, $variables);
+
+  // Send email to client
+  $clientEmailResponse = sendEmail(
+    $email_host,
+    $email_name,
+    $email_pass,
+    $email_port,
+    $personalEmail,
+    $subject,
+    $emailBody,
+    $replyto,
+    $embededdImages
+  );
+
+  if ($clientEmailResponse['success']) {
+    $to = 'contact@carwashfromhome.com';
+    $subject = 'Nouveau rendez-vous de lavage de voiture';
+    $replyTo = ['email' => $personalEmail, 'name' => $personalFirstName . ' ' . $personalLastName];
+    $body =
+      "<b>Informations personnelles:</b><br>
       Nom: $personalLastName<br>
       Prénom: $personalFirstName<br>
       Adresse: $personalAddress<br>
       Ville: $personalCity<br>
       Email: $personalEmail<br>
-      Téléphone: $personalTel<br><br>
+      Téléphone: $personalTel<br>
+      Numéro de réservation: $order_id<br><br>
       
       <b>Informations de rendez-vous:</b><br>
       Date: $appointmentDate<br>
@@ -110,11 +166,22 @@ if ($clientEmailResponse['success']) {
       Prix: " . $washingPrice . "€<br>
       Durée: " . formatTime($washingTime) . "<br>";
 
-  $adminEmailResponse = sendEmail($to, $subject, $body, $replyTo);
+    $adminEmailResponse = sendEmail(
+      $email_host,
+      $email_name,
+      $email_pass,
+      $email_port,
+      $to,
+      $subject,
+      $body,
+      $replyTo
+    );
 
-  echo json_encode([
-    "success" => $adminEmailResponse['success'] && $clientEmailResponse['success'],
-    "clientResponse" => $clientEmailResponse['message'],
-    "adminResponse" => $adminEmailResponse['message']
-  ]);
+    echo json_encode([
+      "success" => $adminEmailResponse['success'] && $clientEmailResponse['success'] && $order_id > 0,
+      "clientResponse" => $clientEmailResponse['message'],
+      "adminResponse" => $adminEmailResponse['message'],
+      "databaseResponse" => "Added successfully",
+    ]);
+  }
 }
