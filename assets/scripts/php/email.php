@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\SMTP;
 require '../../libraries/phpmailer/Exception.php';
 require '../../libraries/phpmailer/PHPMailer.php';
 require '../../libraries/phpmailer/SMTP.php';
-require '../../../../config.php'; // Modify when switching to the development environment
+require '../../../../../config.php'; // Modify when switching to the development environment
 
 function sendEmail($to, $subject, $body, $replyTo = null, $embededdImages = [])
 {
