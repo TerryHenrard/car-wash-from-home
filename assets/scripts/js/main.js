@@ -970,7 +970,9 @@ const createCookiesFromFormInfos = () =>
 const preFillPersonnalInfos = () => {
   cookiesName.forEach((cookieName) => {
     if (checkCookie(cookieName)) {
-      customerInfos[cookieName].input.value = getCookie(cookieName);
+      const cookieValue = getCookie(cookieName);
+      customerInfos[cookieName].input.value = cookieValue;
+      order.personnalInfos[cookieName] = cookieValue;
     }
   });
 };
@@ -998,11 +1000,10 @@ const handleConfirmModalEvent = () =>
     fetchData("POST", "./assets/scripts/php/main.php", order)
       .then((response) => {
         if (response.success) {
-          createCookiesFromFormInfos();
-
           toggleLoadingHamsterDisplay(false);
           closeModal();
           displaySuccessSwal();
+          createCookiesFromFormInfos();
         } else {
           toggleLoadingHamsterDisplay(false);
           displayErrorSwal();
