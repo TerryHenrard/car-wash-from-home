@@ -20,6 +20,25 @@ class Database
     return $this->pdo;
   }
 
+  public function InsertOrder($parameters = [])
+  {
+    try {
+      $this->executeStatement("CALL InsertOrder(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @inserted_id)", $parameters);
+      return $this->executeStatement("SELECT @inserted_id AS id")->fetch()['id'];
+    } catch (PDOException $ex) {
+      throw new PDOException($ex->getMessage());
+    }
+  }
+
+  public function InsertDetail($procedure = "", $parameters = [])
+  {
+    try {
+      return $this->executeStatement("CALL $procedure(?, ?)", $parameters);
+    } catch (PDOException $ex) {
+      throw new PDOException($ex->getMessage());
+    }
+  }
+
   // Insert a row/s in a Database Table
   public function Insert($statement = "", $parameters = [])
   {
@@ -77,9 +96,9 @@ class Database
   private function executeStatement($statement = "", $parameters = [])
   {
     try {
-      $stmt = $this->pdo->prepare($statement);
-      $stmt->execute($parameters);
-      return $stmt;
+      $stm = $this->pdo->prepare($statement);
+      $stm->execute($parameters);
+      return $stm;
     } catch (PDOException $e) {
       throw new PDOException($e->getMessage());
     }

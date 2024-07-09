@@ -1,0 +1,162 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="telephone=no" name="format-detection">
+  <title>Notification de Nouveau Rendez-vous</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+
+    .section-content {
+      font-size: 14px;
+      color: #555555;
+    }
+
+    .details-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .details-table th,
+    .details-table td {
+      padding: 10px;
+      border: 1px solid #dddddd;
+    }
+
+    .details-table th {
+      background-color: #f0f0f0;
+    }
+
+    .details-table td {
+      background-color: #ffffff;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #777777;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Notification de Nouveau Rendez-vous</h1>
+
+    <div class="section">
+      <p class="section-title">Informations Personnelles:</p>
+      <table class="details-table">
+        <tr>
+          <th>Nom</th>
+          <td>{{personal_last_name}}</td>
+        </tr>
+        <tr>
+          <th>Prénom</th>
+          <td>{{personal_first_name}}</td>
+        </tr>
+        <tr>
+          <th>Adresse</th>
+          <td>{{personal_address}}</td>
+        </tr>
+        <tr>
+          <th>Ville</th>
+          <td>{{personal_city}}</td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td>{{personal_email}}</td>
+        </tr>
+        <tr>
+          <th>Téléphone</th>
+          <td>{{personal_tel}}</td>
+        </tr>
+        <tr>
+          <th>Numéro de Réservation</th>
+          <td>{{order_id}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Informations de Rendez-vous:</p>
+      <table class="details-table">
+        <tr>
+          <th>Date</th>
+          <td>{{appointment_date}}</td>
+        </tr>
+        <tr>
+          <th>Heure</th>
+          <td>{{appointment_hour}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Informations sur le Lavage:</p>
+      <table class="details-table">
+        <tr>
+          <th>Taille de la Voiture</th>
+          <td>{{washing_car_size}}</td>
+        </tr>
+        <tr>
+          <th>Classiques</th>
+          <td>{{format_services_washing_classic}}</td>
+        </tr>
+        <tr>
+          <th>Finitions</th>
+          <td>{{format_services_washing_finishing}}</td>
+        </tr>
+        <tr>
+          <th>Options</th>
+          <td>{{format_services_washing_options}}</td>
+        </tr>
+        <tr>
+          <th>Message</th>
+          <td>{{washing_message}}</td>
+        </tr>
+        <tr>
+          <th>Prix</th>
+          <td>{{washing_price}} €</td>
+        </tr>
+        <tr>
+          <th>Durée</th>
+          <td>{{format_time_washing_time}}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</body>
+
+</html>
