@@ -1,5 +1,8 @@
 import services from "./services.js";
 
+const MILLISECONDS_PER_DAY = 60 * 60 * 24 * 1000; // 86400000
+const NUMBER_OF_DAY_BEFORE_COOKIE_EXPIRATION = 400;
+
 let toastCount = 0;
 
 const getElement = (id) => document.getElementById(id);
@@ -80,6 +83,15 @@ const carSizes = [
   "camionnette_s",
   "camionnette_m",
   "camionnette_l",
+];
+
+const cookiesName = [
+  "lastName",
+  "firstName",
+  "email",
+  "tel",
+  "address",
+  "city",
 ];
 
 const customerInfos = {
@@ -599,44 +611,6 @@ const displaySuccessSwal = () => {
   });
 };
 
-const handleConfirmModalEvent = () =>
-  modal.confirmButton.addEventListener("click", () => {
-    order.csrf_token = getElement("csrf_token").value;
-
-    toggleLoadingHamsterDisplay(true);
-
-    fetchData("POST", "./assets/scripts/php/main.php", order)
-      .then((response) => {
-        if (response.success) {
-          toggleLoadingHamsterDisplay(false);
-          closeModal();
-          displaySuccessSwal();
-        } else {
-          toggleLoadingHamsterDisplay(false);
-          displayErrorSwal();
-        }
-      })
-      .catch((error) => {
-        console.error("Error handling submission:", error);
-        toggleLoadingHamsterDisplay(false);
-        displayErrorSwal();
-      });
-  });
-
-const handleSubmitEvent = () =>
-  form.addEventListener("submit", (ev) => {
-    ev.preventDefault();
-
-    order.appointmentInfos.date =
-      appointment.date.element.value ||
-      appointment.date.element.getAttribute("placeholder");
-
-    if (handleFormErrorPossibilities()) {
-      buildModal();
-      openModal();
-    }
-  });
-
 const handleFormErrorPossibilities = () => {
   const { washingInfos } = order;
   const { classic, finishing, options, price, time } = washingInfos;
@@ -950,7 +924,99 @@ const createToast = (toastClass, text, optionOrFinishing, imagePath) => {
   }, 5000);
 };
 
+const checkCookie = (name) => {
+  let cookieName = getCookie(name);
+  if (cookieName != "") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const getCookie = (cname) => {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+};
+
+const setCookie = (cname, cvalue, exdays) => {
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * MILLISECONDS_PER_DAY);
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+};
+
+const createCookiesFromFormInfos = () =>
+  cookiesName.forEach((cookieName) => {
+    if (!checkCookie(cookieName)) {
+      setCookie(
+        cookieName,
+        order.personnalInfos[cookieName],
+        NUMBER_OF_DAY_BEFORE_COOKIE_EXPIRATION
+      );
+    }
+  });
+
+const preFillPersonnalInfos = () => {
+  cookiesName.forEach((cookieName) => {
+    if (checkCookie(cookieName)) {
+      customerInfos[cookieName].input.value = getCookie(cookieName);
+    }
+  });
+};
+
+const handleSubmitEvent = () =>
+  form.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+
+    order.appointmentInfos.date =
+      appointment.date.element.value ||
+      appointment.date.element.getAttribute("placeholder");
+
+    if (handleFormErrorPossibilities()) {
+      buildModal();
+      openModal();
+    }
+  });
+
+const handleConfirmModalEvent = () =>
+  modal.confirmButton.addEventListener("click", () => {
+    order.csrf_token = getElement("csrf_token").value;
+
+    toggleLoadingHamsterDisplay(true);
+
+    fetchData("POST", "./assets/scripts/php/main.php", order)
+      .then((response) => {
+        if (response.success) {
+          createCookiesFromFormInfos();
+
+          toggleLoadingHamsterDisplay(false);
+          closeModal();
+          displaySuccessSwal();
+        } else {
+          toggleLoadingHamsterDisplay(false);
+          displayErrorSwal();
+        }
+      })
+      .catch((error) => {
+        console.error("Error handling submission:", error);
+        toggleLoadingHamsterDisplay(false);
+        displayErrorSwal();
+      });
+  });
+
 addCSRFToForm();
+preFillPersonnalInfos();
 handleAddBtnInOrderEvents();
 handleRegexEvents();
 handleChangingCarSizeEvent();
