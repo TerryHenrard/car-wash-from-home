@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
+
 require '../../libraries/phpmailer/Exception.php';
 require '../../libraries/phpmailer/PHPMailer.php';
 require '../../libraries/phpmailer/SMTP.php';
@@ -201,5 +202,33 @@ function sendAdminNotificationEmail($data, $order_id)
     $subject,
     $emailBody,
     $replyTo
+  );
+}
+
+function sendClientSatisfactionEmail($clientFirstName, $clientEmail)
+{
+  global $email_host, $email_name, $email_pass, $email_port;
+
+  $subject = 'Enquête de satisfaction';
+  $replyTo = ['email' => 'contact@carwashfromhome.com', 'name' => "Car Wash From Home"];
+  $embededdImages = [['cid' => 'logo_cwfh_path', 'imgPath' => '../../images/logo1.png']];
+  $templatePath = '../../templates/mails/clientSatisfactionStudyLink.html';
+  $variables = [
+    "client_first_name" => ucfirst($clientFirstName),
+    "client_email" => urlencode(strtolower($clientEmail))
+  ];
+
+  $emailBody = loadTemplate($templatePath, $variables);
+
+  return sendEmail(
+    $email_host,
+    $email_name,
+    $email_pass,
+    $email_port,
+    $clientEmail,
+    $subject,
+    $emailBody,
+    $replyTo,
+    $embededdImages
   );
 }
