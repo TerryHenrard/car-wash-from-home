@@ -4,7 +4,6 @@ if (!isset($_GET["email"]) || $_SERVER["REQUEST_METHOD"] !== 'GET') {
 }
 
 require '../../../../config.php'; // Production environment
-// require '../../../../../config.php'; // Development environment
 require 'database.php';
 require '../../classes/Database.php';
 ?>

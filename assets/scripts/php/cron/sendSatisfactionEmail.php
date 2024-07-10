@@ -1,9 +1,8 @@
 <?php
-require '../../classes/Database.php';
-require './database.php';
-require './email.php';
-// require '../../../../config.php'; // Production environment
-require '../../../../../config.php'; // Development environment
+require __DIR__ . '/../../../../../config.php'; // Production environment
+require __DIR__ . '/../../../classes/Database.php';
+require __DIR__ . '/../database.php';
+require __DIR__ . '/../email.php';
 
 $noneSentSatisfactionEmailList = getNoneSentSatisfactionEmailList();
 $unsubscribedList = getUnsubscribedSatisfactionEmailList();
@@ -14,8 +13,11 @@ foreach ($noneSentSatisfactionEmailList as $list) {
     $response = sendClientSatisfactionEmail($list["first_name"], $list["email"]);
 
     if (!$response["success"]) {
+      echo "failed:" . $response["message"];
       exit();
     }
   }
   updateSentSatisfactionEmail($list["id_order_client"]);
 }
+
+echo "success";

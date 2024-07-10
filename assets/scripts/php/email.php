@@ -4,10 +4,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-
-require '../../libraries/phpmailer/Exception.php';
-require '../../libraries/phpmailer/PHPMailer.php';
-require '../../libraries/phpmailer/SMTP.php';
+require __DIR__ . '/../../libraries/phpmailer/Exception.php';
+require __DIR__ . '/../../libraries/phpmailer/PHPMailer.php';
+require __DIR__ . '/../../libraries/phpmailer/SMTP.php';
 
 $classicImagePaths = [
   normalizeKey("Extérieur") => "../../images/exterior_wash.jpg",
@@ -211,13 +210,12 @@ function sendClientSatisfactionEmail($clientFirstName, $clientEmail)
 
   $subject = 'Enquête de satisfaction';
   $replyTo = ['email' => 'contact@carwashfromhome.com', 'name' => "Car Wash From Home"];
-  $embededdImages = [['cid' => 'logo_cwfh_path', 'imgPath' => '../../images/logo1.png']];
-  $templatePath = '../../templates/mails/clientSatisfactionStudyLink.html';
+  $embededdImages = [['cid' => 'logo_cwfh_path', 'imgPath' => __DIR__ . '/../../images/logo1.png']];
+  $templatePath = __DIR__ . '/../../templates/mails/clientSatisfactionStudyLink.html';
   $variables = [
     "client_first_name" => ucfirst($clientFirstName),
     "client_email" => urlencode(strtolower($clientEmail))
   ];
-
   $emailBody = loadTemplate($templatePath, $variables);
 
   return sendEmail(
