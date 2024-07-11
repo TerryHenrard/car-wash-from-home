@@ -33,7 +33,7 @@ function getNoneSentSatisfactionEmailList()
   global $db_host, $db_name, $db_user, $db_pass;
   try {
     $db = new Database($db_host, $db_name, $db_user, $db_pass);
-    return $db->Select("SELECT id_order_client, first_name, email FROM order_client WHERE sent_satisfaction_email = ?", [0]);
+    return $db->Select("SELECT id_order_client, first_name, email FROM order_client WHERE sent_satisfaction_email = ? AND appointment_date > CURDATE()", [0]);
   } catch (PDOException $ex) {
     echo json_encode(["success" => false, "message" => $ex->getMessage()]);
 

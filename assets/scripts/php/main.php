@@ -12,8 +12,8 @@ if ($data["csrf_token"] !== $_SESSION['csrf_token']) {
   exit();
 }
 
-// require '../../../../config.php'; // Production environment
-require '../../../../../config.php'; // Development environment
+require '../../../../config.php'; // Production environment
+// require '../../../../../config.php'; // Development environment
 require './validation.php';
 require './database.php';
 require './email.php';
@@ -31,8 +31,8 @@ if (!validateAppointmentData($sanitizedData)) {
 date_default_timezone_set('Europe/Brussels');
 
 // Add into database
-$order_id = addOrderToDatabase($sanitizedData);
 
+$order_id = addOrderToDatabase($sanitizedData);
 if ($order_id > 0) {
   // Send email to client
   $clientEmailResponse = sendClientConfirmationEmail($sanitizedData, $order_id);
