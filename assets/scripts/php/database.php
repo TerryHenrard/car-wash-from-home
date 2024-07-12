@@ -5,7 +5,11 @@ function insertIntoUnsubscribedSatisfactionEmail($email)
   global $db_host, $db_name, $db_user, $db_pass;
   try {
     $db = new Database($db_host, $db_name, $db_user, $db_pass);
-    return $db->Insert("INSERT INTO unsubscribed_satisfaction_email(email) VALUES(?)", [$email]);
+    $exists = $db->Select("SELECT email FROM unsubscribed_satisfaction_email WHERE email = ?", [$email])[0]["email"] === $email;
+    if (!$exists) {
+      return $db->Insert("INSERT INTO unsubscribed_satisfaction_email(email) VALUES(?)", [$email]);
+    }
+    return 1;
   } catch (PDOException $ex) {
     echo $ex->getMessage();
     exit();
@@ -33,7 +37,12 @@ function getNoneSentSatisfactionEmailList()
   global $db_host, $db_name, $db_user, $db_pass;
   try {
     $db = new Database($db_host, $db_name, $db_user, $db_pass);
-    return $db->Select("SELECT id_order_client, first_name, email FROM order_client WHERE sent_satisfaction_email = ? AND appointment_date > CURDATE()", [0]);
+    return $db->Select(
+      "SELECT id_order_client, first_name, email 
+       FROM order_client 
+       WHERE sent_satisfaction_email = ? AND appointment_date < CURDATE()", //TODO: not working with curdate()
+      [0]
+    );
   } catch (PDOException $ex) {
     echo json_encode(["success" => false, "message" => $ex->getMessage()]);
 
