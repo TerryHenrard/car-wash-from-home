@@ -12,8 +12,17 @@ if ($data["csrf_token"] !== $_SESSION['csrf_token']) {
   exit();
 }
 
-// require '../../../../config.php'; // Production environment
-require '../../../../../config.php'; // Development environment
+function isDevelopmentEnvironment()
+{
+  return preg_match('/develop/', __DIR__);
+}
+
+if (isDevelopmentEnvironment()) {
+  require '../../../../../config.php'; // Development environment
+} else {
+  require '../../../../config.php'; // Production environment
+}
+
 require './validation.php';
 require './database.php';
 require './email.php';
@@ -31,18 +40,18 @@ if (!validateAppointmentData($sanitizedData)) {
 date_default_timezone_set('Europe/Brussels');
 
 // Add into database
-$order_id = addOrderToDatabase($sanitizedData);
 
-if ($order_id > 0) {
+$ids = addOrderToDatabase($sanitizedData);
+if ($ids["id"] > 0) {
   // Send email to client
-  $clientEmailResponse = sendClientConfirmationEmail($sanitizedData, $order_id);
+  $clientEmailResponse = sendClientConfirmationEmail($sanitizedData, $ids["uid"]);
 
   if ($clientEmailResponse["success"]) {
     // Send email to administrator
-    $adminEmailResponse = sendAdminNotificationEmail($sanitizedData, $order_id);
+    $adminEmailResponse = sendAdminNotificationEmail($sanitizedData, $ids["uid"]);
 
     echo json_encode([
-      "success" => $adminEmailResponse['success'] && $clientEmailResponse['success'] && $order_id > 0,
+      "success" => $adminEmailResponse['success'],
       "clientResponse" => $clientEmailResponse['message'],
       "adminResponse" => $adminEmailResponse['message'],
       "databaseResponse" => "Added successfully",

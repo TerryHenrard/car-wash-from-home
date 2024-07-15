@@ -24,7 +24,10 @@ class Database
   {
     try {
       $this->executeStatement("CALL InsertOrder(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @inserted_id)", $parameters);
-      return $this->executeStatement("SELECT @inserted_id AS id")->fetch()['id'];
+      $id = $this->executeStatement("SELECT @inserted_id AS id")->fetch()['id'];
+      $uid = $this->generateUid($id);
+      $this->executeStatement("UPDATE orders_clients SET uid_order_client = ? WHERE id_order_client = ?", [$uid, $id]);
+      return ["id" => $id, "uid" => $uid];
     } catch (PDOException $ex) {
       throw new PDOException($ex->getMessage());
     }
@@ -39,7 +42,6 @@ class Database
     }
   }
 
-  // Insert a row/s in a Database Table
   public function Insert($statement = "", $parameters = [])
   {
     try {
@@ -50,7 +52,6 @@ class Database
     }
   }
 
-  // Select a row/s in a Database Table
   public function Select($statement = "", $parameters = [])
   {
     try {
@@ -61,7 +62,6 @@ class Database
     }
   }
 
-  // Update a row/s in a Database Table
   public function Update($statement = "", $parameters = [])
   {
     try {
@@ -71,7 +71,6 @@ class Database
     }
   }
 
-  // Remove a row/s in a Database Table
   public function Remove($statement = "", $parameters = [])
   {
     try {
@@ -92,7 +91,6 @@ class Database
     return $dateTime->format('Y-m-d');
   }
 
-  // execute statement
   private function executeStatement($statement = "", $parameters = [])
   {
     try {
@@ -102,5 +100,10 @@ class Database
     } catch (PDOException $e) {
       throw new PDOException($e->getMessage());
     }
+  }
+
+  private function generateUid($order_id)
+  {
+    return strtoupper(substr(hash('sha512', $order_id . time()), 0, 8));
   }
 }
