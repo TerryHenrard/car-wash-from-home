@@ -5,9 +5,9 @@ function insertIntoUnsubscribedSatisfactionEmail($email)
   global $db_host, $db_name, $db_user, $db_pass;
   try {
     $db = new Database($db_host, $db_name, $db_user, $db_pass);
-    $exists = $db->Select("SELECT email FROM unsubscribed_satisfaction_email WHERE email = ?", [$email])[0]["email"] === $email;
+    $exists = $db->Select("SELECT email FROM unsubscribed_satisfaction_emails WHERE email = ?", [$email])[0]["email"] === $email;
     if (!$exists) {
-      return $db->Insert("INSERT INTO unsubscribed_satisfaction_email(email) VALUES(?)", [$email]);
+      return $db->Insert("INSERT INTO unsubscribed_satisfaction_emails(email) VALUES(?)", [$email]);
     }
     return 1;
   } catch (PDOException $ex) {
@@ -18,12 +18,12 @@ function insertIntoUnsubscribedSatisfactionEmail($email)
   }
 }
 
-function updateSentSatisfactionEmail($order_id)
+function updateSentSatisfactionEmail($ids)
 {
   global $db_host, $db_name, $db_user, $db_pass;
   try {
     $db = new Database($db_host, $db_name, $db_user, $db_pass);
-    $db->Update("UPDATE order_client SET sent_satisfaction_email = ? WHERE id_order_client = ?", [1, $order_id]);
+    $db->Update("UPDATE orders_clients SET sent_satisfaction_email = ? WHERE id_order_client = ?", [1, $ids]);
   } catch (PDOException $ex) {
     echo json_encode(["success" => false, "message" => $ex->getMessage()]);
     exit();
@@ -39,7 +39,7 @@ function getNoneSentSatisfactionEmailList()
     $db = new Database($db_host, $db_name, $db_user, $db_pass);
     return $db->Select(
       "SELECT id_order_client, first_name, email 
-       FROM order_client 
+       FROM orders_clients
        WHERE sent_satisfaction_email = ? AND appointment_date < CURDATE()", //TODO: not working with curdate()
       [0]
     );
@@ -58,7 +58,7 @@ function getUnsubscribedSatisfactionEmailList()
 
   try {
     $db = new Database($db_host, $db_name, $db_user, $db_pass);
-    return $db->Select("SELECT email FROM unsubscribed_satisfaction_email");
+    return $db->Select("SELECT email FROM unsubscribed_satisfaction_emails");
   } catch (PDOException $ex) {
     echo json_encode(["success" => false, "message" => $ex->getMessage()]);
     exit();
@@ -69,7 +69,7 @@ function getUnsubscribedSatisfactionEmailList()
 
 function addOrderToDatabase($data)
 {
-  global $db_host, $db_name, $db_user, $db_pass, $order_id;
+  global $db_host, $db_name, $db_user, $db_pass;
 
   try {
     $db = new Database($db_host, $db_name, $db_user, $db_pass);
@@ -87,20 +87,20 @@ function addOrderToDatabase($data)
       $data['appointment_hour'],
       date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME'])
     ];
-    $order_id = $db->InsertOrder($parameters);
+    $ids = $db->InsertOrder($parameters);
 
     foreach ($data['washing_classic'] as $wash) {
-      $parameters = [$order_id, $wash["name"]];
+      $parameters = [$ids["id"], $wash["name"]];
       $db->InsertDetail("InsertWashDetail", $parameters);
     }
 
     foreach ($data['washing_options'] as $option) {
-      $parameters = [$order_id, $option["name"]];
+      $parameters = [$ids["id"], $option["name"]];
       $db->InsertDetail("InsertOptionDetail", $parameters);
     }
 
     foreach ($data['washing_finishing'] as $finishing) {
-      $parameters = [$order_id, $finishing["name"]];
+      $parameters = [$ids["id"], $finishing["name"]];
       $db->InsertDetail("InsertFinishingDetail", $parameters);
     }
 
@@ -113,5 +113,5 @@ function addOrderToDatabase($data)
   } finally {
     $db = null;
   }
-  return $order_id;
+  return $ids;
 }
