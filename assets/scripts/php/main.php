@@ -12,8 +12,17 @@ if ($data["csrf_token"] !== $_SESSION['csrf_token']) {
   exit();
 }
 
-require '../../../../config.php'; // Production environment
-// require '../../../../../config.php'; // Development environment
+function isDevelopmentEnvironment()
+{
+  return preg_match('/develop/', __DIR__);
+}
+
+if (isDevelopmentEnvironment()) {
+  require '../../../../../config.php'; // Development environment
+} else {
+  require '../../../../config.php'; // Production environment
+}
+
 require './validation.php';
 require './database.php';
 require './email.php';

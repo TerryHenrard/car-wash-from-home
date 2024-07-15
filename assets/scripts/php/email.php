@@ -130,7 +130,7 @@ function sendClientConfirmationEmail($data, $order_id)
   $orderDetailTemplatePath = "../../templates/mails/clientOrderDetail.html";
   $embededdImages = [['cid' => 'logo_cwfh_path', 'imgPath' => '../../images/logo1.png']];
   $replyto = ['email' => 'contact@carwashfromhome.com', 'name' => 'Car Wash From Home'];
-  $subject = 'Confirmation du rendez-vous du ' . $data['appointment_date'] . ' à ' . $data['personal_address'] . ' ' . $data['personal_city'];
+  $subject = '😀 Confirmation du rendez-vous du ' . $data['appointment_date'] . ' à ' . $data['personal_address'] . ' ' . $data['personal_city'];
   $variables = [
     "logo_cwfh_path" => "../images/logo4.webp",
     "client_firstName" => ucfirst($data['personal_first_name']),
