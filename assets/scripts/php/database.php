@@ -87,6 +87,7 @@ function addOrderToDatabase($data)
       $data['appointment_hour'],
       date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME'])
     ];
+    $parameters = array_map('strtolower', $parameters);
     $ids = $db->InsertOrder($parameters);
 
     foreach ($data['washing_classic'] as $wash) {
