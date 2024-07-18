@@ -1,5 +1,8 @@
 import services from "./services.js";
 
+const MILLISECONDS_PER_DAY = 60 * 60 * 24 * 1000; // 86400000
+const NUMBER_OF_DAY_BEFORE_COOKIE_EXPIRATION = 400;
+
 let toastCount = 0;
 
 const getElement = (id) => document.getElementById(id);
@@ -38,7 +41,7 @@ let order = {
     time: 0,
     price: 0,
   },
-  appoitmentInfos: {
+  appointmentInfos: {
     date: null,
     hour: null,
   },
@@ -80,6 +83,15 @@ const carSizes = [
   "camionnette_s",
   "camionnette_m",
   "camionnette_l",
+];
+
+const cookiesName = [
+  "lastName",
+  "firstName",
+  "email",
+  "tel",
+  "address",
+  "city",
 ];
 
 const customerInfos = {
@@ -154,7 +166,7 @@ const appointment = {
   },
 };
 
-const fetchData = async (method = "GET", url = "", data = {}) => {
+const fetchData = async (method, url, data = {}) => {
   const options = {
     method,
     headers: {
@@ -200,11 +212,18 @@ const getWashServiceDetails = (type, id) =>
 const addSupplementForPolishAndCeramicAccordingToCarSize = (id, checked) => {
   const index = carSizes.indexOf(checkboxes.selectCarSize.value);
   const { price, time } = supplements[id];
+  const priceSupplement = price * index;
+  const timeSupplement = time * index;
 
   updatePriceAndTimeAndDisplay(
-    checked ? price * index : -price * index,
-    checked ? time * index : -time * index
+    checked ? priceSupplement : -priceSupplement,
+    checked ? timeSupplement : -timeSupplement
   );
+
+  return {
+    priceSupplement,
+    timeSupplement,
+  };
 };
 
 const updateButton = (button, bool) => {
@@ -217,9 +236,13 @@ const handleCheckboxEvent = (checkboxes, type) =>
     checkbox.addEventListener("input", ({ target }) => {
       const { id, checked } = target;
       const { price, time } = getWashServiceDetails(type, id);
+      const name = target.getAttribute("data-name");
+      let priceSupplement = 0;
+      let timeSupplement = 0;
 
       if (id === "polissage" || id === "ceramique_carrosserie") {
-        addSupplementForPolishAndCeramicAccordingToCarSize(id, checked);
+        ({ priceSupplement, timeSupplement } =
+          addSupplementForPolishAndCeramicAccordingToCarSize(id, checked));
       }
 
       if (id !== "exteriors" && id !== "interiors") {
@@ -231,14 +254,25 @@ const handleCheckboxEvent = (checkboxes, type) =>
         checked ? time : -time
       );
 
-      const dataName = target.getAttribute("data-name");
+      const service = {
+        name,
+        price: price + priceSupplement,
+        time: time + timeSupplement,
+      };
 
-      checked
-        ? order.washingInfos[type].push(dataName)
-        : order.washingInfos[type].splice(
-            order.washingInfos[type].indexOf(dataName),
-            1
-          );
+      if (checked) {
+        order.washingInfos[type].push(service);
+      } else {
+        // Trouver l'index du service à supprimer en comparant par `name`
+        const indexToRemove = order.washingInfos[type].findIndex(
+          (s) => s.name === service.name
+        );
+        if (indexToRemove !== -1) {
+          order.washingInfos[type].splice(indexToRemove, 1);
+        }
+      }
+
+      console.log(order.washingInfos);
     })
   );
 
@@ -270,6 +304,17 @@ const handleChangingCarSizeEvent = () => {
       return services[service.id][carSize];
     };
 
+    const updateServiceWithSupplement = (dataName, newValues) => {
+      const serviceType =
+        dataName === "Extérieur" || dataName === "Intérieur"
+          ? order.washingInfos.classic
+          : order.washingInfos.finishing;
+      const index = serviceType.findIndex(({ name }) => name === dataName);
+
+      serviceType[index].price = newValues.price;
+      serviceType[index].time = newValues.time;
+    };
+
     [
       ...checkboxes.classicWashes,
       supplements.polissage.element,
@@ -291,6 +336,11 @@ const handleChangingCarSizeEvent = () => {
           newValues.price,
           oldValues.time,
           newValues.time
+        );
+
+        updateServiceWithSupplement(
+          service.getAttribute("data-name"),
+          newValues
         );
       }
     });
@@ -426,13 +476,13 @@ const setTimeSlots = () => {
     appointment.hour.element.appendChild(option);
   });
 
-  order.appoitmentInfos.hour = appointment.hour.element.value;
+  order.appointmentInfos.hour = appointment.hour.element.value;
 };
 
 const handleHourEvent = () =>
   appointment.hour.element.addEventListener(
     "input",
-    ({ target: { value } }) => (order.appoitmentInfos.hour = value)
+    ({ target: { value } }) => (order.appointmentInfos.hour = value)
   );
 
 const openModal = () => toggleModalDisplay(true);
@@ -496,7 +546,9 @@ const addWashingInfosToModal = () => {
 
     if (Array.isArray(value)) {
       value.forEach((val, idx) => {
-        modalValue.appendChild(createElement("p", `${idx + 1}. ${val}`));
+        modalValue.appendChild(
+          createElement("p", `${idx + 1}. ${val.name} (${val.price}€)`)
+        );
       });
     } else if (headers[index] === "Durée") {
       modalValue.appendChild(createElement("p", formatTime(value)));
@@ -527,7 +579,7 @@ const buildModal = () => {
     "Ville",
   ]);
   addWashingInfosToModal();
-  addInfosToModal("appoitmentInfos", "Informations sur le rendez-vous", [
+  addInfosToModal("appointmentInfos", "Informations sur le rendez-vous", [
     "Date",
     "Heure",
   ]);
@@ -536,11 +588,12 @@ const buildModal = () => {
 const toggleLoadingHamsterDisplay = (show) =>
   (loadingHamsterOverlay.style.display = show ? "block" : "none");
 
-const handleCloseModalEvent = () =>
+const handleCloseModalEvent = () => {
   [modal.cancelButton, modal.closeButton, modal.overlay].forEach((button) =>
     button.addEventListener("click", () => closeModal())
   );
-modal.content.addEventListener("click", (ev) => ev.stopPropagation());
+  modal.content.addEventListener("click", (ev) => ev.stopPropagation());
+};
 
 const displayErrorSwal = () => {
   swal({
@@ -552,80 +605,143 @@ const displayErrorSwal = () => {
 
 const displaySuccessSwal = () => {
   swal({
-    title: "Votre rendez-vous à bien été pris en compte!",
-    text: "Vous allez bientôt recevoir un email de confirmation",
+    title: "Votre réservation à bien été prise en compte!",
+    text: "Vous avez reçu un email de confirmation.",
     icon: "success",
   });
 };
 
-const handleConfirmModalEvent = () =>
-  modal.confirmButton.addEventListener("click", () => {
-    order.csrf_token = getElement("csrf_token").value;
-
-    toggleLoadingHamsterDisplay(true);
-
-    fetchData("POST", "./assets/scripts/sendAppointmentEmail.php", order)
-      .then((response) => {
-        if (response.success) {
-          toggleLoadingHamsterDisplay(false);
-          closeModal();
-          displaySuccessSwal();
-        } else {
-          toggleLoadingHamsterDisplay(false);
-          displayErrorSwal();
-        }
-      })
-      .catch((error) => {
-        console.log("Error handling submission:", error);
-        toggleLoadingHamsterDisplay(false);
-        displayErrorSwal();
-      });
-  });
-
-const handleSubmitEvent = () =>
-  form.addEventListener("submit", (ev) => {
-    ev.preventDefault();
-
-    order.appoitmentInfos.date =
-      appointment.date.element.value ||
-      appointment.date.element.getAttribute("placeholder");
-
-    if (handleFormErrorPossibilities()) {
-      buildModal();
-      openModal();
-    }
-  });
-
 const handleFormErrorPossibilities = () => {
   const { washingInfos } = order;
   const { classic, finishing, options, price, time } = washingInfos;
-  const warningIcon = "./assets/images/warning-icon.png";
 
   const showError = (message) => {
-    createToast("warning-toast", message, "", warningIcon);
+    let messageCopy = message;
+    let match = messageCopy.match(/^Le lavage (intérieur|extérieur)\b/);
+    if (match) {
+      match = match[1];
+    }
+    let configs;
+
+    if (match === "extérieur" || match === "intérieur") {
+      message = match;
+      configs = {
+        extérieur: {
+          text: messageCopy,
+          icon: "warning",
+          title: "Attention...",
+          buttons: {
+            confirm: {
+              text: "Ajouter!",
+              value: "add",
+              closeModal: false,
+            },
+            ok: "ok",
+          },
+          action: () => {
+            checkboxes.classicWashes[0].click();
+          },
+        },
+        intérieur: {
+          text: messageCopy,
+          icon: "warning",
+          title: "Attention...",
+          buttons: {
+            confirm: {
+              text: "Ajouter!",
+              value: "add",
+              closeModal: false,
+            },
+            ok: "ok",
+          },
+          action: () => {
+            checkboxes.classicWashes[1].click();
+          },
+        },
+      };
+    } else {
+      configs = {
+        "Veuillez confirmer avoir lu et accepté les conditions générales de ventes et la politique de confidentialité":
+          {
+            text: messageCopy,
+            icon: "warning",
+            title: "Attention...",
+            buttons: {
+              confirm: {
+                text: "Confirmer!",
+                value: "confirm",
+                closeModal: false,
+              },
+              ok: "ok",
+            },
+            action: () => {
+              checkboxes.termesAndConditions.click();
+            },
+          },
+        "Nettoyage extérieur et polissage carrosserie nécessaires avant une céramique":
+          {
+            text: messageCopy,
+            icon: "warning",
+            title: "Attention...",
+            buttons: {
+              confirm: {
+                text: "Ajouter!",
+                value: "add",
+                closeModal: false,
+              },
+              ok: "ok",
+            },
+            action: () => {
+              if (!checkboxes.classicWashes[0].checked) {
+                checkboxes.classicWashes[0].click();
+              }
+              if (!checkboxes.washFinishing[0].checked) {
+                checkboxes.washFinishing[0].click();
+              }
+            },
+          },
+      };
+    }
+
+    console.log(message);
+
+    const config = configs[message] || {
+      text: messageCopy,
+      icon: "warning",
+      title: "Attention...",
+    };
+
+    swal(config).then((value) => {
+      if (value === "confirm" || value === "add") {
+        config.action?.();
+        swal.stopLoading();
+        swal.close();
+      }
+    });
+
     return false;
   };
 
   const checkEmptyfieldOrder = () =>
-    order.personnalInfos.lastName === "" ||
-    order.personnalInfos.firstName === "" ||
-    order.personnalInfos.email === "" ||
-    order.personnalInfos.tel === "" ||
-    order.personnalInfos.address === "" ||
-    order.personnalInfos.city === "";
+    !order.personnalInfos.lastName ||
+    !order.personnalInfos.firstName ||
+    !order.personnalInfos.email ||
+    !order.personnalInfos.tel ||
+    !order.personnalInfos.address ||
+    !order.personnalInfos.city;
 
   const checkRequiredClassicWash = (services, requiredClassicWash) => {
     const invalidOptions = services.filter(
       (service) =>
-        (options.includes(service) || finishing.includes(service)) &&
-        !classic.includes(requiredClassicWash)
+        (options.some((option) => option.name === service) ||
+          finishing.some((finishing) => finishing.name === service)) &&
+        !classic.some((classic) => classic.name === requiredClassicWash)
     );
     return invalidOptions.length > 0 ? invalidOptions : null;
   };
 
-  const formatInvalidOptions = (invalidOptions) => {
-    return invalidOptions.map((option) => `- ${option}`).join("\n");
-  };
+  const formatInvalidOptions = (invalidOptions) =>
+    invalidOptions.map((option) => `- ${option}`).join("\n");
 
   const getErrorMessage = (invalidOptions, requiredClassicWash) => {
     const isOptionSelected = options.length > 0;
@@ -680,9 +796,9 @@ const handleFormErrorPossibilities = () => {
     },
     {
       condition:
-        finishing.includes("Céramique carrosserie") &&
-        (!finishing.includes("Polissage carrosserie") ||
-          !classic.includes("Extérieur")),
+        finishing.some((fin) => fin.name === "Céramique carrosserie") &&
+        (!finishing.some((fin) => fin.name === "Polissage carrosserie") ||
+          !classic.some((cl) => cl.name === "Extérieur")),
       message:
         "Nettoyage extérieur et polissage carrosserie nécessaires avant une céramique",
     },
@@ -698,9 +814,7 @@ const handleFormErrorPossibilities = () => {
         ],
         "Extérieur"
       ),
-      message: (invalidOptions) => {
-        return getErrorMessage(invalidOptions, "Extérieur");
-      },
+      message: (invalidOptions) => getErrorMessage(invalidOptions, "Extérieur"),
     },
     {
       condition: checkRequiredClassicWash(
@@ -716,9 +830,7 @@ const handleFormErrorPossibilities = () => {
         ],
         "Intérieur"
       ),
-      message: (invalidOptions) => {
-        return getErrorMessage(invalidOptions, "Intérieur");
-      },
+      message: (invalidOptions) => getErrorMessage(invalidOptions, "Intérieur"),
     },
     {
       condition: !checkboxes.termesAndConditions.checked,
@@ -774,7 +886,7 @@ const handleAddBtnInOrderEvents = () => {
 };
 
 const addCSRFToForm = () =>
-  fetchData("GET", "./assets/scripts/generateCSRF.php")
+  fetchData("GET", "./assets/scripts/php/generateCSRF.php")
     .then((csrf) => {
       form.appendChild(
         createElement("input", null, {
@@ -812,7 +924,100 @@ const createToast = (toastClass, text, optionOrFinishing, imagePath) => {
   }, 5000);
 };
 
+const checkCookie = (name) => {
+  let cookieName = getCookie(name);
+  if (cookieName != "") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const getCookie = (cname) => {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+};
+
+const setCookie = (cname, cvalue, exdays) => {
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * MILLISECONDS_PER_DAY);
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+};
+
+const createCookiesFromFormInfos = () =>
+  cookiesName.forEach((cookieName) => {
+    if (!checkCookie(cookieName)) {
+      setCookie(
+        cookieName,
+        order.personnalInfos[cookieName],
+        NUMBER_OF_DAY_BEFORE_COOKIE_EXPIRATION
+      );
+    }
+  });
+
+const preFillPersonnalInfos = () => {
+  cookiesName.forEach((cookieName) => {
+    if (checkCookie(cookieName)) {
+      const cookieValue = getCookie(cookieName);
+      customerInfos[cookieName].input.value = cookieValue;
+      order.personnalInfos[cookieName] = cookieValue;
+    }
+  });
+};
+
+const handleSubmitEvent = () =>
+  form.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+
+    order.appointmentInfos.date =
+      appointment.date.element.value ||
+      appointment.date.element.getAttribute("placeholder");
+
+    if (handleFormErrorPossibilities()) {
+      buildModal();
+      openModal();
+    }
+  });
+
+const handleConfirmModalEvent = () =>
+  modal.confirmButton.addEventListener("click", () => {
+    order.csrf_token = getElement("csrf_token").value;
+
+    toggleLoadingHamsterDisplay(true);
+
+    fetchData("POST", "./assets/scripts/php/main.php", order)
+      .then((response) => {
+        if (response.success) {
+          toggleLoadingHamsterDisplay(false);
+          closeModal();
+          displaySuccessSwal();
+          createCookiesFromFormInfos();
+        } else {
+          toggleLoadingHamsterDisplay(false);
+          displayErrorSwal();
+        }
+      })
+      .catch((error) => {
+        console.error("Error handling submission:", error);
+        toggleLoadingHamsterDisplay(false);
+        displayErrorSwal();
+      });
+  });
+
 addCSRFToForm();
+preFillPersonnalInfos();
 handleAddBtnInOrderEvents();
 handleRegexEvents();
 handleChangingCarSizeEvent();
