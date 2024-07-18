@@ -40,12 +40,11 @@ function getNoneSentSatisfactionEmailList()
     return $db->Select(
       "SELECT id_order_client, first_name, email 
        FROM orders_clients
-       WHERE sent_satisfaction_email = ? AND appointment_date < CURDATE()", //TODO: not working with curdate()
+       WHERE sent_satisfaction_email = ? AND appointment_date < CURDATE()",
       [0]
     );
   } catch (PDOException $ex) {
     echo json_encode(["success" => false, "message" => $ex->getMessage()]);
-
     exit();
   } finally {
     $db = null;

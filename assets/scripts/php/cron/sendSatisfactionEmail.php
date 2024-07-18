@@ -3,12 +3,12 @@ function isDevelopmentEnvironment()
 {
   return preg_match('/develop/', __DIR__);
 }
-
 if (isDevelopmentEnvironment()) {
-  require '../../../../../config.php'; // Development environment
+  require __DIR__ . '/../../../../../../config.php'; // Development environment
 } else {
-  require '../../../../config.php'; // Production environment
+  require __DIR__ . '/../../../../../config.php'; // Production environment
 }
+
 require __DIR__ . '/../../../classes/Database.php';
 require __DIR__ . '/../database.php';
 require __DIR__ . '/../email.php';
