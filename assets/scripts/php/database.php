@@ -115,3 +115,18 @@ function addOrderToDatabase($data)
   }
   return $ids;
 }
+
+function getFuturAppointmentDateAndHour()
+{
+  global $db_host, $db_name, $db_user, $db_pass;
+
+  try {
+    $db = new Database($db_host, $db_name, $db_user, $db_pass);
+    return $db->Select("SELECT appointment_date, appointment_hour FROM orders_clients WHERE appointment_date >= CURDATE()");
+  } catch (PDOException $ex) {
+    echo json_encode(["success" => false, "message" => $ex->getMessage()]);
+    exit();
+  } finally {
+    $db = null;
+  }
+}

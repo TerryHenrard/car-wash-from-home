@@ -3,6 +3,7 @@ function isDevelopmentEnvironment()
 {
   return preg_match('/develop/', __DIR__);
 }
+
 if (isDevelopmentEnvironment()) {
   require __DIR__ . '/../../../../../../config.php'; // Development environment
 } else {

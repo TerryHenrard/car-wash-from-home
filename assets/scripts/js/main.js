@@ -375,7 +375,7 @@ const handleRegexEvents = () => {
   });
 };
 
-const setDatepicker = () => {
+const setDatepicker = async () => {
   const date = new Date();
   const minDate = new Date(date.setDate(date.getDate() + 2));
   const maxDate = new Date(date.setDate(date.getDate() + 90));
@@ -443,11 +443,11 @@ const setDatepicker = () => {
   };*/
 
   const unavailableDates = [
-    ...getSpecificWeekdaysBetweenDates(minDate, maxDate, [2, 7]),
-    convertToDate("2024-06-29"), // week end papa
-    convertToDate("2024-07-1"), // week end papa
-    convertToDate("2024-07-17"), // rdv client chauvier
-    ...getAllDatesBetween("2024-07-18", "2024-07-29").map(convertToDate),
+    ...getSpecificWeekdaysBetweenDates(minDate, maxDate, [2, 7]), // mardi et dimanche
+    ...getAllDatesBetween("2024-07-18", "2024-07-29").map(convertToDate), // vacances
+    ...(await getDateSlotAlreadyTaken().then((dates) =>
+      dates.map(convertToDate)
+    )),
   ];
 
   const firstNonExcludedDate = reverseDate(
@@ -1015,6 +1015,42 @@ const handleConfirmModalEvent = () =>
         displayErrorSwal();
       });
   });
+
+const getFuturAppointmentDateAndHour = async () => {
+  try {
+    const response = await fetchData(
+      "GET",
+      "./assets/scripts/php/getFuturAppointmentDateAndHour.php"
+    );
+    return response;
+  } catch (error) {
+    return console.error(error);
+  }
+};
+
+const findDuplicates = (array) => {
+  const seen = new Set();
+  const duplicates = new Set();
+
+  array.forEach((element) => {
+    if (seen.has(element)) {
+      duplicates.add(element);
+    } else {
+      seen.add(element);
+    }
+  });
+
+  return [...duplicates];
+};
+
+const getDateSlotAlreadyTaken = async () => {
+  const futurAppointments = await getFuturAppointmentDateAndHour();
+  const dates = futurAppointments.map(
+    (appointment) => appointment.appointment_date
+  );
+  const duplicates = findDuplicates(dates);
+  return duplicates;
+};
 
 addCSRFToForm();
 preFillPersonnalInfos();
