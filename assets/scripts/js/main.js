@@ -4,7 +4,6 @@ const MILLISECONDS_PER_DAY = 60 * 60 * 24 * 1000; // 86400000
 const NUMBER_OF_DAY_BEFORE_COOKIE_EXPIRATION = 400;
 
 let toastCount = 0;
-let futurAppointmentDateAndHoure;
 
 const getElement = (id) => document.getElementById(id);
 const getElements = (selector) => [...document.querySelectorAll(selector)];
