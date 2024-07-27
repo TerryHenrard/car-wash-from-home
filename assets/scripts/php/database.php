@@ -130,3 +130,18 @@ function getFuturAppointmentDateAndHour()
     $db = null;
   }
 }
+
+function getAdministratorPassword($email)
+{
+  global $db_host, $db_name, $db_user, $db_pass;
+
+  try {
+    $db = new Database($db_host, $db_name, $db_user, $db_pass);
+    return $db->Select("SELECT password FROM administrators WHERE email = ?", [$email])[0]["password"];
+  } catch (PDOException $ex) {
+    echo json_encode(["success" => false, "message" => $ex->getMessage()]);
+    exit();
+  } finally {
+    $db = null;
+  }
+}
