@@ -21,14 +21,34 @@ if (
 </head>
 
 <body>
-  <div class="container">
+  <div class="admin-container">
     <header>
-      <h1>Tableau de Bord Admin</h1>
+      <h1>Bilan financier</h1>
     </header>
     <section class="dashboard">
       <div class="card">
-        <h2>Chiffre d'Affaires</h2>
+        <h2>Chiffre d'Affaires total</h2>
         <p id="turnover"></p>
+      </div>
+      <div class="card">
+        <h2>Chiffre d'Affaires <span id="curr-year"></span></h2>
+        <p id="turnover-curr-year"></p>
+      </div>
+      <div class="card">
+        <h2>Total des Charges</h2>
+        <p id="total-costs"></p>
+      </div>
+      <div class="card">
+        <h2>Total des Produits</h2>
+        <p id="total-results"></p>
+      </div>
+      <div class="card">
+        <h2>Bénéfices</h2>
+        <p id="profit"></p>
+      </div>
+      <div class="card">
+        <h2>Pertes</h2>
+        <p id="loss"></p>
       </div>
       <div class="card">
         <h2>Total int/ext</h2>
@@ -42,14 +62,7 @@ if (
         <h2>Total finitions</h2>
         <p id="total-finishing"></p>
       </div>
-      <div class="card">
-        <h2>Total des Charges</h2>
-        <p id="total-costs"></p>
-      </div>
-      <div class="card">
-        <h2>Total des Produits</h2>
-        <p id="total-results"></p>
-      </div>
+
       <div class="card">
         <h2>Revenu Moyen par Véhicule</h2>
         <p id="revenu-per-car"></p>
@@ -62,15 +75,10 @@ if (
         <h2>Marge net</h2>
         <p id="net-margin"></p>
       </div>
-      <div class="card">
-        <h2>Bénéfices</h2>
-        <p id="profit"></p>
-      </div>
-      <div class="card">
-        <h2>Pertes</h2>
-        <p id="loss"></p>
-      </div>
     </section>
+    <div>
+      <a href="./dashboard.php?admin_token=<?php echo urlencode($_SESSION["admin_token"]) ?>">retour</a>
+    </div>
   </div>
 </body>
 

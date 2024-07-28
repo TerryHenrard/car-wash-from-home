@@ -1,7 +1,6 @@
 const getElement = (id) => document.getElementById(id);
-const writeData = (data, element) => (element.textContent = data);
+const writeData = (value, element) => (element.textContent = value);
 
-const turnover = getElement("#turnover");
 const classicWash = getElement("#total-classic-wash");
 const Options = getElement("#total-options");
 const Finishing = getElement("#total-finishing");
@@ -13,11 +12,22 @@ const netMargin = getElement("#net-margin");
 const profit = getElement("#profit");
 const loss = getElement("#loss");
 
+const data = {
+  turnover: {
+    element: getElement("turnover"),
+    url: "../assets/scripts/php/getTurnover.php",
+  },
+  turnoverCurYear: {
+    element: getElement("turnover-curr-year"),
+    url: "../assets/scripts/php/getCurrTurnover.php",
+  },
+};
+
 const fetchData = async (url = "", method = "GET", data = {}) => {
   const options = {
     method,
     headers: {
-      "Content-Type": "application/json; charset=utf-8",
+      "Content-Type": "text; charset=utf-8",
     },
   };
 
@@ -27,7 +37,21 @@ const fetchData = async (url = "", method = "GET", data = {}) => {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  return response.json();
+  return response.text();
 };
 
-const queries = [""];
+const getData = () =>
+  Object.keys(data).forEach(async (key) => {
+    const element = data[key].element;
+    const value = await fetchData(data[key].url)
+      .then((response) => response)
+      .catch((error) => console.error(error));
+
+    writeData(value, element);
+  });
+
+const writeCurrYear = () =>
+  (getElement("curr-year").textContent = new Date().getFullYear());
+
+getData();
+writeCurrYear();

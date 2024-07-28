@@ -21,7 +21,7 @@ $password = getAdministratorPassword($_POST["email"])[0]["password"];
 
 if (checkPassword($_POST["password"], $password)) {
   echo "test1";
-  header("Location: ../../../pages/adminPage.php?admin_token=" . urlencode($_POST["admin_token"]));
+  header("Location: ../../../pages/dashboard.php?admin_token=" . urlencode($_POST["admin_token"]));
   exit();
 }
 echo "test2";
