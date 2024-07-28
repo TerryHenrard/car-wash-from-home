@@ -137,7 +137,7 @@ function getAdministratorPassword($email)
 
   try {
     $db = new Database($db_host, $db_name, $db_user, $db_pass);
-    return $db->Select("SELECT password FROM administrators WHERE email = ?", [$email])[0]["password"];
+    return $db->Select("SELECT password FROM administrators WHERE email = ?", [$email]);
   } catch (PDOException $ex) {
     echo json_encode(["success" => false, "message" => $ex->getMessage()]);
     exit();
