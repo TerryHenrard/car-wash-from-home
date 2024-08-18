@@ -3,15 +3,15 @@ session_start();
 header('Content-Type: application/json');
 
 // Check csrf token validity and method = POST
-if (!isset($_POST, $_SESSION['csrf_token']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
+if (!isset($_POST/*, $_SESSION['csrf_token']*/) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
   exit();
 }
 
 // Decode JSON input
 $data = json_decode(file_get_contents("php://input"), true);
-if ($data["csrf_token"] !== $_SESSION['csrf_token']) {
-  exit();
-}
+// if ($data["csrf_token"] !== $_SESSION['csrf_token']) {
+//   exit();
+// }
 
 function isDevelopmentEnvironment()
 {
