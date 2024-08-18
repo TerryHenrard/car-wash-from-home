@@ -107,8 +107,10 @@ const optionsAnim = () => {
 };
 
 window.addEventListener("load", () => {
-  body.style.opacity = "1";
-  headerTextAnimation();
+  setTimeout(() => {
+    body.style.opacity = "1";
+    headerTextAnimation();
+  }, 1000);
 });
 
 window.addEventListener("scroll", () => {

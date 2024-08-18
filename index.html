@@ -18,14 +18,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Car Wash From Home: service de lavage auto complet avec polissage et protection céramique à Charleroi. un nettoyage professionnel directement chez vous. Réservez en ligne !">
-  <link rel="stylesheet" href="./assets/styles/index/index.css">
   <link rel="shortcut icon" href="./assets/images/logo4.webp">
-  <script src="./assets/scripts/js/anim.js" defer></script>
-  <script src="./assets/scripts/js/main.js" type="module" defer></script>
   <title>Car wash à domicile sur Charleroi | Lavage à la main intérieur et extérieur</title>
+  <script>
+    function appendNoCacheScriptTag(src, type = null, onload = null) {
+      const script = document.createElement('script');
+      script.src = `${src}?no-cache=${Date.now()}`;
+      script.defer = true;
+      script.onload = onload;
+
+      if (type !== null) {
+        script.type = type;
+      }
+
+      document.head.appendChild(script);
+    }
+
+    function appendNoCacheLinkTag(href, onload = null) {
+      const link = document.createElement('link');
+      link.href = `${href}?no-cache=${Date.now()}`;
+      link.rel = 'stylesheet';
+      link.onload = onload;
+      document.head.appendChild(link);
+    }
+
+    appendNoCacheScriptTag
+    appendNoCacheScriptTag('./assets/scripts/js/main.js', "module",
+      appendNoCacheScriptTag('./assets/scripts/js/anim.js',
+        appendNoCacheLinkTag('./assets/styles/index/index.css')))
+  </script>
 </head>
 
-<body>
+<body style="opacity: 0;">
   <header class="header" id="start">
     <nav id="navbar">
       <div class="logo">
