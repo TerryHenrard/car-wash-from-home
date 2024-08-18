@@ -36,7 +36,7 @@ class Database
   public function InsertDetail($procedure = "", $parameters = [])
   {
     try {
-      return $this->executeStatement("CALL $procedure(?, ?)", $parameters);
+      return $this->executeStatement("CALL $procedure(?, ?, ?)", $parameters);
     } catch (PDOException $ex) {
       throw new PDOException($ex->getMessage());
     }

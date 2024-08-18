@@ -90,17 +90,17 @@ function addOrderToDatabase($data)
     $ids = $db->InsertOrder($parameters);
 
     foreach ($data['washing_classic'] as $wash) {
-      $parameters = [$ids["id"], $wash["name"]];
+      $parameters = [$ids["id"], $wash["name"], $wash["price"]];
       $db->InsertDetail("InsertWashDetail", $parameters);
     }
 
     foreach ($data['washing_options'] as $option) {
-      $parameters = [$ids["id"], $option["name"]];
+      $parameters = [$ids["id"], $option["name"], $option["price"]];
       $db->InsertDetail("InsertOptionDetail", $parameters);
     }
 
     foreach ($data['washing_finishing'] as $finishing) {
-      $parameters = [$ids["id"], $finishing["name"]];
+      $parameters = [$ids["id"], $finishing["name"], $finishing["price"]];
       $db->InsertDetail("InsertFinishingDetail", $parameters);
     }
 
@@ -137,7 +137,7 @@ function getAdministratorPassword($email)
 
   try {
     $db = new Database($db_host, $db_name, $db_user, $db_pass);
-    return $db->Select("SELECT password FROM administrators WHERE email = ?", [$email])[0]["password"];
+    return $db->Select("SELECT password FROM administrators WHERE email = ?", [$email]);
   } catch (PDOException $ex) {
     echo json_encode(["success" => false, "message" => $ex->getMessage()]);
     exit();

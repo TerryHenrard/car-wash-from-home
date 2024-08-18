@@ -1,3 +1,14 @@
+<?php
+session_start();
+function generateAdminToken()
+{
+  if (!isset($_SESSION['admin_token'])) {
+    $_SESSION['admin_token'] = bin2hex(random_bytes(32));
+  }
+  return $_SESSION['admin_token'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,16 +17,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page de Connexion</title>
   <link rel="stylesheet" href="./assets/style/style.css">
-  <script src="./assets/scripts/js/login.js" defer></script>
 </head>
 
 <body>
   <div class="container">
     <div class="login-box">
       <h2>Connexion</h2>
-      <form id="form">
+      <form method="post" action="./assets/scripts/php/login.php">
         <div class="textbox">
-          <input type="text" name="username" id="email" required>
+          <input type="text" name="email" id="email" required>
           <label>Email</label>
         </div>
         <div class="textbox">
@@ -23,6 +33,7 @@
           <label>Mot de passe</label>
         </div>
         <button type="submit" class="btn">Se connecter</button>
+        <input type="hidden" name="admin_token" value="<?php echo generateAdminToken() ?>">
       </form>
     </div>
   </div>

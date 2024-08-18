@@ -41,8 +41,8 @@ if (!validateAppointmentData($sanitizedData)) {
 date_default_timezone_set('Europe/Brussels');
 
 // Add into database
-
 $ids = addOrderToDatabase($sanitizedData);
+
 if ($ids["id"] > 0) {
   // Send email to client
   $clientEmailResponse = sendClientConfirmationEmail($sanitizedData, $ids["uid"]);

@@ -1,8 +1,10 @@
 <?php
-header('Content-Type: application/json');
-$data = json_decode(file_get_contents("php://input"), true);
-
-if ($_SERVER["REQUEST_METHOD"] !== "POST" || !isset($data["password"], $data["email"])) {
+session_start();
+if (
+  $_SERVER["REQUEST_METHOD"] !== "POST" ||
+  !isset($_POST["password"], $_POST["email"], $_POST["admin_token"], $_SESSION["admin_token"]) ||
+  $_SESSION["admin_token"] != $_POST["admin_token"]
+) {
   exit();
 }
 
@@ -14,15 +16,13 @@ function checkPassword($source, $target)
 {
   return hash("sha3-512", $source) === $target;
 }
+echo "test3";
+$password = getAdministratorPassword($_POST["email"])[0]["password"];
 
-try {
-  $password = getAdministratorPassword($data["email"]);
-
-  if (checkPassword($data["password"], $password)) {
-    echo json_encode(["success" => true, "message" => $ex->getMessage()]);
-  } else {
-    echo json_encode(["success" => false, "message" => "incorrect password"]);
-  }
-} catch (PDOException $ex) {
-  echo json_encode(["success" => false, "message" => $ex->getMessage()]);
+if (checkPassword($_POST["password"], $password)) {
+  echo "test1";
+  header("Location: ../../../pages/dashboard.php?admin_token=" . urlencode($_POST["admin_token"]));
+  exit();
 }
+echo "test2";
+header("Location: ../../../../index.php");
