@@ -38,14 +38,17 @@
       const link = document.createElement('link');
       link.href = `${href}?no-cache=${Date.now()}`;
       link.rel = 'stylesheet';
-      link.onload = onload;
+
+      if (onload) {
+        link.onload = onload;
+      }
+
       document.head.appendChild(link);
     }
 
-    appendNoCacheScriptTag
     appendNoCacheScriptTag('./assets/scripts/js/main.js', "module",
       appendNoCacheScriptTag('./assets/scripts/js/anim.js',
-        appendNoCacheLinkTag('./assets/styles/index/index.css')))
+        appendNoCacheLinkTag('./assets/styles/index/index.css')));
   </script>
 </head>
 
@@ -95,7 +98,7 @@
     <div class="price-container">
       <div class="s">
         <div class="s-title" id="s-title">
-          <img src="./assets/images/citadine.webp" alt="small car">
+          <img src="./assets/images/citadine.webp" alt="Voiture Citadine">
           <h2>citadine</h2>
         </div>
         <div class="s-tarif" id="s-tarif">
@@ -105,7 +108,7 @@
       </div>
       <div class="m">
         <div class="m-title" id="m-title">
-          <img src="./assets/images/berline.webp" alt="medium car">
+          <img src="./assets/images/berline.webp" alt="Voiture moyenne">
           <h2>berline, coupé</h2>
         </div>
         <div class="m-tarif" id="m-tarif">
@@ -115,7 +118,7 @@
       </div>
       <div class="l">
         <div class="l-title" id="l-title">
-          <img src="./assets/images/suv.webp" alt="large car">
+          <img src="./assets/images/suv.webp" alt="Voiture large">
           <h2>break, SUV</h2>
         </div>
         <div class="l-tarif" id="l-tarif">
@@ -159,11 +162,12 @@
       <div class="exterieur">
         <h3>Extérieur</h3>
         <ul>
-          <li><img src="./assets/images/check.svg" alt="check logo">Prélavage carroserie</li>
-          <li><img src="./assets/images/check.svg" alt="check logo">Désincrustation insectes</li>
-          <li><img src="./assets/images/check.svg" alt="check logo">Shampoing carrosserie finition brillante</li>
-          <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage intérieur de portes</li>
-          <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage et décontamination ferreuse jantes et
+          <li><img src="./assets/images/check.svg" alt="check logo">Prélavage de la carrosserie</li>
+          <li><img src="./assets/images/check.svg" alt="check logo">Désincrustation des insectes</li>
+          <li><img src="./assets/images/check.svg" alt="check logo">Shampoing de la carrosserie finition brillante</li>
+          <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage de l'intérieur des portes</li>
+          <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage et décontamination ferreuse des jantes et
+            des
             pneus</li>
           <li><img src="./assets/images/check.svg" alt="check logo">Protection et lustrage carrosserie</li>
           <li><img src="./assets/images/right-arrow_9383963.png" alt="check logo">Entre 1h et 1h30</li>
@@ -173,13 +177,14 @@
       <div class="interieur">
         <h3>Intérieur</h3>
         <ul>
-          <li><img src="./assets/images/check.svg" alt="check logo">Aspiration en profondeur habitacle et tapis</li>
-          <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage pinceau toutes surfaces</li>
+          <li><img src="./assets/images/check.svg" alt="check logo">Aspiration en profondeur de l'habitacle et des tapis
+          </li>
+          <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage au pinceau de toutes les surfaces</li>
           <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage à l'alcool isopropylique
           </li>
-          <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage portes</li>
-          <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage vitres et miroirs</li>
-          <li><img src="./assets/images/check.svg" alt="check logo">Retrait poils d'animaux</li>
+          <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage des portes</li>
+          <li><img src="./assets/images/check.svg" alt="check logo">Nettoyage des vitres et des miroirs</li>
+          <li><img src="./assets/images/check.svg" alt="check logo">Retrait des poils d'animaux</li>
           <li><img src="./assets/images/right-arrow_9383963.png" alt="check logo">Entre 1h30 et 2h</li>
         </ul>
         <a href="./pages/decouvrir.html">Plus d'infos</a>
@@ -214,7 +219,7 @@
         <div class="shampoing-siege-tissus box">
           <img src="./assets/images/shampouineuse.png" alt="shampooer">
           <p class="price">70€ - 45min</p>
-          <h4>Shampoing sièges en tissus</h4>
+          <h4>Shampoing sièges en tissu</h4>
           <p>
             Le shampoing des sièges en tissu élimine les taches, les odeurs et rafraîchit l'intérieur de votre véhicule.
           </p>
@@ -261,7 +266,7 @@
         <div class="protection-ceramique box">
           <img src="./assets/images/ceramique2.png" alt="ceramic protection">
           <p class="price">àpd. 200€ - 1h</p>
-          <h4>céramique carroserie</h4>
+          <h4>céramique carrosserie</h4>
           <p>
             La protection céramique de la carrosserie offre une barrière durable contre les éléments extérieurs, un
             effet déperlant et une
@@ -327,7 +332,7 @@
         <div class="anti-buee box">
           <img src="./assets/images/anti-buee.png" alt="anti mouth">
           <p class="price">10€</p>
-          <h4>Anti buée</h4>
+          <h4>Anti-buée</h4>
           <p>
             Profitez
             d'une visibilité claire et constante lors de vos trajets, assurant une conduite en toute sécurité.</p>
@@ -570,7 +575,7 @@
           <div class="anti-buee-container">
             <input type="checkbox" id="anti_buee" name="anti-buee" value="anti-buee" class="finishing"
               data-name="Anti buée" data-btn-id="btAnti-buee">
-            <label for="anti_buee">Anti buée</label>
+            <label for="anti_buee">Anti-buée</label>
           </div>
           <div class="renovateur-joints-container">
             <input type="checkbox" id="renovateur_joints" name="renovateur-joints" value="renovateur-joints"
