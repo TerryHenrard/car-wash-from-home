@@ -445,6 +445,8 @@ const setDatepicker = async () => {
   const unavailableDates = [
     ...getSpecificWeekdaysBetweenDates(minDate, maxDate, [2, 7]), // mardi et dimanche
     ...getAllDatesBetween("2024-07-18", "2024-07-29").map(convertToDate), // vacances
+    convertToDate("2024-08-03"),
+    convertToDate("2024-08-04"),
     ...(await getDateSlotAlreadyTaken().then((dates) =>
       dates.map(convertToDate)
     )),
