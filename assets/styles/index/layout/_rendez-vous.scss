@@ -27,6 +27,7 @@
     }
 
     form {
+      position: relative;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 25px 0;
@@ -676,13 +677,15 @@
 
       input {
         cursor: pointer;
-        padding: 10px 20px;
+        padding: 15px 40px;
         color: #ffffff;
         background: #0c3c60;
         border: 1px solid #0c3c60;
         transition: 0.3s;
         font-weight: 400;
         min-width: 160px;
+        font-size: 15px;
+        letter-spacing: 0.5px;
 
         &:hover {
           color: #0c3c60;
@@ -693,7 +696,13 @@
 
     .price,
     .estimated-time {
-      font-size: 1.5rem;
+      position: sticky;
+      bottom: 15px;
+      background: #ffffff;
+      box-shadow: 2px 2px 8px 5px #e0e0e0c2;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
       text-align: left;
       width: 300px;
       margin: 0 auto 30px auto;
@@ -704,6 +713,12 @@
 
       @media only screen and (max-width: 330px) {
         width: auto;
+      }
+    }
+
+    .price {
+      @media only screen and (max-width: 500px) {
+        bottom: 70px;
       }
     }
   }

@@ -12,6 +12,11 @@ body {
   font-family: "opensans", serif;
   font-weight: 500;
 }
+button,
+input[type="submit"],
+a {
+  border-radius: 20px;
+}
 
 .no-scroll {
   overflow: hidden;
