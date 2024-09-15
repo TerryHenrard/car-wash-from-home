@@ -5480,7 +5480,7 @@ a {
     width: auto;
   }
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1300px) {
   .rdv .form-container .price {
     bottom: 70px;
   }
