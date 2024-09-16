@@ -5466,7 +5466,7 @@ a {
   font-size: 1.2rem;
   text-align: left;
   width: 300px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto;
 }
 @media only screen and (max-width: 500px) {
   .rdv .form-container .price,
@@ -5480,7 +5480,10 @@ a {
     width: auto;
   }
 }
-@media only screen and (max-width: 13000px) {
+.rdv .form-container .estimated-time {
+  margin: 0 auto 30px auto;
+}
+@media only screen and (max-width: 1300px) {
   .rdv .form-container .price {
     bottom: 70px;
   }
@@ -5721,22 +5724,19 @@ a {
 }
 .modal_overlay .modal_content .modal_buttons button {
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 15px 40px;
   color: #ffffff;
   background: #0c3c60;
   border: 1px solid #0c3c60;
   transition: 0.3s;
   font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.5px;
   min-width: 160px;
 }
 .modal_overlay .modal_content .modal_buttons button:hover {
   color: #0c3c60;
   background: #ffffff;
-}
-@media only screen and (max-width: 600px) {
-  .modal_overlay .modal_content .modal_buttons button {
-    padding: 7.5px 15px;
-  }
 }
 .modal_overlay .modal_content .modal_buttons .modal_button_cancel {
   border: 1px solid #bd2929;

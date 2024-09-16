@@ -15,7 +15,7 @@
     gtag('config', 'G-42059HQN9E');
   </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description"
     content="Car Wash From Home: service de lavage auto complet avec polissage et protection céramique à Charleroi. un nettoyage professionnel directement chez vous. Réservez en ligne !">
   <link rel="shortcut icon" href="./assets/images/logo4.webp">
@@ -48,7 +48,10 @@
 
     appendNoCacheScriptTag('./assets/scripts/js/main.js', "module",
       appendNoCacheScriptTag('./assets/scripts/js/anim.js',
-        appendNoCacheLinkTag('./assets/styles/index/index.css')));
+        appendNoCacheLinkTag('./assets/styles/index/index.css')
+      )
+    );
+
   </script>
 </head>
 
