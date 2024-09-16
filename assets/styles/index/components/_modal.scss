@@ -136,12 +136,14 @@
 
       button {
         cursor: pointer;
-        padding: 10px 20px;
+        padding: 15px 40px;
         color: #ffffff;
         background: #0c3c60;
         border: 1px solid #0c3c60;
         transition: 0.3s;
         font-weight: 400;
+        font-size: 15px;
+        letter-spacing: 0.5px;
         min-width: 160px;
 
         &:hover {
@@ -149,9 +151,9 @@
           background: #ffffff;
         }
 
-        @media only screen and (max-width: 600px) {
-          padding: 7.5px 15px;
-        }
+        // @media only screen and (max-width: 850px) {
+        //   padding: 7.5px 15px;
+        // }
       }
 
       .modal_button_cancel {

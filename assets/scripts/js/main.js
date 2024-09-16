@@ -1,6 +1,7 @@
 import services from "./services.js";
+import availableSlots from "./planning.js";
 
-const MILLISECONDS_PER_DAY = 60 * 60 * 24 * 1000; // 86400000
+const MILLISECONDS_PER_DAY = 86400000;
 const NUMBER_OF_DAY_BEFORE_COOKIE_EXPIRATION = 400;
 
 let toastCount = 0;
@@ -157,13 +158,8 @@ const supplements = {
 };
 
 const appointment = {
-  date: {
-    element: getElement("datepicker"),
-  },
-  hour: {
-    element: getElement("time"),
-    slots: ["08:30", "13:00"],
-  },
+  date: getElement("datepicker"),
+  hour: getElement("time"),
 };
 
 const fetchData = async (method, url, data = {}) => {
@@ -376,20 +372,27 @@ const handleRegexEvents = () => {
 };
 
 const setDatepicker = async () => {
-  const date = new Date();
-  const minDate = new Date(date.setDate(date.getDate() + 2));
-  const maxDate = new Date(date.setDate(date.getDate() + 90));
+  const today = new Date();
+  const minDate = new Date(today.setDate(today.getDate() + 1));
+  const maxDate = new Date(availableSlots[availableSlots.length - 1].date);
 
   const pad = (number) => (number < 10 ? `0${number}` : number);
   const reverseDate = (date) => date.split("-").reverse().join("/");
-  const addDays = (date, days) => new Date(date.setDate(date.getDate() + days));
+  const addDays = (date, days) => {
+    const newDate = new Date(date); // Créer une copie de l'objet Date
+    newDate.setDate(newDate.getDate() + days); // Modifier la copie
+    return newDate; // Retourner la nouvelle instance
+  };
   const convertToDate = (dateString) => new Date(dateString);
   const formatDate = (date) =>
     `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-
   const convertToCorrectDate = (dateString) => {
     const [day, month, year] = dateString.split("/").map(Number);
     return new Date(year, month - 1, day);
+  };
+  const resetTime = (date) => {
+    date.setHours(0, 0, 0, 0); // Réinitialise l'heure à minuit (00:00:00)
+    return date;
   };
 
   const getSpecificWeekdaysBetweenDates = (startDate, endDate, weekdays) => {
@@ -435,21 +438,63 @@ const setDatepicker = async () => {
     return dates;
   };
 
-  //TODO: not working
-  /*const disableKeayboardOnFocus = () => {
-    appointment.date.element.addEventListener("focus", (ev) =>
-      ev.preventDefault()
+  const getUnavailableDates = () => {
+    const unavailableDates = [];
+    let startDate = resetTime(new Date());
+    let endDate = resetTime(
+      new Date(availableSlots[availableSlots.length - 1].date)
     );
-  };*/
+
+    while (startDate <= endDate) {
+      const isFound = availableSlots.find(
+        (availableDate) => availableDate.date === formatDate(startDate)
+      );
+
+      if (!isFound) {
+        unavailableDates.push(startDate);
+      }
+
+      startDate = addDays(startDate, 1);
+    }
+
+    return unavailableDates;
+  };
+
+  const getTakenDates = async () => {
+    const takenDates = [];
+    const takenSlots = await getFuturAppointmentDateAndHour();
+
+    takenSlots.forEach((takenSlot) => {
+      console.log(takenSlot);
+
+      const index = availableSlots.findIndex(
+        (availableSlot) => availableSlot.date === takenSlot.appointment_date
+      );
+
+      if (index !== -1) {
+        const takenHourIndex = availableSlots[index].hours.findIndex(
+          (availableHour) =>
+            availableHour === takenSlot.appointment_hour.slice(0, 5)
+        );
+
+        if (takenHourIndex !== -1) {
+          availableSlots[index].hours.splice(takenHourIndex, 1);
+
+          if (availableSlots[index].hours.length === 0) {
+            availableSlots.splice(index, 1);
+            takenDates.push(takenSlot.appointment_date);
+          }
+        }
+      }
+    });
+
+    return takenDates.map((date) => new Date(date));
+  };
 
   const unavailableDates = [
-    ...getSpecificWeekdaysBetweenDates(minDate, maxDate, [2, 7]), // mardi et dimanche
-    ...getAllDatesBetween("2024-07-18", "2024-07-29").map(convertToDate), // vacances
-    convertToDate("2024-08-03"),
-    convertToDate("2024-08-04"),
-    ...(await getDateSlotAlreadyTaken().then((dates) =>
-      dates.map(convertToDate)
-    )),
+    // ...getSpecificWeekdaysBetweenDates(minDate, maxDate, [2, 7]), // mardi et dimanche
+    ...getUnavailableDates(),
+    ...(await getTakenDates()),
   ];
 
   const firstNonExcludedDate = reverseDate(
@@ -468,24 +513,52 @@ const setDatepicker = async () => {
     weekStart: 1,
   };
 
-  appointment.date.element.setAttribute("placeholder", firstNonExcludedDate);
-  new Datepicker(appointment.date.element, options);
+  appointment.date.setAttribute("placeholder", firstNonExcludedDate);
+  new Datepicker(appointment.date, options);
 };
 
-const setTimeSlots = () => {
-  appointment.hour.slots.forEach((slot) => {
-    const option = createElement("option", slot, { value: slot });
-    appointment.hour.element.appendChild(option);
+const addTimeSlot = (date) => {
+  const slot = availableSlots.find(
+    (slot) => slot.date === date.split("/").reverse().join("-")
+  );
+
+  appointment.hour.innerHTML = "";
+  slot.hours.forEach((hour) =>
+    appointment.hour.appendChild(createElement("option", hour, { value: hour }))
+  );
+};
+
+const setHourPicker = () => {
+  setTimeout(
+    () => addTimeSlot(appointment.date.getAttribute("placeholder")),
+    500
+  );
+
+  appointment.hour.addEventListener("click", ({ target: { options } }) => {
+    const changedDate =
+      options[0].textContent === "Veuillez sélectionner une heure";
+
+    if (changedDate) {
+      addTimeSlot(
+        appointment.date.value || appointment.date.getAttribute("placeholder")
+      );
+    }
   });
 
-  order.appointmentInfos.hour = appointment.hour.element.value;
+  appointment.date.addEventListener("blur", () => {
+    appointment.hour.innerHTML = "";
+    appointment.hour.appendChild(
+      createElement("option", "Veuillez sélectionner une heure")
+    );
+  });
 };
 
 const handleHourEvent = () =>
-  appointment.hour.element.addEventListener(
-    "input",
-    ({ target: { value } }) => (order.appointmentInfos.hour = value)
-  );
+  appointment.hour.addEventListener("change", ({ target: { value } }) => {
+    console.log(value);
+
+    order.appointmentInfos.hour = value;
+  });
 
 const openModal = () => toggleModalDisplay(true);
 const closeModal = () => {
@@ -839,6 +912,11 @@ const handleFormErrorPossibilities = () => {
       message:
         "Veuillez confirmer avoir lu et accepté les conditions générales de ventes et la politique de confidentialité",
     },
+    {
+      condition:
+        order.appointmentInfos.hour === "Veuillez sélectionner une heure",
+      message: "Veuillez sélectionner une heure",
+    },
   ];
 
   for (const { condition, message } of conditions) {
@@ -984,8 +1062,9 @@ const handleSubmitEvent = () =>
     ev.preventDefault();
 
     order.appointmentInfos.date =
-      appointment.date.element.value ||
-      appointment.date.element.getAttribute("placeholder");
+      appointment.date.value || appointment.date.getAttribute("placeholder");
+
+    order.appointmentInfos.hour = appointment.hour.value;
 
     if (handleFormErrorPossibilities()) {
       buildModal();
@@ -1045,15 +1124,6 @@ const findDuplicates = (array) => {
   return [...duplicates];
 };
 
-const getDateSlotAlreadyTaken = async () => {
-  const futurAppointments = await getFuturAppointmentDateAndHour();
-  const dates = futurAppointments.map(
-    (appointment) => appointment.appointment_date
-  );
-  const duplicates = findDuplicates(dates);
-  return duplicates;
-};
-
 addCSRFToForm();
 preFillPersonnalInfos();
 handleAddBtnInOrderEvents();
@@ -1061,9 +1131,9 @@ handleRegexEvents();
 handleChangingCarSizeEvent();
 handleCheckboxEvents();
 handleRegexEvents();
-setTimeSlots();
 setDatepicker();
-handleHourEvent();
+setHourPicker();
+// handleHourEvent();
 handleCloseModalEvent();
 handleConfirmModalEvent();
 handleSubmitEvent();

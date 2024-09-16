@@ -705,7 +705,7 @@
       font-size: 1.2rem;
       text-align: left;
       width: 300px;
-      margin: 0 auto 30px auto;
+      margin: 0 auto;
 
       @media only screen and (max-width: 500px) {
         font-size: 1.1rem;
@@ -716,8 +716,12 @@
       }
     }
 
+    .estimated-time {
+      margin: 0 auto 30px auto;
+    }
+
     .price {
-      @media only screen and (max-width: 13000px) {
+      @media only screen and (max-width: 1300px) {
         bottom: 70px;
       }
     }
