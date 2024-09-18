@@ -867,7 +867,8 @@ const handleFormErrorPossibilities = () => {
     },
     {
       condition: classic.length === 0,
-      message: "Veuillez sélectionner au moins un lavage classique",
+      message:
+        "Veuillez sélectionner au moins un lavage intérieur ou extérieur",
     },
     {
       condition:
