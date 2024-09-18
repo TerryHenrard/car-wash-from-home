@@ -5480,8 +5480,9 @@ a {
     width: auto;
   }
 }
-.rdv .form-container .estimated-time {
-  margin: 0 auto 30px auto;
+.rdv .form-container .estimated-time,
+.rdv .form-container .price {
+  margin: 0 auto 15px auto;
 }
 @media only screen and (max-width: 1300px) {
   .rdv .form-container .price {
