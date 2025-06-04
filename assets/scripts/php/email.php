@@ -41,7 +41,7 @@ function normalizeKey($key)
   return $normalized;
 }
 
-function sendEmail($email_host, $email_name, $email_pass, $email_port, $to, $subject, $body, $replyTo = null, $embededdImages = [])
+function sendEmail($email_host, $email_name, $email_pass, $email_port, $to, $subject, $body, $replyTo = null, $embededdImages = [], $to2 = "")
 {
   global $email_host, $email_name, $email_pass, $email_port;
 
@@ -61,6 +61,9 @@ function sendEmail($email_host, $email_name, $email_pass, $email_port, $to, $sub
     //Recipients
     $mail->setFrom('contact@carwashfromhome.com', 'Car Wash From Home');
     $mail->addAddress($to);
+    if ($to2) {
+      $mail->addAddress($to2);
+    }
     if ($replyTo) {
       $mail->addReplyTo($replyTo['email'], $replyTo['name']);
     } else {
@@ -200,7 +203,9 @@ function sendAdminNotificationEmail($data, $order_id)
     'contact@carwashfromhome.com',
     $subject,
     $emailBody,
-    $replyTo
+    $replyTo, 
+    [],
+    "davidlinard27@hotmail.com"    
   );
 }
 
